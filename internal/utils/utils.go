@@ -1,9 +1,9 @@
 package utils
 
-func Filter[T any](ss []T, test func(T) bool) (ret []T) {
-	for _, s := range ss {
-		if test(s) {
-			ret = append(ret, s)
+func Filter[T any](items []T, condition func(T) bool) (results []T) {
+	for _, item := range items {
+		if condition(item) {
+			results = append(results, item)
 		}
 	}
 	return

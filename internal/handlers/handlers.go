@@ -3,43 +3,67 @@ package handlers
 import (
 	"archive/tar"
 	"errors"
+	"fmt"
 	"io"
+	"net/http"
 	"os"
+	"strings"
 
 	"github.com/ulikunitz/xz"
 )
 
-func SaveTar(path string, name string, reader io.Reader) error {
+func DownloadTar(fontURL string, path string, name string) (string, error) {
+	fullPath := path + "/" + name
+	resp, err := http.Get(fontURL)
+	if err != nil {
+		return "", err
+	}
 
-	// create the directory
+	if resp.StatusCode != 200 {
+		return "", err
+	}
+
+	// Make sure the path exists
 	if _, err := os.Stat(path); errors.Is(err, os.ErrNotExist) {
 		err := os.Mkdir(path, os.ModePerm)
 		if err != nil {
-			return err
+			return "", err
 		}
 	}
 
 	// Create the file
-	out, err := os.Create(path + "/" + name)
+	out, err := os.Create(fullPath)
 	if err != nil {
-		return err
+		return "", err
 	}
+
 	defer out.Close()
 	// Write the body to file
-	_, err = io.Copy(out, reader)
+	_, err = io.Copy(out, resp.Body)
 	if err != nil {
-		return err
+		return "", err
 	}
-	return nil
+
+	return fullPath, nil
+
 }
 
 // extractTar extracts files from a tar archive provided in the reader
-func ExtractTar(path string, name string, reader io.Reader) error {
+func ExtractTar(archivePath string, extractPath string, name string) error {
+
+	fontNameWithExtention := strings.Split(name, ".")[0]
+
 	// Decompress the xz stream
-	xzReader, err := xz.NewReader(reader)
+	fontArchive, err := os.Open(archivePath)
 	if err != nil {
 		return err
 	}
+	xzReader, err := xz.NewReader(fontArchive)
+	if err != nil {
+		return err
+	}
+
+	defer fontArchive.Close()
 
 	// Create a tar reader from the decompressed stream
 	tarReader := tar.NewReader(xzReader)
@@ -56,7 +80,7 @@ func ExtractTar(path string, name string, reader io.Reader) error {
 		}
 
 		// Extract the file name from the header
-		filename := path + "/" + name + "/" + header.Name
+		filename := extractPath + "/" + fontNameWithExtention + "/" + header.Name
 
 		// Create directories if they don't exist, if the tar contains directories
 		if header.Typeflag == tar.TypeDir {
@@ -67,8 +91,8 @@ func ExtractTar(path string, name string, reader io.Reader) error {
 			continue
 		}
 
-		if _, err := os.Stat(path + "/" + name); errors.Is(err, os.ErrNotExist) {
-			err := os.Mkdir(path+"/"+name, os.ModePerm)
+		if _, err := os.Stat(extractPath + "/" + fontNameWithExtention); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(extractPath+"/"+fontNameWithExtention, os.ModePerm)
 			if err != nil {
 				return err
 			}
@@ -83,6 +107,20 @@ func ExtractTar(path string, name string, reader io.Reader) error {
 
 		// Write file content to disk
 		_, err = io.Copy(file, tarReader)
+		if err != nil {
+			return err
+		}
+	}
+
+	return nil
+}
+
+func CleanUpArchives(archivePath string) error {
+
+	if _, err := os.Stat(archivePath); os.IsNotExist(err) {
+		return fmt.Errorf("archive file does not exist")
+	} else {
+		err = os.Remove(archivePath)
 		if err != nil {
 			return err
 		}

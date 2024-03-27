@@ -1,8 +1,6 @@
 package types
 
 import (
-	"io"
-	"net/http"
 	"regexp"
 	"strconv"
 	"strings"
@@ -41,17 +39,4 @@ func (fs NerdFonts) GetFont(f string) Font {
 	isWantedFont := func(x Font) bool { return x.Name == f }
 	font := utils.Filter(fs.Assets, isWantedFont)
 	return font[0]
-}
-
-func (f Font) GetFontTar() (io.Reader, error) {
-	url := f.BrowserDownloadUrl
-	resp, err := http.Get(url)
-	if err != nil {
-		return nil, err
-	}
-
-	if resp.StatusCode != 200 {
-		return nil, err
-	}
-	return resp.Body, nil
 }

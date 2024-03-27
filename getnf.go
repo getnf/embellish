@@ -6,7 +6,6 @@ import (
 	"log"
 	"net/http"
 	"os"
-	"strings"
 
 	"github.com/getnf/getnf/internal/handlers"
 	"github.com/getnf/getnf/internal/types"
@@ -33,6 +32,9 @@ func getData() (types.NerdFonts, error) {
 }
 
 func main() {
+
+	keepArchives := true
+
 	data, err := getData()
 	if err != nil {
 		log.Fatalln(err)
@@ -46,17 +48,22 @@ func main() {
 	downloadPath := homePath + "/.local/share/getnf"
 	extractPath := homePath + "/.local/share/fonts"
 
-	font := data.GetFont("Hack.tar.xz")
-	fontTar, err := font.GetFontTar()
+	font := data.GetFont("MPlus.tar.xz")
+
+	downloadedArchivePath, err := handlers.DownloadTar(font.BrowserDownloadUrl, downloadPath, font.Name)
 	if err != nil {
 		log.Fatalln(err)
 	}
-	err = handlers.ExtractTar(extractPath, strings.Split(font.Name, ".")[0], fontTar)
+
+	err = handlers.ExtractTar(downloadedArchivePath, extractPath, font.Name)
 	if err != nil {
 		log.Fatalln(err)
 	}
-	err = handlers.SaveTar(downloadPath, font.Name, fontTar)
-	if err != nil {
-		log.Fatalln(err)
+
+	if !keepArchives {
+		err = handlers.CleanUpArchives(downloadedArchivePath)
+		if err != nil {
+			log.Fatalln(err)
+		}
 	}
 }
