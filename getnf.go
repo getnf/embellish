@@ -78,6 +78,7 @@ func main() {
 				if !args.Install.KeepArchives {
 					handlers.CleanUpArchive(downloadedTar)
 				}
+				db.InsertIntoInstalledFonts(database, f, data.TagName)
 			} else {
 				fmt.Printf("Font: %v is not a nerd font", font)
 			}
