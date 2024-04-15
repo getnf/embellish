@@ -2,15 +2,64 @@ package handlers
 
 import (
 	"archive/tar"
+	"database/sql"
+	"encoding/json"
 	"errors"
 	"fmt"
 	"io"
+	"log"
 	"net/http"
 	"os"
 	"strings"
 
+	"github.com/getnf/getnf/internal/db"
+	"github.com/getnf/getnf/internal/types"
+	"github.com/getnf/getnf/internal/utils"
+
 	"github.com/ulikunitz/xz"
 )
+
+func GetData() (types.NerdFonts, error) {
+	url := "https://api.github.com/repos/ryanoasis/nerd-fonts/releases/latest"
+	resp, err := http.Get(url)
+	if err != nil {
+		return types.NerdFonts{}, err
+	}
+
+	body, err := io.ReadAll(resp.Body)
+	if err != nil {
+		return types.NerdFonts{}, err
+	}
+
+	var data types.NerdFonts
+	err = json.Unmarshal(body, &data)
+	if err != nil {
+		log.Fatalln(err)
+	}
+	return data, nil
+}
+
+func FontsWithVersion(database *sql.DB, fonts []types.Font) []types.Font {
+	var results []types.Font
+	for font := range fonts {
+		var f types.Font = fonts[font]
+		if db.IsFontInstalled(database, f) {
+			installedFont := db.GetInstalledFont(database, f)
+			f.AddVersion(installedFont.InstalledVersion)
+		} else {
+			f.AddVersion("-")
+		}
+		results = append(results, f)
+	}
+	return results
+}
+
+func ListFonts(fonts []types.Font) {
+	for font := range fonts {
+		var f types.Font = fonts[font]
+		fmt.Printf("Name: %v, Installed version: %v\n", f.Name, f.InstalledVersion)
+	}
+}
 
 func DownloadTar(fontURL string, path string, name string) (string, error) {
 	fullPath := path + "/" + name
@@ -115,7 +164,7 @@ func ExtractTar(archivePath string, extractPath string, name string) error {
 	return nil
 }
 
-func CleanUpArchives(archivePath string) error {
+func CleanUpArchive(archivePath string) error {
 
 	if _, err := os.Stat(archivePath); os.IsNotExist(err) {
 		return fmt.Errorf("archive file does not exist")
@@ -127,4 +176,21 @@ func CleanUpArchives(archivePath string) error {
 	}
 
 	return nil
+}
+
+func IsUpdateAvilable(remote string, local string) bool {
+	remoteVersion, err := utils.StringToInt(remote)
+	if err != nil {
+		log.Fatalln(err)
+	}
+
+	localVersion, err := utils.StringToInt(local)
+	if err != nil {
+		log.Fatalln(err)
+	}
+	if remoteVersion > localVersion {
+		return true
+	} else {
+		return false
+	}
 }

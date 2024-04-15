@@ -1,69 +1,50 @@
 package main
 
 import (
-	"encoding/json"
-	"io"
+	"database/sql"
+	"fmt"
 	"log"
-	"net/http"
-	"os"
 
+	"github.com/getnf/getnf/internal/db"
 	"github.com/getnf/getnf/internal/handlers"
 	"github.com/getnf/getnf/internal/types"
 )
 
-func getData() (types.NerdFonts, error) {
-	url := "https://api.github.com/repos/ryanoasis/nerd-fonts/releases/latest"
-	resp, err := http.Get(url)
-	if err != nil {
-		return types.NerdFonts{}, err
+func setupDB(database *sql.DB, remoteData types.NerdFonts) {
+	db.CreateVersionTable(database)
+	db.CreateFontsTable(database)
+	db.CreateInstalledFontsTable(database)
+
+	if db.TableIsEmpty(database, "version") || handlers.IsUpdateAvilable(remoteData.TagName, db.GetVersion(database)) {
+		db.InsertIntoVersion(database, remoteData.TagName)
+		fmt.Println("Updated fonts version")
 	}
 
-	body, err := io.ReadAll(resp.Body)
-	if err != nil {
-		return types.NerdFonts{}, err
+	if db.TableIsEmpty(database, "fonts") || handlers.IsUpdateAvilable(remoteData.TagName, db.GetVersion(database)) {
+		db.DeleteFontsTable(database)
+		db.CreateFontsTable(database)
+		db.InsertIntoFonts(database, remoteData.Assets)
+		fmt.Println("Updating local fonts db")
 	}
-
-	var data types.NerdFonts
-	err = json.Unmarshal(body, &data)
-	if err != nil {
-		log.Fatalln(err)
-	}
-	return data, nil
 }
 
 func main() {
+	// keepArchives := true
 
-	keepArchives := true
-
-	data, err := getData()
+	remoteData, err := handlers.GetData()
 	if err != nil {
 		log.Fatalln(err)
 	}
 
-	homePath, err := os.UserHomeDir()
-	if err != nil {
-		log.Fatalln(err)
-	}
+	var data types.NerdFonts
 
-	downloadPath := homePath + "/.local/share/getnf"
-	extractPath := homePath + "/.local/share/fonts"
+	database := db.OpenDB()
 
-	font := data.GetFont("MPlus.tar.xz")
+	setupDB(database, remoteData)
 
-	downloadedArchivePath, err := handlers.DownloadTar(font.BrowserDownloadUrl, downloadPath, font.Name)
-	if err != nil {
-		log.Fatalln(err)
-	}
+	data.TagName = db.GetVersion(database)
+	data.Assets = db.GetAllFonts(database)
 
-	err = handlers.ExtractTar(downloadedArchivePath, extractPath, font.Name)
-	if err != nil {
-		log.Fatalln(err)
-	}
-
-	if !keepArchives {
-		err = handlers.CleanUpArchives(downloadedArchivePath)
-		if err != nil {
-			log.Fatalln(err)
-		}
-	}
+	fontsWithExtraInfo := handlers.FontsWithVersion(database, data.GetFonts())
+	handlers.ListFonts(fontsWithExtraInfo)
 }

@@ -1,10 +1,6 @@
 package types
 
 import (
-	"regexp"
-	"strconv"
-	"strings"
-
 	"github.com/getnf/getnf/internal/utils"
 )
 
@@ -14,19 +10,15 @@ type NerdFonts struct {
 }
 
 type Font struct {
+	Id                 int    `json:"id"`
 	Name               string `json:"name"`
 	ContentType        string `json:"content_type"`
 	BrowserDownloadUrl string `json:"browser_download_url"`
+	InstalledVersion   string
 }
 
-func (fs NerdFonts) GetVersion() (int, error) {
-	re := regexp.MustCompile("[0-9]+")
-	versionCleaned := re.FindAllString(fs.TagName, -1)
-	version, err := strconv.Atoi(strings.Join(versionCleaned[:], ""))
-	if err != nil {
-		return 0, err
-	}
-	return version, nil
+func (fs NerdFonts) GetVersion() string {
+	return fs.TagName
 }
 
 func (fs NerdFonts) GetFonts() []Font {
@@ -39,4 +31,8 @@ func (fs NerdFonts) GetFont(f string) Font {
 	isWantedFont := func(x Font) bool { return x.Name == f }
 	font := utils.Filter(fs.Assets, isWantedFont)
 	return font[0]
+}
+
+func (f *Font) AddVersion(ver string) {
+	f.InstalledVersion = ver
 }
