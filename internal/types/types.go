@@ -4,6 +4,8 @@ import (
 	"github.com/getnf/getnf/internal/utils"
 )
 
+// Fonts
+
 type NerdFonts struct {
 	TagName string `json:"tag_name"`
 	Assets  []Font `json:"assets"`
@@ -35,4 +37,34 @@ func (fs NerdFonts) GetFont(f string) Font {
 
 func (f *Font) AddVersion(ver string) {
 	f.InstalledVersion = ver
+}
+
+// Command line argumetns
+
+type InstallCmd struct {
+	Fonts        []string `arg:"positional" help:"list of space separated fonts to install"`
+	KeepArchives bool     `arg:"-k" help:"Keep archives in the download location"`
+}
+
+type UninstallCmd struct {
+	Fonts []string `arg:"positional" help:"list of space separated fonts to uninstall"`
+}
+
+type ListCmd struct {
+	Installed bool `arg:"-i" help:"list only installed fonts"`
+}
+
+type UpdateCmd struct {
+	Update bool `default:"true"`
+}
+
+type Args struct {
+	Install  *InstallCmd   `arg:"subcommand:install" help:"install fonts"`
+	Unistall *UninstallCmd `arg:"subcommand:uninstall" help:"uninstall fonts"`
+	List     *ListCmd      `arg:"subcommand:list" help:"list fonts"`
+	Update   *UpdateCmd    `arg:"subcommand:update" help:"update installed fonts"`
+}
+
+func (Args) Version() string {
+	return "getnf v0.1.0"
 }

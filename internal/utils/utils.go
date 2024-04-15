@@ -24,3 +24,7 @@ func StringToInt(version string) (int, error) {
 	}
 	return versionInt, nil
 }
+
+func FontNameWithoutExtention(name string) string {
+	return strings.Split(name, ".")[0]
+}

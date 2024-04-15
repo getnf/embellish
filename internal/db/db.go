@@ -5,6 +5,7 @@ import (
 	"log"
 
 	"github.com/getnf/getnf/internal/types"
+	"github.com/getnf/getnf/internal/utils"
 
 	_ "github.com/mattn/go-sqlite3"
 )
@@ -115,7 +116,7 @@ func InsertIntoFonts(db *sql.DB, fonts []types.Font) {
 	defer statement.Close()
 
 	for _, font := range fonts {
-		_, err = statement.Exec(font.Id, font.Name, font.ContentType, font.BrowserDownloadUrl)
+		_, err = statement.Exec(font.Id, utils.FontNameWithoutExtention(font.Name), font.ContentType, font.BrowserDownloadUrl)
 		if err != nil {
 			log.Fatal(err)
 		}
@@ -139,6 +140,21 @@ func GetAllFonts(db *sql.DB) []types.Font {
 		fonts = append(fonts, font)
 	}
 	return fonts
+}
+
+func FontExists(db *sql.DB, font string) bool {
+	var exists bool
+	// Query for a value based on a single row.
+	err := db.QueryRow("SELECT (Name == ?) From fonts WHERE Name = ?", font, font).Scan(&exists)
+
+	if err != nil {
+		if err == sql.ErrNoRows {
+			return false
+		}
+		return false
+	}
+
+	return exists
 }
 
 // Installed fonts table
@@ -172,13 +188,13 @@ func InsertIntoInstalledFonts(db *sql.DB, font types.Font, version string) {
 func GetInstalledFonts(db *sql.DB) []types.Font {
 	var fonts []types.Font
 	var font types.Font
-	rows, err := db.Query("SELECT Name, Version FROM installedFonts")
+	rows, err := db.Query("SELECT Id, Name, Version FROM installedFonts")
 	if err != nil {
 		log.Fatalln(err)
 	}
 	defer rows.Close()
 	for rows.Next() {
-		rows.Scan(&font.Name, &font.InstalledVersion)
+		rows.Scan(&font.Id, &font.Name, &font.InstalledVersion)
 		fonts = append(fonts, font)
 	}
 	return fonts

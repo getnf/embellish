@@ -10,7 +10,6 @@ import (
 	"log"
 	"net/http"
 	"os"
-	"strings"
 
 	"github.com/getnf/getnf/internal/db"
 	"github.com/getnf/getnf/internal/types"
@@ -54,7 +53,11 @@ func FontsWithVersion(database *sql.DB, fonts []types.Font) []types.Font {
 	return results
 }
 
-func ListFonts(fonts []types.Font) {
+func ListFonts(fonts []types.Font, onlyInstalled bool) {
+	isInstalledFont := func(x types.Font) bool { return x.InstalledVersion != "-" }
+	if onlyInstalled {
+		fonts = utils.Filter(fonts, isInstalledFont)
+	}
 	for font := range fonts {
 		var f types.Font = fonts[font]
 		fmt.Printf("Name: %v, Installed version: %v\n", f.Name, f.InstalledVersion)
@@ -62,7 +65,7 @@ func ListFonts(fonts []types.Font) {
 }
 
 func DownloadTar(fontURL string, path string, name string) (string, error) {
-	fullPath := path + "/" + name
+	fullPath := path + "/" + name + ".tar.xz"
 	resp, err := http.Get(fontURL)
 	if err != nil {
 		return "", err
@@ -100,8 +103,6 @@ func DownloadTar(fontURL string, path string, name string) (string, error) {
 // extractTar extracts files from a tar archive provided in the reader
 func ExtractTar(archivePath string, extractPath string, name string) error {
 
-	fontNameWithExtention := strings.Split(name, ".")[0]
-
 	// Decompress the xz stream
 	fontArchive, err := os.Open(archivePath)
 	if err != nil {
@@ -129,7 +130,7 @@ func ExtractTar(archivePath string, extractPath string, name string) error {
 		}
 
 		// Extract the file name from the header
-		filename := extractPath + "/" + fontNameWithExtention + "/" + header.Name
+		filename := extractPath + "/" + name + "/" + header.Name
 
 		// Create directories if they don't exist, if the tar contains directories
 		if header.Typeflag == tar.TypeDir {
@@ -140,8 +141,8 @@ func ExtractTar(archivePath string, extractPath string, name string) error {
 			continue
 		}
 
-		if _, err := os.Stat(extractPath + "/" + fontNameWithExtention); errors.Is(err, os.ErrNotExist) {
-			err := os.Mkdir(extractPath+"/"+fontNameWithExtention, os.ModePerm)
+		if _, err := os.Stat(extractPath + "/" + name); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(extractPath+"/"+name, os.ModePerm)
 			if err != nil {
 				return err
 			}
