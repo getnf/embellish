@@ -36,6 +36,46 @@ func TableIsEmpty(db *sql.DB, table string) bool {
 	}
 }
 
+// last checked table for getting the time from now till the last time we check for updated
+
+func CreateLastCheckedTable(db *sql.DB) {
+	statement, err := db.Prepare("CREATE TABLE IF NOT EXISTS lastChecked (id INTEGER PRIMARY KEY, date TEXT)")
+	if err != nil {
+		log.Fatalln(err)
+		return
+	}
+	defer statement.Close()
+	_, err = statement.Exec()
+	if err != nil {
+		log.Fatal(err)
+	}
+}
+
+func UpdateLastChecked(db *sql.DB) {
+	statement, err := db.Prepare("INSERT or REPLACE INTO lastChecked (id, date) VALUES (?, DateTime('now'))")
+	if err != nil {
+		log.Fatalln(err)
+	}
+	defer statement.Close()
+
+	_, err = statement.Exec(1)
+	if err != nil {
+		log.Fatalln(err)
+	}
+}
+
+func GetLastChecked(db *sql.DB) string {
+	rows, err := db.Query("SELECT date FROM lastChecked")
+	if err != nil {
+		log.Fatalln(err)
+	}
+	var date string
+	for rows.Next() {
+		rows.Scan(&date)
+	}
+	return date
+}
+
 // Version table
 
 func CreateVersionTable(db *sql.DB) {
@@ -54,13 +94,13 @@ func CreateVersionTable(db *sql.DB) {
 func InsertIntoVersion(db *sql.DB, version string) {
 	statement, err := db.Prepare("INSERT or REPLACE INTO version (id, Version) VALUES (?, ?)")
 	if err != nil {
-		log.Fatal(err)
+		log.Fatalln(err)
 	}
 	defer statement.Close()
 
 	_, err = statement.Exec(1, version)
 	if err != nil {
-		log.Fatal(err)
+		log.Fatalln(err)
 	}
 }
 

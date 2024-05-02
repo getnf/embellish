@@ -65,10 +65,11 @@ type UpdateCmd struct {
 }
 
 type Args struct {
-	Install   *InstallCmd   `arg:"subcommand:install" help:"install fonts"`
-	Uninstall *UninstallCmd `arg:"subcommand:uninstall" help:"uninstall fonts"`
-	List      *ListCmd      `arg:"subcommand:list" help:"list fonts"`
-	Update    *UpdateCmd    `arg:"subcommand:update" help:"update installed fonts"`
+	Install    *InstallCmd   `arg:"subcommand:install" help:"install fonts"`
+	Uninstall  *UninstallCmd `arg:"subcommand:uninstall" help:"uninstall fonts"`
+	List       *ListCmd      `arg:"subcommand:list" help:"list fonts"`
+	Update     *UpdateCmd    `arg:"subcommand:update" help:"update installed fonts"`
+	ForceCheck bool          `arg:"-f" help:"Force checking for updates"`
 }
 
 func (Args) Version() string {

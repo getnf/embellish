@@ -11,11 +11,13 @@ import (
 	"net/http"
 	"os"
 	"text/tabwriter"
+	"time"
 
 	"github.com/getnf/getnf/internal/db"
 	"github.com/getnf/getnf/internal/types"
 	"github.com/getnf/getnf/internal/utils"
 
+	"github.com/briandowns/spinner"
 	"github.com/ulikunitz/xz"
 )
 
@@ -64,6 +66,10 @@ func ListFonts(fonts []types.Font, onlyInstalled bool) {
 
 	fmt.Fprintln(writer, "Name:\tAvailable version:\tInstalledVersion:")
 
+	if len(fonts) == 0 && onlyInstalled {
+		fmt.Println("No fonts have been installed yet")
+		return
+	}
 	for _, font := range fonts {
 		fmt.Fprintln(writer, font.Name, "\t", font.AvailableVersion, "\t", font.InstalledVersion)
 	}
@@ -183,15 +189,23 @@ func DeleteTar(tarPath string) error {
 	return nil
 }
 
-func InstallFont(font types.Font, downloadPath string, extractPath string, keepArchives bool) {
+func InstallFont(font types.Font, downloadPath string, extractPath string, keepTar bool) {
+	s := spinner.New(spinner.CharSets[11], 100*time.Millisecond)
+	s.Color("yellow")
+	s.Suffix = " Downloading font " + font.Name
+	s.Start()
 	downloadedTar, err := DownloadTar(font.BrowserDownloadUrl, downloadPath, font.Name)
 	if err != nil {
 		log.Fatalln(err)
 	}
+	s.Suffix = " Installing font " + font.Name
+	s.Color("green")
+	s.Restart()
 	ExtractTar(downloadedTar, extractPath, font.Name)
-	if !keepArchives {
+	if !keepTar {
 		DeleteTar(downloadedTar)
 	}
+	s.Stop()
 }
 
 func UninstallFont(path string, name string) error {
