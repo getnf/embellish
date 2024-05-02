@@ -144,7 +144,6 @@ func GetAllFonts(db *sql.DB) []types.Font {
 
 func FontExists(db *sql.DB, font string) bool {
 	var exists bool
-	// Query for a value based on a single row.
 	err := db.QueryRow("SELECT (Name == ?) From fonts WHERE Name = ?", font, font).Scan(&exists)
 
 	if err != nil {
@@ -200,10 +199,9 @@ func GetInstalledFonts(db *sql.DB) []types.Font {
 	return fonts
 }
 
-func IsFontInstalled(db *sql.DB, font types.Font) bool {
+func IsFontInstalled(db *sql.DB, font string) bool {
 	var isInstalled bool
-	// Query for a value based on a single row.
-	err := db.QueryRow("SELECT (Name == ?) From installedFonts WHERE Name = ?", font.Name, font.Name).Scan(&isInstalled)
+	err := db.QueryRow("SELECT (Name == ?) From installedFonts WHERE Name = ?", font, font).Scan(&isInstalled)
 
 	if err != nil {
 		if err == sql.ErrNoRows {
@@ -238,7 +236,7 @@ func UpdateInstalledFont(db *sql.DB, name string, version string) {
 }
 
 func DeleteInstalledFont(db *sql.DB, name string) {
-	statement, err := db.Prepare("UPDATE FROM installedFonts WHERE Name=?")
+	statement, err := db.Prepare("DELETE FROM installedFonts WHERE Name=?")
 	if err != nil {
 		log.Fatalln(err)
 	}

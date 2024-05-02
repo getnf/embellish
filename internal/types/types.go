@@ -16,6 +16,7 @@ type Font struct {
 	Name               string `json:"name"`
 	ContentType        string `json:"content_type"`
 	BrowserDownloadUrl string `json:"browser_download_url"`
+	AvailableVersion   string
 	InstalledVersion   string
 }
 
@@ -35,15 +36,19 @@ func (fs NerdFonts) GetFont(f string) Font {
 	return font[0]
 }
 
-func (f *Font) AddVersion(ver string) {
+func (f *Font) AddInstalledVersion(ver string) {
 	f.InstalledVersion = ver
+}
+
+func (f *Font) AddAvailableVersion(ver string) {
+	f.AvailableVersion = ver
 }
 
 // Command line argumetns
 
 type InstallCmd struct {
-	Fonts        []string `arg:"positional" help:"list of space separated fonts to install"`
-	KeepArchives bool     `arg:"-k" help:"Keep archives in the download location"`
+	Fonts    []string `arg:"positional" help:"list of space separated fonts to install"`
+	KeepTars bool     `arg:"-k" help:"Keep archives in the download location"`
 }
 
 type UninstallCmd struct {
@@ -55,16 +60,17 @@ type ListCmd struct {
 }
 
 type UpdateCmd struct {
-	Update bool `default:"true"`
+	Update   bool `default:"true"`
+	KeepTars bool `arg:"-k" help:"Keep archives in the download location"`
 }
 
 type Args struct {
-	Install  *InstallCmd   `arg:"subcommand:install" help:"install fonts"`
-	Unistall *UninstallCmd `arg:"subcommand:uninstall" help:"uninstall fonts"`
-	List     *ListCmd      `arg:"subcommand:list" help:"list fonts"`
-	Update   *UpdateCmd    `arg:"subcommand:update" help:"update installed fonts"`
+	Install   *InstallCmd   `arg:"subcommand:install" help:"install fonts"`
+	Uninstall *UninstallCmd `arg:"subcommand:uninstall" help:"uninstall fonts"`
+	List      *ListCmd      `arg:"subcommand:list" help:"list fonts"`
+	Update    *UpdateCmd    `arg:"subcommand:update" help:"update installed fonts"`
 }
 
 func (Args) Version() string {
-	return "getnf v0.1.0"
+	return "getnf v1.0.0"
 }
