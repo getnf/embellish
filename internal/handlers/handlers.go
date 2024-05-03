@@ -64,7 +64,7 @@ func ListFonts(fonts []types.Font, onlyInstalled bool) {
 
 	writer := tabwriter.NewWriter(os.Stdout, 0, 8, 4, '\t', tabwriter.AlignRight)
 
-	fmt.Fprintln(writer, "Name:\tAvailable version:\tInstalledVersion:")
+	fmt.Fprintln(writer, "Name:\tAvailable Version:\tInstalled Version:")
 
 	if len(fonts) == 0 && onlyInstalled {
 		fmt.Println("No fonts have been installed yet")
