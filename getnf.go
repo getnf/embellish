@@ -105,7 +105,7 @@ func main() {
 			}
 		}
 		if len(installedFonts) > 0 {
-			fmt.Printf("Installed font(s): %v", strings.Join(installedFonts, ", "))
+			fmt.Printf("Installed font(s): %v\n", strings.Join(installedFonts, ", "))
 		}
 	case args.Uninstall != nil:
 		var fontsToUninstall []string
@@ -125,7 +125,7 @@ func main() {
 				handlers.UninstallFont(extractPath, font)
 				db.DeleteInstalledFont(database, font)
 			}
-			s.FinalMSG = "uninstalled font(s): " + strings.Join(fontsToUninstall, ", ")
+			s.FinalMSG = "uninstalled font(s): " + strings.Join(fontsToUninstall, ", ") + "\n"
 			s.Stop()
 		}
 	case args.Update != nil:
