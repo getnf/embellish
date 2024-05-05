@@ -3,20 +3,20 @@ package main
 import (
 	"database/sql"
 	"fmt"
-	"log"
-	"os"
 	"strings"
 	"time"
 
 	"github.com/getnf/getnf/internal/db"
 	"github.com/getnf/getnf/internal/handlers"
-	"github.com/getnf/getnf/internal/types"
+	"github.com/getnf/getnf/internal/types/args"
+	fontsTypes "github.com/getnf/getnf/internal/types/fonts"
+	"github.com/getnf/getnf/internal/types/paths"
 
 	"github.com/alexflint/go-arg"
 	"github.com/briandowns/spinner"
 )
 
-func setupDB(database *sql.DB, remoteData types.NerdFonts) {
+func setupDB(database *sql.DB, remoteData fontsTypes.NerdFonts) {
 	db.CreateVersionTable(database)
 	db.CreateFontsTable(database)
 	db.CreateInstalledFontsTable(database)
@@ -35,7 +35,7 @@ func setupDB(database *sql.DB, remoteData types.NerdFonts) {
 }
 
 func main() {
-	var args types.Args
+	var args args.Args
 	arg.MustParse(&args)
 
 	database := db.OpenDB()
@@ -53,18 +53,14 @@ func main() {
 		db.UpdateLastChecked(database)
 	}
 
-	var data types.NerdFonts
+	var data fontsTypes.NerdFonts
 
 	data.TagName = db.GetVersion(database)
 	data.Assets = db.GetAllFonts(database)
 
-	homeDir, err := os.UserHomeDir()
-	if err != nil {
-		log.Fatalln(err)
-	}
-
-	downloadPath := homeDir + "/.local/share/getnf"
-	extractPath := homeDir + "/.local/share/fonts"
+	paths := paths.NewPaths()
+	downloadPath := paths.GetDownloadPath()
+	extractPath := paths.GetUserInstallPath()
 
 	switch {
 	case args.List != nil:

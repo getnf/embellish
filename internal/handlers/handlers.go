@@ -10,30 +10,31 @@ import (
 	"log"
 	"net/http"
 	"os"
+	"path/filepath"
 	"text/tabwriter"
 	"time"
 
 	"github.com/getnf/getnf/internal/db"
-	"github.com/getnf/getnf/internal/types"
+	fontsTypes "github.com/getnf/getnf/internal/types/fonts"
 	"github.com/getnf/getnf/internal/utils"
 
 	"github.com/briandowns/spinner"
 	"github.com/ulikunitz/xz"
 )
 
-func GetData() (types.NerdFonts, error) {
+func GetData() (fontsTypes.NerdFonts, error) {
 	url := "https://api.github.com/repos/ryanoasis/nerd-fonts/releases/latest"
 	resp, err := http.Get(url)
 	if err != nil {
-		return types.NerdFonts{}, err
+		return fontsTypes.NerdFonts{}, err
 	}
 
 	body, err := io.ReadAll(resp.Body)
 	if err != nil {
-		return types.NerdFonts{}, err
+		return fontsTypes.NerdFonts{}, err
 	}
 
-	var data types.NerdFonts
+	var data fontsTypes.NerdFonts
 	err = json.Unmarshal(body, &data)
 	if err != nil {
 		log.Fatalln(err)
@@ -41,8 +42,8 @@ func GetData() (types.NerdFonts, error) {
 	return data, nil
 }
 
-func FontsWithVersion(database *sql.DB, fonts []types.Font, version string) []types.Font {
-	var results []types.Font
+func FontsWithVersion(database *sql.DB, fonts []fontsTypes.Font, version string) []fontsTypes.Font {
+	var results []fontsTypes.Font
 	for _, font := range fonts {
 		if db.IsFontInstalled(database, font.Name) {
 			installedFont := db.GetInstalledFont(database, font)
@@ -56,8 +57,8 @@ func FontsWithVersion(database *sql.DB, fonts []types.Font, version string) []ty
 	return results
 }
 
-func ListFonts(fonts []types.Font, onlyInstalled bool) {
-	isInstalledFont := func(x types.Font) bool { return x.InstalledVersion != "-" }
+func ListFonts(fonts []fontsTypes.Font, onlyInstalled bool) {
+	isInstalledFont := func(x fontsTypes.Font) bool { return x.InstalledVersion != "-" }
 	if onlyInstalled {
 		fonts = utils.Filter(fonts, isInstalledFont)
 	}
@@ -142,7 +143,8 @@ func ExtractTar(archivePath string, extractPath string, name string) error {
 		}
 
 		// Extract the file name from the header
-		filename := extractPath + "/" + name + "/" + header.Name
+		filename := filepath.Join(extractPath, name, header.Name)
+		extractDir := filepath.Join(extractPath, name)
 
 		// Create directories if they don't exist, if the tar contains directories
 		if header.Typeflag == tar.TypeDir {
@@ -153,8 +155,8 @@ func ExtractTar(archivePath string, extractPath string, name string) error {
 			continue
 		}
 
-		if _, err := os.Stat(extractPath + "/" + name); errors.Is(err, os.ErrNotExist) {
-			err := os.Mkdir(extractPath+"/"+name, os.ModePerm)
+		if _, err := os.Stat(extractDir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(extractDir, os.ModePerm)
 			if err != nil {
 				return err
 			}
@@ -189,7 +191,7 @@ func DeleteTar(tarPath string) error {
 	return nil
 }
 
-func InstallFont(font types.Font, downloadPath string, extractPath string, keepTar bool) {
+func InstallFont(font fontsTypes.Font, downloadPath string, extractPath string, keepTar bool) {
 	s := spinner.New(spinner.CharSets[11], 100*time.Millisecond)
 	s.Color("yellow")
 	s.Suffix = " Downloading font " + font.Name
@@ -209,7 +211,7 @@ func InstallFont(font types.Font, downloadPath string, extractPath string, keepT
 }
 
 func UninstallFont(path string, name string) error {
-	fontPath := path + "/" + name
+	fontPath := filepath.Join(path, name)
 	if _, err := os.Stat(fontPath); os.IsNotExist(err) {
 		return fmt.Errorf("font %v is not installed", name)
 	} else {
