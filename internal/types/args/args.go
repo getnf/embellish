@@ -26,6 +26,7 @@ type Args struct {
 	List       *ListCmd      `arg:"subcommand:list" help:"list fonts"`
 	Update     *UpdateCmd    `arg:"subcommand:update" help:"update installed fonts"`
 	ForceCheck bool          `arg:"-f" help:"Force checking for updates"`
+	Global     bool          `arg:"-g" help:"Do the operation globally, for all users"`
 }
 
 func (Args) Version() string {

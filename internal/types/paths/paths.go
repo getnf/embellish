@@ -8,11 +8,16 @@ import (
 )
 
 type Paths struct {
-	Download string
-	Install  InstallPaths
+	Download downloadPaths
+	Install  installPaths
 }
 
-type InstallPaths struct {
+type downloadPaths struct {
+	User string
+	Root string
+}
+
+type installPaths struct {
 	User string
 	Root string
 }
@@ -25,20 +30,23 @@ func NewPaths() *Paths {
 		log.Fatalln(err)
 	}
 
-	switch os := osType(); os {
+	tempDir := os.TempDir()
+
+	switch os := OsType(); os {
 	case "linux":
-		paths.Download = filepath.Join(homeDir, "Downloads", "getnf")
+		paths.Download.User = filepath.Join(homeDir, "Downloads", "getnf")
+		paths.Download.Root = filepath.Join(tempDir, "getnf")
 		paths.Install.User = filepath.Join(homeDir, ".local", "share", "fonts")
 		paths.Install.Root = "/usr/share/fonts"
 	case "darwin":
-		paths.Download = filepath.Join(homeDir, "Downloads", "getnf")
+		paths.Download.User = filepath.Join(homeDir, "Downloads", "getnf")
+		paths.Download.Root = filepath.Join(tempDir, "getnf")
 		paths.Install.User = filepath.Join(homeDir, "Library", "Fonts")
 		paths.Install.Root = "/Library/Fonts"
 	case "windows":
-		paths.Download = filepath.Join(homeDir, "Downloads")
-		// User font directory for Windows
+		paths.Download.User = filepath.Join(homeDir, "Downloads", "getnf")
+		paths.Download.Root = filepath.Join(tempDir, "getnf")
 		paths.Install.User = filepath.Join(homeDir, "AppData", "Local", "Microsoft", "Windows", "Fonts")
-		// System-wide font directory for Windows
 		paths.Install.Root = filepath.Join("C:\\Windows", "Fonts")
 	default:
 		log.Fatalln("unsupported operating system")
@@ -47,8 +55,12 @@ func NewPaths() *Paths {
 	return paths
 }
 
-func (p *Paths) GetDownloadPath() string {
-	return p.Download
+func (p *Paths) GetUserDownloadPath() string {
+	return p.Download.User
+}
+
+func (p *Paths) GetRootDownloadPath() string {
+	return p.Download.Root
 }
 
 func (p *Paths) GetUserInstallPath() string {
@@ -59,7 +71,7 @@ func (p *Paths) GetRootInstallPath() string {
 	return p.Install.Root
 }
 
-func osType() string {
+func OsType() string {
 	switch os := runtime.GOOS; os {
 	case "darwin":
 		return "darwin"

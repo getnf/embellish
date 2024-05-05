@@ -3,6 +3,7 @@ package main
 import (
 	"database/sql"
 	"fmt"
+	"log"
 	"strings"
 	"time"
 
@@ -38,7 +39,18 @@ func main() {
 	var args args.Args
 	arg.MustParse(&args)
 
-	database := db.OpenDB()
+	isGlobal := args.Global
+	isAdmine, _ := handlers.IsAdmin()
+
+	var database *sql.DB
+
+	if isGlobal && isAdmine {
+		database = db.OpenGlobalDB()
+	} else if isAdmine {
+		log.Fatalln("only run getnf with elevated privileges if using the -g flag")
+	} else {
+		database = db.OpenDB()
+	}
 
 	db.CreateLastCheckedTable(database)
 
@@ -59,8 +71,19 @@ func main() {
 	data.Assets = db.GetAllFonts(database)
 
 	paths := paths.NewPaths()
-	downloadPath := paths.GetDownloadPath()
-	extractPath := paths.GetUserInstallPath()
+	var extractPath string
+	var downloadPath string
+	if isGlobal {
+		_, err := handlers.IsAdmin()
+		if err != nil {
+			log.Fatalln(err)
+		}
+		downloadPath = paths.GetRootDownloadPath()
+		extractPath = paths.GetRootInstallPath()
+	} else {
+		downloadPath = paths.GetUserDownloadPath()
+		extractPath = paths.GetUserInstallPath()
+	}
 
 	switch {
 	case args.List != nil:
@@ -107,7 +130,9 @@ func main() {
 		}
 	case args.Update != nil:
 		updateCount := 0
-		for _, font := range db.GetInstalledFonts(database) {
+		var installedFonts []fontsTypes.Font
+		installedFonts = db.GetInstalledFonts(database)
+		for _, font := range installedFonts {
 			if handlers.IsUpdateAvilable(data.GetVersion(), font.InstalledVersion) {
 				f := data.GetFont(font.Name)
 				handlers.InstallFont(f, downloadPath, extractPath, args.Update.KeepTars)

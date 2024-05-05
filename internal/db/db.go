@@ -18,6 +18,14 @@ func OpenDB() *sql.DB {
 	return db
 }
 
+func OpenGlobalDB() *sql.DB {
+	db, err := sql.Open("sqlite3", "./getnf_global.sqlite3")
+	if err != nil {
+		log.Fatalln(err)
+	}
+	return db
+}
+
 func TableIsEmpty(db *sql.DB, table string) bool {
 	sqlstmt := "SELECT EXISTS (SELECT 1 FROM " + table + ")"
 	statement, _ := db.Query(sqlstmt)

@@ -10,12 +10,14 @@ import (
 	"log"
 	"net/http"
 	"os"
+	"os/user"
 	"path/filepath"
 	"text/tabwriter"
 	"time"
 
 	"github.com/getnf/getnf/internal/db"
 	fontsTypes "github.com/getnf/getnf/internal/types/fonts"
+	"github.com/getnf/getnf/internal/types/paths"
 	"github.com/getnf/getnf/internal/utils"
 
 	"github.com/briandowns/spinner"
@@ -110,11 +112,11 @@ func DownloadTar(fontURL string, path string, name string) (string, error) {
 	}
 
 	return fullPath, nil
-
 }
 
 // extractTar extracts files from a tar archive provided in the reader
 func ExtractTar(archivePath string, extractPath string, name string) error {
+	fmt.Println(archivePath)
 
 	// Decompress the xz stream
 	fontArchive, err := os.Open(archivePath)
@@ -212,6 +214,7 @@ func InstallFont(font fontsTypes.Font, downloadPath string, extractPath string, 
 
 func UninstallFont(path string, name string) error {
 	fontPath := filepath.Join(path, name)
+	fmt.Println(fontPath)
 	if _, err := os.Stat(fontPath); os.IsNotExist(err) {
 		return fmt.Errorf("font %v is not installed", name)
 	} else {
@@ -238,4 +241,28 @@ func IsUpdateAvilable(remote string, local string) bool {
 	} else {
 		return false
 	}
+}
+
+func IsAdmin() (bool, error) {
+	if os.Geteuid() == 0 {
+		return true, nil
+	}
+
+	u, err := user.Current()
+	if err != nil {
+		return false, fmt.Errorf("error retrieving current user: %v", err)
+	}
+
+	if u.Gid == "S-1-5-32-544" {
+		return true, nil // Windows, running as administrator
+	}
+
+	var message string
+	if paths.OsType() == "linux" || paths.OsType() == "darwin" {
+		message = "getnf has to be run with superuser privileges when using the -g flag"
+	} else {
+		message = "getnf has to be run as administrator when using the -g flag"
+	}
+
+	return false, fmt.Errorf(message)
 }
