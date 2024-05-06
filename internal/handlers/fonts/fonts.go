@@ -1,4 +1,4 @@
-package handlers
+package fonts
 
 import (
 	"archive/tar"
@@ -15,14 +15,13 @@ import (
 	"time"
 
 	"github.com/getnf/getnf/internal/db"
+	osHandlers "github.com/getnf/getnf/internal/handlers/os"
 	fontsTypes "github.com/getnf/getnf/internal/types/fonts"
 	"github.com/getnf/getnf/internal/types/paths"
 	"github.com/getnf/getnf/internal/utils"
 
 	"github.com/briandowns/spinner"
 	"github.com/ulikunitz/xz"
-	"golang.org/x/sys/windows"
-	"golang.org/x/sys/windows/registry"
 )
 
 func GetData() (fontsTypes.NerdFonts, error) {
@@ -80,7 +79,7 @@ func ListFonts(fonts []fontsTypes.Font, onlyInstalled bool) {
 	writer.Flush()
 }
 
-func DownloadTar(fontURL string, path string, name string) (string, error) {
+func DownloadFont(fontURL string, path string, name string) (string, error) {
 	fullPath := path + "/" + name + ".tar.xz"
 	resp, err := http.Get(fontURL)
 	if err != nil {
@@ -116,17 +115,17 @@ func DownloadTar(fontURL string, path string, name string) (string, error) {
 }
 
 // extractTar extracts files from a tar archive provided in the reader
-func ExtractTar(archivePath string, extractPath string, name string) error {
-	fmt.Println(archivePath)
+func ExtractFont(archivePath string, extractPath string, name string) ([]string, error) {
+	var listOfInstalledFonts []string
 
 	// Decompress the xz stream
 	fontArchive, err := os.Open(archivePath)
 	if err != nil {
-		return err
+		return []string{""}, err
 	}
 	xzReader, err := xz.NewReader(fontArchive)
 	if err != nil {
-		return err
+		return []string{""}, err
 	}
 
 	defer fontArchive.Close()
@@ -142,51 +141,46 @@ func ExtractTar(archivePath string, extractPath string, name string) error {
 			break
 		}
 		if err != nil {
-			return err
+			return []string{""}, err
 		}
 
 		// Extract the file name from the header
-		filename := filepath.Join(extractPath, name, header.Name)
-		extractDir := filepath.Join(extractPath, name)
+		fullPath := filepath.Join(extractPath, name, header.Name)
+		extractPath := filepath.Join(extractPath, name)
 
 		// Create directories if they don't exist, if the tar contains directories
 		if header.Typeflag == tar.TypeDir {
-			err := os.MkdirAll(filename, 0755)
+			err := os.MkdirAll(fullPath, 0755)
 			if err != nil {
-				return err
+				return []string{""}, err
 			}
 			continue
 		}
 
-		if _, err := os.Stat(extractDir); errors.Is(err, os.ErrNotExist) {
-			err := os.Mkdir(extractDir, os.ModePerm)
+		if _, err := os.Stat(extractPath); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(extractPath, os.ModePerm)
 			if err != nil {
-				return err
+				return []string{""}, err
 			}
 		}
 
 		// Create file with same permissions as in the tar file
-		file, err := os.OpenFile(filename, os.O_CREATE|os.O_RDWR, os.FileMode(header.Mode))
+		file, err := os.OpenFile(fullPath, os.O_CREATE|os.O_RDWR, os.FileMode(header.Mode))
 		if err != nil {
-			return err
+			return []string{""}, err
 		}
 		defer file.Close()
 
 		// Write file content to disk
 		_, err = io.Copy(file, tarReader)
 		if err != nil {
-			return err
+			return []string{""}, err
 		}
 
-		if paths.OsType() == "windows" {
-			err = writeToRegistry(filename, header.Name)
-			if err != nil {
-				log.Fatalln(err)
-			}
-		}
+		listOfInstalledFonts = append(listOfInstalledFonts, header.Name)
 	}
 
-	return nil
+	return listOfInstalledFonts, nil
 }
 
 func DeleteTar(tarPath string) error {
@@ -206,14 +200,29 @@ func InstallFont(font fontsTypes.Font, downloadPath string, extractPath string, 
 	s.Color("yellow")
 	s.Suffix = " Downloading font " + font.Name
 	s.Start()
-	downloadedTar, err := DownloadTar(font.BrowserDownloadUrl, downloadPath, font.Name)
+	downloadedTar, err := DownloadFont(font.BrowserDownloadUrl, downloadPath, font.Name)
 	if err != nil {
 		log.Fatalln(err)
 	}
 	s.Suffix = " Installing font " + font.Name
 	s.Color("green")
 	s.Restart()
-	ExtractTar(downloadedTar, extractPath, font.Name)
+	extractedTar, err := ExtractFont(downloadedTar, extractPath, font.Name)
+	if err != nil {
+		log.Fatalln(err)
+	}
+	if paths.OsType() == "windows" {
+		for _, fileName := range extractedTar {
+			err = osHandlers.RemoveFromRegistry(fileName)
+			if err != nil {
+				log.Fatalln(err)
+			}
+			err = osHandlers.WriteToRegistry(extractPath, font.Name, fileName)
+			if err != nil {
+				log.Fatalln(err)
+			}
+		}
+	}
 	if !keepTar {
 		DeleteTar(downloadedTar)
 	}
@@ -222,13 +231,28 @@ func InstallFont(font fontsTypes.Font, downloadPath string, extractPath string, 
 
 func UninstallFont(path string, name string) error {
 	fontPath := filepath.Join(path, name)
-	fmt.Println(fontPath)
+	fontFiles, err := os.ReadDir(fontPath)
+	if err != nil {
+		log.Fatalln(err)
+	}
+
+	var fileNames []string
+
 	if _, err := os.Stat(fontPath); os.IsNotExist(err) {
 		return fmt.Errorf("font %v is not installed", name)
 	} else {
+		for _, file := range fontFiles {
+			fileNames = append(fileNames, file.Name())
+		}
+
 		err = os.RemoveAll(fontPath)
 		if err != nil {
 			return err
+		}
+		if paths.OsType() == "windows" {
+			for _, file := range fileNames {
+				osHandlers.RemoveFromRegistry(file)
+			}
 		}
 	}
 	return nil
@@ -249,63 +273,4 @@ func IsUpdateAvilable(remote string, local string) bool {
 	} else {
 		return false
 	}
-}
-
-func IsAdmin() (bool, error) {
-	if os.Geteuid() == 0 {
-		return true, nil
-	}
-
-	if windows.GetCurrentProcessToken().IsElevated() {
-		return true, nil
-	}
-
-	var message string
-	if paths.OsType() == "linux" || paths.OsType() == "darwin" {
-		message = "getnf has to be run with superuser privileges when using the -g flag"
-	} else {
-		message = "getnf has to be run as administrator when using the -g flag"
-	}
-
-	return false, fmt.Errorf(message)
-}
-
-func writeToRegistry(path, name string) error {
-	k, err := registry.OpenKey(
-		registry.LOCAL_MACHINE,
-		`SOFTWARE\Microsoft\Windows NT\CurrentVersion\Fonts`,
-		registry.WRITE)
-	if err != nil {
-		os.Remove(path)
-		return fmt.Errorf("error opening registry key: %w", err)
-	}
-	defer k.Close()
-
-	valueName := fmt.Sprintf("%s (TrueType)", name)
-	err = k.SetStringValue(valueName, path)
-	if err != nil {
-		os.Remove(path)
-		return fmt.Errorf("error writing to registry: %w", err)
-	}
-
-	return nil
-}
-
-// removeFromRegistry removes a font entry from the Windows registry.
-func removeFromRegistry(name string) error {
-	k, err := registry.OpenKey(
-		registry.LOCAL_MACHINE,
-		`SOFTWARE\Microsoft\Windows NT\CurrentVersion\Fonts`,
-		registry.WRITE)
-	if err != nil {
-		return fmt.Errorf("error opening registry key: %w", err)
-	}
-	defer k.Close()
-
-	err = k.DeleteValue(name)
-	if err != nil {
-		return fmt.Errorf("error deleting registry value: %w", err)
-	}
-
-	return nil
 }

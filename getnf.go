@@ -8,7 +8,8 @@ import (
 	"time"
 
 	"github.com/getnf/getnf/internal/db"
-	"github.com/getnf/getnf/internal/handlers"
+	fontsHandlers "github.com/getnf/getnf/internal/handlers/fonts"
+	osHandlers "github.com/getnf/getnf/internal/handlers/os"
 	"github.com/getnf/getnf/internal/types/args"
 	fontsTypes "github.com/getnf/getnf/internal/types/fonts"
 	"github.com/getnf/getnf/internal/types/paths"
@@ -22,12 +23,12 @@ func setupDB(database *sql.DB, remoteData fontsTypes.NerdFonts) {
 	db.CreateFontsTable(database)
 	db.CreateInstalledFontsTable(database)
 
-	if db.TableIsEmpty(database, "version") || handlers.IsUpdateAvilable(remoteData.TagName, db.GetVersion(database)) {
+	if db.TableIsEmpty(database, "version") || fontsHandlers.IsUpdateAvilable(remoteData.TagName, db.GetVersion(database)) {
 		db.InsertIntoVersion(database, remoteData.TagName)
 		fmt.Println("Updated fonts version")
 	}
 
-	if db.TableIsEmpty(database, "fonts") || handlers.IsUpdateAvilable(remoteData.TagName, db.GetVersion(database)) {
+	if db.TableIsEmpty(database, "fonts") || fontsHandlers.IsUpdateAvilable(remoteData.TagName, db.GetVersion(database)) {
 		db.DeleteFontsTable(database)
 		db.CreateFontsTable(database)
 		db.InsertIntoFonts(database, remoteData.GetFonts())
@@ -40,7 +41,7 @@ func main() {
 	arg.MustParse(&args)
 
 	isGlobal := args.Global
-	isAdmine, _ := handlers.IsAdmin()
+	isAdmine, _ := osHandlers.IsAdmin()
 
 	var database *sql.DB
 
@@ -49,6 +50,9 @@ func main() {
 	}
 
 	if isGlobal && isAdmine {
+		database = db.OpenGlobalDB()
+	} else if isAdmine && paths.OsType() == "windows" {
+		isGlobal = true
 		database = db.OpenGlobalDB()
 	} else if isAdmine {
 		log.Fatalln("only run getnf with elevated privileges if using the -g flag")
@@ -62,7 +66,7 @@ func main() {
 	DaysSinceLastChecked := int(time.Since(lastChecked).Hours() / 24)
 
 	if db.TableIsEmpty(database, "lastChecked") || DaysSinceLastChecked > 5 || args.ForceCheck {
-		remoteData, err := handlers.GetData()
+		remoteData, err := fontsHandlers.GetData()
 		if err == nil {
 			setupDB(database, remoteData)
 		}
@@ -78,7 +82,7 @@ func main() {
 	var extractPath string
 	var downloadPath string
 	if isGlobal {
-		_, err := handlers.IsAdmin()
+		_, err := osHandlers.IsAdmin()
 		if err != nil {
 			log.Fatalln(err)
 		}
@@ -92,16 +96,16 @@ func main() {
 	switch {
 	case args.List != nil:
 		if !args.List.Installed {
-			handlers.ListFonts(handlers.FontsWithVersion(database, data.GetFonts(), data.GetVersion()), false)
+			fontsHandlers.ListFonts(fontsHandlers.FontsWithVersion(database, data.GetFonts(), data.GetVersion()), false)
 		} else {
-			handlers.ListFonts(handlers.FontsWithVersion(database, data.GetFonts(), data.GetVersion()), true)
+			fontsHandlers.ListFonts(fontsHandlers.FontsWithVersion(database, data.GetFonts(), data.GetVersion()), true)
 		}
 	case args.Install != nil:
 		var installedFonts []string
 		for _, font := range args.Install.Fonts {
 			if db.FontExists(database, font) {
 				f := data.GetFont(font)
-				handlers.InstallFont(f, downloadPath, extractPath, args.Install.KeepTars)
+				fontsHandlers.InstallFont(f, downloadPath, extractPath, args.Install.KeepTars)
 				db.InsertIntoInstalledFonts(database, f, data.GetVersion())
 				installedFonts = append(installedFonts, font)
 			} else {
@@ -126,7 +130,7 @@ func main() {
 			s.Color("red")
 			s.Start()
 			for _, font := range fontsToUninstall {
-				handlers.UninstallFont(extractPath, font)
+				fontsHandlers.UninstallFont(extractPath, font)
 				db.DeleteInstalledFont(database, font)
 			}
 			s.FinalMSG = "uninstalled font(s): " + strings.Join(fontsToUninstall, ", ") + "\n"
@@ -137,9 +141,9 @@ func main() {
 		var installedFonts []fontsTypes.Font
 		installedFonts = db.GetInstalledFonts(database)
 		for _, font := range installedFonts {
-			if handlers.IsUpdateAvilable(data.GetVersion(), font.InstalledVersion) {
+			if fontsHandlers.IsUpdateAvilable(data.GetVersion(), font.InstalledVersion) {
 				f := data.GetFont(font.Name)
-				handlers.InstallFont(f, downloadPath, extractPath, args.Update.KeepTars)
+				fontsHandlers.InstallFont(f, downloadPath, extractPath, args.Update.KeepTars)
 				db.UpdateInstalledFont(database, font.Name, data.GetVersion())
 				updateCount++
 			}
