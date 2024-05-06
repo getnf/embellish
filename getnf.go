@@ -44,6 +44,10 @@ func main() {
 
 	var database *sql.DB
 
+	if paths.OsType() == "windows" && !isAdmine {
+		log.Fatalln("getnf can't install locally on windows, please run getnf as administrator")
+	}
+
 	if isGlobal && isAdmine {
 		database = db.OpenGlobalDB()
 	} else if isAdmine {

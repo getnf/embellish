@@ -10,7 +10,6 @@ import (
 	"log"
 	"net/http"
 	"os"
-	"os/user"
 	"path/filepath"
 	"text/tabwriter"
 	"time"
@@ -22,6 +21,8 @@ import (
 
 	"github.com/briandowns/spinner"
 	"github.com/ulikunitz/xz"
+	"golang.org/x/sys/windows"
+	"golang.org/x/sys/windows/registry"
 )
 
 func GetData() (fontsTypes.NerdFonts, error) {
@@ -176,6 +177,13 @@ func ExtractTar(archivePath string, extractPath string, name string) error {
 		if err != nil {
 			return err
 		}
+
+		if paths.OsType() == "windows" {
+			err = writeToRegistry(filename, header.Name)
+			if err != nil {
+				log.Fatalln(err)
+			}
+		}
 	}
 
 	return nil
@@ -248,13 +256,8 @@ func IsAdmin() (bool, error) {
 		return true, nil
 	}
 
-	u, err := user.Current()
-	if err != nil {
-		return false, fmt.Errorf("error retrieving current user: %v", err)
-	}
-
-	if u.Gid == "S-1-5-32-544" {
-		return true, nil // Windows, running as administrator
+	if windows.GetCurrentProcessToken().IsElevated() {
+		return true, nil
 	}
 
 	var message string
@@ -265,4 +268,44 @@ func IsAdmin() (bool, error) {
 	}
 
 	return false, fmt.Errorf(message)
+}
+
+func writeToRegistry(path, name string) error {
+	k, err := registry.OpenKey(
+		registry.LOCAL_MACHINE,
+		`SOFTWARE\Microsoft\Windows NT\CurrentVersion\Fonts`,
+		registry.WRITE)
+	if err != nil {
+		os.Remove(path)
+		return fmt.Errorf("error opening registry key: %w", err)
+	}
+	defer k.Close()
+
+	valueName := fmt.Sprintf("%s (TrueType)", name)
+	err = k.SetStringValue(valueName, path)
+	if err != nil {
+		os.Remove(path)
+		return fmt.Errorf("error writing to registry: %w", err)
+	}
+
+	return nil
+}
+
+// removeFromRegistry removes a font entry from the Windows registry.
+func removeFromRegistry(name string) error {
+	k, err := registry.OpenKey(
+		registry.LOCAL_MACHINE,
+		`SOFTWARE\Microsoft\Windows NT\CurrentVersion\Fonts`,
+		registry.WRITE)
+	if err != nil {
+		return fmt.Errorf("error opening registry key: %w", err)
+	}
+	defer k.Close()
+
+	err = k.DeleteValue(name)
+	if err != nil {
+		return fmt.Errorf("error deleting registry value: %w", err)
+	}
+
+	return nil
 }

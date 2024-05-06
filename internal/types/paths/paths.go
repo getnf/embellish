@@ -44,9 +44,9 @@ func NewPaths() *Paths {
 		paths.Install.User = filepath.Join(homeDir, "Library", "Fonts")
 		paths.Install.Root = "/Library/Fonts"
 	case "windows":
-		paths.Download.User = filepath.Join(homeDir, "Downloads", "getnf")
-		paths.Download.Root = filepath.Join(tempDir, "getnf")
-		paths.Install.User = filepath.Join(homeDir, "AppData", "Local", "Microsoft", "Windows", "Fonts")
+		paths.Download.User = ""
+		paths.Download.Root = filepath.Join(homeDir, "Downloads", "getnf")
+		paths.Install.User = ""
 		paths.Install.Root = filepath.Join("C:\\Windows", "Fonts")
 	default:
 		log.Fatalln("unsupported operating system")
