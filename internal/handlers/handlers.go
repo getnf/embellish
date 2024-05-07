@@ -1,4 +1,4 @@
-package fonts
+package handlers
 
 import (
 	"archive/tar"
@@ -12,31 +12,27 @@ import (
 	"os"
 	"path/filepath"
 	"text/tabwriter"
-	"time"
 
 	"github.com/getnf/getnf/internal/db"
-	osHandlers "github.com/getnf/getnf/internal/handlers/os"
-	fontsTypes "github.com/getnf/getnf/internal/types/fonts"
-	"github.com/getnf/getnf/internal/types/paths"
+	"github.com/getnf/getnf/internal/types"
 	"github.com/getnf/getnf/internal/utils"
 
-	"github.com/briandowns/spinner"
 	"github.com/ulikunitz/xz"
 )
 
-func GetData() (fontsTypes.NerdFonts, error) {
+func GetData() (types.NerdFonts, error) {
 	url := "https://api.github.com/repos/ryanoasis/nerd-fonts/releases/latest"
 	resp, err := http.Get(url)
 	if err != nil {
-		return fontsTypes.NerdFonts{}, err
+		return types.NerdFonts{}, err
 	}
 
 	body, err := io.ReadAll(resp.Body)
 	if err != nil {
-		return fontsTypes.NerdFonts{}, err
+		return types.NerdFonts{}, err
 	}
 
-	var data fontsTypes.NerdFonts
+	var data types.NerdFonts
 	err = json.Unmarshal(body, &data)
 	if err != nil {
 		log.Fatalln(err)
@@ -44,8 +40,8 @@ func GetData() (fontsTypes.NerdFonts, error) {
 	return data, nil
 }
 
-func FontsWithVersion(database *sql.DB, fonts []fontsTypes.Font, version string) []fontsTypes.Font {
-	var results []fontsTypes.Font
+func FontsWithVersion(database *sql.DB, fonts []types.Font, version string) []types.Font {
+	var results []types.Font
 	for _, font := range fonts {
 		if db.IsFontInstalled(database, font.Name) {
 			installedFont := db.GetInstalledFont(database, font)
@@ -59,8 +55,8 @@ func FontsWithVersion(database *sql.DB, fonts []fontsTypes.Font, version string)
 	return results
 }
 
-func ListFonts(fonts []fontsTypes.Font, onlyInstalled bool) {
-	isInstalledFont := func(x fontsTypes.Font) bool { return x.InstalledVersion != "-" }
+func ListFonts(fonts []types.Font, onlyInstalled bool) {
+	isInstalledFont := func(x types.Font) bool { return x.InstalledVersion != "-" }
 	if onlyInstalled {
 		fonts = utils.Filter(fonts, isInstalledFont)
 	}
@@ -79,7 +75,7 @@ func ListFonts(fonts []fontsTypes.Font, onlyInstalled bool) {
 	writer.Flush()
 }
 
-func DownloadFont(fontURL string, path string, name string) (string, error) {
+func downloadFont(fontURL string, path string, name string) (string, error) {
 	fullPath := path + "/" + name + ".tar.xz"
 	resp, err := http.Get(fontURL)
 	if err != nil {
@@ -115,7 +111,7 @@ func DownloadFont(fontURL string, path string, name string) (string, error) {
 }
 
 // extractTar extracts files from a tar archive provided in the reader
-func ExtractFont(archivePath string, extractPath string, name string) ([]string, error) {
+func extractFont(archivePath string, extractPath string, name string) ([]string, error) {
 	var listOfInstalledFonts []string
 
 	// Decompress the xz stream
@@ -183,76 +179,13 @@ func ExtractFont(archivePath string, extractPath string, name string) ([]string,
 	return listOfInstalledFonts, nil
 }
 
-func DeleteTar(tarPath string) error {
+func deleteTar(tarPath string) error {
 	if _, err := os.Stat(tarPath); os.IsNotExist(err) {
 		return fmt.Errorf("tar file does not exist")
 	} else {
 		err = os.Remove(tarPath)
 		if err != nil {
 			return err
-		}
-	}
-	return nil
-}
-
-func InstallFont(font fontsTypes.Font, downloadPath string, extractPath string, keepTar bool) {
-	s := spinner.New(spinner.CharSets[11], 100*time.Millisecond)
-	s.Color("yellow")
-	s.Suffix = " Downloading font " + font.Name
-	s.Start()
-	downloadedTar, err := DownloadFont(font.BrowserDownloadUrl, downloadPath, font.Name)
-	if err != nil {
-		log.Fatalln(err)
-	}
-	s.Suffix = " Installing font " + font.Name
-	s.Color("green")
-	s.Restart()
-	extractedTar, err := ExtractFont(downloadedTar, extractPath, font.Name)
-	if err != nil {
-		log.Fatalln(err)
-	}
-	if paths.OsType() == "windows" {
-		for _, fileName := range extractedTar {
-			err = osHandlers.RemoveFromRegistry(fileName)
-			if err != nil {
-				log.Fatalln(err)
-			}
-			err = osHandlers.WriteToRegistry(extractPath, font.Name, fileName)
-			if err != nil {
-				log.Fatalln(err)
-			}
-		}
-	}
-	if !keepTar {
-		DeleteTar(downloadedTar)
-	}
-	s.Stop()
-}
-
-func UninstallFont(path string, name string) error {
-	fontPath := filepath.Join(path, name)
-	fontFiles, err := os.ReadDir(fontPath)
-	if err != nil {
-		log.Fatalln(err)
-	}
-
-	var fileNames []string
-
-	if _, err := os.Stat(fontPath); os.IsNotExist(err) {
-		return fmt.Errorf("font %v is not installed", name)
-	} else {
-		for _, file := range fontFiles {
-			fileNames = append(fileNames, file.Name())
-		}
-
-		err = os.RemoveAll(fontPath)
-		if err != nil {
-			return err
-		}
-		if paths.OsType() == "windows" {
-			for _, file := range fileNames {
-				osHandlers.RemoveFromRegistry(file)
-			}
 		}
 	}
 	return nil
@@ -273,4 +206,26 @@ func IsUpdateAvilable(remote string, local string) bool {
 	} else {
 		return false
 	}
+}
+
+func InstallFont(font types.Font, downloadPath string, extractPath string, keepTar bool) {
+	PlatformInstallFont(font, downloadPath, extractPath, keepTar)
+
+}
+
+func UninstallFont(path string, name string) error {
+	err := PlatformUninstallFont(path, name)
+	if err != nil {
+		return err
+	}
+	return nil
+}
+
+func IsAdmin() (bool, error) {
+	isAdmine, err := PlatformIsAdmin()
+	if err != nil {
+		return false, fmt.Errorf("error checking for admin privelages: %v", err)
+	}
+
+	return isAdmine, nil
 }

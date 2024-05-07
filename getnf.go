@@ -8,27 +8,25 @@ import (
 	"time"
 
 	"github.com/getnf/getnf/internal/db"
-	fontsHandlers "github.com/getnf/getnf/internal/handlers/fonts"
-	osHandlers "github.com/getnf/getnf/internal/handlers/os"
-	"github.com/getnf/getnf/internal/types/args"
-	fontsTypes "github.com/getnf/getnf/internal/types/fonts"
-	"github.com/getnf/getnf/internal/types/paths"
+	"github.com/getnf/getnf/internal/handlers"
+	"github.com/getnf/getnf/internal/types"
+	"github.com/getnf/getnf/internal/utils"
 
 	"github.com/alexflint/go-arg"
 	"github.com/briandowns/spinner"
 )
 
-func setupDB(database *sql.DB, remoteData fontsTypes.NerdFonts) {
+func setupDB(database *sql.DB, remoteData types.NerdFonts) {
 	db.CreateVersionTable(database)
 	db.CreateFontsTable(database)
 	db.CreateInstalledFontsTable(database)
 
-	if db.TableIsEmpty(database, "version") || fontsHandlers.IsUpdateAvilable(remoteData.TagName, db.GetVersion(database)) {
+	if db.TableIsEmpty(database, "version") || handlers.IsUpdateAvilable(remoteData.TagName, db.GetVersion(database)) {
 		db.InsertIntoVersion(database, remoteData.TagName)
 		fmt.Println("Updated fonts version")
 	}
 
-	if db.TableIsEmpty(database, "fonts") || fontsHandlers.IsUpdateAvilable(remoteData.TagName, db.GetVersion(database)) {
+	if db.TableIsEmpty(database, "fonts") || handlers.IsUpdateAvilable(remoteData.TagName, db.GetVersion(database)) {
 		db.DeleteFontsTable(database)
 		db.CreateFontsTable(database)
 		db.InsertIntoFonts(database, remoteData.GetFonts())
@@ -37,24 +35,31 @@ func setupDB(database *sql.DB, remoteData fontsTypes.NerdFonts) {
 }
 
 func main() {
-	var args args.Args
+	var args types.Args
 	arg.MustParse(&args)
 
 	isGlobal := args.Global
-	isAdmine, _ := osHandlers.IsAdmin()
+	isAdmin, _ := handlers.IsAdmin()
 
 	var database *sql.DB
 
-	if paths.OsType() == "windows" && !isAdmine {
-		log.Fatalln("getnf can't install locally on windows, please run getnf as administrator")
+	if utils.OsType() == "windows" && !isAdmin {
+		log.Fatalln("getnf can't install for a single user on windows, please run getnf as administrator")
 	}
 
-	if isGlobal && isAdmine {
+	if isGlobal {
+		_, err := handlers.IsAdmin()
+		if err != nil {
+			log.Fatalln(err)
+		}
+	}
+
+	if isGlobal && isAdmin {
 		database = db.OpenGlobalDB()
-	} else if isAdmine && paths.OsType() == "windows" {
+	} else if isAdmin && utils.OsType() == "windows" {
 		isGlobal = true
 		database = db.OpenGlobalDB()
-	} else if isAdmine {
+	} else if isAdmin {
 		log.Fatalln("only run getnf with elevated privileges if using the -g flag")
 	} else {
 		database = db.OpenDB()
@@ -66,46 +71,42 @@ func main() {
 	DaysSinceLastChecked := int(time.Since(lastChecked).Hours() / 24)
 
 	if db.TableIsEmpty(database, "lastChecked") || DaysSinceLastChecked > 5 || args.ForceCheck {
-		remoteData, err := fontsHandlers.GetData()
+		remoteData, err := handlers.GetData()
 		if err == nil {
 			setupDB(database, remoteData)
 		}
 		db.UpdateLastChecked(database)
 	}
 
-	var data fontsTypes.NerdFonts
+	var data types.NerdFonts
 
 	data.TagName = db.GetVersion(database)
 	data.Assets = db.GetAllFonts(database)
 
-	paths := paths.NewPaths()
+	types := types.NewPaths()
 	var extractPath string
 	var downloadPath string
-	if isGlobal {
-		_, err := osHandlers.IsAdmin()
-		if err != nil {
-			log.Fatalln(err)
-		}
-		downloadPath = paths.GetRootDownloadPath()
-		extractPath = paths.GetRootInstallPath()
+	if isGlobal && isAdmin {
+		downloadPath = types.GetRootDownloadPath()
+		extractPath = types.GetRootInstallPath()
 	} else {
-		downloadPath = paths.GetUserDownloadPath()
-		extractPath = paths.GetUserInstallPath()
+		downloadPath = types.GetUserDownloadPath()
+		extractPath = types.GetUserInstallPath()
 	}
 
 	switch {
 	case args.List != nil:
 		if !args.List.Installed {
-			fontsHandlers.ListFonts(fontsHandlers.FontsWithVersion(database, data.GetFonts(), data.GetVersion()), false)
+			handlers.ListFonts(handlers.FontsWithVersion(database, data.GetFonts(), data.GetVersion()), false)
 		} else {
-			fontsHandlers.ListFonts(fontsHandlers.FontsWithVersion(database, data.GetFonts(), data.GetVersion()), true)
+			handlers.ListFonts(handlers.FontsWithVersion(database, data.GetFonts(), data.GetVersion()), true)
 		}
 	case args.Install != nil:
 		var installedFonts []string
 		for _, font := range args.Install.Fonts {
 			if db.FontExists(database, font) {
 				f := data.GetFont(font)
-				fontsHandlers.InstallFont(f, downloadPath, extractPath, args.Install.KeepTars)
+				handlers.InstallFont(f, downloadPath, extractPath, args.Install.KeepTars)
 				db.InsertIntoInstalledFonts(database, f, data.GetVersion())
 				installedFonts = append(installedFonts, font)
 			} else {
@@ -130,7 +131,7 @@ func main() {
 			s.Color("red")
 			s.Start()
 			for _, font := range fontsToUninstall {
-				fontsHandlers.UninstallFont(extractPath, font)
+				handlers.UninstallFont(extractPath, font)
 				db.DeleteInstalledFont(database, font)
 			}
 			s.FinalMSG = "uninstalled font(s): " + strings.Join(fontsToUninstall, ", ") + "\n"
@@ -138,12 +139,11 @@ func main() {
 		}
 	case args.Update != nil:
 		updateCount := 0
-		var installedFonts []fontsTypes.Font
-		installedFonts = db.GetInstalledFonts(database)
+		installedFonts := db.GetInstalledFonts(database)
 		for _, font := range installedFonts {
-			if fontsHandlers.IsUpdateAvilable(data.GetVersion(), font.InstalledVersion) {
+			if handlers.IsUpdateAvilable(data.GetVersion(), font.InstalledVersion) {
 				f := data.GetFont(font.Name)
-				fontsHandlers.InstallFont(f, downloadPath, extractPath, args.Update.KeepTars)
+				handlers.InstallFont(f, downloadPath, extractPath, args.Update.KeepTars)
 				db.UpdateInstalledFont(database, font.Name, data.GetVersion())
 				updateCount++
 			}

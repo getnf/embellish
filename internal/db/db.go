@@ -4,7 +4,7 @@ import (
 	"database/sql"
 	"log"
 
-	fontsTypes "github.com/getnf/getnf/internal/types/fonts"
+	"github.com/getnf/getnf/internal/types"
 	"github.com/getnf/getnf/internal/utils"
 
 	_ "github.com/mattn/go-sqlite3"
@@ -152,7 +152,7 @@ func DeleteFontsTable(db *sql.DB) {
 	}
 }
 
-func InsertIntoFonts(db *sql.DB, fonts []fontsTypes.Font) {
+func InsertIntoFonts(db *sql.DB, fonts []types.Font) {
 	tx, err := db.Begin()
 	if err != nil {
 		log.Fatal(err)
@@ -176,9 +176,9 @@ func InsertIntoFonts(db *sql.DB, fonts []fontsTypes.Font) {
 	}
 }
 
-func GetAllFonts(db *sql.DB) []fontsTypes.Font {
-	var fonts []fontsTypes.Font
-	var font fontsTypes.Font
+func GetAllFonts(db *sql.DB) []types.Font {
+	var fonts []types.Font
+	var font types.Font
 	rows, err := db.Query("SELECT Id, Name, ContentType, BrowserDownloadUrl FROM fonts")
 	if err != nil {
 		log.Fatalln(err)
@@ -219,7 +219,7 @@ func CreateInstalledFontsTable(db *sql.DB) {
 	}
 }
 
-func InsertIntoInstalledFonts(db *sql.DB, font fontsTypes.Font, version string) {
+func InsertIntoInstalledFonts(db *sql.DB, font types.Font, version string) {
 	statement, err := db.Prepare("INSERT INTO installedFonts(Name, Version) VALUES (?, ?)")
 	if err != nil {
 		log.Fatal(err)
@@ -232,9 +232,9 @@ func InsertIntoInstalledFonts(db *sql.DB, font fontsTypes.Font, version string) 
 	}
 }
 
-func GetInstalledFonts(db *sql.DB) []fontsTypes.Font {
-	var fonts []fontsTypes.Font
-	var font fontsTypes.Font
+func GetInstalledFonts(db *sql.DB) []types.Font {
+	var fonts []types.Font
+	var font types.Font
 	rows, err := db.Query("SELECT Id, Name, Version FROM installedFonts")
 	if err != nil {
 		log.Fatalln(err)
@@ -261,8 +261,8 @@ func IsFontInstalled(db *sql.DB, font string) bool {
 	return isInstalled
 }
 
-func GetInstalledFont(db *sql.DB, font fontsTypes.Font) fontsTypes.Font {
-	var installedFont fontsTypes.Font
+func GetInstalledFont(db *sql.DB, font types.Font) types.Font {
+	var installedFont types.Font
 	err := db.QueryRow("SELECT Id, Name, Version FROM installedFonts WHERE Name=?", font.Name).Scan(&installedFont.Id, &installedFont.Name, &installedFont.InstalledVersion)
 
 	if err != nil {

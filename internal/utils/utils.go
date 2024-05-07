@@ -2,6 +2,7 @@ package utils
 
 import (
 	"regexp"
+	"runtime"
 	"strconv"
 	"strings"
 )
@@ -27,4 +28,17 @@ func StringToInt(version string) (int, error) {
 
 func FontNameWithoutExtention(name string) string {
 	return strings.Split(name, ".")[0]
+}
+
+func OsType() string {
+	switch os := runtime.GOOS; os {
+	case "darwin":
+		return "darwin"
+	case "linux":
+		return "linux"
+	case "windows":
+		return "windows"
+	default:
+		return "unsupported"
+	}
 }
