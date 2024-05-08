@@ -15,6 +15,8 @@ import (
 	"golang.org/x/sys/windows/registry"
 )
 
+// got inspiration for this from https://github.com/Crosse/font-install
+
 func PlatformInstallFont(font types.Font, downloadPath string, extractPath string, keepTar bool) error {
 	downloadedTar, err := downloadFont(font.BrowserDownloadUrl, downloadPath, font.Name)
 	if err != nil {
@@ -37,6 +39,7 @@ func PlatformInstallFont(font types.Font, downloadPath string, extractPath strin
 	if !keepTar {
 		deleteTar(downloadedTar)
 	}
+
 	return nil
 }
 
