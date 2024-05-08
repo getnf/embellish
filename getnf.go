@@ -4,6 +4,7 @@ import (
 	"database/sql"
 	"fmt"
 	"log"
+	"os"
 	"strings"
 	"time"
 
@@ -103,14 +104,27 @@ func main() {
 		}
 	case args.Install != nil:
 		var installedFonts []string
+		var fontsToInstall []string
 		for _, font := range args.Install.Fonts {
 			if db.FontExists(database, font) {
+				fontsToInstall = append(fontsToInstall, font)
+			} else {
+				fmt.Printf("%v is not a nerd font\n", font)
+				fuzzySearchedFont, err := handlers.FuzzySearchFonts(font, handlers.FontsNames(db.GetAllFonts(database)))
+				if err != nil {
+					fmt.Printf("did you mean: %v\n", err)
+					os.Exit(0)
+				}
+				fmt.Printf("did you mean: %v\n", fuzzySearchedFont)
+				return
+			}
+		}
+		if len(fontsToInstall) > 0 {
+			for _, font := range fontsToInstall {
 				f := data.GetFont(font)
 				handlers.InstallFont(f, downloadPath, extractPath, args.Install.KeepTars)
 				db.InsertIntoInstalledFonts(database, f, data.GetVersion())
 				installedFonts = append(installedFonts, font)
-			} else {
-				fmt.Printf("%v is not a nerd font\n", font)
 			}
 		}
 		if len(installedFonts) > 0 {
@@ -123,6 +137,13 @@ func main() {
 				fontsToUninstall = append(fontsToUninstall, font)
 			} else {
 				fmt.Printf("%v is either not installed or is not a nerd font\n", font)
+				fuzzySearchedFont, err := handlers.FuzzySearchFonts(font, handlers.FontsNames(db.GetInstalledFonts(database)))
+				if err != nil {
+					fmt.Printf("did you mean: %v\n", err)
+					os.Exit(0)
+				}
+				fmt.Printf("did you mean: %v\n", fuzzySearchedFont)
+				return
 			}
 		}
 		if len(fontsToUninstall) > 0 {

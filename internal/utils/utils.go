@@ -16,6 +16,17 @@ func Filter[T any](items []T, condition func(T) bool) (results []T) {
 	return
 }
 
+func Fold[T, U any](data []T, f func(T) U) []U {
+
+	res := make([]U, 0, len(data))
+
+	for _, e := range data {
+		res = append(res, f(e))
+	}
+
+	return res
+}
+
 func StringToInt(version string) (int, error) {
 	re := regexp.MustCompile("[0-9]+")
 	versionCleaned := re.FindAllString(version, -1)

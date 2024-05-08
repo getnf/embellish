@@ -11,11 +11,13 @@ import (
 	"net/http"
 	"os"
 	"path/filepath"
+	"sort"
 	"text/tabwriter"
 
 	"github.com/getnf/getnf/internal/db"
 	"github.com/getnf/getnf/internal/types"
 	"github.com/getnf/getnf/internal/utils"
+	"github.com/lithammer/fuzzysearch/fuzzy"
 
 	"github.com/ulikunitz/xz"
 )
@@ -38,6 +40,13 @@ func GetData() (types.NerdFonts, error) {
 		log.Fatalln(err)
 	}
 	return data, nil
+}
+
+func FontsNames(fonts []types.Font) []string {
+	fontNames := utils.Fold(fonts, func(f types.Font) string {
+		return f.Name
+	})
+	return fontNames
 }
 
 func FontsWithVersion(database *sql.DB, fonts []types.Font, version string) []types.Font {
@@ -228,4 +237,26 @@ func IsAdmin() (bool, error) {
 	}
 
 	return isAdmine, nil
+}
+
+func FuzzySearchFonts(font string, fonts []string) ([]string, error) {
+	matches := fuzzy.RankFindFold(font, fonts)
+	var match []string
+	sort.Sort(matches)
+
+	if len(matches) > 0 {
+		var topMatches fuzzy.Ranks
+		if len(matches) > 3 {
+			topMatches = matches[0:3]
+		} else {
+			size := len(matches)
+			topMatches = matches[0:size]
+		}
+		for _, font := range topMatches {
+			match = append(match, font.Target)
+		}
+	} else {
+		return []string{""}, fmt.Errorf("no match found")
+	}
+	return match, nil
 }
