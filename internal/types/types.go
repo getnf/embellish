@@ -11,8 +11,8 @@ import (
 // Fonts
 
 type NerdFonts struct {
-	TagName string `json:"tag_name"`
-	Assets  []Font `json:"assets"`
+	Version string `json:"tag_name"`
+	Fonts   []Font `json:"assets"`
 }
 
 type Font struct {
@@ -25,19 +25,26 @@ type Font struct {
 }
 
 func (fs NerdFonts) GetVersion() string {
-	return fs.TagName
+	return fs.Version
 }
 
 func (fs NerdFonts) GetFonts() []Font {
 	isTar := func(f Font) bool { return f.ContentType == "application/x-xz" }
-	fonts := utils.Filter(fs.Assets, isTar)
+	fonts := utils.Filter(fs.Fonts, isTar)
 	return fonts
 }
 
 func (fs NerdFonts) GetFont(f string) Font {
 	isWantedFont := func(x Font) bool { return x.Name == f }
-	font := utils.Filter(fs.Assets, isWantedFont)
+	font := utils.Filter(fs.Fonts, isWantedFont)
 	return font[0]
+}
+
+func (fs NerdFonts) GetFontsNames() []string {
+	fontNames := utils.Fold(fs.Fonts, func(f Font) string {
+		return f.Name
+	})
+	return fontNames
 }
 
 func (f *Font) AddInstalledVersion(ver string) {
@@ -51,8 +58,7 @@ func (f *Font) AddAvailableVersion(ver string) {
 // Command line argumetns
 
 type InstallCmd struct {
-	Fonts    []string `arg:"positional" help:"list of space separated fonts to install"`
-	KeepTars bool     `arg:"-k" help:"Keep archives in the download location"`
+	Fonts []string `arg:"positional" help:"list of space separated fonts to install"`
 }
 
 type UninstallCmd struct {
@@ -64,8 +70,7 @@ type ListCmd struct {
 }
 
 type UpdateCmd struct {
-	Update   bool `default:"true"`
-	KeepTars bool `arg:"-k" help:"Keep archives in the download location"`
+	Update bool `default:"true"`
 }
 
 type Args struct {
@@ -73,6 +78,7 @@ type Args struct {
 	Uninstall  *UninstallCmd `arg:"subcommand:uninstall" help:"uninstall fonts"`
 	List       *ListCmd      `arg:"subcommand:list" help:"list fonts"`
 	Update     *UpdateCmd    `arg:"subcommand:update" help:"update installed fonts"`
+	KeepTars   bool          `arg:"-k" help:"Keep archives in the download location"`
 	ForceCheck bool          `arg:"-f" help:"Force checking for updates"`
 	Global     bool          `arg:"-g" help:"Do the operation globally, for all users"`
 }
