@@ -4,6 +4,8 @@ import (
 	"log"
 	"os"
 	"path/filepath"
+	"sort"
+	"strings"
 
 	"github.com/getnf/getnf/internal/utils"
 )
@@ -31,6 +33,7 @@ func (fs NerdFonts) GetVersion() string {
 func (fs NerdFonts) GetFonts() []Font {
 	isTar := func(f Font) bool { return f.ContentType == "application/x-xz" }
 	fonts := utils.Filter(fs.Fonts, isTar)
+	sort.Slice(fonts, func(i, j int) bool { return strings.ToLower(fonts[i].Name) < strings.ToLower(fonts[j].Name) })
 	return fonts
 }
 
@@ -44,6 +47,7 @@ func (fs NerdFonts) GetFontsNames() []string {
 	fontNames := utils.Fold(fs.Fonts, func(f Font) string {
 		return f.Name
 	})
+	sort.Slice(fontNames, func(i, j int) bool { return strings.ToLower(fontNames[i]) < strings.ToLower(fontNames[j]) })
 	return fontNames
 }
 

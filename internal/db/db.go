@@ -3,6 +3,8 @@ package db
 import (
 	"database/sql"
 	"log"
+	"sort"
+	"strings"
 
 	"github.com/getnf/getnf/internal/types"
 	"github.com/getnf/getnf/internal/utils"
@@ -244,6 +246,7 @@ func GetInstalledFonts(db *sql.DB) []types.Font {
 		rows.Scan(&font.Id, &font.Name, &font.InstalledVersion)
 		fonts = append(fonts, font)
 	}
+	sort.Slice(fonts, func(i, j int) bool { return strings.ToLower(fonts[i].Name) < strings.ToLower(fonts[j].Name) })
 	return fonts
 }
 
