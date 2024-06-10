@@ -3,6 +3,7 @@ package tui
 import (
 	"database/sql"
 
+	"github.com/charmbracelet/bubbles/key"
 	"github.com/charmbracelet/huh"
 	"github.com/charmbracelet/lipgloss"
 	"github.com/getnf/getnf/internal/db"
@@ -25,7 +26,7 @@ func ThemeGetnfInstall() *huh.Theme {
 	return t
 }
 
-func ThemeGetnfUnInstall() *huh.Theme {
+func ThemeGetnfUninstall() *huh.Theme {
 	t := ThemeGetnfInstall()
 
 	t.Focused.MultiSelectSelector = t.Focused.MultiSelectSelector.Foreground(lipgloss.Color("1"))
@@ -33,6 +34,25 @@ func ThemeGetnfUnInstall() *huh.Theme {
 	t.Focused.SelectedPrefix = t.Focused.SelectedPrefix.Foreground(lipgloss.Color("1"))
 
 	return t
+}
+
+func myKeyBinds(submitMessage string) *huh.KeyMap {
+	var binding huh.KeyMap
+
+	binding.Quit = key.NewBinding(key.WithKeys("ctrl+c", "q"), key.WithHelp("ctrl+c / q", "quit"))
+	binding.MultiSelect = huh.MultiSelectKeyMap{
+		Up:          key.NewBinding(key.WithKeys("up", "k", "ctrl+p"), key.WithHelp("k / ↑ / C-p:", "Previous")),
+		Down:        key.NewBinding(key.WithKeys("down", "j", "ctrl+n"), key.WithHelp("j / ↓ / C-n:", "Next")),
+		GotoTop:     key.NewBinding(key.WithKeys("home"), key.WithHelp("Home:", "Go to the top")),
+		GotoBottom:  key.NewBinding(key.WithKeys("end"), key.WithHelp("End:", "Go to the bottom")),
+		Toggle:      key.NewBinding(key.WithKeys("tab"), key.WithHelp("Tab:", "Toggle")),
+		Filter:      key.NewBinding(key.WithKeys(" ", "/"), key.WithHelp("space / /:", "Filter")),
+		SetFilter:   key.NewBinding(key.WithKeys("enter"), key.WithHelp("⏎ :", "Set filter"), key.WithDisabled()),
+		ClearFilter: key.NewBinding(key.WithKeys("esc"), key.WithHelp("Esc:", "Clear filter"), key.WithDisabled()),
+		Submit:      key.NewBinding(key.WithKeys("enter"), key.WithHelp("⏎ :", submitMessage)),
+	}
+
+	return &binding
 }
 
 func SelectFontsToInstall(data types.NerdFonts, database *sql.DB, downloadPath string, extractPath string, keepTar bool) {
@@ -48,7 +68,16 @@ func SelectFontsToInstall(data types.NerdFonts, database *sql.DB, downloadPath s
 		Title("Select fonts to install").
 		Value(&selectedFontsNames).
 		Filterable(true)
-	ms.WithTheme(ThemeGetnfInstall()).Run()
+
+	form := huh.NewForm(
+		huh.NewGroup(
+			ms,
+		),
+	).WithTheme(
+		ThemeGetnfInstall(),
+	).WithKeyMap(myKeyBinds("Install fonts"))
+
+	form.Run()
 
 	for _, fontName := range selectedFontsNames {
 		selectedFontName := data.GetFont(fontName)
@@ -75,7 +104,16 @@ func SelectFontsToUninstall(installedFonts []types.Font, database *sql.DB, extra
 		Title("Select fonts to uninstall").
 		Value(&selectedFonts).
 		Filterable(true)
-	ms.WithTheme(ThemeGetnfUnInstall()).Run()
+
+	form := huh.NewForm(
+		huh.NewGroup(
+			ms,
+		),
+	).WithTheme(
+		ThemeGetnfUninstall(),
+	).WithKeyMap(myKeyBinds("Uninstall fonts"))
+
+	form.Run()
 
 	for _, font := range selectedFonts {
 		handlers.UninstallFont(font, extractPath)
