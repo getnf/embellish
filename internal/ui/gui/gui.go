@@ -38,10 +38,11 @@ func openAboutDialog() {
 func activate(app *gtk.Application, params types.GuiParams) {
 	builder := getBuilder(ressources.MainUI)
 	window := builder.GetObject("main-window").Cast().(*adw.ApplicationWindow)
+	toastOverlay := builder.GetObject("toast-overlay").Cast().(*adw.ToastOverlay)
 
 	handleMainMenuActions(window)
 
-	handleUpdateButton(builder, params)
+	handleUpdateButton(builder, toastOverlay, params)
 
 	handleFontsList(builder, params.Data)
 
@@ -67,14 +68,12 @@ func handleMainMenuActions(window *adw.ApplicationWindow) {
 	appGroup.AddAction(about_action)
 }
 
-func handleUpdateButton(builder *gtk.Builder, params types.GuiParams) {
+func handleUpdateButton(builder *gtk.Builder, toastOverlay *adw.ToastOverlay, params types.GuiParams) {
 	updateButton := builder.GetObject("update-button").Cast().(*gtk.Button)
 
 	updateButtonSpinner := builder.GetObject("update-button-spinner").Cast().(*gtk.Spinner)
 
 	updateButtonIcon := builder.GetObject("update-button-icon").Cast().(*gtk.Image)
-
-	toastOverlay := builder.GetObject("toast-overlay").Cast().(*adw.ToastOverlay)
 
 	if handlers.IsFontUpdatAvilable(params.Database, params.Data) {
 		updateButton.SetVisible(true)
