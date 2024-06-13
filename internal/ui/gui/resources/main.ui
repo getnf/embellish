@@ -15,6 +15,7 @@
             <child type="end">
               <object class="GtkButton" id="update-button">
                 <property name="visible">false</property>
+                <property name="tooltip-text" translatable="true">Update all installed fonts</property>
                 <child>
                   <object class="GtkBox">
                     <child>
