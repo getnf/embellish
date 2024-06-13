@@ -1,6 +1,7 @@
 package types
 
 import (
+	"database/sql"
 	"log"
 	"os"
 	"path/filepath"
@@ -84,7 +85,6 @@ type Args struct {
 	Update     *UpdateCmd    `arg:"subcommand:update" help:"update installed fonts"`
 	KeepTars   bool          `arg:"-k" help:"Keep archives in the download location"`
 	ForceCheck bool          `arg:"-f" help:"Force checking for updates"`
-	Global     bool          `arg:"-g" help:"Do the operation globally, for all users"`
 }
 
 func (Args) Version() string {
@@ -94,18 +94,8 @@ func (Args) Version() string {
 // paths
 
 type Paths struct {
-	Download downloadPaths
-	Install  installPaths
-}
-
-type downloadPaths struct {
-	User string
-	Root string
-}
-
-type installPaths struct {
-	User string
-	Root string
+	Download string
+	Install  string
 }
 
 func NewPaths() *Paths {
@@ -116,43 +106,40 @@ func NewPaths() *Paths {
 		log.Fatalln(err)
 	}
 
-	tempDir := os.TempDir()
-
 	switch os := utils.OsType(); os {
-	case "linux":
-		paths.Download.User = filepath.Join(homeDir, "Downloads", "getnf")
-		paths.Download.Root = filepath.Join(tempDir, "getnf")
-		paths.Install.User = filepath.Join(homeDir, ".local", "share", "fonts")
-		paths.Install.Root = "/usr/share/fonts"
+	case "linux", "solaris", "openbsd", "freebsd", "netbsd":
+		paths.Download = filepath.Join(homeDir, "Downloads", "getnf")
+		paths.Install = filepath.Join(homeDir, ".local", "share", "fonts")
 	case "darwin":
-		paths.Download.User = filepath.Join(homeDir, "Downloads", "getnf")
-		paths.Download.Root = filepath.Join(tempDir, "getnf")
-		paths.Install.User = filepath.Join(homeDir, "Library", "Fonts")
-		paths.Install.Root = "/Library/Fonts"
+		paths.Download = filepath.Join(homeDir, "Downloads", "getnf")
+		paths.Install = filepath.Join(homeDir, "Library", "Fonts")
 	case "windows":
-		paths.Download.User = ""
-		paths.Download.Root = filepath.Join(homeDir, "Downloads", "getnf")
-		paths.Install.User = ""
-		paths.Install.Root = filepath.Join("C:\\Windows", "Fonts")
+		paths.Download = filepath.Join(homeDir, "Downloads", "getnf")
+		paths.Install = filepath.Join("C:\\Windows", "Fonts")
 	default:
 		log.Fatalln("unsupported operating system")
 	}
 
+	os.MkdirAll(paths.Download, 0755)
+	os.MkdirAll(paths.Install, 0755)
+
 	return paths
 }
 
-func (p *Paths) GetUserDownloadPath() string {
-	return p.Download.User
+func (p *Paths) GetDownloadPath() string {
+	return p.Download
 }
 
-func (p *Paths) GetRootDownloadPath() string {
-	return p.Download.Root
+func (p *Paths) GetInstallPath() string {
+	return p.Install
 }
 
-func (p *Paths) GetUserInstallPath() string {
-	return p.Install.User
-}
+// params
 
-func (p *Paths) GetRootInstallPath() string {
-	return p.Install.Root
+type GuiParams struct {
+	Data         NerdFonts
+	Database     *sql.DB
+	Args         Args
+	DownloadPath string
+	ExtractPath  string
 }

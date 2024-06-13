@@ -137,12 +137,10 @@ func valueExistsInRegistry(key registry.Key, name string) (bool, error) {
 	return true, nil
 }
 
-func PlatformIsAdmin() (bool, error) {
+func PlatformIsAdmin() bool {
 	if windows.GetCurrentProcessToken().IsElevated() {
-		return true, nil
+		return true
 	}
 
-	message := "getnf has to be run as administrator when using the -g flag"
-
-	return false, fmt.Errorf(message)
+	return false
 }

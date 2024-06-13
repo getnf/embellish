@@ -1,0 +1,109 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<interface>
+  <requires lib="libadwaita" version="1.2" />
+  <requires lib="gtk" version="4.0" />
+
+  <object class="AdwApplicationWindow" id="main-window">
+    <property name="default-width">960</property>
+    <property name="default-height">540</property>
+    <property name="title">Multiplex</property>
+
+    <child type="content">
+      <object class="AdwToolbarView">
+        <child type="top">
+          <object class="AdwHeaderBar">
+            <child type="end">
+              <object class="GtkButton" id="update-button">
+                <property name="visible">false</property>
+                <child>
+                  <object class="GtkBox">
+                    <child>
+                      <object class="GtkImage" id="update-button-icon">
+                        <property name="icon-name">software-update-available-symbolic</property>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="GtkSpinner" id="update-button-spinner">
+                        <property name="visible">false</property>
+                      </object>
+                    </child>
+                  </object>
+                </child>
+                <style>
+                  <class name="suggested-action" />
+                </style>
+              </object>
+            </child>
+            <child type="end">
+              <object class="GtkMenuButton">
+                <property name="icon-name">open-menu-symbolic</property>
+                <property name="tooltip-text" translatable="true">Main Menu</property>
+                <property name="primary">true</property>
+                <property name="menu-model">window_menu</property>
+              </object>
+            </child>
+          </object>
+        </child>
+        <property name="content">
+          <object class="GtkStack" id="stack">
+            <property name="transition-type">1</property>
+            <property name="vexpand">true</property>
+            <child>
+              <object class="GtkStackPage">
+                <property name="name">listview</property>
+                <property name="title" translatable="true">List View</property>
+                <property name="child">
+                  <object class="GtkScrolledWindow">
+                    <property name="hscrollbar-policy">2</property>
+                    <property name="propagate-natural-height">true</property>
+                    <property name="has-frame">true</property>
+                    <property name="valign">1</property>
+                    <child>
+                      <object class="GtkListView" id="list-view">
+                        <property name="factory">
+                          <object class="GtkBuilderListItemFactory">
+                            <property name="bytes"><![CDATA[
+                      <?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <template class="GtkListItem">
+    <property name="child">
+      <object class="GtkBox">
+        <child>
+          <object class="GtkLabel">
+            <binding name="label">
+              <lookup name="string" type="GtkStringObject">
+                <lookup name="item" type="GtkListItem">
+                  <constant>GtkListItem</constant>
+                </lookup>
+              </lookup>
+            </binding>
+            <property name="height-request">50</property>
+            <property name="margin-start">12</property>
+            <property name="margin-end">12</property>
+          </object>
+        </child>
+      </object>
+    </property>
+  </template>
+</interface>]]>
+                            </property>
+                          </object>
+                        </property>
+                      </object>
+                    </child>
+                  </object>
+                </property>
+              </object>
+            </child>
+          </object>
+        </property>
+      </object>
+    </child>
+  </object>
+  <menu id="window_menu">
+    <item>
+      <attribute name="label" translatable="true">About App</attribute>
+      <attribute name="action">app.about</attribute>
+    </item>
+  </menu>
+</interface>

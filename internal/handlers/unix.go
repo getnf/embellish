@@ -1,5 +1,5 @@
-//go:build unix
-// +build unix
+//go:build linux || solaris || openbsd || freebsd || netbsd
+// +build linux solaris openbsd freebsd netbsd
 
 package handlers
 
@@ -53,12 +53,10 @@ func PlatformUninstallFont(path string, name string) error {
 	return nil
 }
 
-func PlatformIsAdmin() (bool, error) {
+func PlatformIsAdmin() bool {
 	if os.Geteuid() == 0 {
-		return true, nil
+		return true
 	}
 
-	message := "getnf has to be run with superuser privileges when using the -g flag"
-
-	return false, fmt.Errorf(message)
+	return false
 }

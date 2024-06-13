@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+    <requires lib="gtk" version="4.0" />
+    <requires lib="libadwaita" version="1.2" />
+
+    <object class="AdwAboutWindow" id="about-dialog">
+        <property name="modal">true</property>
+        <property name="developer_name">Ronnie Nissan</property>
+        <property name="developers">Ronnie NIssan</property>
+        <property name="copyright">© 2024 Ronnie Nissan</property>
+        <property name="license-type">GPL_3_0</property>
+        <property name="application-icon">application-x-executable</property>
+        <property name="application-name">getnf</property>
+        <property name="version">1.0.0</property>
+        <property name="issue_url">https://github.com/getnf/getnf/issues/new/choose</property>
+        <property name="website">https://github.com/getnf/getnf-go</property>
+    </object>
+</interface>

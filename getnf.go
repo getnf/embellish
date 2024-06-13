@@ -9,6 +9,7 @@ import (
 	"github.com/getnf/getnf/internal/db"
 	"github.com/getnf/getnf/internal/handlers"
 	"github.com/getnf/getnf/internal/types"
+	"github.com/getnf/getnf/internal/ui/gui"
 	"github.com/getnf/getnf/internal/ui/tui"
 	"github.com/getnf/getnf/internal/utils"
 
@@ -37,29 +38,16 @@ func main() {
 	var args types.Args
 	arg.MustParse(&args)
 
-	isGlobal := args.Global
-	isAdmin, _ := handlers.IsAdmin()
+	isAdmin := handlers.IsAdmin()
 
 	var database *sql.DB
 
 	if utils.OsType() == "windows" && !isAdmin {
-		log.Fatalln("getnf can't install for a single user on windows, please run getnf as administrator")
+		log.Fatalln("getnf need admin rights to install fonts on windows, please run getnf as administrator")
 	}
 
-	if isGlobal {
-		_, err := handlers.IsAdmin()
-		if err != nil {
-			log.Fatalln(err)
-		}
-	}
-
-	if isGlobal && isAdmin {
-		database = db.OpenGlobalDB()
-	} else if isAdmin && utils.OsType() == "windows" {
-		isGlobal = true
-		database = db.OpenGlobalDB()
-	} else if isAdmin {
-		log.Fatalln("only run getnf with elevated privileges if using the -g flag")
+	if isAdmin && utils.OsType() != "windows" {
+		log.Fatalln("Please don't run getnf with elevated privileges")
 	} else {
 		database = db.OpenDB()
 	}
@@ -82,16 +70,9 @@ func main() {
 	data.Version = db.GetVersion(database)
 	data.Fonts = db.GetAllFonts(database)
 
-	types := types.NewPaths()
-	var extractPath string
-	var downloadPath string
-	if isGlobal && isAdmin {
-		downloadPath = types.GetRootDownloadPath()
-		extractPath = types.GetRootInstallPath()
-	} else {
-		downloadPath = types.GetUserDownloadPath()
-		extractPath = types.GetUserInstallPath()
-	}
+	paths := types.NewPaths()
+	downloadPath := paths.GetDownloadPath()
+	extractPath := paths.GetInstallPath()
 
 	switch {
 	case args.List != nil:
@@ -115,6 +96,6 @@ func main() {
 	case args.Update != nil:
 		handlers.HandleUpdate(args, database, data, downloadPath, extractPath)
 	default:
-		tui.SelectFontsToInstall(data, database, downloadPath, extractPath, args.KeepTars)
+		gui.RunGui(types.GuiParams{Data: data, Database: database, Args: args, DownloadPath: downloadPath, ExtractPath: extractPath})
 	}
 }

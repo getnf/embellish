@@ -286,29 +286,35 @@ func HandleUninstall(args types.Args, database *sql.DB, data types.NerdFonts, ex
 	}
 }
 
-func HandleUpdate(args types.Args, database *sql.DB, data types.NerdFonts, downloadPath string, extractPath string) {
+func IsFontUpdatAvilable(database *sql.DB, data types.NerdFonts) bool {
 	updateCount := 0
 	installedFonts := db.GetInstalledFonts(database)
 	for _, font := range installedFonts {
 		if IsUpdateAvilable(data.GetVersion(), font.InstalledVersion) {
-			f := data.GetFont(font.Name)
-			InstallFont(f, downloadPath, extractPath, args.KeepTars)
-			db.UpdateInstalledFont(database, font.Name, data.GetVersion())
 			updateCount++
 		}
 	}
-	if updateCount == 0 {
+
+	return updateCount > 0
+}
+
+func HandleUpdate(args types.Args, database *sql.DB, data types.NerdFonts, downloadPath string, extractPath string) {
+	if IsFontUpdatAvilable(database, data) {
+		installedFonts := db.GetInstalledFonts(database)
+		for _, font := range installedFonts {
+			f := data.GetFont(font.Name)
+			InstallFont(f, downloadPath, extractPath, args.KeepTars)
+			db.UpdateInstalledFont(database, font.Name, data.GetVersion())
+		}
+	} else {
 		fmt.Println("No updates are available")
 	}
 }
 
-func IsAdmin() (bool, error) {
-	isAdmine, err := PlatformIsAdmin()
-	if err != nil {
-		return false, fmt.Errorf("error checking for admin privelages: %v", err)
-	}
+func IsAdmin() bool {
+	isAdmine := PlatformIsAdmin()
 
-	return isAdmine, nil
+	return isAdmine
 }
 
 func FuzzySearchFonts(font string, fonts []string) ([]string, error) {
