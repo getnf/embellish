@@ -45,24 +45,26 @@
           </object>
         </child>
         <property name="content">
-          <object class="GtkStack" id="stack">
-            <property name="transition-type">1</property>
-            <property name="vexpand">true</property>
-            <child>
-              <object class="GtkStackPage">
-                <property name="name">listview</property>
-                <property name="title" translatable="true">List View</property>
-                <property name="child">
-                  <object class="GtkScrolledWindow">
-                    <property name="hscrollbar-policy">2</property>
-                    <property name="propagate-natural-height">true</property>
-                    <property name="has-frame">true</property>
-                    <property name="valign">1</property>
-                    <child>
-                      <object class="GtkListView" id="list-view">
-                        <property name="factory">
-                          <object class="GtkBuilderListItemFactory">
-                            <property name="bytes"><![CDATA[
+          <object class="AdwToastOverlay" id="toast-overlay">
+            <property name="child">
+              <object class="GtkStack" id="stack">
+                <property name="transition-type">1</property>
+                <property name="vexpand">true</property>
+                <child>
+                  <object class="GtkStackPage">
+                    <property name="name">listview</property>
+                    <property name="title" translatable="true">List View</property>
+                    <property name="child">
+                      <object class="GtkScrolledWindow">
+                        <property name="hscrollbar-policy">2</property>
+                        <property name="propagate-natural-height">true</property>
+                        <property name="has-frame">true</property>
+                        <property name="valign">1</property>
+                        <child>
+                          <object class="GtkListView" id="list-view">
+                            <property name="factory">
+                              <object class="GtkBuilderListItemFactory">
+                                <property name="bytes"><![CDATA[
                       <?xml version="1.0" encoding="UTF-8"?>
 <interface>
   <template class="GtkListItem">
@@ -87,14 +89,16 @@
   </template>
 </interface>]]>
                             </property>
+                              </object>
+                            </property>
                           </object>
-                        </property>
+                        </child>
                       </object>
-                    </child>
+                    </property>
                   </object>
-                </property>
+                </child>
               </object>
-            </child>
+            </property>
           </object>
         </property>
       </object>

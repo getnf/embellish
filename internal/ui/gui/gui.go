@@ -74,17 +74,19 @@ func handleUpdateButton(builder *gtk.Builder, params types.GuiParams) {
 
 	updateButtonIcon := builder.GetObject("update-button-icon").Cast().(*gtk.Image)
 
+	toastOverlay := builder.GetObject("toast-overlay").Cast().(*adw.ToastOverlay)
+
 	if handlers.IsFontUpdatAvilable(params.Database, params.Data) {
 		updateButton.SetVisible(true)
 	}
 
 	updateButton.ConnectClicked(
 		func() {
-			handleUpdateButtonAction(updateButtonSpinner, updateButton, updateButtonIcon, params)
+			handleUpdateButtonAction(updateButtonSpinner, updateButton, updateButtonIcon, toastOverlay, params)
 		})
 }
 
-func handleUpdateButtonAction(spinner *gtk.Spinner, button *gtk.Button, icon *gtk.Image, params types.GuiParams) {
+func handleUpdateButtonAction(spinner *gtk.Spinner, button *gtk.Button, icon *gtk.Image, toastOverlay *adw.ToastOverlay, params types.GuiParams) {
 	glib.IdleAdd(func() bool {
 		icon.SetVisible(false)
 		spinner.SetVisible(true)
@@ -98,6 +100,15 @@ func handleUpdateButtonAction(spinner *gtk.Spinner, button *gtk.Button, icon *gt
 		glib.IdleAdd(func() bool {
 			spinner.Stop()
 			spinner.SetVisible(false)
+			return false
+		})
+
+		glib.IdleAdd(func() bool {
+			toastOverlay.AddToast(adw.NewToast("updated completed"))
+			return false
+		})
+
+		glib.IdleAdd(func() bool {
 			button.SetVisible(false)
 			return false
 		})
