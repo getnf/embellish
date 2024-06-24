@@ -226,6 +226,16 @@ func UninstallFont(path string, name string) error {
 	return nil
 }
 
+func HandleGuiInstall(font types.Font, database *sql.DB, data types.NerdFonts, downloadPath string, extractPath string) {
+	InstallFont(font, downloadPath, extractPath, false)
+	db.InsertIntoInstalledFonts(database, font, data.GetVersion())
+}
+
+func HandleGuiUninstall(font types.Font, database *sql.DB, data types.NerdFonts, extractPath string) {
+	UninstallFont(extractPath, font.Name)
+	db.DeleteInstalledFont(database, font.Name)
+}
+
 func HandleInstall(args types.Args, database *sql.DB, data types.NerdFonts, downloadPath string, extractPath string) {
 	var installedFonts []string
 	var fontsToInstall []string
