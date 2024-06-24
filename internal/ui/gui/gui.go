@@ -59,51 +59,6 @@ func myButton(style string, iconName string, tooltip string, sensitive bool) (*g
 	return button, spinner, icon
 }
 
-func myButtonsRow(font types.Font, params types.GuiParams, overlay *adw.ToastOverlay) *gtk.Box {
-	box := gtk.NewBox(0, 10)
-	installButton, installSpinner, InstallIcon := myButton("suggested-action", "folder-download-symbolic", "Install", true)
-	removeButton, removeSpinner, removeIcon := myButton("destructive-action", "user-trash-symbolic", "Remove", false)
-
-	if db.IsFontInstalled(params.Database, font.Name) {
-		installButton.SetSensitive(false)
-	}
-	installButton.ConnectClicked(func() {
-		handleInstallButtonAction(font, installButton, removeButton, installSpinner, InstallIcon, overlay, params)
-	})
-
-	if db.IsFontInstalled(params.Database, font.Name) {
-		removeButton.SetSensitive(true)
-	}
-	removeButton.ConnectClicked(func() {
-		handleRemoveButtonAction(font, removeButton, installButton, removeSpinner, removeIcon, overlay, params)
-	})
-
-	box.Append(installButton)
-	box.Append(removeButton)
-	return box
-}
-
-func myActionRow(subtitle string, suffix *gtk.Box) *adw.ActionRow {
-	row := adw.NewActionRow()
-	row.AddCSSClass("property")
-	row.SetTitle("Font")
-	row.SetSubtitle(subtitle)
-	row.AddSuffix(suffix)
-
-	return row
-}
-
-func HandleFontsList(builder *gtk.Builder, params types.GuiParams, overlay *adw.ToastOverlay) {
-	fontsList := builder.GetObject("fonts_list").Cast().(*gtk.ListBox)
-
-	nerdFonts := params.Data.GetFonts()
-
-	for _, font := range nerdFonts {
-		row := myActionRow(font.Name, myButtonsRow(font, params, overlay))
-		fontsList.Append(row)
-	}
-}
-
 func activate(app *gtk.Application, params types.GuiParams) {
 	builder := getBuilder(ressources.MainUI)
 	window := builder.GetObject("main-window").Cast().(*adw.ApplicationWindow)
@@ -175,7 +130,59 @@ func handleUpdateButtonAction(button *gtk.Button, spinner *gtk.Spinner, icon *gt
 	}()
 }
 
-func handleInstallButtonAction(font types.Font, button *gtk.Button, removeButton *gtk.Button, spinner *gtk.Spinner, icon *gtk.Image, toastOverlay *adw.ToastOverlay, params types.GuiParams) {
+func HandleFontsList(builder *gtk.Builder, params types.GuiParams, toastOverlay *adw.ToastOverlay) {
+	fontsList := builder.GetObject("fonts_list").Cast().(*gtk.ListBox)
+
+	nerdFonts := params.Data.GetFonts()
+
+	for _, font := range nerdFonts {
+		row := fontRow(font.Name, fontRowButtons(font, params, toastOverlay))
+		fontsList.Append(row)
+	}
+}
+
+func fontRowButtons(font types.Font, params types.GuiParams, toastOverlay *adw.ToastOverlay) *gtk.Box {
+	box := gtk.NewBox(0, 10)
+
+	installButton, removeButton := handleFontRowButtons(toastOverlay, params, font)
+
+	box.Append(installButton)
+	box.Append(removeButton)
+	return box
+}
+
+func fontRow(subtitle string, suffix *gtk.Box) *adw.ActionRow {
+	row := adw.NewActionRow()
+	row.AddCSSClass("property")
+	row.SetTitle("Font")
+	row.SetSubtitle(subtitle)
+	row.AddSuffix(suffix)
+
+	return row
+}
+
+func handleFontRowButtons(toastOverlay *adw.ToastOverlay, params types.GuiParams, font types.Font) (*gtk.Button, *gtk.Button) {
+	installButton, installSpinner, InstallIcon := myButton("suggested-action", "folder-download-symbolic", "Install", true)
+	removeButton, removeSpinner, removeIcon := myButton("destructive-action", "user-trash-symbolic", "Remove", false)
+
+	if db.IsFontInstalled(params.Database, font.Name) {
+		installButton.SetSensitive(false)
+	}
+	installButton.ConnectClicked(func() {
+		handleInstallButtonAction(font, installButton, removeButton, installSpinner, InstallIcon, toastOverlay, params)
+	})
+
+	if db.IsFontInstalled(params.Database, font.Name) {
+		removeButton.SetSensitive(true)
+	}
+	removeButton.ConnectClicked(func() {
+		handleRemoveButtonAction(font, removeButton, installButton, removeSpinner, removeIcon, toastOverlay, params)
+	})
+
+	return installButton, removeButton
+}
+
+func handleInstallButtonAction(font types.Font, installButton *gtk.Button, removeButton *gtk.Button, spinner *gtk.Spinner, icon *gtk.Image, toastOverlay *adw.ToastOverlay, params types.GuiParams) {
 	glib.IdleAdd(func() bool {
 		icon.SetVisible(false)
 		spinner.SetVisible(true)
@@ -199,14 +206,14 @@ func handleInstallButtonAction(font types.Font, button *gtk.Button, removeButton
 		})
 
 		glib.IdleAdd(func() bool {
-			button.SetSensitive(false)
+			installButton.SetSensitive(false)
 			removeButton.SetSensitive(true)
 			return false
 		})
 	}()
 }
 
-func handleRemoveButtonAction(font types.Font, button *gtk.Button, installButton *gtk.Button, spinner *gtk.Spinner, icon *gtk.Image, toastOverlay *adw.ToastOverlay, params types.GuiParams) {
+func handleRemoveButtonAction(font types.Font, removeButton *gtk.Button, installButton *gtk.Button, spinner *gtk.Spinner, icon *gtk.Image, toastOverlay *adw.ToastOverlay, params types.GuiParams) {
 	glib.IdleAdd(func() bool {
 		icon.SetVisible(false)
 		spinner.SetVisible(true)
@@ -230,7 +237,7 @@ func handleRemoveButtonAction(font types.Font, button *gtk.Button, installButton
 		})
 
 		glib.IdleAdd(func() bool {
-			button.SetSensitive(false)
+			removeButton.SetSensitive(false)
 			installButton.SetSensitive(true)
 			return false
 		})
