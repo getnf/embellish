@@ -10,7 +10,4 @@ var (
 
 	//go:embed about.ui
 	AboutUI string
-
-	//go:embed style.css
-	StyleCSS string
 )

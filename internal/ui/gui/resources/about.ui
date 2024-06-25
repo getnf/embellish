@@ -8,7 +8,7 @@
         <property name="developer_name">Ronnie Nissan</property>
         <property name="developers">Ronnie NIssan</property>
         <property name="copyright">© 2024 Ronnie Nissan</property>
-        <property name="license-type">GPL_3_0</property>
+        <property name="license-type">GTK_LICENSE_AGPL_3_0</property>
         <property name="application-icon">application-x-executable</property>
         <property name="application-name">getnf</property>
         <property name="version">1.0.0</property>
