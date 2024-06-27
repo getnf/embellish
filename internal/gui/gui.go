@@ -3,8 +3,8 @@ package gui
 import (
 	"os"
 
+	ressources "github.com/getnf/getnf/internal/gui/resources"
 	"github.com/getnf/getnf/internal/types"
-	ressources "github.com/getnf/getnf/internal/ui/gui/resources"
 
 	"github.com/diamondburned/gotk4-adwaita/pkg/adw"
 	"github.com/diamondburned/gotk4/pkg/gtk/v4"
@@ -29,7 +29,7 @@ func activate(app *gtk.Application, params types.GuiParams) {
 	adwStyle := adw.StyleManagerGetDefault()
 	adwStyle.SetColorScheme(adw.ColorSchemePreferLight)
 
-	handleMainMenuActions(window)
+	handleMainMenuActions(window, params)
 
 	handleUpdateButton(builder, toastOverlay, params)
 

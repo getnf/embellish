@@ -5,9 +5,9 @@ import (
 	"github.com/diamondburned/gotk4/pkg/core/glib"
 	"github.com/diamondburned/gotk4/pkg/gio/v2"
 	"github.com/diamondburned/gotk4/pkg/gtk/v4"
+	ressources "github.com/getnf/getnf/internal/gui/resources"
 	"github.com/getnf/getnf/internal/handlers"
 	"github.com/getnf/getnf/internal/types"
-	ressources "github.com/getnf/getnf/internal/ui/gui/resources"
 )
 
 func openAboutDialog() {
@@ -16,14 +16,22 @@ func openAboutDialog() {
 	dialog.Show()
 }
 
-func handleMainMenuActions(window *adw.ApplicationWindow) {
+func handleMainMenuActions(window *adw.ApplicationWindow, params types.GuiParams) {
 	appGroup := gio.NewSimpleActionGroup()
 	window.InsertActionGroup("app", appGroup)
+
 	about_action := gio.NewSimpleAction("about", nil)
 	about_action.Connect("activate", func() {
 		openAboutDialog()
 	})
+
+	update_action := gio.NewSimpleAction("update", nil)
+	update_action.Connect("activate", func() {
+		handlers.SetupDB(params.Database, params.Data)
+	})
+
 	appGroup.AddAction(about_action)
+	appGroup.AddAction(update_action)
 }
 
 func handleUpdateButton(builder *gtk.Builder, toastOverlay *adw.ToastOverlay, params types.GuiParams) {

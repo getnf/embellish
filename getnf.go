@@ -2,37 +2,18 @@ package main
 
 import (
 	"database/sql"
-	"fmt"
 	"log"
 	"time"
 
 	"github.com/getnf/getnf/internal/db"
+	"github.com/getnf/getnf/internal/gui"
 	"github.com/getnf/getnf/internal/handlers"
+	"github.com/getnf/getnf/internal/tui"
 	"github.com/getnf/getnf/internal/types"
-	"github.com/getnf/getnf/internal/ui/gui"
-	"github.com/getnf/getnf/internal/ui/tui"
 	"github.com/getnf/getnf/internal/utils"
 
 	"github.com/alexflint/go-arg"
 )
-
-func setupDB(database *sql.DB, remoteData types.NerdFonts) {
-	db.CreateVersionTable(database)
-	db.CreateFontsTable(database)
-	db.CreateInstalledFontsTable(database)
-
-	if db.TableIsEmpty(database, "version") || handlers.IsUpdateAvilable(remoteData.GetVersion(), db.GetVersion(database)) {
-		db.InsertIntoVersion(database, remoteData.GetVersion())
-		fmt.Println("Updated fonts version")
-	}
-
-	if db.TableIsEmpty(database, "fonts") || handlers.IsUpdateAvilable(remoteData.GetVersion(), db.GetVersion(database)) {
-		db.DeleteFontsTable(database)
-		db.CreateFontsTable(database)
-		db.InsertIntoFonts(database, remoteData.GetFonts())
-		fmt.Println("Updating local fonts db")
-	}
-}
 
 func main() {
 	var args types.Args
@@ -60,7 +41,7 @@ func main() {
 	if db.TableIsEmpty(database, "lastChecked") || DaysSinceLastChecked > 5 || args.ForceCheck {
 		remoteData, err := handlers.GetData()
 		if err == nil {
-			setupDB(database, remoteData)
+			handlers.SetupDB(database, remoteData)
 		}
 		db.UpdateLastChecked(database)
 	}

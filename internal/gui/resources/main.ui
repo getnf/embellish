@@ -18,6 +18,7 @@
             <child type="start">
               <object class="GtkToggleButton" id="search-button">
                 <property name="icon-name">edit-find-symbolic</property>
+                <property name="tooltip-text" translatable="true">Search fonts</property>
               </object>
             </child>
             <child type="end">
@@ -110,7 +111,7 @@
                 </child>
                 <child>
                   <object class="AdwStatusPage" id="status-page">
-                    <property name="title" translatable="true">No Results Founds</property>
+                    <property name="title" translatable="true">No Fonts Founds</property>
                     <property name="description" translatable="true">Try a different search</property>
                     <property name="icon-name">edit-find-symbolic</property>
                     <property name="vexpand">true</property>
@@ -127,6 +128,10 @@
     <item>
       <attribute name="label" translatable="true">About App</attribute>
       <attribute name="action">app.about</attribute>
+    </item>
+    <item>
+      <attribute name="label" translatable="true">Update Database</attribute>
+      <attribute name="action">app.update</attribute>
     </item>
   </menu>
 </interface>

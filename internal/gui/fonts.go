@@ -1,14 +1,13 @@
 package gui
 
 import (
-	"regexp"
-
 	"github.com/diamondburned/gotk4-adwaita/pkg/adw"
 	"github.com/diamondburned/gotk4/pkg/core/glib"
 	"github.com/diamondburned/gotk4/pkg/gtk/v4"
 	"github.com/getnf/getnf/internal/db"
 	"github.com/getnf/getnf/internal/handlers"
 	"github.com/getnf/getnf/internal/types"
+	"github.com/lithammer/fuzzysearch/fuzzy"
 )
 
 func HandleFontsList(builder *gtk.Builder, params types.GuiParams, toastOverlay *adw.ToastOverlay) {
@@ -44,8 +43,7 @@ func handleFontsSearch(builder *gtk.Builder, params types.GuiParams, toastOverla
 	var resultsCount int
 
 	searchList.SetFilterFunc(func(row *gtk.ListBoxRow) (ok bool) {
-		re := regexp.MustCompile(`(?i)` + regexp.QuoteMeta(searchEntry.Text()))
-		match := re.MatchString(row.Name())
+		match := fuzzy.MatchFold(searchEntry.Text(), row.Name())
 		if match {
 			resultsCount++
 		}

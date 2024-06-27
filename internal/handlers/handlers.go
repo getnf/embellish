@@ -25,6 +25,24 @@ import (
 	"github.com/ulikunitz/xz"
 )
 
+func SetupDB(database *sql.DB, remoteData types.NerdFonts) {
+	db.CreateVersionTable(database)
+	db.CreateFontsTable(database)
+	db.CreateInstalledFontsTable(database)
+
+	if db.TableIsEmpty(database, "version") || IsUpdateAvilable(remoteData.GetVersion(), db.GetVersion(database)) {
+		db.InsertIntoVersion(database, remoteData.GetVersion())
+		fmt.Println("Updated fonts version")
+	}
+
+	if db.TableIsEmpty(database, "fonts") || IsUpdateAvilable(remoteData.GetVersion(), db.GetVersion(database)) {
+		db.DeleteFontsTable(database)
+		db.CreateFontsTable(database)
+		db.InsertIntoFonts(database, remoteData.GetFonts())
+		fmt.Println("Updating local fonts db")
+	}
+}
+
 func GetData() (types.NerdFonts, error) {
 	url := "https://api.github.com/repos/ryanoasis/nerd-fonts/releases/latest"
 	resp, err := http.Get(url)
