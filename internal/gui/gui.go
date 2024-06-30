@@ -13,6 +13,7 @@ import (
 
 func RunGui(params types.GuiParams) {
 	app := gtk.NewApplication("com.github.getnf.getnf", 0)
+
 	app.ConnectActivate(func() {
 		activate(app, params)
 	})
@@ -30,18 +31,26 @@ func activate(app *gtk.Application, params types.GuiParams) {
 	dialog.SetTransientFor(&window.Window)
 	dialog.SetDestroyWithParent(true)
 	toastOverlay := builder.GetObject("toast-overlay").Cast().(*adw.ToastOverlay)
+	searchBar := builder.GetObject("search-bar").Cast().(*gtk.SearchBar)
 
 	quitAction := gio.NewSimpleAction("quit", nil)
+	searchAction := gio.NewSimpleAction("search", nil)
 
 	// TODO: fix quiting the app when dialog is open
 	quitAction.Connect("activate", func() {
 		app.Quit()
 	})
 
+	searchAction.Connect("activate", func() {
+		searchBar.SetSearchMode(!searchBar.SearchMode())
+	})
+
 	app.AddAction(quitAction)
+	app.AddAction(searchAction)
 
 	app.SetAccelsForAction("window.close", []string{"<Control>w"})
 	app.SetAccelsForAction("app.quit", []string{"<Control>q"})
+	app.SetAccelsForAction("app.search", []string{"<Control>f"})
 
 	adwStyle := adw.StyleManagerGetDefault()
 	adwStyle.SetColorScheme(adw.ColorSchemePreferLight)
