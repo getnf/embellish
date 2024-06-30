@@ -9,7 +9,7 @@ import (
 	"os"
 	"path/filepath"
 
-	"github.com/getnf/getnf/internal/types"
+	"github.com/getnf/embellish/internal/types"
 
 	"golang.org/x/sys/windows"
 	"golang.org/x/sys/windows/registry"

@@ -1,4 +1,4 @@
-module github.com/getnf/getnf
+module github.com/getnf/embellish
 
 go 1.22.3
 

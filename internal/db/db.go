@@ -6,14 +6,14 @@ import (
 	"sort"
 	"strings"
 
-	"github.com/getnf/getnf/internal/types"
-	"github.com/getnf/getnf/internal/utils"
+	"github.com/getnf/embellish/internal/types"
+	"github.com/getnf/embellish/internal/utils"
 
 	_ "github.com/mattn/go-sqlite3"
 )
 
 func OpenDB() *sql.DB {
-	db, err := sql.Open("sqlite3", "./getnf.sqlite3")
+	db, err := sql.Open("sqlite3", "./embellish.sqlite3")
 	if err != nil {
 		log.Fatal(err)
 	}

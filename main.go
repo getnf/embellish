@@ -5,12 +5,12 @@ import (
 	"log"
 	"time"
 
-	"github.com/getnf/getnf/internal/db"
-	"github.com/getnf/getnf/internal/gui"
-	"github.com/getnf/getnf/internal/handlers"
-	"github.com/getnf/getnf/internal/tui"
-	"github.com/getnf/getnf/internal/types"
-	"github.com/getnf/getnf/internal/utils"
+	"github.com/getnf/embellish/internal/db"
+	"github.com/getnf/embellish/internal/gui"
+	"github.com/getnf/embellish/internal/handlers"
+	"github.com/getnf/embellish/internal/tui"
+	"github.com/getnf/embellish/internal/types"
+	"github.com/getnf/embellish/internal/utils"
 
 	"github.com/alexflint/go-arg"
 )

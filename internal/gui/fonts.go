@@ -4,9 +4,9 @@ import (
 	"github.com/diamondburned/gotk4-adwaita/pkg/adw"
 	"github.com/diamondburned/gotk4/pkg/core/glib"
 	"github.com/diamondburned/gotk4/pkg/gtk/v4"
-	"github.com/getnf/getnf/internal/db"
-	"github.com/getnf/getnf/internal/handlers"
-	"github.com/getnf/getnf/internal/types"
+	"github.com/getnf/embellish/internal/db"
+	"github.com/getnf/embellish/internal/handlers"
+	"github.com/getnf/embellish/internal/types"
 	"github.com/lithammer/fuzzysearch/fuzzy"
 )
 

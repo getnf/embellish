@@ -6,10 +6,10 @@ import (
 	"github.com/charmbracelet/bubbles/key"
 	"github.com/charmbracelet/huh"
 	"github.com/charmbracelet/lipgloss"
-	"github.com/getnf/getnf/internal/db"
-	"github.com/getnf/getnf/internal/handlers"
-	"github.com/getnf/getnf/internal/types"
-	"github.com/getnf/getnf/internal/utils"
+	"github.com/getnf/embellish/internal/db"
+	"github.com/getnf/embellish/internal/handlers"
+	"github.com/getnf/embellish/internal/types"
+	"github.com/getnf/embellish/internal/utils"
 )
 
 func ThemeGetnfInstall() *huh.Theme {

@@ -8,7 +8,7 @@
     <property name="height-request">640</property>
     <property name="default-width">640</property>
     <property name="default-height">640</property>
-    <property name="title">GetNF</property>
+    <property name="title">Embellish</property>
     <child>
       <object class="AdwToolbarView" id="container">
         <property name="extend-content-to-top-edge">false</property>
@@ -60,7 +60,7 @@
             <child>
               <object class="GtkSearchEntry" id="search-entry">
                 <property name="search-delay">100</property>
-                <property name="placeholder-text" translatable="true">Search fruits</property>
+                <property name="placeholder-text" translatable="true">Search fonts</property>
                 <property name="width-request">400</property>
               </object>
             </child>
@@ -75,7 +75,7 @@
                   <object class="AdwStatusPage" id="main-page">
                     <property name="title">GetNF</property>
                     <property name="description">A better way to install Nerd Fonts</property>
-                    <property name="icon_name">application-x-addon-symbolic</property>
+                    <property name="icon_name">com.github.getnf.Embellish.svg</property>
                     <child>
                       <object class="AdwClamp">
                         <property name="maximum-size">500</property>

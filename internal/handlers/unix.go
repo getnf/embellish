@@ -9,7 +9,7 @@ import (
 	"path/filepath"
 	"time"
 
-	"github.com/getnf/getnf/internal/types"
+	"github.com/getnf/embellish/internal/types"
 
 	"github.com/briandowns/spinner"
 )

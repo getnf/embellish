@@ -17,9 +17,9 @@ import (
 	"time"
 
 	"github.com/briandowns/spinner"
-	"github.com/getnf/getnf/internal/db"
-	"github.com/getnf/getnf/internal/types"
-	"github.com/getnf/getnf/internal/utils"
+	"github.com/getnf/embellish/internal/db"
+	"github.com/getnf/embellish/internal/types"
+	"github.com/getnf/embellish/internal/utils"
 	"github.com/lithammer/fuzzysearch/fuzzy"
 
 	"github.com/ulikunitz/xz"

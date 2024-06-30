@@ -8,7 +8,7 @@ import (
 	"sort"
 	"strings"
 
-	"github.com/getnf/getnf/internal/utils"
+	"github.com/getnf/embellish/internal/utils"
 )
 
 // Fonts
