@@ -2,6 +2,7 @@ package main
 
 import (
 	"database/sql"
+	"fmt"
 	"log"
 	"time"
 
@@ -65,18 +66,33 @@ func main() {
 		}
 	case args.Install != nil:
 		if len(args.Install.Fonts) == 0 {
-			tui.SelectFontsToInstall(data, database, downloadPath, extractPath, args.KeepTars)
+			err := tui.SelectFontsToInstall(data, database, downloadPath, extractPath, args.KeepTars)
+			if err != nil {
+				fmt.Println(err)
+			}
 		} else {
-			handlers.HandleInstall(args, database, data, downloadPath, extractPath)
+			err := handlers.HandleInstall(args, database, data, downloadPath, extractPath)
+			if err != nil {
+				fmt.Println(err)
+			}
 		}
 	case args.Uninstall != nil:
 		if len(args.Uninstall.Fonts) == 0 {
-			tui.SelectFontsToUninstall(db.GetInstalledFonts(database), database, extractPath)
+			err := tui.SelectFontsToUninstall(db.GetInstalledFonts(database), database, extractPath)
+			if err != nil {
+				fmt.Println(err)
+			}
 		} else {
-			handlers.HandleUninstall(args, database, data, extractPath)
+			err := handlers.HandleUninstall(args, database, data, extractPath)
+			if err != nil {
+				fmt.Println(err)
+			}
 		}
 	case args.Update != nil:
-		handlers.HandleUpdate(args, database, data, downloadPath, extractPath)
+		err := handlers.HandleUpdate(args, database, data, downloadPath, extractPath)
+		if err != nil {
+			fmt.Println(err)
+		}
 	default:
 		gui.RunGui(types.GuiParams{Data: data, Database: database, Args: args, DownloadPath: downloadPath, ExtractPath: extractPath})
 	}

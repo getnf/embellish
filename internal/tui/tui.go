@@ -55,7 +55,7 @@ func myKeyBinds(submitMessage string) *huh.KeyMap {
 	return &binding
 }
 
-func SelectFontsToInstall(data types.NerdFonts, database *sql.DB, downloadPath string, extractPath string, keepTar bool) {
+func SelectFontsToInstall(data types.NerdFonts, database *sql.DB, downloadPath string, extractPath string, keepTar bool) error {
 	var selectedFontsNames []string
 	var selectedFonts []types.Font
 	fontsNames := data.GetFontsNames()
@@ -85,12 +85,17 @@ func SelectFontsToInstall(data types.NerdFonts, database *sql.DB, downloadPath s
 	}
 
 	for _, font := range selectedFonts {
-		handlers.InstallFont(font, downloadPath, extractPath, keepTar)
+		err := handlers.InstallFont(font, downloadPath, extractPath, keepTar)
+		if err != nil {
+			return err
+		}
 		db.InsertIntoInstalledFonts(database, font, data.GetVersion())
 	}
+
+	return nil
 }
 
-func SelectFontsToUninstall(installedFonts []types.Font, database *sql.DB, extractPath string) {
+func SelectFontsToUninstall(installedFonts []types.Font, database *sql.DB, extractPath string) error {
 	var selectedFonts []string
 	installedFontsNames := utils.Fold(installedFonts, func(f types.Font) string {
 		return f.Name
@@ -116,7 +121,12 @@ func SelectFontsToUninstall(installedFonts []types.Font, database *sql.DB, extra
 	form.Run()
 
 	for _, font := range selectedFonts {
-		handlers.UninstallFont(font, extractPath)
+		err := handlers.UninstallFont(font, extractPath)
+		if err != nil {
+			return err
+		}
 		db.DeleteInstalledFont(database, font)
 	}
+
+	return nil
 }

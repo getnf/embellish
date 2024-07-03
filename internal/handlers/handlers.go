@@ -265,7 +265,7 @@ func HandleGuiUninstall(font types.Font, database *sql.DB, data types.NerdFonts,
 	return nil
 }
 
-func HandleInstall(args types.Args, database *sql.DB, data types.NerdFonts, downloadPath string, extractPath string) {
+func HandleInstall(args types.Args, database *sql.DB, data types.NerdFonts, downloadPath string, extractPath string) error {
 	var installedFonts []string
 	var fontsToInstall []string
 	for _, font := range args.Install.Fonts {
@@ -275,17 +275,19 @@ func HandleInstall(args types.Args, database *sql.DB, data types.NerdFonts, down
 			fmt.Printf("%v is not a nerd font\n", font)
 			fuzzySearchedFont, err := FuzzySearchFonts(font, data.GetFontsNames())
 			if err != nil {
-				fmt.Printf("did you mean: %v\n", err)
-				os.Exit(0)
+				return fmt.Errorf("did you mean: %v: ", err)
 			}
-			fmt.Printf("did you mean: %v\n", fuzzySearchedFont)
-			return
+			// fmt.Printf("did you mean: %v\n", fuzzySearchedFont)
+			return fmt.Errorf("did you mean: %v: ", fuzzySearchedFont)
 		}
 	}
 	if len(fontsToInstall) > 0 {
 		for _, font := range fontsToInstall {
 			f := data.GetFont(font)
-			InstallFont(f, downloadPath, extractPath, args.KeepTars)
+			err := InstallFont(f, downloadPath, extractPath, args.KeepTars)
+			if err != nil {
+				return err
+			}
 			db.InsertIntoInstalledFonts(database, f, data.GetVersion())
 			installedFonts = append(installedFonts, font)
 		}
@@ -293,9 +295,11 @@ func HandleInstall(args types.Args, database *sql.DB, data types.NerdFonts, down
 	if len(installedFonts) > 0 {
 		fmt.Printf("Installed font(s): %v\n", strings.Join(installedFonts, ", "))
 	}
+
+	return nil
 }
 
-func HandleUninstall(args types.Args, database *sql.DB, data types.NerdFonts, extractPath string) {
+func HandleUninstall(args types.Args, database *sql.DB, data types.NerdFonts, extractPath string) error {
 	var fontsToUninstall []string
 	for _, font := range args.Uninstall.Fonts {
 		if db.IsFontInstalled(database, font) {
@@ -304,11 +308,9 @@ func HandleUninstall(args types.Args, database *sql.DB, data types.NerdFonts, ex
 			fmt.Printf("%v is either not installed or is not a nerd font\n", font)
 			fuzzySearchedFont, err := FuzzySearchFonts(font, data.GetFontsNames())
 			if err != nil {
-				fmt.Printf("did you mean: %v\n", err)
-				os.Exit(0)
+				return fmt.Errorf("did you mean: %v: ", err)
 			}
-			fmt.Printf("did you mean: %v\n", fuzzySearchedFont)
-			return
+			return fmt.Errorf("did you mean: %v: ", fuzzySearchedFont)
 		}
 	}
 	if len(fontsToUninstall) > 0 {
@@ -317,12 +319,18 @@ func HandleUninstall(args types.Args, database *sql.DB, data types.NerdFonts, ex
 		s.Color("red")
 		s.Start()
 		for _, font := range fontsToUninstall {
-			UninstallFont(extractPath, font)
+			err := UninstallFont(extractPath, font)
+			if err != nil {
+				s.Stop()
+				return err
+			}
 			db.DeleteInstalledFont(database, font)
 		}
 		s.FinalMSG = "uninstalled font(s): " + strings.Join(fontsToUninstall, ", ") + "\n"
 		s.Stop()
 	}
+
+	return nil
 }
 
 func IsFontUpdatAvilable(database *sql.DB, data types.NerdFonts) bool {
@@ -337,17 +345,22 @@ func IsFontUpdatAvilable(database *sql.DB, data types.NerdFonts) bool {
 	return updateCount > 0
 }
 
-func HandleUpdate(args types.Args, database *sql.DB, data types.NerdFonts, downloadPath string, extractPath string) {
+func HandleUpdate(args types.Args, database *sql.DB, data types.NerdFonts, downloadPath string, extractPath string) error {
 	if IsFontUpdatAvilable(database, data) {
 		installedFonts := db.GetInstalledFonts(database)
 		for _, font := range installedFonts {
 			f := data.GetFont(font.Name)
-			InstallFont(f, downloadPath, extractPath, args.KeepTars)
+			err := InstallFont(f, downloadPath, extractPath, args.KeepTars)
+			if err != nil {
+				return err
+			}
 			db.UpdateInstalledFont(database, font.Name, data.GetVersion())
 		}
 	} else {
 		fmt.Println("No updates are available")
 	}
+
+	return nil
 }
 
 func IsAdmin() bool {
