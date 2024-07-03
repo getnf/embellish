@@ -5,21 +5,25 @@ import (
 	"github.com/diamondburned/gotk4/pkg/core/glib"
 	"github.com/diamondburned/gotk4/pkg/gio/v2"
 	"github.com/diamondburned/gotk4/pkg/gtk/v4"
+	ressources "github.com/getnf/embellish/internal/gui/resources"
 	"github.com/getnf/embellish/internal/handlers"
 	"github.com/getnf/embellish/internal/types"
 )
 
-func openAboutDialog(dialog *adw.AboutWindow, window *adw.ApplicationWindow) {
+func openAboutDialog(window *adw.ApplicationWindow) {
+	builder := getBuilder(ressources.AboutUI)
+	dialog := builder.GetObject("about-dialog").Cast().(*adw.AboutWindow)
+	dialog.SetTransientFor(&window.Window)
 	dialog.Show()
 }
 
-func handleMainMenuActions(window *adw.ApplicationWindow, dialog *adw.AboutWindow, params types.GuiParams) {
+func handleMainMenuActions(window *adw.ApplicationWindow, params types.GuiParams) {
 	appGroup := gio.NewSimpleActionGroup()
 	window.InsertActionGroup("app", appGroup)
 
 	about_action := gio.NewSimpleAction("about", nil)
 	about_action.Connect("activate", func() {
-		openAboutDialog(dialog, window)
+		openAboutDialog(window)
 	})
 
 	update_action := gio.NewSimpleAction("update", nil)

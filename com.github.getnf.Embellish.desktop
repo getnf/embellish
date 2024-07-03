@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Embellish
+Version=1.0
+Type=Application
+GenericName=Nerd Fonts Installer
+Comment=Insatll nerd fonts with ease
+Exec=embellish
+Icon=com.github.getnf.Embellish
+Categories=GNOME;GTK;TextTools;Utility
+Keywords=Fonts;NerdFonts;nerd;

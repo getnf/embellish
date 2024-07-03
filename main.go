@@ -23,6 +23,11 @@ func main() {
 
 	var database *sql.DB
 
+	paths := types.NewPaths()
+	downloadPath := paths.GetDownloadPath()
+	extractPath := paths.GetInstallPath()
+	dbPath := paths.GetDbPath()
+
 	if utils.OsType() == "windows" && !isAdmin {
 		log.Fatalln("getnf need admin rights to install fonts on windows, please run getnf as administrator")
 	}
@@ -30,7 +35,7 @@ func main() {
 	if isAdmin && utils.OsType() != "windows" {
 		log.Fatalln("Please don't run getnf with elevated privileges")
 	} else {
-		database = db.OpenDB()
+		database = db.OpenDB(dbPath)
 	}
 
 	db.CreateLastCheckedTable(database)
@@ -50,10 +55,6 @@ func main() {
 
 	data.Version = db.GetVersion(database)
 	data.Fonts = db.GetAllFonts(database)
-
-	paths := types.NewPaths()
-	downloadPath := paths.GetDownloadPath()
-	extractPath := paths.GetInstallPath()
 
 	switch {
 	case args.List != nil:

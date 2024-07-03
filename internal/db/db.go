@@ -12,8 +12,8 @@ import (
 	_ "github.com/mattn/go-sqlite3"
 )
 
-func OpenDB() *sql.DB {
-	db, err := sql.Open("sqlite3", "./embellish.sqlite3")
+func OpenDB(path string) *sql.DB {
+	db, err := sql.Open("sqlite3", path+"/"+"embellish.sqlite3")
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -139,7 +139,7 @@ func DeleteFontsTable(db *sql.DB) {
 		log.Fatalln(err)
 		return
 	}
-	defer OpenDB().Stats()
+	defer statement.Close()
 	_, err = statement.Exec()
 	if err != nil {
 		log.Fatalln(err)

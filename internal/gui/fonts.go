@@ -120,7 +120,23 @@ func handleInstallButtonAction(font types.Font, installButton *gtk.Button, remov
 	})
 
 	go func() {
-		handlers.HandleGuiInstall(font, params.Database, params.Data, params.DownloadPath, params.ExtractPath)
+		err := handlers.HandleGuiInstall(font, params.Database, params.Data, params.DownloadPath, params.ExtractPath)
+
+		if err != nil {
+			glib.IdleAdd(func() bool {
+				spinner.Stop()
+				spinner.SetVisible(false)
+				icon.SetVisible(true)
+				return false
+			})
+
+			glib.IdleAdd(func() bool {
+				toastOverlay.AddToast(adw.NewToast(err.Error()))
+				return false
+			})
+
+			return
+		}
 
 		glib.IdleAdd(func() bool {
 			spinner.Stop()

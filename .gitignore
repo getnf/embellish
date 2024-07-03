@@ -17,9 +17,13 @@
 
 # Dependency directories (remove the comment below to include it)
 # vendor/
+.flatpak-builder
+build-dir
+repo
 
 # Go workspace file
 go.work
 
 # Built binary
-getnf
+embellish
+main

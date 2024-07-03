@@ -96,6 +96,7 @@ func (Args) Version() string {
 type Paths struct {
 	Download string
 	Install  string
+	Db       string
 }
 
 func NewPaths() *Paths {
@@ -108,14 +109,17 @@ func NewPaths() *Paths {
 
 	switch os := utils.OsType(); os {
 	case "linux", "solaris", "openbsd", "freebsd", "netbsd":
-		paths.Download = filepath.Join(homeDir, "Downloads", "getnf")
+		paths.Download = filepath.Join(homeDir, "Downloads", "embellish")
 		paths.Install = filepath.Join(homeDir, ".local", "share", "fonts")
+		paths.Db = filepath.Join(homeDir, ".local", "share", "embellish")
 	case "darwin":
-		paths.Download = filepath.Join(homeDir, "Downloads", "getnf")
+		paths.Download = filepath.Join(homeDir, "Downloads", "embellish")
 		paths.Install = filepath.Join(homeDir, "Library", "Fonts")
+		paths.Db = filepath.Join(homeDir, "Library", "embellish")
 	case "windows":
-		paths.Download = filepath.Join(homeDir, "Downloads", "getnf")
+		paths.Download = filepath.Join(homeDir, "Downloads", "embellish")
 		paths.Install = filepath.Join("C:\\Windows", "Fonts")
+		paths.Db = filepath.Join(homeDir, "AppData", "embellish")
 	default:
 		log.Fatalln("unsupported operating system")
 	}
@@ -132,6 +136,10 @@ func (p *Paths) GetDownloadPath() string {
 
 func (p *Paths) GetInstallPath() string {
 	return p.Install
+}
+
+func (p *Paths) GetDbPath() string {
+	return p.Db
 }
 
 // params

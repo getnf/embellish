@@ -1,0 +1,44 @@
+id: com.github.getnf.Embellish
+runtime: org.gnome.Platform
+runtime-version: '46'
+sdk: org.gnome.Sdk
+command: embellish
+
+sdk-extensions:
+  - org.freedesktop.Sdk.Extension.golang
+
+finish-args:
+  - --socket=wayland
+  - --socket=fallback-x11
+  - --socket=session-bus
+  - --share=network
+  - --filesystem=xdg-data:rw
+  - --filesystem=xdg-download:rw
+  - --device=dri
+modules:
+  - name: embellish
+    buildsystem: simple
+    build-options:
+      append-path: /usr/lib/sdk/golang/bin
+      env:
+        GOBIN: /app/bin
+        GOROOT: /usr/lib/sdk/golang
+    build-commands:
+      - mkdir -p vendor
+      - cp modules.txt vendor/modules.txt
+      - go install -v -mod=vendor .
+      - install -Dm644 $FLATPAK_ID.desktop /app/share/applications/$FLATPAK_ID.desktop
+      - install -Dm644 $FLATPAK_ID.svg /app/share/icons/hicolor/scalable/apps/$FLATPAK_ID.svg
+      # - install -Dm644 $FLATPAK_ID.metainfo.xml /app/share/metainfo/$FLATPAK_ID.metainfo.xml
+    sources:
+      # - type: archive
+      #   url: https://github.com/diamondburned/dissent/archive/refs/tags/v0.0.25.tar.gz
+      #   sha256: 286b1b1409f55950ded8e02fdea4ef0f1a5d27f552c04ec70bd52fdfa7a94cee
+
+      # - type: file
+      #   url: https://raw.githubusercontent.com/diamondburned/dissent/eb1c6a9ef400db95810a23d08514c2ddd25ffe9a/so.libdb.dissent.metainfo.xml
+      #   sha256: 658aab1452d33c24763de9ba8f3c312a6c213a622f9e5fc02c875df3e8976c82
+        - type: dir
+          path: .
+        
+        - go.mod.yml

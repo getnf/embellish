@@ -231,9 +231,12 @@ func IsUpdateAvilable(remote string, local string) bool {
 	}
 }
 
-func InstallFont(font types.Font, downloadPath string, extractPath string, keepTar bool) {
-	PlatformInstallFont(font, downloadPath, extractPath, keepTar)
-
+func InstallFont(font types.Font, downloadPath string, extractPath string, keepTar bool) error {
+	err := PlatformInstallFont(font, downloadPath, extractPath, keepTar)
+	if err != nil {
+		return err
+	}
+	return nil
 }
 
 func UninstallFont(path string, name string) error {
@@ -244,14 +247,22 @@ func UninstallFont(path string, name string) error {
 	return nil
 }
 
-func HandleGuiInstall(font types.Font, database *sql.DB, data types.NerdFonts, downloadPath string, extractPath string) {
-	InstallFont(font, downloadPath, extractPath, false)
+func HandleGuiInstall(font types.Font, database *sql.DB, data types.NerdFonts, downloadPath string, extractPath string) error {
+	err := InstallFont(font, downloadPath, extractPath, false)
+	if err != nil {
+		return err
+	}
 	db.InsertIntoInstalledFonts(database, font, data.GetVersion())
+	return nil
 }
 
-func HandleGuiUninstall(font types.Font, database *sql.DB, data types.NerdFonts, extractPath string) {
-	UninstallFont(extractPath, font.Name)
+func HandleGuiUninstall(font types.Font, database *sql.DB, data types.NerdFonts, extractPath string) error {
+	err := UninstallFont(extractPath, font.Name)
+	if err != nil {
+		return err
+	}
 	db.DeleteInstalledFont(database, font.Name)
+	return nil
 }
 
 func HandleInstall(args types.Args, database *sql.DB, data types.NerdFonts, downloadPath string, extractPath string) {

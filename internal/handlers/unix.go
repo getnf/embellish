@@ -21,6 +21,7 @@ func PlatformInstallFont(font types.Font, downloadPath string, extractPath strin
 	s.Start()
 	downloadedTar, err := downloadFont(font.BrowserDownloadUrl, downloadPath, font.Name)
 	if err != nil {
+		s.Stop()
 		return fmt.Errorf("error downloading the tar file: %v", err)
 	}
 	s.Suffix = " Installing font " + font.Name
@@ -28,6 +29,7 @@ func PlatformInstallFont(font types.Font, downloadPath string, extractPath strin
 	s.Restart()
 	_, err = extractFont(downloadedTar, extractPath, font.Name)
 	if err != nil {
+		s.Stop()
 		return fmt.Errorf("error extracting the tar file: %v", err)
 	}
 	if !keepTar {
