@@ -19,8 +19,7 @@
 		<em>Developed with the software and tools below.</em>
 </p>
 <p align="center">
-	<img src="https://img.shields.io/badge/Go-1.22.3-%2301ADD8?logo=go
-    " alt="Go">
+	<img src="https://img.shields.io/badge/Go-1.22.3-%2301ADD8?logo=go" alt="Go">
     <img src="https://img.shields.io/badge/GTK-4-%233584E4?style=flat&logo=gtk&label=GTK&color=%233584E4" alt="Gtk4">
     <img src="https://img.shields.io/badge/libadwaita-1.4-%231C70D5?logo=gnome" alt="libadwaita-1.4">
 </p>
@@ -42,13 +41,13 @@
 
 ## 📍 Overview
 
-HTTP error 404 for prompt `overview`
+Write an `overview`
 
 ---
 
 ## 📦 Features
 
-HTTP error 404 for prompt `features`
+Write a list of `features`
 
 ---
 
