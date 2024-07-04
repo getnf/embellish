@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://raw.githubusercontent.com/getnf/getnf-go/main/com.github.getnf.Embellish.svg" width="100" />
+  <img src="https://raw.githubusercontent.com/getnf/embellish/main/com.github.getnf.Embellish.svg" width="100" />
 </p>
 <p align="center">
     <h1 align="center" style="color: f5c211ff">Embellish</h1>
@@ -10,10 +10,10 @@
     <strong><em>This README file is a work in progress</em></strong>
 </p>
 <p align="center">
-	<img src="https://img.shields.io/github/license/getnf/getnf-go?style=flat&color=0080ff" alt="license">
-	<img src="https://img.shields.io/github/last-commit/getnf/getnf-go?style=flat&logo=git&logoColor=white&color=0080ff" alt="last-commit">
-	<img src="https://img.shields.io/github/languages/top/getnf/getnf-go?style=flat&color=0080ff" alt="repo-top-language">
-	<img src="https://img.shields.io/github/languages/count/getnf/getnf-go?style=flat&color=0080ff" alt="repo-language-count">
+	<img src="https://img.shields.io/github/license/getnf/embellish?style=flat&color=0080ff" alt="license">
+	<img src="https://img.shields.io/github/last-commit/getnf/embellish?style=flat&logo=git&logoColor=white&color=0080ff" alt="last-commit">
+	<img src="https://img.shields.io/github/languages/top/getnf/embellish?style=flat&color=0080ff" alt="repo-top-language">
+	<img src="https://img.shields.io/github/languages/count/getnf/embellish?style=flat&color=0080ff" alt="repo-language-count">
 </p>
 <p align="center">
 		<em>Developed with the software and tools below.</em>
@@ -65,13 +65,13 @@ Ensure you have the following dependencies installed on your system:
 1. Clone the embellish repository:
 
 ```sh
-git clone https://github.com/getnf/getnf-go
+git clone https://github.com/getnf/embellish
 ```
 
 2. Change to the project directory:
 
 ```sh
-cd getnf-go
+cd embellish
 ```
 
 3. Install the dependencies:
@@ -82,9 +82,9 @@ Please note that you will need `gcc` because `go-sqlite3` is a `cgo` package
 go build -o myapp
 ```
 
-### 🤖 Running getnf-go
+### 🤖 Running embellish
 
-Use the following command to run getnf-go:
+Use the following command to run embellish:
 
 ```sh
 ./myapp
@@ -112,8 +112,8 @@ go test
 
 Contributions are welcome! Here are several ways you can contribute:
 
-- **[Submit Pull Requests](https://github.com/getnf/getnf-go/blob/main/CONTRIBUTING.md)**: Review open PRs, and submit your own PRs.
-- **[Report Issues](https://github.com/getnf/getnf-go/issues)**: Submit bugs found or log feature requests for Embellish and provide feedback.
+- **[Submit Pull Requests](https://github.com/getnf/embellish/blob/main/CONTRIBUTING.md)**: Review open PRs, and submit your own PRs.
+- **[Report Issues](https://github.com/getnf/embellish/issues)**: Submit bugs found or log feature requests for Embellish and provide feedback.
 
 <details closed>
     <summary>Contributing Guidelines</summary>
@@ -121,7 +121,7 @@ Contributions are welcome! Here are several ways you can contribute:
 1. **Fork the Repository**: Start by forking the project repository to your GitHub account.
 2. **Clone Locally**: Clone the forked repository to your local machine using a Git client.
    ```sh
-   git clone https://github.com/getnf/getnf-go
+   git clone https://github.com/getnf/embellish
    ```
 3. **Create a New Branch**: Always work on a new branch, giving it a descriptive name.
    ```sh
@@ -144,7 +144,7 @@ Contributions are welcome! Here are several ways you can contribute:
 
 ## 📄 License
 
-This project is protected under the [GPL-v3](https://choosealicense.com/licenses) License. For more details, refer to the [LICENSE](https://github.com/getnf/getnf-go/blob/main/LICENSE) file.
+This project is protected under the [GPL-v3](https://choosealicense.com/licenses) License. For more details, refer to the [LICENSE](https://github.com/getnf/embellish/blob/main/LICENSE) file.
 
 ---
 
