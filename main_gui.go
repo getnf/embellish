@@ -5,11 +5,16 @@ package main
 
 import (
 	"database/sql"
+	"os"
 	"time"
 
 	"github.com/alexflint/go-arg"
+	"github.com/diamondburned/gotk4-adwaita/pkg/adw"
+	"github.com/diamondburned/gotk4/pkg/gdk/v4"
+	"github.com/diamondburned/gotk4/pkg/gtk/v4"
 	"github.com/getnf/embellish/internal/db"
 	"github.com/getnf/embellish/internal/gui"
+	ressources "github.com/getnf/embellish/internal/gui/resources"
 	"github.com/getnf/embellish/internal/handlers"
 	"github.com/getnf/embellish/internal/types"
 )
@@ -45,5 +50,44 @@ func main() {
 	data.Version = db.GetVersion(database)
 	data.Fonts = db.GetAllFonts(database)
 
-	gui.RunGui(types.GuiParams{Data: data, Database: database, Args: args, DownloadPath: downloadPath, ExtractPath: extractPath})
+	params := types.GuiParams{Data: data, Database: database, DownloadPath: downloadPath, ExtractPath: extractPath}
+	app := adw.NewApplication("com.github.getnf.Embellish", 0)
+
+	provider := gtk.NewCSSProvider()
+	provider.LoadFromData(ressources.StylesCSS)
+
+	app.ConnectActivate(func() {
+		gtk.StyleContextAddProviderForDisplay(
+			gdk.DisplayGetDefault(),
+			provider,
+			gtk.STYLE_PROVIDER_PRIORITY_APPLICATION,
+		)
+		activate(app, params)
+	})
+
+	if code := app.Run(os.Args); code > 0 {
+		os.Exit(code)
+	}
+}
+
+func activate(app *adw.Application, params types.GuiParams) {
+	builder := gui.GetBuilder(ressources.MainUI)
+	window := builder.GetObject("main-window").Cast().(*adw.ApplicationWindow)
+	toastOverlay := builder.GetObject("toast-overlay").Cast().(*adw.ToastOverlay)
+
+	gui.SetupActions(app, builder)
+
+	adwStyle := adw.StyleManagerGetDefault()
+	adwStyle.SetColorScheme(adw.ColorSchemePreferLight)
+
+	gui.HandleMainMenuActions(window, params)
+
+	gui.HandleUpdateButton(builder, toastOverlay, params)
+
+	gui.HandleFontsList(builder, params, toastOverlay)
+
+	gui.HandleFontsSearch(builder, params, toastOverlay)
+
+	app.AddWindow(&window.Window)
+	window.Show()
 }

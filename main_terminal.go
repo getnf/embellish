@@ -30,11 +30,11 @@ func main() {
 	isAdmin := handlers.IsAdmin()
 
 	if utils.OsType() == "windows" && !isAdmin {
-		log.Fatalln("getnf need admin rights to install fonts on windows, please run getnf as administrator")
+		log.Fatalln("embellish need admin rights to install fonts on windows, please run embellish as administrator")
 	}
 
 	if isAdmin && utils.OsType() != "windows" {
-		log.Fatalln("Please don't run getnf with elevated privileges")
+		log.Fatalln("Please don't run embellish with elevated privileges")
 	} else {
 		database = db.OpenDB(dbPath)
 	}
@@ -89,7 +89,7 @@ func main() {
 			}
 		}
 	case args.Update != nil:
-		err := handlers.HandleUpdate(args, database, data, downloadPath, extractPath)
+		err := handlers.HandleUpdate(database, data, downloadPath, extractPath)
 		if err != nil {
 			fmt.Println(err)
 		}

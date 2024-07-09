@@ -148,7 +148,6 @@ func (p *Paths) GetDbPath() string {
 type GuiParams struct {
 	Data         NerdFonts
 	Database     *sql.DB
-	Args         Args
 	DownloadPath string
 	ExtractPath  string
 }

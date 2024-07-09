@@ -14,13 +14,13 @@ import (
 )
 
 func openAboutDialog(window *adw.ApplicationWindow) {
-	builder := getBuilder(ressources.AboutUI)
+	builder := GetBuilder(ressources.AboutUI)
 	dialog := builder.GetObject("about-dialog").Cast().(*adw.AboutWindow)
 	dialog.SetTransientFor(&window.Window)
 	dialog.Show()
 }
 
-func handleMainMenuActions(window *adw.ApplicationWindow, params types.GuiParams) {
+func HandleMainMenuActions(window *adw.ApplicationWindow, params types.GuiParams) {
 	appGroup := gio.NewSimpleActionGroup()
 	window.InsertActionGroup("app", appGroup)
 
@@ -38,7 +38,7 @@ func handleMainMenuActions(window *adw.ApplicationWindow, params types.GuiParams
 	appGroup.AddAction(update_action)
 }
 
-func handleUpdateButton(builder *gtk.Builder, toastOverlay *adw.ToastOverlay, params types.GuiParams) {
+func HandleUpdateButton(builder *gtk.Builder, toastOverlay *adw.ToastOverlay, params types.GuiParams) {
 	updateButton := builder.GetObject("update-button").Cast().(*gtk.Button)
 
 	updateButtonSpinner := builder.GetObject("update-button-spinner").Cast().(*gtk.Spinner)
@@ -64,7 +64,7 @@ func handleUpdateButtonAction(button *gtk.Button, spinner *gtk.Spinner, icon *gt
 	})
 
 	go func() {
-		handlers.HandleUpdate(params.Args, params.Database, params.Data, params.DownloadPath, params.ExtractPath)
+		handlers.HandleUpdate(params.Database, params.Data, params.DownloadPath, params.ExtractPath)
 
 		glib.IdleAdd(func() bool {
 			spinner.Stop()

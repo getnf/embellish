@@ -5,7 +5,7 @@ package gui
 
 import "github.com/diamondburned/gotk4/pkg/gtk/v4"
 
-func getBuilder(file string) *gtk.Builder {
+func GetBuilder(file string) *gtk.Builder {
 	return gtk.NewBuilderFromString(file, len(file))
 
 }

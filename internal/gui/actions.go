@@ -9,7 +9,7 @@ import (
 	"github.com/diamondburned/gotk4/pkg/gtk/v4"
 )
 
-func setupActions(app *adw.Application, builder *gtk.Builder) {
+func SetupActions(app *adw.Application, builder *gtk.Builder) {
 	searchBar := builder.GetObject("search-bar").Cast().(*gtk.SearchBar)
 
 	quitAction := gio.NewSimpleAction("quit", nil)

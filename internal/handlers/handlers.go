@@ -204,12 +204,12 @@ func IsFontUpdatAvilable(database *sql.DB, data types.NerdFonts) bool {
 	return updateCount > 0
 }
 
-func HandleUpdate(args types.Args, database *sql.DB, data types.NerdFonts, downloadPath string, extractPath string) error {
+func HandleUpdate(database *sql.DB, data types.NerdFonts, downloadPath string, extractPath string) error {
 	if IsFontUpdatAvilable(database, data) {
 		installedFonts := db.GetInstalledFonts(database)
 		for _, font := range installedFonts {
 			f := data.GetFont(font.Name)
-			err := PlatformInstallFont(f, downloadPath, extractPath, args.KeepTars)
+			err := PlatformInstallFont(f, downloadPath, extractPath, false)
 			if err != nil {
 				return err
 			}

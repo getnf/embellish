@@ -19,7 +19,7 @@ func HandleFontsList(builder *gtk.Builder, params types.GuiParams, toastOverlay 
 	populateFontsList(fontsList, params, toastOverlay)
 }
 
-func handleFontsSearch(builder *gtk.Builder, params types.GuiParams, toastOverlay *adw.ToastOverlay) {
+func HandleFontsSearch(builder *gtk.Builder, params types.GuiParams, toastOverlay *adw.ToastOverlay) {
 	searchButton := builder.GetObject("search-button").Cast().(*gtk.ToggleButton)
 	searchBar := builder.GetObject("search-bar").Cast().(*gtk.SearchBar)
 	searchEntry := builder.GetObject("search-entry").Cast().(*gtk.SearchEntry)
