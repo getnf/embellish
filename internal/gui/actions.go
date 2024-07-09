@@ -1,3 +1,6 @@
+//go:build gui
+// +build gui
+
 package gui
 
 import (

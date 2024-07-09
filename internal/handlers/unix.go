@@ -56,9 +56,5 @@ func PlatformUninstallFont(path string, name string) error {
 }
 
 func PlatformIsAdmin() bool {
-	if os.Geteuid() == 0 {
-		return true
-	}
-
-	return false
+	return os.Geteuid() == 0
 }

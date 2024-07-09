@@ -1,3 +1,6 @@
+//go:build terminal
+// +build terminal
+
 package tui
 
 import (
@@ -85,7 +88,7 @@ func SelectFontsToInstall(data types.NerdFonts, database *sql.DB, downloadPath s
 	}
 
 	for _, font := range selectedFonts {
-		err := handlers.InstallFont(font, downloadPath, extractPath, keepTar)
+		err := handlers.PlatformInstallFont(font, downloadPath, extractPath, keepTar)
 		if err != nil {
 			return err
 		}
@@ -121,7 +124,7 @@ func SelectFontsToUninstall(installedFonts []types.Font, database *sql.DB, extra
 	form.Run()
 
 	for _, font := range selectedFonts {
-		err := handlers.UninstallFont(font, extractPath)
+		err := handlers.PlatformUninstallFont(font, extractPath)
 		if err != nil {
 			return err
 		}

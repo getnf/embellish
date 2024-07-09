@@ -1,3 +1,6 @@
+//go:build gui
+// +build gui
+
 package gui
 
 import "github.com/diamondburned/gotk4/pkg/gtk/v4"

@@ -1,3 +1,6 @@
+//go:build gui
+// +build gui
+
 package gui
 
 import (
@@ -120,7 +123,7 @@ func handleInstallButtonAction(font types.Font, installButton *gtk.Button, remov
 	})
 
 	go func() {
-		err := handlers.HandleGuiInstall(font, params.Database, params.Data, params.DownloadPath, params.ExtractPath)
+		err := handlers.HandleInstall(font, params.Database, params.Data, params.DownloadPath, params.ExtractPath)
 
 		if err != nil {
 			glib.IdleAdd(func() bool {
@@ -167,7 +170,7 @@ func handleRemoveButtonAction(font types.Font, removeButton *gtk.Button, install
 	})
 
 	go func() {
-		handlers.HandleGuiUninstall(font, params.Database, params.Data, params.ExtractPath)
+		handlers.HandleUninstall(font, params.Database, params.ExtractPath)
 
 		glib.IdleAdd(func() bool {
 			spinner.Stop()

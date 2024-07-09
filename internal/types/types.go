@@ -126,6 +126,7 @@ func NewPaths() *Paths {
 
 	os.MkdirAll(paths.Download, 0755)
 	os.MkdirAll(paths.Install, 0755)
+	os.MkdirAll(paths.Db, 0755)
 
 	return paths
 }
