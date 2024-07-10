@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component type="desktop-application">
+    <id>com.github.getnf.Embellish</id>
+
+    <name>Embellish</name>
+    <summary>Install nerd fonts</summary>
+
+    <metadata_license>CC0-1.0</metadata_license>
+    <project_license>GPL-3.0-or-later</project_license>
+
+    <supports>
+        <control>pointing</control>
+        <control>keyboard</control>
+        <control>touch</control>
+    </supports>
+
+    <description>
+        <p>
+            User-friendly application designed for managing Nerd Fonts on your system. With a sleek
+            GTK4 user interface enhanced by libadwaita, Embellish provides a seamless experience for
+            installing, uninstalling and updating of Nerd Fonts.
+        </p>
+    </description>
+
+    <launchable type="desktop-id">com.github.getnf.Embellish.desktop</launchable>
+    <screenshots>
+        <screenshot type="default">
+            <image>https://raw.githubusercontent.com/getnf/embellish/main/Screenshots/main-page.png</image>
+        </screenshot>
+        <screenshot>
+            <image>
+                https://raw.githubusercontent.com/getnf/embellish/main/Screenshots/search-page.png</image>
+        </screenshot>
+    </screenshots>
+</component>
