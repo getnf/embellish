@@ -5,7 +5,7 @@
     <h1 align="center" style="color: f5c211ff">Embellish</h1>
 </p>
 <p align="center">
-    <em>Install Nerd Fonts with ease</em>
+    <em>Install Nerd Fonts</em>
     <br />
     <strong><em>This README file is a work in progress</em></strong>
 </p>
@@ -41,13 +41,25 @@
 
 ## 📍 Overview
 
-Write an `overview`
+An application written in go, helps you install Nerd Fonts.
+
+The app works as a CLI, TUI and GUI written with GTK4 and libadwita 1.4.
+
+
+
 
 ---
 
 ## 📦 Features
 
-Write a list of `features`
+- List all available Nerd Fonts
+- Download and install a Font
+- Uninstall an already installed Font
+- Update all installed fonts
+- Bulk install/uninstall (cli/tui only)
+- Fuzzy search (tui/gui)
+- Font name suggestion (if typed wrong) (cli)
+- Separate binaries for the GUI and CLI/TUI versions
 
 ---
 

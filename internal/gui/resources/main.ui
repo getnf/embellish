@@ -79,6 +79,7 @@
                     <style>
                       <class name="icon-dropshadow" />
                     </style>
+
                     <child>
                       <object class="AdwClamp" id="main-page-clamp">
                         <property name="maximum-size">500</property>

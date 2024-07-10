@@ -123,7 +123,7 @@ func SelectFontsToUninstall(installedFonts []types.Font, database *sql.DB, extra
 	form.Run()
 
 	for _, font := range selectedFonts {
-		err := handlers.PlatformUninstallFont(font, extractPath)
+		err := handlers.PlatformUninstallFont(extractPath, font)
 		if err != nil {
 			return err
 		}
