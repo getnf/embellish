@@ -45,8 +45,14 @@ An application written in go, helps you install Nerd Fonts.
 
 The app works as a CLI, TUI and GUI written with GTK4 and libadwita 1.4.
 
-
-
+- TUI Install
+  <img src="https://raw.githubusercontent.com/getnf/embellish/main/Screenshots/tui-install-prompt.png" width="500" />
+- TUI uninstall
+  <img src="https://raw.githubusercontent.com/getnf/embellish/main/Screenshots/tui-uninstall-prompt.png" width="500" />
+- GUI main page
+    <img src="https://raw.githubusercontent.com/getnf/embellish/main/Screenshots/main-page.png" width="500" />
+- GUI search page
+    <img src="https://raw.githubusercontent.com/getnf/embellish/main/Screenshots/search-page.png" width="500" />  
 
 ---
 
@@ -69,7 +75,21 @@ The app works as a CLI, TUI and GUI written with GTK4 and libadwita 1.4.
 
 Ensure you have the following dependencies installed on your system:
 
-* **Go**: `version 1.22.3` 
+* **go**: `version 1.22.3` 
+* **gcc**
+  
+For the GUI build: 
+* **gtk4-devel**
+* **libadwaita-devel**
+* **gobject-introspection-devel**
+* **gdk-pixbuf2-devel**
+* **graphene-devel**
+* **at-devel**
+* **atk-devel**
+* **pango-devel**
+* **gtk4-devel**
+* **gtk3-devel**
+
 
 ### ⚙️ Installation
 
@@ -86,36 +106,20 @@ cd embellish
 ```
 
 3. Install the dependencies:
-   
-Please note that you will need `gcc` because `go-sqlite3` is a `cgo` package
+
+for GUI binary
 
 ```sh
-go build -o myapp
+go build -v -tags gui -o embelish-gui
 ```
 
-### 🤖 Running embellish
-
-Use the following command to run embellish:
+for tui/cli binary
 
 ```sh
-./myapp
+go build -v -tags terminal -o embelish-tui
 ```
 
-### 🧪 Tests
-
-To execute tests, run:
-
-```sh
-go test
-```
-
----
-
-## 🛠 Project Roadmap
-
-- [ ] `► Graphicall installer for MacOS`
-- [ ] `► Graphicall installer for Windows`
-- [ ] `► unit testing`
+you can also use `-ldflags "-s -w"` to output smaller size binaries with any debug info.
 
 ---
 
