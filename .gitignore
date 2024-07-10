@@ -25,5 +25,7 @@ repo
 go.work
 
 # Built binary
+embellish-tui
+embellish-gui
 embellish
 main

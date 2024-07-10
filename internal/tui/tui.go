@@ -24,7 +24,6 @@ func ThemeGetnfInstall() *huh.Theme {
 	t.Focused.MultiSelectSelector = t.Focused.MultiSelectSelector.Foreground(lipgloss.Color("2"))
 	t.Focused.SelectedOption = t.Focused.SelectedOption.Foreground(lipgloss.Color("2"))
 	t.Focused.SelectedPrefix = t.Focused.SelectedPrefix.Foreground(lipgloss.Color("2"))
-	t.Focused.UnselectedOption = t.Focused.UnselectedOption.Foreground(lipgloss.Color("0"))
 
 	return t
 }
