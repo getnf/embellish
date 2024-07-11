@@ -75,7 +75,7 @@
                   <object class="AdwStatusPage" id="main-page">
                     <property name="title">Embellish</property>
                     <property name="description">Install nerd fonts</property>
-                    <property name="icon_name">com.github.getnf.Embellish</property>
+                    <property name="icon_name">com.github.getnf.embellish</property>
                     <style>
                       <class name="icon-dropshadow" />
                     </style>

@@ -51,7 +51,7 @@ func main() {
 	data.Fonts = db.GetAllFonts(database)
 
 	params := types.GuiParams{Data: data, Database: database, DownloadPath: downloadPath, ExtractPath: extractPath}
-	app := adw.NewApplication("com.github.getnf.Embellish", 0)
+	app := adw.NewApplication("io.github.getnf.embellish", 0)
 
 	provider := gtk.NewCSSProvider()
 	provider.LoadFromData(ressources.StylesCSS)
