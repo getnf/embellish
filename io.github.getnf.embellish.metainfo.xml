@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <component type="desktop-application">
-    <id>com.github.getnf.Embellish</id>
+    <id>io.github.getnf.embellish</id>
 
     <name>Embellish</name>
     <summary>Install nerd fonts</summary>
@@ -22,7 +22,7 @@
         </p>
     </description>
 
-    <launchable type="desktop-id">com.github.getnf.Embellish.desktop</launchable>
+    <launchable type="desktop-id">io.github.getnf.embellish.desktop</launchable>
     <screenshots>
         <screenshot type="default">
             <image>https://raw.githubusercontent.com/getnf/embellish/main/Screenshots/main-page.png</image>

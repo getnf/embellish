@@ -5,6 +5,6 @@ Type=Application
 GenericName=Nerd Fonts Installer
 Comment=Insatll nerd fonts with ease
 Exec=embellish
-Icon=com.github.getnf.Embellish
+Icon=io.github.getnf.embellish
 Categories=GNOME;GTK;TextTools;Utility
 Keywords=Fonts;NerdFonts;nerd;
