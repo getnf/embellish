@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://raw.githubusercontent.com/getnf/embellish/main/com.github.getnf.Embellish.svg" width="100" />
+  <img src="https://raw.githubusercontent.com/getnf/embellish/main/com.github.getnf.embellish.svg" width="100" />
 </p>
 <p align="center">
     <h1 align="center" style="color: f5c211ff">Embellish</h1>
