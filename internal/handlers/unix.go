@@ -1,5 +1,5 @@
-//go:build linux || solaris || openbsd || freebsd || netbsd
-// +build linux solaris openbsd freebsd netbsd
+//go:build linux || solaris || openbsd || freebsd || netbsd || darwin
+// +build linux solaris openbsd freebsd netbsd darwin
 
 package handlers
 
