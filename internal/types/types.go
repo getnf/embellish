@@ -2,13 +2,14 @@ package types
 
 import (
 	"database/sql"
-	"log"
 	"os"
 	"path/filepath"
 	"sort"
 	"strings"
 
 	"github.com/getnf/embellish/internal/utils"
+
+	"github.com/adrg/xdg"
 )
 
 // Fonts
@@ -102,27 +103,9 @@ type Paths struct {
 func NewPaths() *Paths {
 	paths := &Paths{}
 
-	homeDir, err := os.UserHomeDir()
-	if err != nil {
-		log.Fatalln(err)
-	}
-
-	switch os := utils.OsType(); os {
-	case "linux", "solaris", "openbsd", "freebsd", "netbsd":
-		paths.Download = filepath.Join(homeDir, "Downloads", "embellish")
-		paths.Install = filepath.Join(homeDir, ".local", "share", "fonts")
-		paths.Db = filepath.Join(homeDir, ".local", "share", "embellish")
-	case "darwin":
-		paths.Download = filepath.Join(homeDir, "Downloads", "embellish")
-		paths.Install = filepath.Join(homeDir, "Library", "Fonts")
-		paths.Db = filepath.Join(homeDir, "Library", "embellish")
-	case "windows":
-		paths.Download = filepath.Join(homeDir, "Downloads", "embellish")
-		paths.Install = filepath.Join("C:\\Windows", "Fonts")
-		paths.Db = filepath.Join(homeDir, "AppData", "embellish")
-	default:
-		log.Fatalln("unsupported operating system")
-	}
+	paths.Download = filepath.Join(xdg.UserDirs.Download, "embellish")
+	paths.Install = xdg.FontDirs[0]
+	paths.Db = filepath.Join(xdg.DataHome, "embellish")
 
 	os.MkdirAll(paths.Download, 0755)
 	os.MkdirAll(paths.Install, 0755)

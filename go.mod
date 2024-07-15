@@ -10,9 +10,11 @@ require (
 	github.com/charmbracelet/lipgloss v0.11.0
 	github.com/lithammer/fuzzysearch v1.1.8
 	github.com/ulikunitz/xz v0.5.11
-	golang.org/x/sys v0.20.0
+	golang.org/x/sys v0.22.0
 	modernc.org/sqlite v1.30.2
 )
+
+require github.com/adrg/xdg v0.5.0 // indirect
 
 require (
 	github.com/KarpelesLab/weak v0.1.1 // indirect
