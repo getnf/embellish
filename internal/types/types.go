@@ -89,7 +89,7 @@ type Args struct {
 }
 
 func (Args) Version() string {
-	return "getnf v1.0.0"
+	return "getnf v0.2.2"
 }
 
 // paths
