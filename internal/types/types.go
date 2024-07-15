@@ -2,14 +2,10 @@ package types
 
 import (
 	"database/sql"
-	"os"
-	"path/filepath"
 	"sort"
 	"strings"
 
 	"github.com/getnf/embellish/internal/utils"
-
-	"github.com/adrg/xdg"
 )
 
 // Fonts
@@ -89,41 +85,7 @@ type Args struct {
 }
 
 func (Args) Version() string {
-	return "getnf v0.2.2"
-}
-
-// paths
-
-type Paths struct {
-	Download string
-	Install  string
-	Db       string
-}
-
-func NewPaths() *Paths {
-	paths := &Paths{}
-
-	paths.Download = filepath.Join(xdg.UserDirs.Download, "embellish")
-	paths.Install = xdg.FontDirs[0]
-	paths.Db = filepath.Join(xdg.DataHome, "embellish")
-
-	os.MkdirAll(paths.Download, 0755)
-	os.MkdirAll(paths.Install, 0755)
-	os.MkdirAll(paths.Db, 0755)
-
-	return paths
-}
-
-func (p *Paths) GetDownloadPath() string {
-	return p.Download
-}
-
-func (p *Paths) GetInstallPath() string {
-	return p.Install
-}
-
-func (p *Paths) GetDbPath() string {
-	return p.Db
+	return "getnf v0.2.3"
 }
 
 // params
