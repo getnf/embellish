@@ -14,7 +14,7 @@ func NewPaths() *Paths {
 	paths := &Paths{}
 
 	paths.Download = filepath.Join(xdg.UserDirs.Download, "embellish")
-	paths.Install = xda.FontDirs[0]
+	paths.Install = xdg.FontDirs[0]
 	paths.Db = filepath.Join(xdg.DataHome, "embellish")
 
 	os.MkdirAll(paths.Download, 0755)
