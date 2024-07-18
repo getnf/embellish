@@ -19,7 +19,7 @@
 
     <branding>
         <color type="primary" scheme_preference="light">#f9f06p</color>
-        <color type="primary" scheme_preference="dark">#f6c211</color>
+        <color type="primary" scheme_preference="dark">#f5c211</color>
     </branding>
 
     <supports>
