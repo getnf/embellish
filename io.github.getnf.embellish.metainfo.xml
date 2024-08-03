@@ -40,7 +40,7 @@
     <screenshots>
         <screenshot type="default">
             <image>https://raw.githubusercontent.com/getnf/embellish/main/Screenshots/main-page.png</image>
-            <caption>Application main page showing the app logo and a list of nerd fonts</caption>
+            <caption>Application main page showing the app logo and a list of installed and available nerd fonts</caption>
         </screenshot>
         <screenshot>
             <image>
@@ -50,6 +50,9 @@
     </screenshots>
 
     <releases>
+        <release version="v0.3.0" date="2024-08-04">
+            <url>https://github.com/getnf/embellish/releases/tag/v0.3.0</url>
+        </release>
         <release version="v0.2.4" date="2024-07-15">
             <url>https://github.com/getnf/embellish/releases/tag/v0.2.4</url>
         </release>
