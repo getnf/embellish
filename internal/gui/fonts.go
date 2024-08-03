@@ -15,8 +15,11 @@ import (
 
 func HandleFontsList(builder *gtk.Builder, params types.GuiParams, toastOverlay *adw.ToastOverlay) {
 	fontsList := builder.GetObject("fonts-list").Cast().(*gtk.ListBox)
+	installedFontsList := builder.GetObject("installed-fonts-list").Cast().(*gtk.ListBox)
 
-	populateFontsList(fontsList, params, toastOverlay)
+	populateFontsList(fontsList, params, toastOverlay, builder)
+	populateInstalledFontsList(installedFontsList, params, toastOverlay, builder)
+
 }
 
 func HandleFontsSearch(builder *gtk.Builder, params types.GuiParams, toastOverlay *adw.ToastOverlay) {
@@ -41,7 +44,7 @@ func HandleFontsSearch(builder *gtk.Builder, params types.GuiParams, toastOverla
 		}
 	})
 
-	populateFontsList(searchList, params, toastOverlay)
+	populateFontsList(searchList, params, toastOverlay, builder)
 
 	var resultsCount int
 
@@ -64,39 +67,53 @@ func HandleFontsSearch(builder *gtk.Builder, params types.GuiParams, toastOverla
 	})
 }
 
-func populateFontsList(list *gtk.ListBox, params types.GuiParams, toastOverlay *adw.ToastOverlay) {
+func populateFontsList(list *gtk.ListBox, params types.GuiParams, toastOverlay *adw.ToastOverlay, builder *gtk.Builder) {
 	nerdFonts := params.Data.GetFonts()
 	for _, font := range nerdFonts {
-		row := createFontRow(font.Name, createFontRowSuffix(font, params, toastOverlay))
+		if !db.IsFontInstalled(params.Database, font.Name) {
+			row := createFontRow(font.Name, createFontRowSuffix(font, params, toastOverlay, builder))
+			list.Append(row)
+		}
+	}
+}
+
+func populateInstalledFontsList(list *gtk.ListBox, params types.GuiParams, toastOverlay *adw.ToastOverlay, builder *gtk.Builder) {
+	nerdFonts := db.GetInstalledFonts(params.Database)
+	if len(nerdFonts) > 0 {
+		for _, font := range nerdFonts {
+			row := createFontRow(font.Name, createFontRowSuffix(font, params, toastOverlay, builder))
+			list.Append(row)
+		}
+	} else {
+		row := adw.NewActionRow()
+		row.SetTitle("There are no installed fonts")
 		list.Append(row)
 	}
 }
 
-func createFontRowButtons(toastOverlay *adw.ToastOverlay, params types.GuiParams, font types.Font) (*gtk.Button, *gtk.Button) {
-	installButton, installSpinner, InstallIcon := createButton("suggested-action", "folder-download-symbolic", "Install", true)
-	removeButton, removeSpinner, removeIcon := createButton("destructive-action", "user-trash-symbolic", "Remove", false)
+func createFontRowButtons(toastOverlay *adw.ToastOverlay, params types.GuiParams, font types.Font, builder *gtk.Builder) (*gtk.Button, *gtk.Button) {
+	installButton, installSpinner, InstallIcon := createButton("flat", "folder-download-symbolic", "Install", true)
+	removeButton, removeSpinner, removeIcon := createButton("flat", "user-trash-symbolic", "Remove", false)
 
 	if db.IsFontInstalled(params.Database, font.Name) {
-		installButton.SetSensitive(false)
+		installButton.SetVisible(false)
+		removeButton.SetVisible(true)
 	}
 	installButton.ConnectClicked(func() {
-		handleInstallButtonAction(font, installButton, removeButton, installSpinner, InstallIcon, toastOverlay, params)
+		handleInstallButtonAction(font, installButton, removeButton, installSpinner, InstallIcon, toastOverlay, params, builder)
 	})
 
-	if db.IsFontInstalled(params.Database, font.Name) {
-		removeButton.SetSensitive(true)
-	}
 	removeButton.ConnectClicked(func() {
-		handleRemoveButtonAction(font, removeButton, installButton, removeSpinner, removeIcon, toastOverlay, params)
+		handleRemoveButtonAction(font, removeButton, installButton, removeSpinner, removeIcon, toastOverlay, params, builder)
 	})
 
 	return installButton, removeButton
 }
 
-func createFontRowSuffix(font types.Font, params types.GuiParams, toastOverlay *adw.ToastOverlay) *gtk.Box {
+func createFontRowSuffix(font types.Font, params types.GuiParams, toastOverlay *adw.ToastOverlay, builder *gtk.Builder) *gtk.Box {
 	box := gtk.NewBox(0, 10)
 
-	installButton, removeButton := createFontRowButtons(toastOverlay, params, font)
+	installButton, removeButton := createFontRowButtons(toastOverlay, params, font, builder)
 
 	box.Append(installButton)
 	box.Append(removeButton)
@@ -114,7 +131,7 @@ func createFontRow(subtitle string, suffix *gtk.Box) *adw.ActionRow {
 	return row
 }
 
-func handleInstallButtonAction(font types.Font, installButton *gtk.Button, removeButton *gtk.Button, spinner *gtk.Spinner, icon *gtk.Image, toastOverlay *adw.ToastOverlay, params types.GuiParams) {
+func handleInstallButtonAction(font types.Font, installButton *gtk.Button, removeButton *gtk.Button, spinner *gtk.Spinner, icon *gtk.Image, toastOverlay *adw.ToastOverlay, params types.GuiParams, builder *gtk.Builder) {
 	glib.IdleAdd(func() bool {
 		icon.SetVisible(false)
 		spinner.SetVisible(true)
@@ -154,14 +171,18 @@ func handleInstallButtonAction(font types.Font, installButton *gtk.Button, remov
 		})
 
 		glib.IdleAdd(func() bool {
-			installButton.SetSensitive(false)
-			removeButton.SetSensitive(true)
+			installButton.SetVisible(false)
+			removeButton.SetVisible(true)
+			clearListBox(builder.GetObject("fonts-list").Cast().(*gtk.ListBox))
+			clearListBox(builder.GetObject("installed-fonts-list").Cast().(*gtk.ListBox))
+			populateFontsList(builder.GetObject("fonts-list").Cast().(*gtk.ListBox), params, toastOverlay, builder)
+			populateInstalledFontsList(builder.GetObject("installed-fonts-list").Cast().(*gtk.ListBox), params, toastOverlay, builder)
 			return false
 		})
 	}()
 }
 
-func handleRemoveButtonAction(font types.Font, removeButton *gtk.Button, installButton *gtk.Button, spinner *gtk.Spinner, icon *gtk.Image, toastOverlay *adw.ToastOverlay, params types.GuiParams) {
+func handleRemoveButtonAction(font types.Font, removeButton *gtk.Button, installButton *gtk.Button, spinner *gtk.Spinner, icon *gtk.Image, toastOverlay *adw.ToastOverlay, params types.GuiParams, builder *gtk.Builder) {
 	glib.IdleAdd(func() bool {
 		icon.SetVisible(false)
 		spinner.SetVisible(true)
@@ -185,8 +206,12 @@ func handleRemoveButtonAction(font types.Font, removeButton *gtk.Button, install
 		})
 
 		glib.IdleAdd(func() bool {
-			removeButton.SetSensitive(false)
-			installButton.SetSensitive(true)
+			removeButton.SetVisible(false)
+			installButton.SetVisible(true)
+			clearListBox(builder.GetObject("fonts-list").Cast().(*gtk.ListBox))
+			clearListBox(builder.GetObject("installed-fonts-list").Cast().(*gtk.ListBox))
+			populateFontsList(builder.GetObject("fonts-list").Cast().(*gtk.ListBox), params, toastOverlay, builder)
+			populateInstalledFontsList(builder.GetObject("installed-fonts-list").Cast().(*gtk.ListBox), params, toastOverlay, builder)
 			return false
 		})
 	}()

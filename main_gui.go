@@ -75,8 +75,9 @@ func activate(app *adw.Application, params types.GuiParams) {
 	window := builder.GetObject("main-window").Cast().(*adw.ApplicationWindow)
 	toastOverlay := builder.GetObject("toast-overlay").Cast().(*adw.ToastOverlay)
 	mainPage := builder.GetObject("main-page").Cast().(*adw.StatusPage)
+	version := params.Data.Version
 
-	mainPage.SetDescription("Install nerd font\nVersion: " + params.Data.Version)
+	mainPage.SetDescription("Install nerd fonts\n" + version)
 
 	gui.SetupActions(app, builder)
 

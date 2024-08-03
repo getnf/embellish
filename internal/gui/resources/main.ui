@@ -79,16 +79,47 @@
                     <style>
                       <class name="icon-dropshadow" />
                     </style>
-
                     <child>
                       <object class="AdwClamp" id="main-page-clamp">
                         <property name="maximum-size">500</property>
                         <child>
-                          <object class="GtkListBox" id="fonts-list">
-                            <style>
-                              <class name="boxed-list" />
-                            </style>
-                            <property name="selection-mode">0</property>
+                          <object class="GtkBox">
+                            <property name="orientation">vertical</property>
+                            <property name="spacing">12</property>
+                            <child>
+                              <object class="GtkLabel">
+                                <property name="label">Installed Fonts</property>
+                                <property name="halign">1</property>
+                                <style>
+                                  <class name="heading" />
+                                </style>
+                              </object>
+                            </child>
+                            <child>
+                              <object class="GtkListBox" id="installed-fonts-list">
+                                <style>
+                                  <class name="boxed-list" />
+                                </style>
+                                <property name="selection-mode">0</property>
+                              </object>
+                            </child>
+                            <child>
+                              <object class="GtkLabel">
+                                <property name="label">Available Fonts</property>
+                                <property name="halign">1</property>
+                                <style>
+                                  <class name="heading" />
+                                </style>
+                              </object>
+                            </child>
+                            <child>
+                              <object class="GtkListBox" id="fonts-list">
+                                <style>
+                                  <class name="boxed-list" />
+                                </style>
+                                <property name="selection-mode">0</property>
+                              </object>
+                            </child>
                           </object>
                         </child>
                       </object>

@@ -85,7 +85,7 @@ type Args struct {
 }
 
 func (Args) Version() string {
-	return "getnf v0.2.4"
+	return "getnf v0.3.0"
 }
 
 // params
