@@ -15,9 +15,8 @@ import (
 
 func openAboutDialog(window *adw.ApplicationWindow) {
 	builder := GetBuilder(ressources.AboutUI)
-	dialog := builder.GetObject("about-dialog").Cast().(*adw.AboutWindow)
-	dialog.SetTransientFor(&window.Window)
-	dialog.Show()
+	dialog := builder.GetObject("about-dialog").Cast().(*adw.AboutDialog)
+	dialog.Present(window)
 }
 
 func HandleMainMenuActions(window *adw.ApplicationWindow, params types.GuiParams) {

@@ -14,7 +14,7 @@ require (
 	modernc.org/sqlite v1.30.2
 )
 
-require github.com/adrg/xdg v0.5.0 // indirect
+require github.com/adrg/xdg v0.5.0
 
 require (
 	github.com/KarpelesLab/weak v0.1.1 // indirect
@@ -28,8 +28,8 @@ require (
 	github.com/charmbracelet/x/input v0.1.1 // indirect
 	github.com/charmbracelet/x/term v0.1.1 // indirect
 	github.com/charmbracelet/x/windows v0.1.2 // indirect
-	github.com/diamondburned/gotk4-adwaita/pkg v0.0.0-20240512000724-8dc7455ee58f
-	github.com/diamondburned/gotk4/pkg v0.2.2
+	github.com/diamondburned/gotk4-adwaita/pkg v0.0.0-20240712143708-824c3ce8a5f4
+	github.com/diamondburned/gotk4/pkg v0.3.1
 	github.com/dustin/go-humanize v1.0.1 // indirect
 	github.com/erikgeiser/coninput v0.0.0-20211004153227-1c3628e74d0f // indirect
 	github.com/fatih/color v1.7.0 // indirect
