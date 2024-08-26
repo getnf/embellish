@@ -5,7 +5,7 @@
     <name>Embellish</name>
     <summary>Install nerd fonts</summary>
     <developer id="io.github.ronniedroid">
-        <name translatable="no">ronniedroid</name>
+        <name translatable="no">Ronnie Nissan</name>
     </developer>
 
     <metadata_license>CC0-1.0</metadata_license>
@@ -34,6 +34,13 @@
             GTK4 user interface enhanced by libadwaita, Embellish provides a seamless experience for
             installing, uninstalling and updating of Nerd Fonts.
         </p>
+        <ul>
+          <li>List all available Nerd Fonts</li>
+          <li>Download and install a Font</li>
+          <li>Uninstall an already installed Font</li>
+          <li>Update all installed fonts</li>
+          <li>Fuzzy search (tui/gui)</li>
+        </ul>
     </description>
 
     <launchable type="desktop-id">io.github.getnf.embellish.desktop</launchable>
@@ -51,7 +58,16 @@
 
     <releases>
         <release version="v0.3.0" date="2024-08-04">
-            <url>https://github.com/getnf/embellish/releases/tag/v0.3.0</url>
+          <url>https://github.com/getnf/embellish/releases/tag/v0.3.0</url>
+          <description>
+            <ul>
+              <li>Upgraded to libadwaita 1.5</li>
+              <li>Migrated to AboutDialog from AboutWindow</li>
+              <li>Separated installed fonts from available fonts</li>
+              <li>Made only one button visible in the font row depending on it's state (installed or not)</li>
+              <li>Made the buttons flat</li>
+            </ul>
+          </description>
         </release>
         <release version="v0.2.4" date="2024-07-15">
             <url>https://github.com/getnf/embellish/releases/tag/v0.2.4</url>
