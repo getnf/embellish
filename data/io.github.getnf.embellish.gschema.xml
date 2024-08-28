@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schemalist>
+  <schema id="io.github.getnf.embellish" path="/io/github/getnf/embellish/">
+    <key name="welcome-screen-shown" type="b">
+      <default>false</default>
+      <summary>Whether the welcome screen has been shown</summary>
+      <description>If true, the welcome screen won't be shown again.</description>
+    </key>
+  </schema>
+</schemalist>

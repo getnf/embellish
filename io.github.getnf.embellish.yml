@@ -1,0 +1,26 @@
+app-id: io.github.getnf.embellish
+runtime: org.gnome.Platform
+runtime-version: '46'
+sdk: org.gnome.Sdk
+command: io.github.getnf.embellish
+
+finish-args:
+  - --socket=wayland
+  - --socket=fallback-x11
+  - --share=ipc
+  - --device=dri
+
+cleanup:
+  - /include
+  - /lib/pkgconfig
+  - /share/doc
+  - /share/man
+  - '*.a'
+  - '*.la'
+
+modules:
+  - name: embellish
+    buildsystem: meson
+    sources:
+      - type: dir
+        path: .

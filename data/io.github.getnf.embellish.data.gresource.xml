@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gresources>
+    <gresource prefix="/io/github/getnf/embellish">
+      <file>ui/Window.ui</file>
+      <file>welcome.svg</file>
+      <file>css/style.css</file>
+      <file alias="gtk/help-overlay.ui">ui/ShortcutsWindow.ui</file>
+    </gresource>
+    <gresource prefix="/io/github/getnf/embellish/icons/scalable/actions">
+      <file alias="embellish-folder-download-symbolic.svg">icons/folder-download-symbolic.svg</file>
+      <file alias="embellish-image-round-symbolic.svg">icons/image-round-symbolic.svg</file>
+      <file alias="embellish-user-trash-symbolic.svg">icons/user-trash-symbolic.svg</file>
+      <file alias="embellish-edit-find-symbolic.svg">icons/edit-find-symbolic.svg</file>
+    </gresource>
+</gresources>

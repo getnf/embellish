@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <component type="desktop-application">
-    <id>io.github.getnf.embellish</id>
+    <id>@APP_ID@</id>
 
     <name>Embellish</name>
     <summary>Install nerd fonts</summary>
@@ -39,19 +39,24 @@
           <li>Download and install a Font</li>
           <li>Uninstall an already installed Font</li>
           <li>Update all installed fonts</li>
-          <li>Fuzzy search (tui/gui)</li>
+          <li>Fuzzy search</li>
         </ul>
     </description>
 
-    <launchable type="desktop-id">io.github.getnf.embellish.desktop</launchable>
+    <launchable type="desktop-id">@APP_ID@.desktop</launchable>
+    <provides>
+      <binary>@APP_ID@</binary>
+      <dbus type="user">@APP_ID@</dbus>
+    </provides>
+    <translation type="gettext">@APP_ID@</translation>
     <screenshots>
         <screenshot type="default">
-            <image>https://raw.githubusercontent.com/getnf/embellish/main/Screenshots/main-page.png</image>
+            <image>https://raw.githubusercontent.com/getnf/embellish/main/data/screenshots/main-page.png</image>
             <caption>Application main page showing the app logo and a list of installed and available nerd fonts</caption>
         </screenshot>
         <screenshot>
             <image>
-                https://raw.githubusercontent.com/getnf/embellish/main/Screenshots/search-page.png</image>
+                https://raw.githubusercontent.com/getnf/embellish/main/data/screenshots/search-page.png</image>
                 <caption>Application search page, showcasing fuzzy search capabilities</caption>
         </screenshot>
     </screenshots>
