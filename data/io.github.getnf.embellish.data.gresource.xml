@@ -1,15 +1,86 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <gresources>
-    <gresource prefix="/io/github/getnf/embellish">
-      <file>ui/Window.ui</file>
-      <file>welcome.svg</file>
-      <file>css/style.css</file>
-      <file alias="gtk/help-overlay.ui">ui/ShortcutsWindow.ui</file>
-    </gresource>
-    <gresource prefix="/io/github/getnf/embellish/icons/scalable/actions">
-      <file alias="embellish-folder-download-symbolic.svg">icons/folder-download-symbolic.svg</file>
-      <file alias="embellish-image-round-symbolic.svg">icons/image-round-symbolic.svg</file>
-      <file alias="embellish-user-trash-symbolic.svg">icons/user-trash-symbolic.svg</file>
-      <file alias="embellish-edit-find-symbolic.svg">icons/edit-find-symbolic.svg</file>
-    </gresource>
+  <gresource prefix="/io/github/getnf/embellish">
+    <file>ui/Window.ui</file>
+    <file>welcome.svg</file>
+    <file>licence.svg</file>
+    <file>style.css</file>
+    <file>style-dark.css</file>
+    <file>fonts</file>
+    <file>licences</file>
+    <file>previews/0xProto.svg</file>
+    <file>previews/3270.svg</file>
+    <file>previews/Agave.svg</file>
+    <file>previews/AnonymousPro.svg</file>
+    <file>previews/Arimo.svg</file>
+    <file>previews/AurulentSansMono.svg</file>
+    <file>previews/BigBlueTerminal.svg</file>
+    <file>previews/BitstreamVeraSansMono.svg</file>
+    <file>previews/CascadiaCode.svg</file>
+    <file>previews/CascadiaMono.svg</file>
+    <file>previews/CodeNewRoman.svg</file>
+    <file>previews/ComicShannsMono.svg</file>
+    <file>previews/CommitMono.svg</file>
+    <file>previews/Cousine.svg</file>
+    <file>previews/D2Coding.svg</file>
+    <file>previews/DaddyTimeMono.svg</file>
+    <file>previews/DejaVuSansMono.svg</file>
+    <file>previews/DroidSansMono.svg</file>
+    <file>previews/EnvyCodeR.svg</file>
+    <file>previews/FantasqueSansMono.svg</file>
+    <file>previews/FiraCode.svg</file>
+    <file>previews/FiraMono.svg</file>
+    <file>previews/GeistMono.svg</file>
+    <file>previews/Gohu.svg</file>
+    <file>previews/Go-Mono.svg</file>
+    <file>previews/Hack.svg</file>
+    <file>previews/Hasklig.svg</file>
+    <file>previews/HeavyData.svg</file>
+    <file>previews/Hermit.svg</file>
+    <file>previews/iA-Writer.svg</file>
+    <file>previews/IBMPlexMono.svg</file>
+    <file>previews/InconsolataGo.svg</file>
+    <file>previews/InconsolataLGC.svg</file>
+    <file>previews/Inconsolata.svg</file>
+    <file>previews/IntelOneMono.svg</file>
+    <file>previews/Iosevka.svg</file>
+    <file>previews/IosevkaTermSlab.svg</file>
+    <file>previews/IosevkaTerm.svg</file>
+    <file>previews/JetBrainsMono.svg</file>
+    <file>previews/Lekton.svg</file>
+    <file>previews/LiberationMono.svg</file>
+    <file>previews/Lilex.svg</file>
+    <file>previews/MartianMono.svg</file>
+    <file>previews/Meslo.svg</file>
+    <file>previews/Monaspace.svg</file>
+    <file>previews/Monofur.svg</file>
+    <file>previews/Monoid.svg</file>
+    <file>previews/Mononoki.svg</file>
+    <file>previews/MPlus.svg</file>
+    <file>previews/NerdFontsSymbolsOnly.svg</file>
+    <file>previews/Noto.svg</file>
+    <file>previews/OpenDyslexic.svg</file>
+    <file>previews/Overpass.svg</file>
+    <file>previews/ProFont.svg</file>
+    <file>previews/ProggyClean.svg</file>
+    <file>previews/Recursive.svg</file>
+    <file>previews/RobotoMono.svg</file>
+    <file>previews/ShareTechMono.svg</file>
+    <file>previews/SourceCodePro.svg</file>
+    <file>previews/SpaceMono.svg</file>
+    <file>previews/Terminus.svg</file>
+    <file>previews/Tinos.svg</file>
+    <file>previews/UbuntuMono.svg</file>
+    <file>previews/UbuntuSans.svg</file>
+    <file>previews/Ubuntu.svg</file>
+    <file>previews/VictorMono.svg</file>
+    <file>previews/ZedMono.svg</file>
+    <file alias="gtk/help-overlay.ui">ui/ShortcutsWindow.ui</file>
+  </gresource>
+  <gresource prefix="/io/github/getnf/embellish/icons/scalable/actions">
+    <file alias="embellish-download-symbolic.svg">icons/folder-download-symbolic.svg</file>
+    <file alias="embellish-preview-symbolic.svg">icons/eye-open-negative-filled-symbolic.svg</file>
+    <file alias="embellish-remove-symbolic.svg">icons/user-trash-symbolic.svg</file>
+    <file alias="embellish-search-symbolic.svg">icons/edit-find-symbolic.svg</file>
+  </gresource>
 </gresources>

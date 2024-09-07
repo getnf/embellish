@@ -7,5 +7,6 @@ import { EmbApplication } from "./application.js";
 export function main(argv) {
     return new EmbApplication({
         "application-id": pkg.name,
+        resource_base_path: "/io/github/getnf/embellish",
     }).run(argv);
 }

@@ -8,6 +8,12 @@
 	    <property name="title" translatable="true">General</property>
             <child>
 	      <object class="GtkShortcutsShortcut">
+	        <property name="title" translatable="true">Search fonts</property>
+	        <property name="action-name">win.search</property>
+	      </object>
+	    </child>
+            <child>
+	      <object class="GtkShortcutsShortcut">
 	        <property name="title" translatable="true">Quit App</property>
 	        <property name="action-name">app.quit</property>
 	      </object>

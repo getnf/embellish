@@ -1,0 +1,10 @@
+.licence-button button {
+    border-radius: 9999px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    padding: 4px 12px;
+}
+
+.svg-preview {
+    filter: invert(1);
+}

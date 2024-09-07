@@ -14,7 +14,6 @@ export const EmbApplication = GObject.registerClass(
         vfunc_startup() {
             super.vfunc_startup();
             this.#loadSettings();
-            this.#loadStylesheet();
             this.#setupActions();
             this.#setupAccelerators();
         }
@@ -43,19 +42,7 @@ export const EmbApplication = GObject.registerClass(
         #setupAccelerators() {
             this.set_accels_for_action("app.quit", ["<Control>q"]);
             this.set_accels_for_action("window.close", ["<Control>w"]);
-        }
-
-        #loadStylesheet() {
-            const provider = new Gtk.CssProvider();
-            provider.load_from_resource(
-                "/io/github/getnf/embellish/css/style.css",
-            );
-
-            Gtk.StyleContext.add_provider_for_display(
-                Gdk.Display.get_default(),
-                provider,
-                Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION,
-            );
+            this.set_accels_for_action("win.search", ["<Control>f"]);
         }
 
         _openAboutDialog() {

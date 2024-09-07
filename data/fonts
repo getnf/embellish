@@ -1,0 +1,359 @@
+[0xProto]
+tarName=0xProto
+licenceId=OFL-1.1;
+description=An opinionated font for software engineers
+
+[IBM 3270]
+patchedName=3270
+tarName=3270
+licenceId=BSD-3-Clause;
+description=Derived from the x3270 font, a modern format of a font with high nostalgic value
+
+[Agave]
+tarName=Agave
+licenceId=MIT;
+description=A small, monospace, outline font that is geometrically regular and simple
+
+[Anonymous Pro]
+patchedName=AnonymicePro
+tarName=AnonymousPro
+licenceId=OFL-1.1-RFN;
+description=Inspired by Anonymous 9 on Macintosh, since 2009, distinct `O`, `0`, `I`, `l`, `1`
+
+[Arimo]
+tarName=Arimo
+licenceId=Apache-2.0;
+description=Metrically similar to Arial, pan-European WGL character set, sans serif
+
+[Aurulent Sans Mono]
+patchedName=AurulentSansM
+tarName=AurulentSansMono
+licenceId=OFL-1.1;
+description=Sans serif, designed by Stephen G. Hartke who also created Verily Serif
+
+[BigBlue Terminal]
+patchedName=BigBlueTerm
+tarName=BigBlueTerminal
+licenceId=CC-BY-SA-4.0;
+description=Nostalgic, closely based on IBM's 8x14 EGA/VGA charset
+
+[Bitstrom Vera Sans Mono]
+patchedName=BitstromWera
+tarName=BitstreamVeraSansMono
+licenceId=Bitstream-Vera;
+description=Dotted zero, compact lowercase characters
+
+[Cascadia Code]
+patchedName=CaskaydiaCove
+tarName=CascadiaCode
+licenceId=OFL-1.1-RFN;
+description=A fun, new monospaced font that includes programming ligatures and is designed to enhance the modern look and feel of the Windows Terminal
+
+[Cascadia Mono]
+patchedName=CaskaydiaMono
+tarName=CascadiaMono
+licenceId=OFL-1.1-RFN;
+description=Like Cascadia Code but without any ligatures
+
+[Code New Roman]
+tarName=CodeNewRoman
+licenceId=OFL-1.1;
+description=Tunable, slashed zeros, compact smaller characters
+
+[Comic Shanns Mono]
+tarName=ComicShannsMono
+licenceId=MIT;
+description=The very typeface you’ve been trained to recognize since childhood
+
+[Commit Mono]
+tarName=CommitMono
+licenceId=OFL-1.1;
+description=An anonymous and neutral programming typeface
+
+[Cousine]
+tarName=Cousine
+licenceId=Apache-2.0;
+description=Similar to Courier New with better readability, dotted zeros
+
+[D2Coding]
+patchedName=D2CodingLigature
+tarName=D2Coding
+licenceId=OFL-1.1;
+description=A coding font for Koreans. This is the variant with ligatures.
+
+[DaddyTimeMono]
+tarName=DaddyTimeMono
+licenceId=OFL-1.1;
+description=A monospaced font for programmers and other terminal groupies
+
+[DejaVu Sans Mono]
+patchedName=DejaVuSansM
+tarName=DejaVuSansMono
+licenceId=Bitstream-Vera;
+description=Dotted zero, based on the Bitstream Vera Fonts with a wider range of characters
+
+[Droid Sans Mono]
+patchedName=DroidSansM
+tarName=DroidSansMono
+licenceId=Apache-2.0;
+description=Good for small screens or font sizes
+
+[Envy Code R]
+tarName=EnvyCodeR
+licenceId=OFL-1.1-RFN;
+description=Fully-scalable monospaced font designed for programming and command prompts
+
+[Fantasque Sans Mono]
+patchedName=FantasqueSansM
+tarName=FantasqueSansMono
+licenceId=OFL-1.1;
+description="Wibbly-wobbly handwriting-like fuzziness", takes some inspiration from Inconsolata and Monaco
+
+[Fira Code]
+tarName=FiraCode
+licenceId=OFL-1.1;
+description=Programming ligatures, extension of Fira Mono font, enlarged operators
+
+[Fira]
+patchedName=FiraMono
+tarName=FiraMono
+licenceId=OFL-1.1;
+description=Mozilla typeface, dotted zero
+
+[Geist Mono]
+tarName=GeistMono
+licenceId=OFL-1.1;
+description=Monospaced typeface designed to be used in code editors, diagrams, terminals, and other text-based interfaces where code is represented
+
+[Go Mono]
+tarName=Go-Mono
+licenceId=BSD-3-Clause-Clear;
+description=Created specifically for the Go project, looks particularly clear for use with the Go language
+
+[Gohu]
+tarName=Gohu
+licenceId=WTFPL;
+description=Bitmap font, tall capitals and ascenders, small serifs
+
+[Hack]
+tarName=Hack
+licenceId=Bitstream-Vera;MIT;
+description=Dotted zero, short descenders, expands upon work done for Bitstream Vera & DejaVu, legible at common sizes
+
+[Hasklig]
+patchedName=Hasklug
+tarName=Hasklig
+licenceId=OFL-1.1-RFN;
+description=Monospaced ligatures, makes composite glyphs (e.g. ->) more readable, especially in Haskell
+
+[Heavy Data]
+tarName=HeavyData
+licenceId=VicFieger;
+description=Novel and unique design, dotted zero
+
+[Hermit]
+patchedName=Hurmit
+tarName=Hermit
+licenceId=OFL-1.1-RFN;
+description=Symbols stand out from common text
+
+[iA Writer]
+patchedName=iMWriting
+tarName=iA-Writer
+licenceId=OFL-1.1-RFN;
+description=A heavy modification of IBM's Plex font
+
+[IBM Plex Mono]
+patchedName=BlexMono
+tarName=IBMPlexMono
+licenceId=OFL-1.1-RFN;
+description=It's global, it's versatile and it's distinctly IBM
+
+[Inconsolata]
+tarName=Inconsolata
+licenceId=OFL-1.1;
+description=Slashed zero, takes inspiration from many different fonts and glyphs, subtle curves in lowercase
+
+[InconsolataGo]
+tarName=InconsolataGo
+licenceId=OFL-1.1;
+description=Inconsolata with straight quotes
+
+[Inconsolata LGC]
+tarName=InconsolataLGC
+licenceId=OFL-1.1;
+description=Inconsolata with added the Cyrillic alphabet
+
+[Intel One Mono]
+patchedName=IntoneMono
+tarName=IntelOneMono
+licenceId=OFL-1.1-RFN;
+description=Expressive monospaced font family that’s built with clarity, legibility, and the needs of developers in mind
+
+[Iosevka]
+tarName=Iosevka
+licenceId=OFL-1.1;
+description=Narrow and horizontally tight characters, slashed zero
+
+[Iosevka Term]
+tarName=IosevkaTerm
+licenceId=OFL-1.1;
+description=A narrower variant focusing terminal uses: Arrows and geometric symbols will be narrow to follow typical terminal usages
+
+[Iosevka Term Slab]
+tarName=IosevkaTermSlab
+licenceId=OFL-1.1;
+description=Nice as Iosevka but with slab serifs
+
+[JetBrains Mono]
+tarName=JetBrainsMono
+licenceId=OFL-1.1;
+description=JetBrains officially created font for developers
+
+[Lekton]
+tarName=Lekton
+licenceId=OFL-1.1;
+description=Very light and thin characters, sharp m's, `0` and `O` very similar
+
+[Liberation Mono]
+patchedName=LiterationMono
+tarName=LiberationMono
+licenceId=OFL-1.1-RFN;
+description=`0` and `O` very similar, very short tight descenders
+
+[Lilex]
+tarName=Lilex
+licenceId=OFL-1.1;
+description=Modern with ligatures
+
+[MartianMono]
+tarName=MartianMono
+licenceId=OFL-1.1;
+description=Free and open-source monospaced font from Evil Martians
+
+[Meslo LG]
+tarName=Meslo
+licenceId=Apache-2.0;
+description=Slashed zeros, customized version of Apple's Menlo
+
+[Monaspace]
+patchedName=Monaspice
+tarName=Monaspace
+licenceId=OFL-1.1-RFN;
+description=Five matching fonts all having 'texture healing' to improve legibility
+
+[Monofur]
+tarName=Monofur
+licenceId=Monofur;
+description=Dotted zeros, slightly exaggerated curvy characters, compact characters
+
+[Monoid]
+tarName=Monoid
+licenceId=MIT;OFL-1.1;
+description=Ligatures, distinguishable glyphs with short ascenders & descenders, large operators & punctuation
+
+[Mononoki]
+tarName=Mononoki
+licenceId=OFL-1.1-RFN;
+description=Keeps in mind differentiation of characters and resolution sizes
+
+[MPlus]
+patchedName=M+
+tarName=MPlus
+licenceId=OFL-1.1;
+description=Multiple styles and weights, many glyph sets (e.g. Kana glyphs)
+
+[Noto]
+tarName=Noto
+licenceId=OFL-1.1;
+description=`0` and `O` very similar, characters are either very curvy or straight lined
+
+[OpenDyslexic]
+tarName=OpenDyslexic
+licenceId=Bitstream-Vera;
+description=Designed specifically to alleviate reading errors caused by dyslexia
+
+[Overpass]
+tarName=Overpass
+licenceId=OFL-1.1;LGPL-2.1-only;
+description=An open source font family inspired by Highway Gothic
+
+[ProFont]
+tarName=ProFont
+licenceId=MIT;
+description=Looks best with anti-aliasing turned off, squared off character corners, vertically tight small `s`
+
+[ProggyCleanTT]
+patchedName=ProggyClean
+tarName=ProggyClean
+licenceId=MIT;
+description=Designed particularly for use at small point sizes
+
+[Recursive Mono]
+patchedName=RecMono
+tarName=Recursive
+licenceId=OFL-1.1;
+description=inspired by casual script signpainting, 4 variants
+
+[Roboto Mono]
+tarName=RobotoMono
+licenceId=Apache-2.0;
+description=Dashed zero, curved and straight character lines
+
+[Share Tech Mono]
+patchedName=ShureTechMono
+tarName=ShareTechMono
+licenceId=OFL-1.1-RFN;
+description=Dotted zeros, distinguishable 1 and l, curved and straight character lines
+
+[Source Code Pro]
+patchedName=SauceCodePro
+tarName=SourceCodePro
+licenceId=OFL-1.1-RFN;
+description=Monospaced font family for user interface and coding environments
+
+[SpaceMono]
+tarName=SpaceMono
+licenceId=OFL-1.1;
+description=Squarish character lines, dotted zero, aggressive parenthesis
+
+[Symbols Only]
+tarName=NerdFontsSymbolsOnly
+licenceId=MIT;
+description=Just the Nerd Font Icons. I.e. Symbol font only
+
+[Terminus]
+patchedName=Terminess
+tarName=Terminus
+licenceId=OFL-1.1-RFN;
+description=Squarish characters that are slightly askew
+
+[Tinos]
+tarName=Tinos
+licenceId=Apache-2.0;
+description=Some similarities to Times New Roman, designed by Steve Matteson, includes pan-European WGL character set
+
+[Ubuntu]
+tarName=Ubuntu
+licenceId=UFL;
+description=Specially created for Ubuntu
+
+[Ubuntu Mono]
+tarName=UbuntuMono
+licenceId=UFL;
+description=Dotted zeros, used the `n`, `o`, `H` & `O` Latin characters as a base for design
+
+[Ubuntu Sans]
+tarName=UbuntuSans
+licenceId=UFL;
+description=Refreshed version of Ubuntu and Ubuntu Mono fonts
+
+[Victor Mono]
+tarName=VictorMono
+licenceId=OFL-1.1;
+description=Clean, crisp and narrow, with a large x-height and clear punctuation
+
+[Zed Mono]
+tarName=ZedMono
+licenceId=OFL-1.1;
+description=Zed Mono is a more rounded version of Iosevka

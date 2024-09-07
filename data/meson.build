@@ -13,7 +13,6 @@ install_data(
 	install_dir: get_option('datadir') / 'glib-2.0' / 'schemas'
 )
 
-
 # Install the application icons
 install_data(
 	'icons' / APP_ID + '.svg',
