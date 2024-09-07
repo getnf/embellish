@@ -35,35 +35,35 @@ configure_file(
 	install_dir: get_option('datadir') / 'dbus-1' / 'services'
 )
 
-# # Translate and install the desktop file
-# i18n.merge_file(
-# 	type: 'desktop',
-# 	input: configure_file(
-# 		input: APP_ID + '.desktop',
-# 		output: APP_ID + '.desktop.in',
-# 		configuration: {
-# 			'APP_ID': APP_ID,
-# 			'BINDIR': get_option('prefix') / get_option('bindir')
-# 		}
-# 	),
-# 	output: APP_ID + '.desktop',
-# 	po_dir: meson.project_source_root() / 'po',
-# 	install: true,
-# 	install_dir: get_option('datadir') / 'applications'
-# )
+# Translate and install the desktop file
+i18n.merge_file(
+	type: 'desktop',
+	input: configure_file(
+		input: APP_ID + '.desktop',
+		output: APP_ID + '.desktop.in',
+		configuration: {
+			'APP_ID': APP_ID,
+			'BINDIR': get_option('prefix') / get_option('bindir')
+		}
+	),
+	output: APP_ID + '.desktop',
+	po_dir: meson.project_source_root() / 'po',
+	install: true,
+	install_dir: get_option('datadir') / 'applications'
+)
 
-# # Translate and install the AppStream metadata
-# i18n.merge_file(
-# 	input: configure_file(
-# 		input: APP_ID + '.metainfo.xml',
-# 		output: APP_ID + '.metainfo.xml.in',
-# 		configuration: {
-# 			'APP_ID': APP_ID,
-# 		}
-# 	),
-# 	output: APP_ID + '.metainfo.xml',
-# 	type: 'xml',
-# 	po_dir: meson.project_source_root() / 'po',
-# 	install: true,
-# 	install_dir: get_option('datadir') / 'metainfo'
-# )
+# Translate and install the AppStream metadata
+i18n.merge_file(
+	input: configure_file(
+		input: APP_ID + '.metainfo.xml',
+		output: APP_ID + '.metainfo.xml.in',
+		configuration: {
+			'APP_ID': APP_ID,
+		}
+	),
+	output: APP_ID + '.metainfo.xml',
+	type: 'xml',
+	po_dir: meson.project_source_root() / 'po',
+	install: true,
+	install_dir: get_option('datadir') / 'metainfo'
+)

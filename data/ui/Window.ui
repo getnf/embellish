@@ -132,7 +132,7 @@
                                         <property name="spacing">12</property>
                                         <child>
                                           <object class="GtkLabel">
-                                            <property name="label">Installed fonts</property>
+                                            <property name="label" translatable="true">Installed fonts</property>
                                             <property name="halign">1</property>
                                             <style>
                                               <class name="heading" />
@@ -156,7 +156,7 @@
                                         <property name="spacing">12</property>
                                         <child>
                                           <object class="GtkLabel">
-                                            <property name="label">Available fonts</property>
+                                            <property name="label" translatable="true">Available fonts</property>
                                             <property name="halign">1</property>
                                             <style>
                                               <class name="heading" />

@@ -99,7 +99,7 @@ export const EmbWindow = GObject.registerClass(
 
                 this._fontDirectories = directories;
             } catch (error) {
-                console.error("Failed to enumerate font directories:", error);
+                console.log("Failed to enumerate font directories:", error);
                 this._fontDirectories = [];
             }
         }
@@ -114,8 +114,8 @@ export const EmbWindow = GObject.registerClass(
                     Gio.ResourceLookupFlags.NONE,
                 );
                 keyFile.load_from_bytes(data, GLib.KeyFileFlags.NONE);
-            } catch (e) {
-                logError(e, `Failed to load ${resourcePath}`);
+            } catch (error) {
+                console.log(`Failed to load ${resourcePath}`, error);
                 return;
             }
 
@@ -243,7 +243,8 @@ export const EmbWindow = GObject.registerClass(
             licenceButton.add_css_class("licence-button");
             const licenceButtonLabel = new Gtk.Label();
             if (font.licences.length > 1) {
-                licenceButtonLabel.set_label("Dual");
+                // Translators: This means that the font has two licences
+                licenceButtonLabel.set_label(_("Dual"));
             } else {
                 licenceButtonLabel.set_label(font.licences[0]);
             }
@@ -263,24 +264,53 @@ export const EmbWindow = GObject.registerClass(
 
             box.append(previewButton);
 
-            const installButton = new Gtk.Button({
-                icon_name: "embellish-download-symbolic",
-            });
+            const installButton = new Gtk.Button();
             installButton.add_css_class("flat");
+
+            const installButtonBox = new Gtk.Box({
+                orientation: Gtk.Orientation.HORIZONTAL,
+            });
+
+            const installButtonIcon = Gtk.Image.new_from_resource(
+                "/io/github/getnf/embellish/icons/scalable/actions/embellish-download-symbolic.svg",
+            );
+
+            const installSpinner = new Gtk.Spinner();
+
+            installSpinner.set_visible(false);
+
+            installButtonBox.append(installButtonIcon);
+            installButtonBox.append(installSpinner);
+
+            installButton.set_child(installButtonBox);
 
             installButton.connect("clicked", async () => {
                 try {
+                    installButtonIcon.set_visible(false);
+                    installSpinner.set_visible(true);
+                    installSpinner.spinning = true;
                     await this._downloadAndInstallFont(font.tarName);
+                    installSpinner.spinning = false;
+                    installSpinner.set_visible(false);
+                    installButtonIcon.set_visible(true);
                     const toast = new Adw.Toast({
-                        title: _("Installation successful"),
+                        title: _("Font installed"),
                     });
                     this._toastOverlay.add_toast(toast);
+                    this.#loadFontDirectories();
+                    this.#loadFonts();
+                    this._searchList.remove_all();
+                    this.#setupSearch();
+                    this.#populateFontLists();
                 } catch (error) {
+                    installSpinner.spinning = false;
+                    installSpinner.set_visible(false);
+                    installButtonIcon.set_visible(true);
                     const toast = new Adw.Toast({
-                        title: _(`Installation failed ${error}`),
+                        title: _(`Installation failed: ${error}`),
                     });
                     this._toastOverlay.add_toast(toast);
-                    console.error("Font installation failed:", error);
+                    console.log("Font installation failed: ", error);
                 }
             });
 
@@ -290,7 +320,24 @@ export const EmbWindow = GObject.registerClass(
             removeButton.add_css_class("flat");
 
             removeButton.connect("clicked", () => {
-                this._removeFonts(font.tarName);
+                try {
+                    this._removeFonts(font.tarName);
+                    const toast = new Adw.Toast({
+                        title: _("Font removed"),
+                    });
+                    this._toastOverlay.add_toast(toast);
+                    this.#loadFontDirectories();
+                    this.#loadFonts();
+                    this._searchList.remove_all();
+                    this.#setupSearch();
+                    this.#populateFontLists();
+                } catch (error) {
+                    const toast = new Adw.Toast({
+                        title: _(`Removal failed: ${error}`),
+                    });
+                    this._toastOverlay.add_toast(toast);
+                    console.log("Font removal failed: ", error);
+                }
             });
 
             if (font.installed) {
@@ -404,12 +451,12 @@ export const EmbWindow = GObject.registerClass(
                 );
                 keyFile.load_from_bytes(data, GLib.KeyFileFlags.NONE);
             } catch (e) {
-                logError(e, `Failed to load ${resourcePath}`);
+                console.log(e, `Failed to load ${resourcePath}`);
                 return null;
             }
             const description = keyFile.get_string("licences", licenceKey);
 
-            return description ? description : "No description available";
+            return description ? description : _("No description available");
         }
 
         async #setupFontsVersion() {
@@ -418,20 +465,25 @@ export const EmbWindow = GObject.registerClass(
                 "embellish",
                 "fonts",
             ]);
-            const keyFile = this._getReleaseKeyFile();
-            let latestRelease = null;
-            let currentRelease = this._getCurrentRelease();
+            let keyFile;
+            try {
+                keyFile = this._getReleaseKeyFile();
+            } catch (error) {
+                console.log("Failed opening the key file: ", error);
+            }
+            let latestRelease;
+            let currentRelease;
 
             try {
                 currentRelease = this._getCurrentRelease();
             } catch (error) {
-                logError(error);
+                console.log(error);
             }
 
             try {
                 latestRelease = await this._getLatestRelease();
             } catch (error) {
-                console.error("Failed to fetch the latest release:", error);
+                console.log("Failed to fetch the latest release:", error);
                 const toast = new Adw.Toast({
                     title: _(
                         `Failed to fetch the latest release version ${error}`,
@@ -441,23 +493,13 @@ export const EmbWindow = GObject.registerClass(
                 return;
             }
 
-            if (latestRelease.numeric !== currentRelease.numeric) {
-                keyFile.set_string(
-                    "NerdFonts",
-                    "version",
-                    latestRelease.numeric,
-                );
-                keyFile.set_string(
-                    "NerdFonts",
-                    "version-string",
-                    latestRelease.string,
-                );
+            if (latestRelease !== currentRelease) {
+                keyFile.set_string("NerdFonts", "version", latestRelease);
 
                 try {
                     keyFile.save_to_file(keyFilePath);
-                    print("Keyfile initialized with default values.");
-                } catch (e) {
-                    logError(e, "Failed to save the keyfile.");
+                } catch (error) {
+                    console.log("Failed to save the keyfile.", error);
                 }
             }
         }
@@ -475,14 +517,10 @@ export const EmbWindow = GObject.registerClass(
                 try {
                     keyFile.load_from_file(keyFilePath, GLib.KeyFileFlags.NONE);
                 } catch (error) {
-                    console.error(
-                        "Failed to load the existing key file:",
-                        error,
-                    );
+                    throw error;
                 }
             } else {
-                keyFile.set_string("NerdFonts", "version", "0");
-                keyFile.set_string("NerdFonts", "version-string", "v0");
+                keyFile.set_string("NerdFonts", "version", "v0");
 
                 GLib.mkdir_with_parents(
                     GLib.path_get_dirname(keyFilePath),
@@ -491,9 +529,9 @@ export const EmbWindow = GObject.registerClass(
 
                 try {
                     keyFile.save_to_file(keyFilePath);
-                    print("Keyfile initialized with default values.");
-                } catch (e) {
-                    logError(e, "Failed to save the keyfile.");
+                    console.log("Keyfile initialized with default values.");
+                } catch (error) {
+                    throw error;
                 }
             }
 
@@ -506,13 +544,15 @@ export const EmbWindow = GObject.registerClass(
                 "embellish",
                 "fonts",
             ]);
-            const keyFile = this._getReleaseKeyFile();
+            let keyFile;
+            try {
+                keyFile = this._getReleaseKeyFile();
+            } catch (error) {
+                throw error;
+            }
 
             keyFile.load_from_file(keyFilePath, GLib.KeyFileFlags.NONE);
-            const currentRelease = {
-                numeric: keyFile.get_string("NerdFonts", "version"),
-                string: keyFile.get_string("NerdFonts", "version-string"),
-            };
+            const currentRelease = keyFile.get_string("NerdFonts", "version");
 
             return currentRelease;
         }
@@ -543,10 +583,9 @@ export const EmbWindow = GObject.registerClass(
                 const textDecoder = new TextDecoder("utf-8");
                 const responseText = textDecoder.decode(bytes.toArray());
                 const jsonResponse = JSON.parse(responseText);
-                const releaseString = jsonResponse.tag_name;
-                const releaseNumeric = releaseString.replace(/\D/g, "");
+                const release = jsonResponse.tag_name;
 
-                return { string: releaseString, numeric: releaseNumeric };
+                return release;
             } catch (error) {
                 throw error;
             }
@@ -564,18 +603,8 @@ export const EmbWindow = GObject.registerClass(
             try {
                 let file = Gio.File.new_for_path(fontDir);
                 this._deleteRecursively(file);
-                const toast = new Adw.Toast({
-                    title: _("Font uninstalled"),
-                });
-                this._toastOverlay.add_toast(toast);
-            } catch (e) {
-                console.log(
-                    `Failed to remove fonts directory ${fontDir}: ${e.message}`,
-                );
-                const toast = new Adw.Toast({
-                    title: _("Uninstallation failed"),
-                });
-                this._toastOverlay.add_toast(toast);
+            } catch (error) {
+                throw error;
             }
         }
 
@@ -589,7 +618,7 @@ export const EmbWindow = GObject.registerClass(
         }
 
         async _downloadFont(tarName) {
-            const release = this._getCurrentRelease().string;
+            const release = this._getCurrentRelease();
             const url = `https://github.com/ryanoasis/nerd-fonts/releases/download/${release}/${tarName}.tar.xz`;
             const downloadDir = GLib.build_filenamev([
                 GLib.get_user_special_dir(
@@ -642,7 +671,7 @@ export const EmbWindow = GObject.registerClass(
                 );
 
                 if (request.get_status() !== Soup.Status.OK) {
-                    throw new error(
+                    throw new Error(
                         `HTTP request failed with status: ${request.get_status()}`,
                     );
                 }
@@ -685,7 +714,7 @@ export const EmbWindow = GObject.registerClass(
 
             extractor.set_output_is_dest(true);
 
-            extractor.connect("error", (extractor, error) => {
+            extractor.connect("error", (error) => {
                 if (error) {
                     throw new Error(`failed to extract ${filePath}`);
                 }

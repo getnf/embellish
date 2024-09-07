@@ -39,7 +39,7 @@
           <li>Download and install a Font</li>
           <li>Uninstall an already installed Font</li>
           <li>Update all installed fonts</li>
-          <li>Fuzzy search</li>
+          <li>Search fonts</li>
         </ul>
     </description>
 
@@ -57,14 +57,27 @@
         <screenshot>
             <image>
                 https://raw.githubusercontent.com/getnf/embellish/main/data/screenshots/search-page.png</image>
-                <caption>Application search page, showcasing fuzzy search capabilities</caption>
+                <caption>Application search page, showcasing search</caption>
         </screenshot>
     </screenshots>
 
     <releases>
+      <release version="v0.3.0" date="2024-09-07">
+          <description translate="no">
+            <ul>
+              <li>Complete wririte from Go to Gjs</li>
+              <li>Much smaller download and install size</li>
+              <li>Added a welcome screen</li>
+              <li>Redesign of the main page</li>
+              <li>Added font previews</li>
+              <li>Added font licence information</li>
+              <li>Added font descriptions</li>
+            </ul>
+          </description>
+        </release>
         <release version="v0.3.0" date="2024-08-04">
           <url>https://github.com/getnf/embellish/releases/tag/v0.3.0</url>
-          <description>
+          <description translate="no">
             <ul>
               <li>Upgraded to libadwaita 1.5</li>
               <li>Migrated to AboutDialog from AboutWindow</li>

@@ -10,15 +10,15 @@ APP_ID = 'io.github.getnf.embellish'
 
 # Import the modules
 gnome = import('gnome')
-#i18n = import('i18n')
+i18n = import('i18n')
 
 # Load instructions from subdirectories
 subdir('data')
 subdir('src')
-#subdir('po')
+subdir('po')
 
 gnome.post_install(
 	gtk_update_icon_cache: true,
-        # update_desktop_database: true,
+        update_desktop_database: true,
         glib_compile_schemas: true
 )

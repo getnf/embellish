@@ -1,6 +1,5 @@
 import Adw from "gi://Adw";
 import GObject from "gi://GObject";
-import Gdk from "gi://Gdk";
 import Gtk from "gi://Gtk";
 import Gio from "gi://Gio";
 
@@ -59,10 +58,10 @@ export const EmbApplication = GObject.registerClass(
                 copyright: "© 2024 Ronnie Nissan",
                 license_type: Gtk.License.GPL_3_0,
                 developers: ["Ronnie Nissan <ronnie.nissan@proton.me>"],
-                artists: [
-                    "Jakub Steiner https://jimmac.eu/",
-                    "Domenik https://github.com/drpetrikov",
-                ],
+                designers: ["Brage Fuglseth https://bragefuglseth.dev"],
+                artists: ["Jakub Steiner https://jimmac.eu/"],
+                // Translators: Replace "translator-credits" with your names, one name per line
+                translator_credits: _("translator-credits"),
             });
 
             dialog.present(this.get_active_window());
