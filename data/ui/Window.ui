@@ -83,6 +83,7 @@
                         <child type="start">
 		          <object class="GtkButton">
                             <property name="action-name">win.search</property>
+                            <property name="tooltip-text" translatable="true">Search fonts</property>
                             <property name="icon-name">embellish-search-symbolic</property>
 		          </object>
 	                </child>

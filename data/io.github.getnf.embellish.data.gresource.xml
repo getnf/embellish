@@ -82,5 +82,6 @@
     <file alias="embellish-preview-symbolic.svg">icons/eye-open-negative-filled-symbolic.svg</file>
     <file alias="embellish-remove-symbolic.svg">icons/user-trash-symbolic.svg</file>
     <file alias="embellish-search-symbolic.svg">icons/edit-find-symbolic.svg</file>
+    <file alias="embellish-update-symbolic.svg">icons/software-update-available-symbolic.svg</file>
   </gresource>
 </gresources>
