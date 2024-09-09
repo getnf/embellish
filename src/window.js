@@ -40,6 +40,25 @@ export const EmbWindow = GObject.registerClass(
                 "send_and_read_finish",
             );
 
+            Gio._promisify(
+                Gio.File.prototype,
+                "replace_contents_async",
+                "replace_contents_finish",
+            );
+
+            Gio._promisify(
+                Gio.File.prototype,
+                "query_info_async",
+                "query_info_finish",
+            );
+            Gio._promisify(
+                Gio.File.prototype,
+                "enumerate_children_async",
+                "enumerate_children_finish",
+            );
+
+            Gio._promisify(Gio.File.prototype, "delete_async", "delete_finish");
+
             this.#setupFontsVersion();
         }
 
@@ -226,12 +245,13 @@ export const EmbWindow = GObject.registerClass(
             return keyFile.get_string(group, "version");
         }
 
-        _removeInstalledFont(fontName) {
+        async _removeInstalledFont(fontName) {
             const keyFilePath = GLib.build_filenamev([
                 GLib.get_user_config_dir(),
                 "embellish",
                 "fonts",
             ]);
+
             let keyFile;
             try {
                 keyFile = this._getInstalledFontsKeyFile();
@@ -239,9 +259,26 @@ export const EmbWindow = GObject.registerClass(
                 throw error;
             }
 
+            // Remove the group for the font name
             keyFile.remove_group(fontName);
+
+            // Convert the GKeyFile to data (string) and its length
+            const data = keyFile.to_data();
+
+            // Convert the string data to a Gio.Bytes object
+            const gBytes = new GLib.Bytes(data);
+
             try {
-                keyFile.save_to_file(keyFilePath);
+                const file = Gio.File.new_for_path(keyFilePath);
+
+                // Use replace_contents_async with GBytes
+                await file.replace_contents_async(
+                    gBytes, // GBytes contents
+                    null, // ETag (pass null)
+                    false, // Make backup (false)
+                    Gio.FileCreateFlags.REPLACE_DESTINATION, // Flags
+                    null, // GCancellable (optional, pass null)
+                );
             } catch (error) {
                 throw error;
             }
@@ -442,13 +479,35 @@ export const EmbWindow = GObject.registerClass(
                 }
             });
 
-            const removeButton = new Gtk.Button({
-                icon_name: "embellish-remove-symbolic",
-            });
+            const removeButton = new Gtk.Button();
             removeButton.add_css_class("flat");
 
-            removeButton.connect("clicked", () => {
-                this._handleRemoveButton(font);
+            const removeButtonBox = new Gtk.Box({
+                orientation: Gtk.Orientation.HORIZONTAL,
+            });
+            const removeButtonIcon = Gtk.Image.new_from_resource(
+                "/io/github/getnf/embellish/icons/scalable/actions/embellish-remove-symbolic.svg",
+            );
+            const removeButtonSpinner = new Gtk.Spinner();
+            removeButtonSpinner.set_visible(false);
+            removeButtonBox.append(removeButtonIcon);
+            removeButtonBox.append(removeButtonSpinner);
+            removeButton.set_child(removeButtonBox);
+
+            removeButton.connect("clicked", async () => {
+                try {
+                    await this._handleRemoveButton(
+                        font,
+                        removeButtonSpinner,
+                        removeButtonIcon,
+                    );
+                } catch (error) {
+                    const toast = new Adw.Toast({
+                        title: _(`Removing failed: ${error}`),
+                    });
+                    this._toastOverlay.add_toast(toast);
+                    console.log(error);
+                }
             });
 
             if (font.installed && font.hasUpdate) {
@@ -491,25 +550,30 @@ export const EmbWindow = GObject.registerClass(
             }
         }
 
-        _handleRemoveButton(font) {
+        async _handleRemoveButton(font, spinner, icon) {
             try {
-                this._removeFonts(font.tarName);
+                icon.set_visible(false);
+                spinner.set_visible(true);
+                spinner.spinning = true;
+                await this._removeFonts(font.tarName);
+                await this._removeInstalledFont(font.tarName);
+                spinner.spinning = false;
+                spinner.set_visible(false);
+                icon.set_visible(true);
                 const toast = new Adw.Toast({
                     title: _("Font removed"),
                 });
                 this._toastOverlay.add_toast(toast);
-                this._removeInstalledFont(font.tarName);
                 this.#loadFontDirectories();
                 this.#loadFonts();
                 this._searchList.remove_all();
                 this.#setupSearch();
                 this.#populateFontLists();
             } catch (error) {
-                const toast = new Adw.Toast({
-                    title: _(`Removal failed: ${error}`),
-                });
-                this._toastOverlay.add_toast(toast);
-                console.log("Font removal failed: ", error);
+                spinner.spinning = false;
+                spinner.set_visible(false);
+                icon.set_visible(true);
+                throw error;
             }
         }
 
@@ -758,7 +822,7 @@ export const EmbWindow = GObject.registerClass(
             }
         }
 
-        _removeFonts(tarName) {
+        async _removeFonts(tarName) {
             const fontDir = GLib.build_filenamev([
                 GLib.get_home_dir(),
                 ".local",
@@ -769,7 +833,7 @@ export const EmbWindow = GObject.registerClass(
 
             try {
                 let file = Gio.File.new_for_path(fontDir);
-                this._deleteRecursively(file);
+                await this._deleteRecursively(file);
             } catch (error) {
                 throw error;
             }
@@ -894,27 +958,36 @@ export const EmbWindow = GObject.registerClass(
             }
         }
 
-        _deleteRecursively(file) {
+        async _deleteRecursively(file) {
             try {
-                if (
-                    file.query_file_type(Gio.FileQueryInfoFlags.NONE, null) ===
-                    Gio.FileType.DIRECTORY
-                ) {
-                    let enumerator = file.enumerate_children(
+                const info = await file.query_info_async(
+                    "*",
+                    Gio.FileQueryInfoFlags.NONE,
+                    GLib.PRIORITY_DEFAULT,
+                    null,
+                );
+                const fileType = info.get_file_type();
+
+                if (fileType === Gio.FileType.DIRECTORY) {
+                    const enumerator = await file.enumerate_children_async(
                         "*",
                         Gio.FileQueryInfoFlags.NONE,
+                        GLib.PRIORITY_DEFAULT,
                         null,
                     );
-                    let info;
-                    while ((info = enumerator.next_file(null))) {
-                        let child = file.get_child(info.get_name());
-                        this._deleteRecursively(child);
+                    let childInfo;
+
+                    while ((childInfo = await enumerator.next_file(null))) {
+                        const child = file.get_child(childInfo.get_name());
+                        await this._deleteRecursively(child);
                     }
-                    file.delete(null);
+
+                    await file.delete_async(GLib.PRIORITY_DEFAULT, null);
                 } else {
-                    file.delete(null);
+                    await file.delete_async(GLib.PRIORITY_DEFAULT, null);
                 }
-            } catch (e) {
+            } catch (error) {
+                console.error("Error while deleting files:", error);
                 throw error;
             }
         }
