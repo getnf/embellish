@@ -62,10 +62,10 @@
     </screenshots>
 
     <releases>
-      <release version="v0.3.0" date="2024-09-07">
+      <release version="v0.3.0" date="2024-09-11">
           <description translate="no">
             <ul>
-              <li>Complete wririte from Go to Gjs</li>
+              <li>Complete rewrite from Go to Gjs</li>
               <li>Much smaller download and install size</li>
               <li>Added a welcome screen</li>
               <li>Redesign of the main page</li>

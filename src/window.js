@@ -60,7 +60,7 @@ export const EmbWindow = GObject.registerClass(
 
         async #initialize() {
             try {
-                await this.versionManager.setupFontsVersion(); // Await setupFontsVersion with error handling
+                await this.versionManager.setupFontsVersion();
             } catch (error) {
                 console.error("Error during version setup: ", error);
                 const toast = new Adw.Toast({

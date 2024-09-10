@@ -1,6 +1,6 @@
 [Desktop Entry]
 Name=Embellish
-Comment=Insatll nerd fonts with ease
+Comment=Install nerd fonts
 Icon=@APP_ID@
 Exec=@BINDIR@/@APP_ID@
 Type=Application
