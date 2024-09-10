@@ -31,7 +31,7 @@ Please check getnf for a CLI/TUI version.
 
 Embellish is available on Flathub.
 
-[<img width="240" alt="Download on Flathub" src="https://flathub.org/api/badge?svg&locale=en"/>](https://flathub.org/apps/io.github.getnf/embellish)
+[<img width="240" alt="Download on Flathub" src="https://flathub.org/api/badge?svg&locale=en"/>](https://flathub.org/apps/io.github.getnf.embellish)
 
 ## Contributing
 
