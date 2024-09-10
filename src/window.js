@@ -245,7 +245,7 @@ export const EmbWindow = GObject.registerClass(
             return keyFile.get_string(group, "version");
         }
 
-        async _removeInstalledFont(fontName) {
+        _removeInstalledFont(fontName) {
             const keyFilePath = GLib.build_filenamev([
                 GLib.get_user_config_dir(),
                 "embellish",
@@ -259,26 +259,10 @@ export const EmbWindow = GObject.registerClass(
                 throw error;
             }
 
-            // Remove the group for the font name
             keyFile.remove_group(fontName);
 
-            // Convert the GKeyFile to data (string) and its length
-            const data = keyFile.to_data();
-
-            // Convert the string data to a Gio.Bytes object
-            const gBytes = new GLib.Bytes(data);
-
             try {
-                const file = Gio.File.new_for_path(keyFilePath);
-
-                // Use replace_contents_async with GBytes
-                await file.replace_contents_async(
-                    gBytes, // GBytes contents
-                    null, // ETag (pass null)
-                    false, // Make backup (false)
-                    Gio.FileCreateFlags.REPLACE_DESTINATION, // Flags
-                    null, // GCancellable (optional, pass null)
-                );
+                keyFile.save_to_file(keyFilePath);
             } catch (error) {
                 throw error;
             }
@@ -419,19 +403,11 @@ export const EmbWindow = GObject.registerClass(
 
             box.append(previewButton);
 
-            const installButton = new Gtk.Button();
-            installButton.add_css_class("flat");
-            const installButtonBox = new Gtk.Box({
-                orientation: Gtk.Orientation.HORIZONTAL,
-            });
-            const installButtonIcon = Gtk.Image.new_from_resource(
-                "/io/github/getnf/embellish/icons/scalable/actions/embellish-download-symbolic.svg",
-            );
-            const installButtonSpinner = new Gtk.Spinner();
-            installButtonSpinner.set_visible(false);
-            installButtonBox.append(installButtonIcon);
-            installButtonBox.append(installButtonSpinner);
-            installButton.set_child(installButtonBox);
+            const {
+                button: installButton,
+                buttonIcon: installButtonIcon,
+                buttonSpinner: installButtonSpinner,
+            } = this._makeButton("embellish-download-symbolic");
             installButton.connect("clicked", async () => {
                 try {
                     await this._handleInstallButton(
@@ -449,19 +425,11 @@ export const EmbWindow = GObject.registerClass(
                 }
             });
 
-            const updateButton = new Gtk.Button();
-            updateButton.add_css_class("flat");
-            const updateButtonBox = new Gtk.Box({
-                orientation: Gtk.Orientation.HORIZONTAL,
-            });
-            const updateButtonIcon = Gtk.Image.new_from_resource(
-                "/io/github/getnf/embellish/icons/scalable/actions/embellish-update-symbolic.svg",
-            );
-            const updateButtonSpinner = new Gtk.Spinner();
-            updateButtonSpinner.set_visible(false);
-            updateButtonBox.append(updateButtonIcon);
-            updateButtonBox.append(updateButtonSpinner);
-            updateButton.set_child(updateButtonBox);
+            const {
+                button: updateButton,
+                buttonIcon: updateButtonIcon,
+                buttonSpinner: updateButtonSpinner,
+            } = this._makeButton("embellish-update-symbolic");
             updateButton.connect("clicked", async () => {
                 try {
                     await this._handleInstallButton(
@@ -479,21 +447,11 @@ export const EmbWindow = GObject.registerClass(
                 }
             });
 
-            const removeButton = new Gtk.Button();
-            removeButton.add_css_class("flat");
-
-            const removeButtonBox = new Gtk.Box({
-                orientation: Gtk.Orientation.HORIZONTAL,
-            });
-            const removeButtonIcon = Gtk.Image.new_from_resource(
-                "/io/github/getnf/embellish/icons/scalable/actions/embellish-remove-symbolic.svg",
-            );
-            const removeButtonSpinner = new Gtk.Spinner();
-            removeButtonSpinner.set_visible(false);
-            removeButtonBox.append(removeButtonIcon);
-            removeButtonBox.append(removeButtonSpinner);
-            removeButton.set_child(removeButtonBox);
-
+            const {
+                button: removeButton,
+                buttonIcon: removeButtonIcon,
+                buttonSpinner: removeButtonSpinner,
+            } = this._makeButton("embellish-remove-symbolic");
             removeButton.connect("clicked", async () => {
                 try {
                     await this._handleRemoveButton(
@@ -521,6 +479,24 @@ export const EmbWindow = GObject.registerClass(
             }
 
             return box;
+        }
+
+        _makeButton(icon) {
+            const button = new Gtk.Button();
+            button.add_css_class("flat");
+            const buttonBox = new Gtk.Box({
+                orientation: Gtk.Orientation.HORIZONTAL,
+            });
+            const buttonIcon = Gtk.Image.new_from_resource(
+                `/io/github/getnf/embellish/icons/scalable/actions/${icon}.svg`,
+            );
+            const buttonSpinner = new Gtk.Spinner();
+            buttonSpinner.set_visible(false);
+            buttonBox.append(buttonIcon);
+            buttonBox.append(buttonSpinner);
+            button.set_child(buttonBox);
+
+            return { button, buttonIcon, buttonSpinner };
         }
 
         async _handleInstallButton(font, spinner, icon, message) {
@@ -556,7 +532,7 @@ export const EmbWindow = GObject.registerClass(
                 spinner.set_visible(true);
                 spinner.spinning = true;
                 await this._removeFonts(font.tarName);
-                await this._removeInstalledFont(font.tarName);
+                this._removeInstalledFont(font.tarName);
                 spinner.spinning = false;
                 spinner.set_visible(false);
                 icon.set_visible(true);
