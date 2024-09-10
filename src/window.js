@@ -220,15 +220,17 @@ export const EmbWindow = GObject.registerClass(
                 icon_name: "embellish-preview-symbolic",
             });
             button.add_css_class("flat");
+            button.set_tooltip_text("Preview");
             button.connect("clicked", () => {
                 this._showPreviewDialog(font.tarName);
             });
             return button;
         }
 
-        _createButton(icon) {
+        _createButton(icon, tooltip) {
             const button = new Gtk.Button();
             button.add_css_class("flat");
+            button.set_tooltip_text(tooltip);
             const buttonBox = new Gtk.Box({
                 orientation: Gtk.Orientation.HORIZONTAL,
             });
@@ -247,6 +249,7 @@ export const EmbWindow = GObject.registerClass(
         _createInstallButton(font) {
             const { button, buttonIcon, buttonSpinner } = this._createButton(
                 "embellish-download-symbolic",
+                "Install",
             );
             button.connect("clicked", async () => {
                 try {
@@ -266,6 +269,7 @@ export const EmbWindow = GObject.registerClass(
         _createUpdateButton(font) {
             const { button, buttonIcon, buttonSpinner } = this._createButton(
                 "embellish-update-symbolic",
+                "Update",
             );
             button.connect("clicked", async () => {
                 try {
@@ -285,6 +289,7 @@ export const EmbWindow = GObject.registerClass(
         _createRemoveButton(font) {
             const { button, buttonIcon, buttonSpinner } = this._createButton(
                 "embellish-remove-symbolic",
+                "Remove",
             );
             button.connect("clicked", async () => {
                 try {

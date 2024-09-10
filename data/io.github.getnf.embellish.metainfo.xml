@@ -37,9 +37,11 @@
         <ul>
           <li>List all available Nerd Fonts</li>
           <li>Download and install a Font</li>
-          <li>Uninstall an already installed Font</li>
-          <li>Update all installed fonts</li>
+          <li>Uninstall an installed Font</li>
+          <li>Update an installed font</li>
+          <li>preview fonts</li>
           <li>Search fonts</li>
+          <li>Read font's licence(s)</li>
         </ul>
     </description>
 
