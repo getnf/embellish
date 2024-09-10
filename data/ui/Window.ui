@@ -141,7 +141,7 @@
                                           </object>
                                         </child>
                                         <child>
-                                          <object class="GtkListBox" id="installedFonts">
+                                          <object class="GtkListBox" id="installedFontsList">
                                             <property name="selection-mode">0</property>
                                             <style>
                                               <class name="boxed-list" />
@@ -165,7 +165,7 @@
                                           </object>
                                         </child>
                                         <child>
-                                          <object class="GtkListBox" id="availableFonts">
+                                          <object class="GtkListBox" id="availableFontsList">
                                             <property name="selection-mode">0</property>
                                             <style>
                                               <class name="boxed-list" />

@@ -4,5 +4,9 @@
         <file>main.js</file>
         <file>application.js</file>
         <file>window.js</file>
+        <file>installedFontsManager.js</file>
+        <file>versionManager.js</file>
+        <file>licencesManager.js</file>
+        <file>fontsManager.js</file>
     </gresource>
 </gresources>
