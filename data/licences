@@ -1,0 +1,15 @@
+[licences]
+MIT=Permissive licence allowing almost unrestricted use, modification, and distribution.
+OFL-1.1=Free to use, modify, and distribute, with conditions: no selling and original licence must be included.
+OFL-1.1-RFN=Same as OFL-1.1, but must comply with Reserved Font Name (RFN) restrictions.
+Apache-2.0=Permissive, requires attribution, notice of changes, and inclusion of NOTICE file. Modified code can use a different licence.
+CC-BY-SA-4.0=Allows sharing and modification with attribution. Must distribute under the same licence.
+Bitstream-Vera=Permissive, prohibits selling, requires renaming the font.
+WTFPL=Unrestricted use, as summarized by its name.
+Go Licence=Permissive, requires licence file, prohibits using Google Inc. to endorse work.
+VicFieger=Unrestricted use.
+Monofur=Permissive, requires inclusion of the licence file.
+UFL=Permissive, requires attribution and licence file.
+BSD-3-Clause=Permissive, allows redistribution and modification with attribution and no endorsement clause.
+BSD-3-Clause-Clear=Similar to BSD-3-Clause, but with a more explicit no-endorsement clause.
+LGPL-2.1-only=Allows linking to proprietary software, but modifications must be under LGPL. Original license and source code must be included.

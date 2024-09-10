@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schemalist>
+  <schema id="io.github.getnf.embellish" path="/io/github/getnf/embellish/">
+    <key name="welcome-screen-shown" type="b">
+      <default>false</default>
+      <summary>Whether the welcome screen has been shown</summary>
+      <description>If true, the welcome screen won't be shown again.</description>
+    </key>
+    <key name="last-check" type="s">
+      <default>"1970-01-01"</default>
+      <summary>Last checked date for the latest Nerd Fonts version</summary>
+      <description>Stores the date when the latest version was fetched</description>
+  </key>
+  </schema>
+</schemalist>

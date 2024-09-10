@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <object class="GtkShortcutsWindow" id="help_overlay">
+    <child>
+      <object class="GtkShortcutsSection">
+        <child>
+	  <object class="GtkShortcutsGroup">
+	    <property name="title" translatable="true">General</property>
+            <child>
+	      <object class="GtkShortcutsShortcut">
+	        <property name="title" translatable="true">Search fonts</property>
+	        <property name="action-name">win.search</property>
+	      </object>
+	    </child>
+            <child>
+	      <object class="GtkShortcutsShortcut">
+	        <property name="title" translatable="true">Quit App</property>
+	        <property name="action-name">app.quit</property>
+	      </object>
+	    </child>
+            <child>
+	      <object class="GtkShortcutsShortcut">
+	        <property name="title" translatable="true">Close Window</property>
+	        <property name="action-name">window.close</property>
+	      </object>
+	    </child>
+	    <child>
+	      <object class="GtkShortcutsShortcut">
+	        <property name="title" translatable="true">Keyboard Shortcuts</property>
+	        <property name="subtitle" translatable="true">Display this keyboard shortcuts window</property>
+	        <property name="action-name">win.show-help-overlay</property>
+	      </object>
+	    </child>
+	  </object>
+        </child>
+      </object>
+    </child>
+  </object>
+</interface>
