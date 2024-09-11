@@ -3,11 +3,15 @@ import GLib from "gi://GLib";
 import Gio from "gi://Gio";
 import Adw from "gi://Adw";
 
+import { Utils } from "./utils.js";
+
 export class LicencesManager {
-    constructor() {}
+    constructor() {
+        this.utils = new Utils();
+    }
 
     new(font) {
-        const licenseBox = this._createBox(Gtk.Orientation.HORIZONTAL, 12);
+        const licenseBox = this.utils.createBox(Gtk.Orientation.HORIZONTAL, 12);
 
         const licenceButton = new Gtk.MenuButton();
         licenceButton.add_css_class("licence-button");
@@ -32,7 +36,7 @@ export class LicencesManager {
             name: "licensePopover",
         });
 
-        const box = this._createBox(Gtk.Orientation.VERTICAL, 4);
+        const box = this.utils.createBox(Gtk.Orientation.VERTICAL, 4);
         box.set_margin_top(12);
         box.set_margin_start(24);
         box.set_margin_end(24);
@@ -63,7 +67,7 @@ export class LicencesManager {
     }
 
     _createLicenceBox(id, description) {
-        const box = this._createBox(Gtk.Orientation.VERTICAL, 4);
+        const box = this.utils.createBox(Gtk.Orientation.VERTICAL, 4);
 
         const idLabel = new Gtk.Label({ label: id });
         idLabel.add_css_class("heading");
@@ -95,15 +99,5 @@ export class LicencesManager {
 
         const description = keyFile.get_string("licences", licenceKey);
         return description ? description : _("No description available");
-    }
-
-    _createBox(orientation, spacing) {
-        const box = new Gtk.Box({
-            orientation,
-            spacing,
-        });
-        box.set_halign(Gtk.Align.CENTER);
-        box.set_valign(Gtk.Align.CENTER);
-        return box;
     }
 }

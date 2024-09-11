@@ -8,6 +8,7 @@ import { FontsManager } from "./fontsManager.js";
 import { InstalledFontsManager } from "./installedFontsManager.js";
 import { LicencesManager } from "./licencesManager.js";
 import { PreviewManager } from "./previewManager.js";
+import { Utils } from "./utils.js";
 import { VersionManager } from "./versionManager.js";
 
 export const EmbWindow = GObject.registerClass(
@@ -33,6 +34,7 @@ export const EmbWindow = GObject.registerClass(
             super(params);
             this.#setupActions();
             this.#setupWelcomeScreen();
+            this.utils = new Utils();
             this.installedFontsManager = new InstalledFontsManager();
             this.versionManager = new VersionManager();
             this.licencesManager = new LicencesManager();
@@ -172,17 +174,17 @@ export const EmbWindow = GObject.registerClass(
 
             const row = new Adw.ActionRow({
                 title: title,
-                subtitle: this._escapeMarkup(font.description),
+                subtitle: this.utils.escapeMarkup(font.description),
             });
 
-            const suffix = this._createRowSuffix(font);
+            const suffix = this._createFontRowSuffix(font);
             row.add_suffix(suffix);
 
             return row;
         }
 
-        _createRowSuffix(font) {
-            const box = this._createBox(Gtk.Orientation.HORIZONTAL, 12);
+        _createFontRowSuffix(font) {
+            const box = this.utils.createBox(Gtk.Orientation.HORIZONTAL, 12);
 
             const licences = this.licencesManager.new(font);
             box.append(licences);
@@ -207,38 +209,12 @@ export const EmbWindow = GObject.registerClass(
             return box;
         }
 
-        _createBox(orientation, spacing) {
-            const box = new Gtk.Box({
-                orientation,
-                spacing,
-            });
-            box.set_halign(Gtk.Align.CENTER);
-            box.set_valign(Gtk.Align.CENTER);
-            return box;
-        }
-
-        _createButton(icon, tooltip) {
-            const button = new Gtk.Button();
-            button.add_css_class("flat");
-            button.set_tooltip_text(tooltip);
-            const buttonBox = this._createBox(Gtk.Orientation.HORIZONTAL, 0);
-            const buttonIcon = Gtk.Image.new_from_resource(
-                `/io/github/getnf/embellish/icons/scalable/actions/${icon}.svg`,
-            );
-            const buttonSpinner = new Gtk.Spinner();
-            buttonSpinner.set_visible(false);
-            buttonBox.append(buttonIcon);
-            buttonBox.append(buttonSpinner);
-            button.set_child(buttonBox);
-
-            return { button, buttonIcon, buttonSpinner };
-        }
-
         _createInstallButton(font) {
-            const { button, buttonIcon, buttonSpinner } = this._createButton(
-                "embellish-download-symbolic",
-                "Install",
-            );
+            const { button, buttonIcon, buttonSpinner } =
+                this.utils.createSpinnerButton(
+                    "embellish-download-symbolic",
+                    "Install",
+                );
             button.connect("clicked", async () => {
                 try {
                     await this._handleInstallButton(
@@ -255,10 +231,11 @@ export const EmbWindow = GObject.registerClass(
         }
 
         _createUpdateButton(font) {
-            const { button, buttonIcon, buttonSpinner } = this._createButton(
-                "embellish-update-symbolic",
-                "Update",
-            );
+            const { button, buttonIcon, buttonSpinner } =
+                this.utils.createSpinnerButton(
+                    "embellish-update-symbolic",
+                    "Update",
+                );
             button.connect("clicked", async () => {
                 try {
                     await this._handleInstallButton(
@@ -275,10 +252,11 @@ export const EmbWindow = GObject.registerClass(
         }
 
         _createRemoveButton(font) {
-            const { button, buttonIcon, buttonSpinner } = this._createButton(
-                "embellish-remove-symbolic",
-                "Remove",
-            );
+            const { button, buttonIcon, buttonSpinner } =
+                this.utils.createSpinnerButton(
+                    "embellish-remove-symbolic",
+                    "Remove",
+                );
             button.connect("clicked", async () => {
                 try {
                     await this._handleRemoveButton(
@@ -306,15 +284,11 @@ export const EmbWindow = GObject.registerClass(
                 icon.set_visible(false);
                 spinner.set_visible(true);
                 spinner.spinning = true;
-
-                // Execute the action (install or remove)
                 await action(font);
-
                 const toast = new Adw.Toast({
                     title: message,
                 });
                 this._toastOverlay.add_toast(toast);
-
                 this.fontsManager.loadFontDirectories();
                 this.fonts = this.fontsManager.loadFonts();
                 this._searchList.remove_all();
@@ -359,15 +333,6 @@ export const EmbWindow = GObject.registerClass(
                 icon,
                 _("Font removed"),
             );
-        }
-
-        _escapeMarkup(text) {
-            return text
-                .replace(/&/g, "&amp;")
-                .replace(/</g, "&lt;")
-                .replace(/>/g, "&gt;")
-                .replace(/"/g, "&quot;")
-                .replace(/'/g, "&#039;");
         }
 
         vfunc_close_request() {
