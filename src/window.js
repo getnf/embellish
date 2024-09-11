@@ -7,6 +7,7 @@ import GLib from "gi://GLib";
 import { FontsManager } from "./fontsManager.js";
 import { InstalledFontsManager } from "./installedFontsManager.js";
 import { LicencesManager } from "./licencesManager.js";
+import { PreviewManager } from "./previewManager.js";
 import { VersionManager } from "./versionManager.js";
 
 export const EmbWindow = GObject.registerClass(
@@ -35,6 +36,7 @@ export const EmbWindow = GObject.registerClass(
             this.installedFontsManager = new InstalledFontsManager();
             this.versionManager = new VersionManager();
             this.licencesManager = new LicencesManager();
+            this.previewManager = new PreviewManager(this);
             this.fontsManager = new FontsManager(
                 this.installedFontsManager,
                 this.versionManager,
@@ -180,12 +182,12 @@ export const EmbWindow = GObject.registerClass(
         }
 
         _createRowSuffix(font) {
-            const box = this._createBox("horizontal", 12);
+            const box = this._createBox(Gtk.Orientation.HORIZONTAL, 12);
 
             const licences = this.licencesManager.new(font);
             box.append(licences);
 
-            const previewButton = this._createPreviewButton(font);
+            const previewButton = this.previewManager.new(font);
             box.append(previewButton);
 
             const installButton = this._createInstallButton(font);
@@ -210,30 +212,16 @@ export const EmbWindow = GObject.registerClass(
                 orientation,
                 spacing,
             });
-            box.set_halign(3);
-            box.set_valign(3);
+            box.set_halign(Gtk.Align.CENTER);
+            box.set_valign(Gtk.Align.CENTER);
             return box;
-        }
-
-        _createPreviewButton(font) {
-            const button = new Gtk.Button({
-                icon_name: "embellish-preview-symbolic",
-            });
-            button.add_css_class("flat");
-            button.set_tooltip_text("Preview");
-            button.connect("clicked", () => {
-                this._showPreviewDialog(font.tarName);
-            });
-            return button;
         }
 
         _createButton(icon, tooltip) {
             const button = new Gtk.Button();
             button.add_css_class("flat");
             button.set_tooltip_text(tooltip);
-            const buttonBox = new Gtk.Box({
-                orientation: Gtk.Orientation.HORIZONTAL,
-            });
+            const buttonBox = this._createBox(Gtk.Orientation.HORIZONTAL, 0);
             const buttonIcon = Gtk.Image.new_from_resource(
                 `/io/github/getnf/embellish/icons/scalable/actions/${icon}.svg`,
             );
@@ -322,10 +310,6 @@ export const EmbWindow = GObject.registerClass(
                 // Execute the action (install or remove)
                 await action(font);
 
-                spinner.spinning = false;
-                spinner.set_visible(false);
-                icon.set_visible(true);
-
                 const toast = new Adw.Toast({
                     title: message,
                 });
@@ -375,32 +359,6 @@ export const EmbWindow = GObject.registerClass(
                 icon,
                 _("Font removed"),
             );
-        }
-
-        _showPreviewDialog(fileName) {
-            const dialog = new Adw.Dialog({
-                title: fileName,
-                content_width: 360,
-                content_height: -1,
-            });
-            const page = new Adw.ToolbarView();
-            page.set_extend_content_to_top_edge(true);
-            const headerBar = new Adw.HeaderBar();
-            headerBar.set_show_title(false);
-            page.add_top_bar(headerBar);
-
-            const previewPicture = Gtk.Picture.new_for_resource(
-                `/io/github/getnf/embellish/previews/${fileName}.svg`,
-            );
-            previewPicture.set_can_shrink(false);
-            previewPicture.set_margin_start(12);
-            previewPicture.set_margin_end(12);
-            previewPicture.add_css_class("svg-preview");
-
-            page.set_content(previewPicture);
-            dialog.set_child(page);
-
-            dialog.present(this);
         }
 
         _escapeMarkup(text) {
