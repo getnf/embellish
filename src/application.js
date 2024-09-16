@@ -51,7 +51,7 @@ export const EmbApplication = GObject.registerClass(
                 developer_name: "Ronnie Nissan",
                 version: pkg.version,
                 comments: _(
-                    "Embellish let's you manage Nerd Fonts on your system",
+                    "Embellish helps you manage Nerd Fonts on your system",
                 ),
                 website: "https://github.com/getnf/embellish",
                 issue_url: "https://github.com/getnf/embellish/issues/new",

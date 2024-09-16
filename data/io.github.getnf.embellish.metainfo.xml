@@ -64,7 +64,7 @@
     </screenshots>
 
     <releases>
-      <release version="v0.3.0" date="2024-09-11">
+      <release version="v0.3.0" date="2024-09-16">
           <description translate="no">
             <ul>
               <li>Complete rewrite from Go to Gjs</li>
