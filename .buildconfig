@@ -1,0 +1,12 @@
+[default]
+name=Default
+runtime=flatpak:org.gnome.Sdk/x86_64/46
+toolchain=default
+config-opts=
+run-opts=
+prefix=/app
+app-id=io.github.getnf.embellish
+postbuild=
+prebuild=
+run-command=io.github.getnf.embellish
+default=true

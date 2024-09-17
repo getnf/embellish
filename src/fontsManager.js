@@ -147,13 +147,15 @@ export class FontsManager {
     }
 
     async _download(tarName, release) {
-    try{
-        const url = `https://github.com/ryanoasis/nerd-fonts/releases/download/${release}/${tarName}.tar.xz`;
-        const downloadDir = GLib.build_filenamev([
-            GLib.get_user_special_dir(GLib.UserDirectory.DIRECTORY_DOWNLOAD),
-            "embellish",
-            tarName,
-        ]);
+        try {
+            const url = `https://github.com/ryanoasis/nerd-fonts/releases/download/${release}/${tarName}.tar.xz`;
+            const downloadDir = GLib.build_filenamev([
+                GLib.get_user_special_dir(
+                    GLib.UserDirectory.DIRECTORY_DOWNLOAD,
+                ),
+                "embellish",
+                tarName,
+            ]);
             await this._downloadTarXzFile(url, downloadDir);
         } catch (error) {
             throw error;
@@ -161,19 +163,21 @@ export class FontsManager {
     }
 
     async _extract(tarName) {
-     try {
-        const downloadDir = GLib.build_filenamev([
-            GLib.get_user_special_dir(GLib.UserDirectory.DIRECTORY_DOWNLOAD),
-            "embellish",
-            tarName,
-        ]);
-        const extractDir = GLib.build_filenamev([
-            GLib.get_home_dir(),
-            ".local",
-            "share",
-            "fonts",
-            tarName,
-        ]);
+        try {
+            const downloadDir = GLib.build_filenamev([
+                GLib.get_user_special_dir(
+                    GLib.UserDirectory.DIRECTORY_DOWNLOAD,
+                ),
+                "embellish",
+                tarName,
+            ]);
+            const extractDir = GLib.build_filenamev([
+                GLib.get_home_dir(),
+                ".local",
+                "share",
+                "fonts",
+                tarName,
+            ]);
             await this._extractTarXz(downloadDir, extractDir);
         } catch (error) {
             throw error;
@@ -196,12 +200,7 @@ export class FontsManager {
                     `HTTP request failed with status: ${request.get_status()}`,
                 );
             }
-
-            try {
-                this._saveBytesToFile(bytes, destinationPath);
-            } catch (error) {
-                throw error;
-            }
+            this._saveBytesToFile(bytes, destinationPath);
         } catch (error) {
             throw error;
         }
