@@ -17,18 +17,19 @@ export class Utils {
         const button = new Gtk.Button();
         button.add_css_class("flat");
         button.set_tooltip_text(tooltip);
-        const buttonBox = this.createBox(Gtk.Orientation.HORIZONTAL, 0);
-        const buttonIcon = Gtk.Image.new_from_resource(
-            `/io/github/getnf/embellish/icons/scalable/actions/${icon}.svg`,
-        );
-        const buttonSpinner = new Gtk.Spinner();
-        buttonSpinner.set_visible(false);
-        buttonBox.append(buttonIcon);
-        buttonBox.append(buttonSpinner);
-        button.set_child(buttonBox);
+        const stack = new Gtk.Stack();
+        stack.set_transition_type(Gtk.StackTransitionType.CROSSFADE);
+        stack.set_transition_duration(150);
+        const buttonIcon = Gtk.Image.new_from_icon_name(icon);
+        const spinner = new Gtk.Spinner();
+        stack.add_named(buttonIcon, "icon");
+        stack.add_named(spinner, "spinner");
+        stack.set_visible_child_name("icon");
+        button.set_child(stack);
 
-        return { button, buttonIcon, buttonSpinner };
+        return { button, spinner, stack };
     }
+
 
     escapeMarkup(text) {
         return text

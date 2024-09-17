@@ -210,7 +210,7 @@ export const EmbWindow = GObject.registerClass(
         }
 
         _createInstallButton(font) {
-            const { button, buttonIcon, buttonSpinner } =
+            const { button, spinner, stack } =
                 this.utils.createSpinnerButton(
                     "embellish-download-symbolic",
                     "Install",
@@ -219,8 +219,8 @@ export const EmbWindow = GObject.registerClass(
                 try {
                     await this._handleInstallButton(
                         font,
-                        buttonSpinner,
-                        buttonIcon,
+                        spinner,
+                        stack,
                         _("Font Installed"),
                     );
                 } catch (error) {
@@ -231,7 +231,7 @@ export const EmbWindow = GObject.registerClass(
         }
 
         _createUpdateButton(font) {
-            const { button, buttonIcon, buttonSpinner } =
+            const { button, spinner, stack } =
                 this.utils.createSpinnerButton(
                     "embellish-update-symbolic",
                     "Update",
@@ -240,8 +240,8 @@ export const EmbWindow = GObject.registerClass(
                 try {
                     await this._handleInstallButton(
                         font,
-                        buttonSpinner,
-                        buttonIcon,
+                        spinner,
+                        stack,
                         _("Font updated"),
                     );
                 } catch (error) {
@@ -252,7 +252,7 @@ export const EmbWindow = GObject.registerClass(
         }
 
         _createRemoveButton(font) {
-            const { button, buttonIcon, buttonSpinner } =
+            const { button, spinner, stack } =
                 this.utils.createSpinnerButton(
                     "embellish-remove-symbolic",
                     "Remove",
@@ -261,8 +261,8 @@ export const EmbWindow = GObject.registerClass(
                 try {
                     await this._handleRemoveButton(
                         font,
-                        buttonSpinner,
-                        buttonIcon,
+                        spinner,
+                        stack,
                     );
                 } catch (error) {
                     this._handleError(error, _("Removing failed: %s"));
@@ -279,10 +279,9 @@ export const EmbWindow = GObject.registerClass(
             console.log(error);
         }
 
-        async _handleFontAction(action, font, spinner, icon, message) {
+        async _handleFontAction(action, font, spinner, stack, message) {
             try {
-                icon.set_visible(false);
-                spinner.set_visible(true);
+                stack.set_visible_child_name("spinner");
                 spinner.spinning = true;
                 await action(font);
                 const toast = new Adw.Toast({
@@ -296,14 +295,13 @@ export const EmbWindow = GObject.registerClass(
                 this.#populateFontLists();
             } catch (error) {
                 spinner.spinning = false;
-                spinner.set_visible(false);
-                icon.set_visible(true);
+                stack.set_visible_child_name("icon")
                 console.log("Action failed", error);
                 throw error;
             }
         }
 
-        async _handleInstallButton(font, spinner, icon, message) {
+        async _handleInstallButton(font, spinner, stack, message) {
             await this._handleFontAction(
                 async (font) => {
                     await this.fontsManager.downloadAndInstall(
@@ -317,12 +315,12 @@ export const EmbWindow = GObject.registerClass(
                 },
                 font,
                 spinner,
-                icon,
+                stack,
                 message,
             );
         }
 
-        async _handleRemoveButton(font, spinner, icon) {
+        async _handleRemoveButton(font, spinner, stack) {
             await this._handleFontAction(
                 async (font) => {
                     await this.fontsManager.remove(font.tarName);
@@ -330,7 +328,7 @@ export const EmbWindow = GObject.registerClass(
                 },
                 font,
                 spinner,
-                icon,
+                stack,
                 _("Font removed"),
             );
         }
