@@ -147,14 +147,13 @@ export class FontsManager {
     }
 
     async _download(tarName, release) {
+    try{
         const url = `https://github.com/ryanoasis/nerd-fonts/releases/download/${release}/${tarName}.tar.xz`;
         const downloadDir = GLib.build_filenamev([
             GLib.get_user_special_dir(GLib.UserDirectory.DIRECTORY_DOWNLOAD),
             "embellish",
             tarName,
         ]);
-
-        try {
             await this._downloadTarXzFile(url, downloadDir);
         } catch (error) {
             throw error;
@@ -162,12 +161,12 @@ export class FontsManager {
     }
 
     async _extract(tarName) {
+     try {
         const downloadDir = GLib.build_filenamev([
             GLib.get_user_special_dir(GLib.UserDirectory.DIRECTORY_DOWNLOAD),
             "embellish",
             tarName,
         ]);
-
         const extractDir = GLib.build_filenamev([
             GLib.get_home_dir(),
             ".local",
@@ -175,8 +174,6 @@ export class FontsManager {
             "fonts",
             tarName,
         ]);
-
-        try {
             await this._extractTarXz(downloadDir, extractDir);
         } catch (error) {
             throw error;

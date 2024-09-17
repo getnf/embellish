@@ -120,6 +120,22 @@ export const EmbWindow = GObject.registerClass(
             this._installedFontsList.remove_all();
             this._availableFontsList.remove_all();
 
+            const installedListDefaultWidget = new Adw.ActionRow({
+                title: _("No Installed Fonts yet"),
+            });
+
+            const availableListDefaultWidget = new Adw.ActionRow({
+                title: _("No available Fonts yet"),
+            });
+
+            this._installedFontsList.set_placeholder(
+                installedListDefaultWidget,
+            );
+
+            this._availableFontsList.set_placeholder(
+                availableListDefaultWidget,
+            );
+
             this.fonts.forEach((font) => {
                 const row = this._createFontRow(font);
 
@@ -283,6 +299,7 @@ export const EmbWindow = GObject.registerClass(
             try {
                 stack.set_visible_child_name("spinner");
                 spinner.spinning = true;
+                await this.versionManager.setupFontsVersion()
                 await action(font);
                 const toast = new Adw.Toast({
                     title: message,
@@ -302,8 +319,10 @@ export const EmbWindow = GObject.registerClass(
         }
 
         async _handleInstallButton(font, spinner, stack, message) {
+        try {
             await this._handleFontAction(
                 async (font) => {
+                try {
                     await this.fontsManager.downloadAndInstall(
                         font.tarName,
                         this.versionManager.get(),
@@ -312,25 +331,38 @@ export const EmbWindow = GObject.registerClass(
                         font.tarName,
                         this.versionManager.get(),
                     );
+                    } catch(error) {
+                    throw error
+                    }
                 },
                 font,
                 spinner,
                 stack,
                 message,
             );
+            } catch (error) {
+                throw error
+            }
         }
 
         async _handleRemoveButton(font, spinner, stack) {
+        try {
             await this._handleFontAction(
                 async (font) => {
+                try {
                     await this.fontsManager.remove(font.tarName);
                     this.installedFontsManager.remove(font.tarName);
+                    } catch(error) {
+                    throw error}
                 },
                 font,
                 spinner,
                 stack,
                 _("Font removed"),
             );
+            } catch (error) {
+                throw error
+            }
         }
 
         vfunc_close_request() {

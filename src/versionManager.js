@@ -60,15 +60,6 @@ export class VersionManager {
         const daysDifference =
             (currentDate - lastCheckDate) / (1000 * 3600 * 24);
 
-        if (daysDifference < 7) {
-            console.log(
-                "Version check skipped. Last checked: " + this._lastCheck,
-            );
-            return;
-        }
-
-        globalThis.settings.set_string("last-check", currentDate.toISOString());
-
         let latestVersion;
         let currentVersion;
 
@@ -77,6 +68,15 @@ export class VersionManager {
         } catch (error) {
             console.log(error);
         }
+
+        if (daysDifference < 7 && currentVersion !== "v0") {
+            console.log(
+                "Version check skipped. Last checked: " + this._lastCheck,
+            );
+            return;
+        }
+
+        globalThis.settings.set_string("last-check", currentDate.toISOString());
 
         try {
             latestVersion = await this._getLatestRelease();
