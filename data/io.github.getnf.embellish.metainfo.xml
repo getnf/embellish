@@ -64,6 +64,13 @@
     </screenshots>
 
     <releases>
+      <release version="v0.4.3" date="2024-09-18">
+        <description translate="no">
+          <ul>
+            <li>Important bug fixes</li>
+          </ul>
+        </description>
+      </release>
       <release version="v0.4.2" date="2024-09-16">
           <description translate="no">
             <ul>

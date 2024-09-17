@@ -153,10 +153,11 @@ export class FontsManager {
                 GLib.get_user_special_dir(
                     GLib.UserDirectory.DIRECTORY_DOWNLOAD,
                 ),
-                "embellish",
-                tarName,
+                "embellish"
             ]);
-            await this._downloadTarXzFile(url, downloadDir);
+            GLib.mkdir_with_parents(downloadDir, 0o755);
+            const fontDir = GLib.build_filenamev([downloadDir, tarName]);
+            await this._downloadTarXzFile(url, fontDir);
         } catch (error) {
             throw error;
         }
