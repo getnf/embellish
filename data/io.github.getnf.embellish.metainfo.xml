@@ -64,11 +64,14 @@
     </screenshots>
 
     <releases>
+      <release version="v0.4.4" date="2024-09-22">
+        <description translate="no">
+          <p>Updated to gnome 47 runtime</p>
+        </description>
+      </release>
       <release version="v0.4.3" date="2024-09-18">
         <description translate="no">
-          <ul>
-            <li>Important bug fixes</li>
-          </ul>
+          <p>Important bug fixes</p>
         </description>
       </release>
       <release version="v0.4.2" date="2024-09-16">

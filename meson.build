@@ -1,9 +1,9 @@
 # Define our project
 project(
        'embellish',
-	version: '0.4.3',
+	version: '0.4.4',
 	license: ['GPL-3.0-or-later'],
-	meson_version: '>= 0.59.0'
+	meson_version: '>= 0.62.0'
 )
 
 APP_ID = 'io.github.getnf.embellish'
