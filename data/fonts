@@ -86,6 +86,11 @@ tarName=DaddyTimeMono
 licenceId=OFL-1.1;
 description=A monospaced font for programmers and other terminal groupies
 
+[Departure Mono]
+tarName=DepartureMono
+licenceId=OFL-1.1
+description=A monospaced pixel font with a lo-fi, techy vibe
+
 [DejaVu Sans Mono]
 patchedName=DejaVuSansM
 tarName=DejaVuSansMono
