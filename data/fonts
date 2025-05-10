@@ -9,6 +9,11 @@ tarName=3270
 licenceId=BSD-3-Clause;
 description=Derived from the x3270 font, a modern format of a font with high nostalgic value
 
+[Adwaita Mono]
+tarName=AdwaitaMono
+licenceId=OFL-1.1;
+description=The monospace typeface for GNOME
+
 [Agave]
 tarName=Agave
 licenceId=MIT;
@@ -24,6 +29,12 @@ description=Inspired by Anonymous 9 on Macintosh, since 2009, distinct `O`, `0`,
 tarName=Arimo
 licenceId=Apache-2.0;
 description=Metrically similar to Arial, pan-European WGL character set, sans serif
+
+[Atkinson Hyperlegible Mono]
+patchedName=AtkynsonMono
+tarName=AtkinsonHyperlegibleMono
+licenceId=OFL-1.1-RFN;
+description=A monospaced font designed to improve legibility and readability for individuals with low vision
 
 [Aurulent Sans Mono]
 patchedName=AurulentSansM
