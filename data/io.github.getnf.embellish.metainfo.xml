@@ -54,7 +54,7 @@
     <screenshots>
         <screenshot type="default">
             <image>https://raw.githubusercontent.com/getnf/embellish/main/data/screenshots/main-page.png</image>
-            <caption>Application main page showing the app logo and a list of installed and available nerd fonts</caption>
+            <caption>Application main page showing a list of installed and available nerd fonts</caption>
         </screenshot>
         <screenshot>
             <image>
@@ -64,7 +64,13 @@
     </screenshots>
 
     <releases>
-      <release version="v0.4.6" date="2025-04-1">
+      <release version="v0.4.7" date="2025-05-10">
+        <description translate="no">
+          <p>Added new font: Adwaita Mono</p>
+          <p>Added new font: Atkinson Hyperlegible Mono</p>
+        </description>
+      </release>
+      <release version="v0.4.6" date="2025-04-01">
         <description translate="no">
           <p>Updated to gnome 48 runtime</p>
         </description>
