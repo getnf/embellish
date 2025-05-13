@@ -59,7 +59,10 @@ export const EmbApplication = GObject.registerClass(
                 license_type: Gtk.License.GPL_3_0,
                 developers: ["Ronnie Nissan <ronnie.nissan@proton.me>"],
                 designers: ["Brage Fuglseth https://bragefuglseth.dev"],
-                artists: ["Jakub Steiner https://jimmac.eu/"],
+                artists: [
+                    "Jakub Steiner https://jimmac.eu/",
+                    "Brage Fuglseth https://bragefuglseth.dev"
+                ],
                 // Translators: Replace "translator-credits" with your names, one name per line
                 translator_credits: _("translator-credits"),
             });
