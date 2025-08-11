@@ -8,3 +8,14 @@
 .svg-preview {
     filter: invert(1);
 }
+
+/* Cheat sheet styles */
+.icon-section-header {
+    border-bottom: 1px solid @theme_text_color;
+    padding-bottom: 12px;
+}
+
+.icon-button {
+    font-size: 30px;
+}
+

@@ -10,5 +10,6 @@
         <file>previewManager.js</file>
         <file>fontsManager.js</file>
         <file>utils.js</file>
+        <file>iconsPage.js</file>
     </gresource>
 </gresources>

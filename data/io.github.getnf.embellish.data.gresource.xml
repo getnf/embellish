@@ -2,11 +2,13 @@
 <gresources>
   <gresource prefix="/io/github/getnf/embellish">
     <file>ui/Window.ui</file>
+    <file>ui/IconsPage.ui</file>
     <file>welcome.svg</file>
     <file>licence.svg</file>
     <file>style.css</file>
     <file>style-dark.css</file>
     <file>fonts</file>
+    <file>cheatsheet.csv</file>
     <file>licences</file>
     <file>previews/0xProto.svg</file>
     <file>previews/3270.svg</file>
@@ -81,10 +83,12 @@
     <file alias="gtk/help-overlay.ui">ui/ShortcutsWindow.ui</file>
   </gresource>
   <gresource prefix="/io/github/getnf/embellish/icons/scalable/actions">
-    <file alias="embellish-download-symbolic.svg">icons/folder-download-symbolic.svg</file>
-    <file alias="embellish-preview-symbolic.svg">icons/eye-open-negative-filled-symbolic.svg</file>
-    <file alias="embellish-remove-symbolic.svg">icons/user-trash-symbolic.svg</file>
-    <file alias="embellish-search-symbolic.svg">icons/edit-find-symbolic.svg</file>
-    <file alias="embellish-update-symbolic.svg">icons/software-update-available-symbolic.svg</file>
+    <file preprocess="xml-stripblanks" alias="embellish-download-symbolic.svg">icons/folder-download-symbolic.svg</file>
+    <file preprocess="xml-stripblanks" alias="embellish-preview-symbolic.svg">icons/eye-open-negative-filled-symbolic.svg</file>
+    <file preprocess="xml-stripblanks" alias="embellish-remove-symbolic.svg">icons/user-trash-symbolic.svg</file>
+    <file preprocess="xml-stripblanks" alias="embellish-search-symbolic.svg">icons/edit-find-symbolic.svg</file>
+    <file preprocess="xml-stripblanks" alias="embellish-update-symbolic.svg">icons/software-update-available-symbolic.svg</file>
+    <file preprocess="xml-stripblanks" alias="embellish-fonts-symbolic.svg">icons/font-x-generic-symbolic.svg</file>
+    <file preprocess="xml-stripblanks" alias="embellish-icons-symbolic.svg">icons/shapes-symbolic.svg</file>
   </gresource>
 </gresources>

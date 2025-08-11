@@ -4,6 +4,7 @@ import Gtk from "gi://Gtk";
 import Gio from "gi://Gio";
 
 import { EmbWindow } from "./window.js";
+import { EmbIconsPage } from "./iconsPage.js";
 
 export const EmbApplication = GObject.registerClass(
     {
@@ -61,7 +62,7 @@ export const EmbApplication = GObject.registerClass(
                 designers: ["Brage Fuglseth https://bragefuglseth.dev"],
                 artists: [
                     "Jakub Steiner https://jimmac.eu/",
-                    "Brage Fuglseth https://bragefuglseth.dev"
+                    "Brage Fuglseth https://bragefuglseth.dev",
                 ],
                 // Translators: Replace "translator-credits" with your names, one name per line
                 translator_credits: _("translator-credits"),

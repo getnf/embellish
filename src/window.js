@@ -10,7 +10,6 @@ import { LicencesManager } from "./licencesManager.js";
 import { PreviewManager } from "./previewManager.js";
 import { Utils } from "./utils.js";
 import { VersionManager } from "./versionManager.js";
-
 export const EmbWindow = GObject.registerClass(
     {
         GTypeName: "EmbWindow",
@@ -150,9 +149,9 @@ export const EmbWindow = GObject.registerClass(
         #setupSearch() {
             this._searchBar.connect("notify::search-mode-enabled", () => {
                 if (this._searchBar.search_mode_enabled) {
-                    this._mainStack.visible_child = this._searchPage;
+                    this._mainStack.set_visible_child_name("searchPage")
                 } else {
-                    this._mainStack.visible_child = this._mainPage;
+                    this._mainStack.set_visible_child_name("fontsPage")
                 }
             });
 
@@ -176,9 +175,9 @@ export const EmbWindow = GObject.registerClass(
                 results_count = -1;
                 this._searchList.invalidate_filter();
                 if (results_count === -1)
-                    this._mainStack.visible_child = this._statusPage;
+                    this._mainStack.set_visible_child_name("statusPage");
                 else if (this._searchBar.search_mode_enabled)
-                    this._mainStack.visible_child = this._searchPage;
+                    this._mainStack.set_visible_child_name("searchPage");
             });
         }
 
