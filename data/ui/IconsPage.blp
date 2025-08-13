@@ -1,0 +1,68 @@
+using Gtk 4.0;
+using Adw 1;
+
+template $EmbIconsPage: Adw.Bin {
+  child: Adw.ToolbarView {
+    [top]
+    SearchBar searchBar {
+      search-mode-enabled: true;
+
+      SearchEntry searchEntry {
+        search-delay: 100;
+        placeholder-text: _("Search icons by name or category...");
+        width-request: 450;
+
+        accessibility {
+          label: _("Search for icons");
+        }
+      }
+    }
+
+    content: Stack iconsStack {
+      transition-type: crossfade;
+
+      StackPage {
+        name: "iconGrid";
+
+        child: ScrolledWindow {
+          hscrollbar-policy: never;
+          vscrollbar-policy: automatic;
+          kinetic-scrolling: true;
+
+          accessibility {
+            label: _("Icons list");
+          }
+
+          Box sectionsContainer {
+            orientation: vertical;
+            spacing: 24;
+            margin-top: 12;
+            margin-bottom: 12;
+            margin-start: 12;
+            margin-end: 12;
+
+            accessibility {
+              label: _("Icon sections");
+            }
+          }
+        };
+      }
+
+      StackPage {
+        name: "emptyState";
+
+        child: Adw.StatusPage {
+          title: _("No Icons Found");
+          description: _("Try a different search term");
+          icon-name: "edit-find-symbolic";
+          vexpand: true;
+        };
+      }
+
+      StackPage {
+        name: "loadingState";
+        child: Adw.Spinner {};
+      }
+    };
+  };
+}

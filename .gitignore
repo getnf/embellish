@@ -32,3 +32,5 @@ embellish
 main
 /platform-tools-latest-linux.zip
 /platform-tools/
+
+/subprojects/blueprint-compiler

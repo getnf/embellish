@@ -1,10 +1,21 @@
+blueprints = custom_target('blueprints',
+  input: files(
+    'ui/ShortcutsWindow.blp',
+    'ui/IconsPage.blp',
+    'ui/Window.blp',
+  ),
+  output: '.',
+  command: [find_program('blueprint-compiler'), 'batch-compile', '@OUTPUT@', '@CURRENT_SOURCE_DIR@', '@INPUT@'],
+)
+
 # Compile the resources
 gnome.compile_resources(
 	APP_ID + '.data',
 	APP_ID + '.data.gresource.xml',
 	gresource_bundle: true,
 	install: true,
-	install_dir: get_option('datadir') / APP_ID
+	install_dir: get_option('datadir') / APP_ID,
+	dependencies: blueprints,
 )
 
 # Install the settings schema

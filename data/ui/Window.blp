@@ -1,0 +1,248 @@
+using Gtk 4.0;
+using Adw 1;
+
+template $EmbWindow {
+    title: _("Embellish");
+    default-width: "550";
+    default-height: "600";
+    width-request: "360";
+    height-request: "296";
+
+    Adw.ToastOverlay toastOverlay {
+        Stack stack {
+            transition-type: slide_left;
+
+            StackPage {
+                name: "welcomePage";
+
+                child: Adw.ToolbarView {
+                    extend-content-to-top-edge: true;
+
+                    [top]
+                    Adw.HeaderBar {
+                        show-title: false;
+                    }
+
+                    content: Adw.Clamp {
+                        maximum-size: 530;
+
+                        Box {
+                            orientation: vertical;
+                            halign: center;
+                            valign: center;
+                            spacing: 12;
+                            margin-start: 12;
+                            margin-end: 12;
+
+                            Picture {
+                                file: "resource:///io/github/getnf/embellish/welcome.svg";
+                                can-shrink: false;
+                            }
+
+                            Label {
+                                label: _("Embellish");
+
+                                styles [
+                                    "title-1",
+                                ]
+                            }
+
+                            Label {
+                                label: _("Install nerd fonts");
+                            }
+
+                            Button {
+                                label: _("Get started");
+                                action-name: "win.changeView";
+                                action-target: "'mainPage'";
+                                halign: center;
+
+                                styles [
+                                    "suggested-action",
+                                    "pill",
+                                ]
+                            }
+                        }
+                    };
+                };
+            }
+
+            StackPage mainPage {
+                name: "mainPage";
+
+                child: Adw.ToolbarView container {
+                    extend-content-to-top-edge: false;
+                    top-bar-style: raised;
+
+                    [top]
+                    Adw.HeaderBar {
+                        title-widget: Adw.ViewSwitcher switcher_title {
+                            stack: mainStack;
+                            policy: wide;
+                        };
+
+                        [start]
+                        Button {
+                            action-name: "win.search";
+                            tooltip-text: _("Search fonts");
+                            icon-name: "embellish-search-symbolic";
+                        }
+
+                        [end]
+                        MenuButton {
+                            tooltip-text: _("Main Menu");
+                            primary: true;
+                            direction: none;
+                            menu-model: main_menu;
+                        }
+                    }
+
+                    [top]
+                    SearchBar searchBar {
+                        key-capture-widget: container;
+
+                        SearchEntry searchEntry {
+                            search-delay: 100;
+                            placeholder-text: _("Search fonts");
+                            width-request: 400;
+                        }
+                    }
+
+                    content: Adw.ViewStack mainStack {
+                        Adw.ViewStackPage fontsPage {
+                            name: "fontsPage";
+                            title: _("Fants");
+                            icon-name: "embellish-fonts-symbolic";
+                            use-underline: true;
+
+                            child: ScrolledWindow {
+                                Adw.Clamp {
+                                    maximum-size: 530;
+
+                                    Box {
+                                        valign: start;
+                                        orientation: vertical;
+                                        spacing: 24;
+                                        margin-top: 24;
+                                        margin-start: 12;
+                                        margin-end: 12;
+                                        margin-bottom: 24;
+
+                                        Box {
+                                            valign: center;
+                                            orientation: vertical;
+                                            spacing: 12;
+
+                                            Label {
+                                                label: _("Installed fonts");
+                                                halign: start;
+
+                                                styles [
+                                                    "heading",
+                                                ]
+                                            }
+
+                                            ListBox installedFontsList {
+                                                selection-mode: none;
+
+                                                styles [
+                                                    "boxed-list",
+                                                ]
+                                            }
+                                        }
+
+                                        Box {
+                                            valign: center;
+                                            orientation: vertical;
+                                            spacing: 12;
+
+                                            Label {
+                                                label: _("Available fonts");
+                                                halign: start;
+
+                                                styles [
+                                                    "heading",
+                                                ]
+                                            }
+
+                                            ListBox availableFontsList {
+                                                selection-mode: none;
+
+                                                styles [
+                                                    "boxed-list",
+                                                ]
+                                            }
+                                        }
+                                    }
+                                }
+                            };
+                        }
+
+                        Adw.ViewStackPage iconsPage {
+                            name: "iconsPage";
+                            title: _("Icons");
+                            icon-name: "embellish-icons-symbolic";
+                            use-underline: true;
+
+                            child: Adw.Clamp {
+                                maximum-size: 530;
+
+                                $EmbIconsPage {
+                                    margin-top: "24";
+                                    margin-start: "12";
+                                    margin-end: "12";
+                                    margin-bottom: "24";
+                                }
+                            };
+                        }
+
+                        Adw.ViewStackPage searchPage {
+                            name: "searchPage";
+
+                            child: ScrolledWindow {
+                                Adw.Clamp {
+                                    margin-top: 24;
+                                    margin-bottom: 24;
+
+                                    ListBox searchList {
+                                        selection-mode: none;
+
+                                        styles [
+                                            "boxed-list",
+                                        ]
+                                    }
+                                }
+                            };
+                        }
+
+                        Adw.ViewStackPage statusPage {
+                            name: "statusPage";
+
+                            child: Adw.StatusPage {
+                                title: _("No Results Founds");
+                                description: _("Try a different search");
+                                icon-name: "edit-find-symbolic";
+                                vexpand: true;
+                            };
+                        }
+                    };
+                };
+            }
+        }
+    }
+}
+
+menu main_menu {
+    section {
+        item {
+            label: _("Keyboard Shortcuts");
+            action: "win.show-help-overlay";
+        }
+
+        item {
+            label: _("About");
+            action: "app.about";
+        }
+    }
+}
+
