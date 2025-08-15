@@ -25,6 +25,7 @@ export const EmbWindow = GObject.registerClass(
             "statusPage",
             "searchList",
             "toastOverlay",
+            "scroller",
             "installedFontsList",
             "availableFontsList",
         ],
@@ -35,6 +36,7 @@ export const EmbWindow = GObject.registerClass(
             this.#setupActions();
             this.#setupWelcomeScreen();
             this.utils = new Utils();
+            this.scrollValue = 0;
             this.installedFontsManager = new InstalledFontsManager();
             this.versionManager = new VersionManager();
             this.licencesManager = new LicencesManager();
@@ -312,7 +314,19 @@ export const EmbWindow = GObject.registerClass(
             console.log(error);
         }
 
+        _handleScrollPosition(scrollValue) {
+            GLib.idle_add(GLib.PRIORITY_DEFAULT_IDLE, () => {
+                const adjustment = this._scroller.get_vadjustment();
+                if (adjustment) {
+                    adjustment.set_value(scrollValue);
+                }
+                return GLib.SOURCE_REMOVE;
+            });
+        }
+
         async _handleFontAction(action, font, spinner, stack, message) {
+            const adjustment = this._scroller.get_vadjustment();
+            this.scrollValue = adjustment ? adjustment.get_value() : 0;
             try {
                 stack.set_visible_child_name("spinner");
                 spinner.spinning = true;
@@ -327,6 +341,7 @@ export const EmbWindow = GObject.registerClass(
                 this._searchList.remove_all();
                 this.#setupSearch();
                 this.#populateFontLists();
+                this._handleScrollPosition(this.scrollValue);
                 this._updateNoFontsBanner();
             } catch (error) {
                 spinner.spinning = false;
