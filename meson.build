@@ -1,7 +1,7 @@
 # Define our project
 project(
        'embellish',
-	version: '0.5.0',
+	version: '0.5.1',
 	license: ['GPL-3.0-or-later'],
 	meson_version: '>= 0.62.0'
 )

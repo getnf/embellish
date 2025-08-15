@@ -40,6 +40,7 @@
           <li>Uninstall an installed Font</li>
           <li>Update an installed font</li>
           <li>preview fonts</li>
+          <li>preview icons (icon's cheat sheet)</li>
           <li>Search fonts</li>
           <li>Read font's licence(s)</li>
         </ul>
@@ -56,7 +57,7 @@
             <image>https://raw.githubusercontent.com/getnf/embellish/main/data/screenshots/main-page.png</image>
             <caption>Main page showing a list of installed and available nerd fonts</caption>
         </screenshot>
-        <screenshot type="default">
+        <screenshot>
             <image>https://raw.githubusercontent.com/getnf/embellish/main/data/screenshots/icons-page.png</image>
             <caption>Icons page showing all the avilable nerd fonts icons</caption>
         </screenshot>
@@ -68,7 +69,7 @@
     </screenshots>
 
     <releases>
-      <release version="v0.5.0" date="2025-08-15">
+      <release version="v0.5.1" date="2025-08-15">
         <description translate="no">
           <ul>
             <li>Fixed fonts list jumping to the top after a font was installed/removed</li>
