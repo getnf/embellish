@@ -18,6 +18,7 @@ export const EmbWindow = GObject.registerClass(
             "stack",
             "mainStack",
             "mainPage",
+            "noFontsBanner",
             "searchBar",
             "searchEntry",
             "searchPage",
@@ -77,12 +78,36 @@ export const EmbWindow = GObject.registerClass(
                 this.fonts = this.fontsManager.loadFonts();
                 this.#setupSearch();
                 this.#populateFontLists();
+                this.#setupNoFontsBanner();
             } catch (error) {
                 console.error("Error during font initialization: ", error);
                 const toast = new Adw.Toast({
                     title: _("Failed to load fonts."),
                 });
                 this._toastOverlay.add_toast(toast);
+            }
+        }
+
+        #setupNoFontsBanner() {
+            this._mainStack.connect("notify::visible-child", () => {
+                this._updateNoFontsBanner();
+            });
+
+            this._noFontsBanner.connect("button-clicked", () => {
+                this._mainStack.set_visible_child_name("fontsPage");
+            });
+        }
+
+        _updateNoFontsBanner() {
+            const visible_child = this._mainStack.get_visible_child_name();
+            const installedFonts = this.fonts
+                ? this.fonts.filter((font) => font.installed)
+                : [];
+
+            if (visible_child === "iconsPage" && installedFonts.length === 0) {
+                this._noFontsBanner.set_revealed(true);
+            } else {
+                this._noFontsBanner.set_revealed(false);
             }
         }
 
@@ -149,9 +174,9 @@ export const EmbWindow = GObject.registerClass(
         #setupSearch() {
             this._searchBar.connect("notify::search-mode-enabled", () => {
                 if (this._searchBar.search_mode_enabled) {
-                    this._mainStack.set_visible_child_name("searchPage")
+                    this._mainStack.set_visible_child_name("searchPage");
                 } else {
-                    this._mainStack.set_visible_child_name("fontsPage")
+                    this._mainStack.set_visible_child_name("fontsPage");
                 }
             });
 
@@ -225,11 +250,10 @@ export const EmbWindow = GObject.registerClass(
         }
 
         _createInstallButton(font) {
-            const { button, spinner, stack } =
-                this.utils.createSpinnerButton(
-                    "embellish-download-symbolic",
-                    "Install",
-                );
+            const { button, spinner, stack } = this.utils.createSpinnerButton(
+                "embellish-download-symbolic",
+                "Install",
+            );
             button.connect("clicked", async () => {
                 try {
                     await this._handleInstallButton(
@@ -246,11 +270,10 @@ export const EmbWindow = GObject.registerClass(
         }
 
         _createUpdateButton(font) {
-            const { button, spinner, stack } =
-                this.utils.createSpinnerButton(
-                    "embellish-update-symbolic",
-                    "Update",
-                );
+            const { button, spinner, stack } = this.utils.createSpinnerButton(
+                "embellish-update-symbolic",
+                "Update",
+            );
             button.connect("clicked", async () => {
                 try {
                     await this._handleInstallButton(
@@ -267,18 +290,13 @@ export const EmbWindow = GObject.registerClass(
         }
 
         _createRemoveButton(font) {
-            const { button, spinner, stack } =
-                this.utils.createSpinnerButton(
-                    "embellish-remove-symbolic",
-                    "Remove",
-                );
+            const { button, spinner, stack } = this.utils.createSpinnerButton(
+                "embellish-remove-symbolic",
+                "Remove",
+            );
             button.connect("clicked", async () => {
                 try {
-                    await this._handleRemoveButton(
-                        font,
-                        spinner,
-                        stack,
-                    );
+                    await this._handleRemoveButton(font, spinner, stack);
                 } catch (error) {
                     this._handleError(error, _("Removing failed: %s"));
                 }
@@ -298,7 +316,7 @@ export const EmbWindow = GObject.registerClass(
             try {
                 stack.set_visible_child_name("spinner");
                 spinner.spinning = true;
-                await this.versionManager.setupFontsVersion()
+                await this.versionManager.setupFontsVersion();
                 await action(font);
                 const toast = new Adw.Toast({
                     title: message,
@@ -309,58 +327,60 @@ export const EmbWindow = GObject.registerClass(
                 this._searchList.remove_all();
                 this.#setupSearch();
                 this.#populateFontLists();
+                this._updateNoFontsBanner();
             } catch (error) {
                 spinner.spinning = false;
-                stack.set_visible_child_name("icon")
+                stack.set_visible_child_name("icon");
                 console.log("Action failed", error);
                 throw error;
             }
         }
 
         async _handleInstallButton(font, spinner, stack, message) {
-        try {
-            await this._handleFontAction(
-                async (font) => {
-                try {
-                    await this.fontsManager.downloadAndInstall(
-                        font.tarName,
-                        this.versionManager.get(),
-                    );
-                    this.installedFontsManager.update(
-                        font.tarName,
-                        this.versionManager.get(),
-                    );
-                    } catch(error) {
-                    throw error
-                    }
-                },
-                font,
-                spinner,
-                stack,
-                message,
-            );
+            try {
+                await this._handleFontAction(
+                    async (font) => {
+                        try {
+                            await this.fontsManager.downloadAndInstall(
+                                font.tarName,
+                                this.versionManager.get(),
+                            );
+                            this.installedFontsManager.update(
+                                font.tarName,
+                                this.versionManager.get(),
+                            );
+                        } catch (error) {
+                            throw error;
+                        }
+                    },
+                    font,
+                    spinner,
+                    stack,
+                    message,
+                );
             } catch (error) {
-                throw error
+                throw error;
             }
         }
 
         async _handleRemoveButton(font, spinner, stack) {
-        try {
-            await this._handleFontAction(
-                async (font) => {
-                try {
-                    await this.fontsManager.remove(font.tarName);
-                    this.installedFontsManager.remove(font.tarName);
-                    } catch(error) {
-                    throw error}
-                },
-                font,
-                spinner,
-                stack,
-                _("Font removed"),
-            );
+            try {
+                await this._handleFontAction(
+                    async (font) => {
+                        try {
+                            await this.fontsManager.remove(font.tarName);
+                            this.installedFontsManager.remove(font.tarName);
+                        } catch (error) {
+                            throw error;
+                        }
+                    },
+                    font,
+                    spinner,
+                    stack,
+                    _("Font removed"),
+                );
             } catch (error) {
-                throw error
+                throw error;
             }
         }
 

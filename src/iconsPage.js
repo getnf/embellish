@@ -9,8 +9,7 @@ import GLib from "gi://GLib";
 export const EmbIconsPage = GObject.registerClass(
     {
         GTypeName: "EmbIconsPage",
-        Template:
-            "resource:///io/github/getnf/embellish/ui/IconsPage.ui",
+        Template: "resource:///io/github/getnf/embellish/ui/IconsPage.ui",
         InternalChildren: [
             "searchBar",
             "searchEntry",
@@ -410,8 +409,8 @@ export const EmbIconsPage = GObject.registerClass(
                 tooltip_text: `${icon.name}\nUnicode: ${icon.unicode}`,
             });
 
-            button.add_css_class("flat")
-            button.add_css_class("icon-button")
+            button.add_css_class("flat");
+            button.add_css_class("icon-button");
 
             button.connect("clicked", () => {
                 this.#copyToClipboard(icon.icon, button);
@@ -427,7 +426,7 @@ export const EmbIconsPage = GObject.registerClass(
                 halign: Gtk.Align.CENTER,
                 width_request: 60,
                 height_request: 60,
-            })
+            });
 
             return buttonContainer;
         }
