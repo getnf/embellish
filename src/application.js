@@ -68,6 +68,8 @@ export const EmbApplication = GObject.registerClass(
                 translator_credits: _("translator-credits"),
             });
 
+            dialog.add_other_app("io.github.ronniedroid.concessio", _("Concessio"), _("Understand file permissions"))
+
             dialog.present(this.get_active_window());
         }
     },

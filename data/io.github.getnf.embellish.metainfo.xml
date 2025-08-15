@@ -54,16 +54,30 @@
     <screenshots>
         <screenshot type="default">
             <image>https://raw.githubusercontent.com/getnf/embellish/main/data/screenshots/main-page.png</image>
-            <caption>Application main page showing a list of installed and available nerd fonts</caption>
+            <caption>Main page showing a list of installed and available nerd fonts</caption>
+        </screenshot>
+        <screenshot type="default">
+            <image>https://raw.githubusercontent.com/getnf/embellish/main/data/screenshots/icons-page.png</image>
+            <caption>Icons page showing all the avilable nerd fonts icons</caption>
         </screenshot>
         <screenshot>
             <image>
                 https://raw.githubusercontent.com/getnf/embellish/main/data/screenshots/search-page.png</image>
-                <caption>Application search page, showcasing search</caption>
+                <caption>Search page, showcasing search functionality</caption>
         </screenshot>
     </screenshots>
 
     <releases>
+      <release version="v0.5.0" date="2025-08-15">
+        <description translate="no">
+          <ul>
+            <li>Fixed fonts list jumping to the top after a font was installed/removed</li>
+            <li>Added a new page to search, view and copy the nerd fonts icons, similar to the cheatsheet on NerdFonts website</li>
+            <li>Redesigned the header bar to accomidate the new page</li>
+            <li>take advantage of latest libadwaita options</li>
+          </ul>
+        </description>
+      </release>
       <release version="v0.4.7" date="2025-05-10">
         <description translate="no">
           <p>Added new font: Adwaita Mono</p>

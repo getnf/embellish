@@ -90,5 +90,6 @@
     <file preprocess="xml-stripblanks" alias="embellish-update-symbolic.svg">icons/software-update-available-symbolic.svg</file>
     <file preprocess="xml-stripblanks" alias="embellish-fonts-symbolic.svg">icons/font-x-generic-symbolic.svg</file>
     <file preprocess="xml-stripblanks" alias="embellish-icons-symbolic.svg">icons/shapes-symbolic.svg</file>
+    <file preprocess="xml-stripblanks" alias="io.github.ronniedroid.concessio.svg">icons/io.github.ronniedroid.concessio.svg</file>
   </gresource>
 </gresources>
