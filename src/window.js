@@ -190,8 +190,15 @@ export const EmbWindow = GObject.registerClass(
             let results_count;
 
             const filter = (row) => {
-                const re = new RegExp(this._searchEntry.text, "i");
-                const match = re.test(row.title);
+                const query = this._searchEntry.text.trim().toLowerCase();
+                const title = row.title.toLowerCase();
+
+                if (query === "") {
+                    results_count++;
+                    return true;
+                }
+
+                const match = title.includes(query);
                 if (match) results_count++;
                 return match;
             };
@@ -199,13 +206,21 @@ export const EmbWindow = GObject.registerClass(
             this._searchList.set_filter_func((row) => filter(row));
 
             this._searchEntry.connect("search-changed", () => {
-                results_count = -1;
+                const query = this._searchEntry.text.trim();
+                results_count = 0;
                 this._searchList.invalidate_filter();
-                if (results_count === -1)
+
+                if (query !== "" && results_count === 0) {
                     this._mainStack.set_visible_child_name("statusPage");
-                else if (this._searchBar.search_mode_enabled)
+                } else if (this._searchBar.search_mode_enabled) {
                     this._mainStack.set_visible_child_name("searchPage");
+                } else {
+                    this._mainStack.set_visible_child_name("fontsPage");
+                }
             });
+
+            // Start with the search bar closed by default
+            this._searchBar.search_mode_enabled = false;
         }
 
         _createFontRow(font) {

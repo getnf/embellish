@@ -80,7 +80,7 @@
     <file>previews/Ubuntu.svg</file>
     <file>previews/VictorMono.svg</file>
     <file>previews/ZedMono.svg</file>
-    <file alias="gtk/help-overlay.ui">ui/ShortcutsWindow.ui</file>
+    <file>shortcuts-dialog.ui</file>
   </gresource>
   <gresource prefix="/io/github/getnf/embellish/icons/scalable/actions">
     <file preprocess="xml-stripblanks" alias="embellish-download-symbolic.svg">icons/folder-download-symbolic.svg</file>

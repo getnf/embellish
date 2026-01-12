@@ -40,7 +40,7 @@
           <li>Uninstall an installed Font</li>
           <li>Update an installed font</li>
           <li>preview fonts</li>
-          <li>preview icons (icon's cheat sheet)</li>
+          <li>Browse icons (icon's cheat sheet)</li>
           <li>Search fonts</li>
           <li>Read font's licence(s)</li>
         </ul>
@@ -69,6 +69,15 @@
     </screenshots>
 
     <releases>
+      <release version="v0.5.2" date="2026-01-12">
+        <description translate="no">
+          <ul>
+            <li>Updated to gnome 49 runtime</li>
+            <li>Switched to new libadwiata shortcuts dialog</li>
+            <li>Bug fixes</li>
+          </ul>
+        </description>
+      </release>
       <release version="v0.5.1" date="2025-08-15">
         <description translate="no">
           <ul>
