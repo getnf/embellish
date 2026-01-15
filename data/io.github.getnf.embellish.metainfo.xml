@@ -69,6 +69,14 @@
     </screenshots>
 
     <releases>
+      <release version="v0.6.0" date="2026-01-15">
+        <description translate="no">
+          <ul>
+            <li>Added translation capabiilities</li>
+            <li>Added Arabic translations</li>
+          </ul>
+        </description>
+      </release>
       <release version="v0.5.2" date="2026-01-12">
         <description translate="no">
           <ul>
