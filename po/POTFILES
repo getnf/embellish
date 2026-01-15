@@ -1,0 +1,15 @@
+data/io.github.getnf.embellish.desktop
+data/io.github.getnf.embellish.metainfo.xml
+src/application.js
+src/data_translations.js
+src/fontsManager.js
+src/iconsPage.js
+src/licencesManager.js
+src/main.js
+src/previewManager.js
+src/utils.js
+src/versionManager.js
+src/window.js
+data/ui/IconsPage.blp
+data/ui/Window.blp
+data/shortcuts-dialog.blp

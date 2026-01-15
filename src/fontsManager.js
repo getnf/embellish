@@ -92,7 +92,7 @@ export class FontsManager {
                 name: group,
                 patchedName,
                 tarName,
-                description,
+                description: _(description),
                 licences: licenceIds,
                 installed: isInstalled,
                 hasUpdate: isInstalled ? this._HasUpdate(tarName) : false,

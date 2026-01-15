@@ -269,7 +269,7 @@ export const EmbWindow = GObject.registerClass(
         _createInstallButton(font) {
             const { button, spinner, stack } = this.utils.createSpinnerButton(
                 "embellish-download-symbolic",
-                "Install",
+                _("Install"),
             );
             button.connect("clicked", async () => {
                 try {
@@ -289,7 +289,7 @@ export const EmbWindow = GObject.registerClass(
         _createUpdateButton(font) {
             const { button, spinner, stack } = this.utils.createSpinnerButton(
                 "embellish-update-symbolic",
-                "Update",
+                _("Update"),
             );
             button.connect("clicked", async () => {
                 try {
@@ -309,7 +309,7 @@ export const EmbWindow = GObject.registerClass(
         _createRemoveButton(font) {
             const { button, spinner, stack } = this.utils.createSpinnerButton(
                 "embellish-remove-symbolic",
-                "Remove",
+                _("Remove"),
             );
             button.connect("clicked", async () => {
                 try {

@@ -15,7 +15,7 @@ i18n = import('i18n')
 # Load instructions from subdirectories
 subdir('data')
 subdir('src')
-#subdir('po')
+subdir('po')
 
 gnome.post_install(
 	gtk_update_icon_cache: true,

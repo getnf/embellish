@@ -307,7 +307,7 @@ export const EmbIconsPage = GObject.registerClass(
             // Add "Load More" button if there are remaining icons
             if (remainingIcons.length > 0) {
                 const loadMoreButton = new Gtk.Button({
-                    label: `Load ${remainingIcons.length} more icons`,
+                    label: _("Load %d more icons").format(remainingIcons.length),
                     halign: Gtk.Align.CENTER,
                     margin_top: 12,
                 });
@@ -337,7 +337,7 @@ export const EmbIconsPage = GObject.registerClass(
                             const remaining =
                                 remainingIcons.length - loadedCount;
                             loadMoreButton.set_label(
-                                `Load ${remaining} more icons...`,
+                                _("Load %d more icons...").format(remaining),
                             );
 
                             // Schedule next batch with a small delay to keep UI responsive
@@ -407,6 +407,8 @@ export const EmbIconsPage = GObject.registerClass(
             const button = new Gtk.Button({
                 label: icon.icon,
                 tooltip_text: `${icon.name}\nUnicode: ${icon.unicode}`,
+                // Translated version, disabled as it makes tooltip alignment weird.
+                // tooltip_text: _("%s\nUnicode: %s").format(icon.name, icon.unicode),
             });
 
             button.add_css_class("flat");
@@ -446,7 +448,7 @@ export const EmbIconsPage = GObject.registerClass(
             }
 
             // Try to show a toast notification
-            this.#showToast(`Copied "${text}" to clipboard`);
+            this.#showToast(_('Copied "%s" to clipboard').format(text));
         }
 
         #showToast(message) {
@@ -474,3 +476,5 @@ export const EmbIconsPage = GObject.registerClass(
         }
     },
 );
+
+

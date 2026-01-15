@@ -15,7 +15,7 @@ export class LicencesManager {
 
         const licenceButton = new Gtk.MenuButton();
         licenceButton.add_css_class("licence-button");
-        licenceButton.set_tooltip_text("licence details");
+        licenceButton.set_tooltip_text(_("licence details"));
         const licenceButtonLabel = new Gtk.Label();
         if (font.licences.length > 1) {
             // Translators: This means that the font has two licences
@@ -98,6 +98,6 @@ export class LicencesManager {
         }
 
         const description = keyFile.get_string("licences", licenceKey);
-        return description ? description : _("No description available");
+        return description ? _(description) : _("No description available");
     }
 }

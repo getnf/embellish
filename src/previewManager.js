@@ -11,7 +11,7 @@ export class PreviewManager {
             icon_name: "embellish-preview-symbolic",
         });
         button.add_css_class("flat");
-        button.set_tooltip_text("Preview");
+        button.set_tooltip_text(_("Preview"));
         button.connect("clicked", () => {
             this._showDialog(font.tarName);
         });

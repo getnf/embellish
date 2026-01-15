@@ -1,0 +1,666 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the io.github.getnf.embellish package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: io.github.getnf.embellish\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-01-15 22:30+0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: data/io.github.getnf.embellish.desktop:2
+#: data/io.github.getnf.embellish.metainfo.xml:5 src/application.js:51
+#: data/ui/Window.blp:5 data/ui/Window.blp:43
+msgid "Embellish"
+msgstr ""
+
+#: data/io.github.getnf.embellish.desktop:3
+#: data/io.github.getnf.embellish.metainfo.xml:6 data/ui/Window.blp:51
+msgid "Install nerd fonts"
+msgstr ""
+
+#: data/io.github.getnf.embellish.desktop:9
+msgid "Fonts;NerdFonts;nerd;"
+msgstr ""
+
+#: data/io.github.getnf.embellish.metainfo.xml:32
+msgid ""
+"User-friendly application designed for managing Nerd Fonts on your system. "
+"With a sleek GTK4 user interface enhanced by libadwaita, Embellish provides "
+"a seamless experience for installing, uninstalling and updating of Nerd "
+"Fonts."
+msgstr ""
+
+#: data/io.github.getnf.embellish.metainfo.xml:38
+msgid "List all available Nerd Fonts"
+msgstr ""
+
+#: data/io.github.getnf.embellish.metainfo.xml:39
+msgid "Download and install a Font"
+msgstr ""
+
+#: data/io.github.getnf.embellish.metainfo.xml:40
+msgid "Uninstall an installed Font"
+msgstr ""
+
+#: data/io.github.getnf.embellish.metainfo.xml:41
+msgid "Update an installed font"
+msgstr ""
+
+#: data/io.github.getnf.embellish.metainfo.xml:42
+msgid "preview fonts"
+msgstr ""
+
+#: data/io.github.getnf.embellish.metainfo.xml:43
+msgid "Browse icons (icon's cheat sheet)"
+msgstr ""
+
+#: data/io.github.getnf.embellish.metainfo.xml:44 data/ui/Window.blp:87
+#: data/ui/Window.blp:113 data/shortcuts-dialog.blp:7
+msgid "Search fonts"
+msgstr ""
+
+#: data/io.github.getnf.embellish.metainfo.xml:45
+msgid "Read font's licence(s)"
+msgstr ""
+
+#: data/io.github.getnf.embellish.metainfo.xml:58
+msgid "Main page showing a list of installed and available nerd fonts"
+msgstr ""
+
+#: data/io.github.getnf.embellish.metainfo.xml:62
+msgid "Icons page showing all the avilable nerd fonts icons"
+msgstr ""
+
+#: data/io.github.getnf.embellish.metainfo.xml:67
+msgid "Search page, showcasing search functionality"
+msgstr ""
+
+#: src/application.js:55
+msgid "Embellish helps you manage Nerd Fonts on your system"
+msgstr ""
+
+#. Translators: Replace "translator-credits" with your names, one name per line
+#: src/application.js:68
+msgid "translator-credits"
+msgstr ""
+
+#: src/application.js:71
+msgid "Concessio"
+msgstr ""
+
+#: src/application.js:71
+msgid "Understand file permissions"
+msgstr ""
+
+#: src/data_translations.js:4
+msgid "An opinionated font for software engineers"
+msgstr ""
+
+#: src/data_translations.js:5
+msgid ""
+"Derived from the x3270 font, a modern format of a font with high nostalgic "
+"value"
+msgstr ""
+
+#: src/data_translations.js:6
+msgid "The monospace typeface for GNOME"
+msgstr ""
+
+#: src/data_translations.js:7
+msgid ""
+"A small, monospace, outline font that is geometrically regular and simple"
+msgstr ""
+
+#: src/data_translations.js:8
+msgid ""
+"Inspired by Anonymous 9 on Macintosh, since 2009, distinct `O`, `0`, `I`, "
+"`l`, `1`"
+msgstr ""
+
+#: src/data_translations.js:9
+msgid "Metrically similar to Arial, pan-European WGL character set, sans serif"
+msgstr ""
+
+#: src/data_translations.js:10
+msgid ""
+"A monospaced font designed to improve legibility and readability for "
+"individuals with low vision"
+msgstr ""
+
+#: src/data_translations.js:11
+msgid "Sans serif, designed by Stephen G. Hartke who also created Verily Serif"
+msgstr ""
+
+#: src/data_translations.js:12
+msgid "Nostalgic, closely based on IBM's 8x14 EGA/VGA charset"
+msgstr ""
+
+#: src/data_translations.js:13
+msgid "Dotted zero, compact lowercase characters"
+msgstr ""
+
+#: src/data_translations.js:14
+msgid ""
+"A fun, new monospaced font that includes programming ligatures and is "
+"designed to enhance the modern look and feel of the Windows Terminal"
+msgstr ""
+
+#: src/data_translations.js:15
+msgid "Like Cascadia Code but without any ligatures"
+msgstr ""
+
+#: src/data_translations.js:16
+msgid "Tunable, slashed zeros, compact smaller characters"
+msgstr ""
+
+#: src/data_translations.js:17
+msgid "The very typeface you’ve been trained to recognize since childhood"
+msgstr ""
+
+#: src/data_translations.js:18
+msgid "An anonymous and neutral programming typeface"
+msgstr ""
+
+#: src/data_translations.js:19
+msgid "Similar to Courier New with better readability, dotted zeros"
+msgstr ""
+
+#: src/data_translations.js:20
+msgid "A coding font for Koreans. This is the variant with ligatures."
+msgstr ""
+
+#: src/data_translations.js:21
+msgid "A monospaced font for programmers and other terminal groupies"
+msgstr ""
+
+#: src/data_translations.js:22
+msgid "A monospaced pixel font with a lo-fi, techy vibe"
+msgstr ""
+
+#: src/data_translations.js:23
+msgid ""
+"Dotted zero, based on the Bitstream Vera Fonts with a wider range of "
+"characters"
+msgstr ""
+
+#: src/data_translations.js:24
+msgid "Good for small screens or font sizes"
+msgstr ""
+
+#: src/data_translations.js:25
+msgid ""
+"Fully-scalable monospaced font designed for programming and command prompts"
+msgstr ""
+
+#: src/data_translations.js:26
+msgid ""
+"\"Wibbly-wobbly handwriting-like fuzziness\", takes some inspiration from "
+"Inconsolata and Monaco"
+msgstr ""
+
+#: src/data_translations.js:27
+msgid "Programming ligatures, extension of Fira Mono font, enlarged operators"
+msgstr ""
+
+#: src/data_translations.js:28
+msgid "Mozilla typeface, dotted zero"
+msgstr ""
+
+#: src/data_translations.js:29
+msgid ""
+"Monospaced typeface designed to be used in code editors, diagrams, "
+"terminals, and other text-based interfaces where code is represented"
+msgstr ""
+
+#: src/data_translations.js:30
+msgid ""
+"Created specifically for the Go project, looks particularly clear for use "
+"with the Go language"
+msgstr ""
+
+#: src/data_translations.js:31
+msgid "Bitmap font, tall capitals and ascenders, small serifs"
+msgstr ""
+
+#: src/data_translations.js:32
+msgid ""
+"Dotted zero, short descenders, expands upon work done for Bitstream Vera & "
+"DejaVu, legible at common sizes"
+msgstr ""
+
+#: src/data_translations.js:33
+msgid ""
+"Monospaced ligatures, makes composite glyphs (e.g. ->) more readable, "
+"especially in Haskell"
+msgstr ""
+
+#: src/data_translations.js:34
+msgid "Novel and unique design, dotted zero"
+msgstr ""
+
+#: src/data_translations.js:35
+msgid "Symbols stand out from common text"
+msgstr ""
+
+#: src/data_translations.js:36
+msgid "A heavy modification of IBM's Plex font"
+msgstr ""
+
+#: src/data_translations.js:37
+msgid "It's global, it's versatile and it's distinctly IBM"
+msgstr ""
+
+#: src/data_translations.js:38
+msgid ""
+"Slashed zero, takes inspiration from many different fonts and glyphs, subtle "
+"curves in lowercase"
+msgstr ""
+
+#: src/data_translations.js:39
+msgid "Inconsolata with straight quotes"
+msgstr ""
+
+#: src/data_translations.js:40
+msgid "Inconsolata with added the Cyrillic alphabet"
+msgstr ""
+
+#: src/data_translations.js:41
+msgid ""
+"Expressive monospaced font family that’s built with clarity, legibility, and "
+"the needs of developers in mind"
+msgstr ""
+
+#: src/data_translations.js:42
+msgid "Narrow and horizontally tight characters, slashed zero"
+msgstr ""
+
+#: src/data_translations.js:43
+msgid ""
+"A narrower variant focusing terminal uses: Arrows and geometric symbols will "
+"be narrow to follow typical terminal usages"
+msgstr ""
+
+#: src/data_translations.js:44
+msgid "Nice as Iosevka but with slab serifs"
+msgstr ""
+
+#: src/data_translations.js:45
+msgid "JetBrains officially created font for developers"
+msgstr ""
+
+#: src/data_translations.js:46
+msgid "Very light and thin characters, sharp m's, `0` and `O` very similar"
+msgstr ""
+
+#: src/data_translations.js:47
+msgid "`0` and `O` very similar, very short tight descenders"
+msgstr ""
+
+#: src/data_translations.js:48
+msgid "Modern with ligatures"
+msgstr ""
+
+#: src/data_translations.js:49
+msgid "Free and open-source monospaced font from Evil Martians"
+msgstr ""
+
+#: src/data_translations.js:50
+msgid "Slashed zeros, customized version of Apple's Menlo"
+msgstr ""
+
+#: src/data_translations.js:51
+msgid "Five matching fonts all having 'texture healing' to improve legibility"
+msgstr ""
+
+#: src/data_translations.js:52
+msgid "Dotted zeros, slightly exaggerated curvy characters, compact characters"
+msgstr ""
+
+#: src/data_translations.js:53
+msgid ""
+"Ligatures, distinguishable glyphs with short ascenders & descenders, large "
+"operators & punctuation"
+msgstr ""
+
+#: src/data_translations.js:54
+msgid "Keeps in mind differentiation of characters and resolution sizes"
+msgstr ""
+
+#: src/data_translations.js:55
+msgid "Multiple styles and weights, many glyph sets (e.g. Kana glyphs)"
+msgstr ""
+
+#: src/data_translations.js:56
+msgid ""
+"`0` and `O` very similar, characters are either very curvy or straight lined"
+msgstr ""
+
+#: src/data_translations.js:57
+msgid "Designed specifically to alleviate reading errors caused by dyslexia"
+msgstr ""
+
+#: src/data_translations.js:58
+msgid "An open source font family inspired by Highway Gothic"
+msgstr ""
+
+#: src/data_translations.js:59
+msgid ""
+"Looks best with anti-aliasing turned off, squared off character corners, "
+"vertically tight small `s`"
+msgstr ""
+
+#: src/data_translations.js:60
+msgid "Designed particularly for use at small point sizes"
+msgstr ""
+
+#: src/data_translations.js:61
+msgid "inspired by casual script signpainting, 4 variants"
+msgstr ""
+
+#: src/data_translations.js:62
+msgid "Dashed zero, curved and straight character lines"
+msgstr ""
+
+#: src/data_translations.js:63
+msgid ""
+"Dotted zeros, distinguishable 1 and l, curved and straight character lines"
+msgstr ""
+
+#: src/data_translations.js:64
+msgid "Monospaced font family for user interface and coding environments"
+msgstr ""
+
+#: src/data_translations.js:65
+msgid "Squarish character lines, dotted zero, aggressive parenthesis"
+msgstr ""
+
+#: src/data_translations.js:66
+msgid "Just the Nerd Font Icons. I.e. Symbol font only"
+msgstr ""
+
+#: src/data_translations.js:67
+msgid "Squarish characters that are slightly askew"
+msgstr ""
+
+#: src/data_translations.js:68
+msgid ""
+"Some similarities to Times New Roman, designed by Steve Matteson, includes "
+"pan-European WGL character set"
+msgstr ""
+
+#: src/data_translations.js:69
+msgid "Specially created for Ubuntu"
+msgstr ""
+
+#: src/data_translations.js:70
+msgid ""
+"Dotted zeros, used the `n`, `o`, `H` & `O` Latin characters as a base for "
+"design"
+msgstr ""
+
+#: src/data_translations.js:71
+msgid "Refreshed version of Ubuntu and Ubuntu Mono fonts"
+msgstr ""
+
+#: src/data_translations.js:72
+msgid "Clean, crisp and narrow, with a large x-height and clear punctuation"
+msgstr ""
+
+#: src/data_translations.js:73
+msgid "Zed Mono is a more rounded version of Iosevka"
+msgstr ""
+
+#: src/data_translations.js:74
+msgid ""
+"Permissive licence allowing almost unrestricted use, modification, and "
+"distribution."
+msgstr ""
+
+#: src/data_translations.js:75
+msgid ""
+"Free to use, modify, and distribute, with conditions: no selling and "
+"original licence must be included."
+msgstr ""
+
+#: src/data_translations.js:76
+msgid ""
+"Same as OFL-1.1, but must comply with Reserved Font Name (RFN) restrictions."
+msgstr ""
+
+#: src/data_translations.js:77
+msgid ""
+"Permissive, requires attribution, notice of changes, and inclusion of NOTICE "
+"file. Modified code can use a different licence."
+msgstr ""
+
+#: src/data_translations.js:78
+msgid ""
+"Allows sharing and modification with attribution. Must distribute under the "
+"same licence."
+msgstr ""
+
+#: src/data_translations.js:79
+msgid "Permissive, prohibits selling, requires renaming the font."
+msgstr ""
+
+#: src/data_translations.js:80
+msgid "Unrestricted use, as summarized by its name."
+msgstr ""
+
+#: src/data_translations.js:81
+msgid ""
+"Permissive, requires licence file, prohibits using Google Inc. to endorse "
+"work."
+msgstr ""
+
+#: src/data_translations.js:82
+msgid "Unrestricted use."
+msgstr ""
+
+#: src/data_translations.js:83
+msgid "Permissive, requires inclusion of the licence file."
+msgstr ""
+
+#: src/data_translations.js:84
+msgid "Permissive, requires attribution and licence file."
+msgstr ""
+
+#: src/data_translations.js:85
+msgid ""
+"Permissive, allows redistribution and modification with attribution and no "
+"endorsement clause."
+msgstr ""
+
+#: src/data_translations.js:86
+msgid ""
+"Similar to BSD-3-Clause, but with a more explicit no-endorsement clause."
+msgstr ""
+
+#: src/data_translations.js:87
+msgid ""
+"Allows linking to proprietary software, but modifications must be under "
+"LGPL. Original license and source code must be included."
+msgstr ""
+
+#: src/iconsPage.js:310
+#, javascript-format
+msgid "Load %d more icons"
+msgstr ""
+
+#: src/iconsPage.js:340
+#, javascript-format
+msgid "Load %d more icons..."
+msgstr ""
+
+#. Try to show a toast notification
+#: src/iconsPage.js:451
+#, javascript-format
+msgid "Copied \"%s\" to clipboard"
+msgstr ""
+
+#: src/licencesManager.js:18
+msgid "licence details"
+msgstr ""
+
+#. Translators: This means that the font has two licences
+#: src/licencesManager.js:22
+msgid "Dual"
+msgstr ""
+
+#: src/licencesManager.js:97 src/licencesManager.js:101
+msgid "No description available"
+msgstr ""
+
+#: src/previewManager.js:14
+msgid "Preview"
+msgstr ""
+
+#: src/window.js:50 src/window.js:150
+msgid "No Installed Fonts yet"
+msgstr ""
+
+#: src/window.js:54 src/window.js:154
+msgid "No available Fonts yet"
+msgstr ""
+
+#: src/window.js:73
+msgid "Failed to set up font version."
+msgstr ""
+
+#: src/window.js:87
+msgid "Failed to load fonts."
+msgstr ""
+
+#: src/window.js:272
+msgid "Install"
+msgstr ""
+
+#: src/window.js:280
+msgid "Font Installed"
+msgstr ""
+
+#: src/window.js:283
+#, javascript-format
+msgid "Installation failed: %s"
+msgstr ""
+
+#: src/window.js:292
+msgid "Update"
+msgstr ""
+
+#: src/window.js:300
+msgid "Font updated"
+msgstr ""
+
+#: src/window.js:303
+#, javascript-format
+msgid "Updating failed: %s"
+msgstr ""
+
+#: src/window.js:312
+msgid "Remove"
+msgstr ""
+
+#: src/window.js:318
+#, javascript-format
+msgid "Removing failed: %s"
+msgstr ""
+
+#: src/window.js:410
+msgid "Font removed"
+msgstr ""
+
+#. Translators: Please note that icon search only works in English language. So add a note between () for the users
+#: data/ui/IconsPage.blp:13
+msgid "Search icons by name or category..."
+msgstr ""
+
+#: data/ui/IconsPage.blp:17
+msgid "Search for icons"
+msgstr ""
+
+#: data/ui/IconsPage.blp:34
+msgid "Icons list"
+msgstr ""
+
+#: data/ui/IconsPage.blp:46
+msgid "Icon sections"
+msgstr ""
+
+#: data/ui/IconsPage.blp:56
+msgid "No Icons Found"
+msgstr ""
+
+#: data/ui/IconsPage.blp:57
+msgid "Try a different search term"
+msgstr ""
+
+#: data/ui/Window.blp:55
+msgid "Get started"
+msgstr ""
+
+#: data/ui/Window.blp:93
+msgid "Main Menu"
+msgstr ""
+
+#: data/ui/Window.blp:102
+msgid "Explore fonts"
+msgstr ""
+
+#: data/ui/Window.blp:104
+msgid "Please install a font and restart the app to render the icons correctly"
+msgstr ""
+
+#: data/ui/Window.blp:121
+msgid "Fonts"
+msgstr ""
+
+#: data/ui/Window.blp:144
+msgid "Installed fonts"
+msgstr ""
+
+#: data/ui/Window.blp:167
+msgid "Available fonts"
+msgstr ""
+
+#: data/ui/Window.blp:190
+msgid "Icons"
+msgstr ""
+
+#: data/ui/Window.blp:229
+msgid "No Results Founds"
+msgstr ""
+
+#: data/ui/Window.blp:230
+msgid "Try a different search"
+msgstr ""
+
+#: data/ui/Window.blp:245 data/shortcuts-dialog.blp:22
+msgid "Keyboard Shortcuts"
+msgstr ""
+
+#: data/ui/Window.blp:250
+msgid "About"
+msgstr ""
+
+#: data/shortcuts-dialog.blp:12
+msgid "Quit App"
+msgstr ""
+
+#: data/shortcuts-dialog.blp:17
+msgid "Close Window"
+msgstr ""
+
+#: data/shortcuts-dialog.blp:23
+msgid "Display this keyboard shortcuts window"
+msgstr ""
