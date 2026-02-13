@@ -150,10 +150,8 @@ export class FontsManager {
         try {
             const url = `https://github.com/ryanoasis/nerd-fonts/releases/download/${release}/${tarName}.tar.xz`;
             const downloadDir = GLib.build_filenamev([
-                GLib.get_user_special_dir(
-                    GLib.UserDirectory.DIRECTORY_DOWNLOAD,
-                ),
-                "embellish"
+                GLib.get_user_cache_dir(),
+                "embellish",
             ]);
             GLib.mkdir_with_parents(downloadDir, 0o755);
             const fontDir = GLib.build_filenamev([downloadDir, tarName]);
@@ -166,9 +164,7 @@ export class FontsManager {
     async _extract(tarName) {
         try {
             const downloadDir = GLib.build_filenamev([
-                GLib.get_user_special_dir(
-                    GLib.UserDirectory.DIRECTORY_DOWNLOAD,
-                ),
+                GLib.get_user_cache_dir(),
                 "embellish",
                 tarName,
             ]);

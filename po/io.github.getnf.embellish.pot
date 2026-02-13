@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: io.github.getnf.embellish\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-01-15 22:30+0300\n"
+"POT-Creation-Date: 2026-02-13 22:02+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -30,6 +30,10 @@ msgstr ""
 
 #: data/io.github.getnf.embellish.desktop:9
 msgid "Fonts;NerdFonts;nerd;"
+msgstr ""
+
+#: data/io.github.getnf.embellish.metainfo.xml:8
+msgid "Ronnie Nissan"
 msgstr ""
 
 #: data/io.github.getnf.embellish.metainfo.xml:32
@@ -100,6 +104,14 @@ msgstr ""
 
 #: src/application.js:71
 msgid "Understand file permissions"
+msgstr ""
+
+#: src/application.js:72
+msgid "Sitra"
+msgstr ""
+
+#: src/application.js:72
+msgid "Get fonts from online sources"
 msgstr ""
 
 #: src/data_translations.js:4
@@ -541,42 +553,42 @@ msgstr ""
 msgid "Failed to load fonts."
 msgstr ""
 
-#: src/window.js:272
+#: src/window.js:273
 msgid "Install"
 msgstr ""
 
-#: src/window.js:280
+#: src/window.js:281
 msgid "Font Installed"
 msgstr ""
 
-#: src/window.js:283
+#: src/window.js:284
 #, javascript-format
 msgid "Installation failed: %s"
 msgstr ""
 
-#: src/window.js:292
+#: src/window.js:293
 msgid "Update"
 msgstr ""
 
-#: src/window.js:300
+#: src/window.js:301
 msgid "Font updated"
 msgstr ""
 
-#: src/window.js:303
+#: src/window.js:304
 #, javascript-format
 msgid "Updating failed: %s"
 msgstr ""
 
-#: src/window.js:312
+#: src/window.js:313
 msgid "Remove"
 msgstr ""
 
-#: src/window.js:318
+#: src/window.js:319
 #, javascript-format
 msgid "Removing failed: %s"
 msgstr ""
 
-#: src/window.js:410
+#: src/window.js:411
 msgid "Font removed"
 msgstr ""
 

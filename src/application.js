@@ -69,6 +69,7 @@ export const EmbApplication = GObject.registerClass(
             });
 
             dialog.add_other_app("io.github.ronniedroid.concessio", _("Concessio"), _("Understand file permissions"))
+            dialog.add_other_app("io.github.sitraorg.sitra", _("Sitra"), _("Get fonts from online sources"))
 
             dialog.present(this.get_active_window());
         }

@@ -69,6 +69,15 @@
     </screenshots>
 
     <releases>
+      <release version="v0.6.1" date="2026-02-13">
+        <description translate="no">
+          <ul>
+            <li>Extend search to font description</li>
+            <li>Remove download directory permission from flatpak, embellish depends on cache directory now</li>
+            <li>Added Sitra to the other apps list in the about page</li>
+          </ul>
+        </description>
+      </release>
       <release version="v0.6.0" date="2026-01-15">
         <description translate="no">
           <ul>

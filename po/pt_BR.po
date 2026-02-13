@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: io.github.getnf.embellish\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-01-15 22:30+0300\n"
+"POT-Creation-Date: 2026-02-13 22:02+0300\n"
 "PO-Revision-Date: 2026-01-23 12:37-0300\n"
 "Last-Translator: john peter sa <johnppetersa@gmail.com>\n"
 "Language-Team: \n"
@@ -33,17 +33,22 @@ msgstr "Instalar Nerd Fonts"
 msgid "Fonts;NerdFonts;nerd;"
 msgstr "Fontes;NerdFonts;nerd;"
 
+#: data/io.github.getnf.embellish.metainfo.xml:8
+msgid "Ronnie Nissan"
+msgstr ""
+
 #: data/io.github.getnf.embellish.metainfo.xml:32
+#, fuzzy
 msgid ""
 "User-friendly application designed for managing Nerd Fonts on your system. "
-"With a sleek GTK4 user interface enhanced by libadwaita, Embelezar provides "
+"With a sleek GTK4 user interface enhanced by libadwaita, Embellish provides "
 "a seamless experience for installing, uninstalling and updating of Nerd "
 "Fonts."
 msgstr ""
-"Aplicativo amigável projetado para gerenciar Nerd Fonts no seu sistema. "
-"Com uma interface elegante em GTK4 aprimorada pelo libadwaita, o Embelezar "
-"oferece uma experiência contínua para instalar, desinstalar e atualizar "
-"Nerd Fonts."
+"Aplicativo amigável projetado para gerenciar Nerd Fonts no seu sistema. Com "
+"uma interface elegante em GTK4 aprimorada pelo libadwaita, o Embelezar "
+"oferece uma experiência contínua para instalar, desinstalar e atualizar Nerd "
+"Fonts."
 
 #: data/io.github.getnf.embellish.metainfo.xml:38
 msgid "List all available Nerd Fonts"
@@ -80,7 +85,8 @@ msgstr "Ler licença(s) da fonte"
 
 #: data/io.github.getnf.embellish.metainfo.xml:58
 msgid "Main page showing a list of installed and available nerd fonts"
-msgstr "Página principal mostrando uma lista de Nerd Fonts instaladas e disponíveis"
+msgstr ""
+"Página principal mostrando uma lista de Nerd Fonts instaladas e disponíveis"
 
 #: data/io.github.getnf.embellish.metainfo.xml:62
 msgid "Icons page showing all the avilable nerd fonts icons"
@@ -107,6 +113,14 @@ msgstr "Concessio"
 msgid "Understand file permissions"
 msgstr "Entenda as permissões de arquivos"
 
+#: src/application.js:72
+msgid "Sitra"
+msgstr ""
+
+#: src/application.js:72
+msgid "Get fonts from online sources"
+msgstr ""
+
 #: src/data_translations.js:4
 msgid "An opinionated font for software engineers"
 msgstr "Uma fonte opinativa para engenheiros de software"
@@ -127,7 +141,8 @@ msgstr "A fonte monoespaçada do GNOME"
 msgid ""
 "A small, monospace, outline font that is geometrically regular and simple"
 msgstr ""
-"Uma fonte pequena, monoespaçada e vazada que é geometricamente regular e simples"
+"Uma fonte pequena, monoespaçada e vazada que é geometricamente regular e "
+"simples"
 
 #: src/data_translations.js:8
 msgid ""
@@ -139,7 +154,9 @@ msgstr ""
 
 #: src/data_translations.js:9
 msgid "Metrically similar to Arial, pan-European WGL character set, sans serif"
-msgstr "Métricamente semelhante à Arial, conjunto de caracteres WGL paneuropeu, sem serifa"
+msgstr ""
+"Métricamente semelhante à Arial, conjunto de caracteres WGL paneuropeu, sem "
+"serifa"
 
 #: src/data_translations.js:10
 msgid ""
@@ -151,11 +168,13 @@ msgstr ""
 
 #: src/data_translations.js:11
 msgid "Sans serif, designed by Stephen G. Hartke who also created Verily Serif"
-msgstr "Sem serifa, projetada por Stephen G. Hartke, que também criou a Verily Serif"
+msgstr ""
+"Sem serifa, projetada por Stephen G. Hartke, que também criou a Verily Serif"
 
 #: src/data_translations.js:12
 msgid "Nostalgic, closely based on IBM's 8x14 EGA/VGA charset"
-msgstr "Nostálgica, baseada fielmente no conjunto de caracteres IBM 8x14 EGA/VGA"
+msgstr ""
+"Nostálgica, baseada fielmente no conjunto de caracteres IBM 8x14 EGA/VGA"
 
 #: src/data_translations.js:13
 msgid "Dotted zero, compact lowercase characters"
@@ -191,7 +210,8 @@ msgstr "Semelhante à Courier New com melhor legibilidade, zeros com ponto"
 
 #: src/data_translations.js:20
 msgid "A coding font for Koreans. This is the variant with ligatures."
-msgstr "Uma fonte de programação para coreanos. Esta é a variante com ligaduras."
+msgstr ""
+"Uma fonte de programação para coreanos. Esta é a variante com ligaduras."
 
 #: src/data_translations.js:21
 msgid "A monospaced font for programmers and other terminal groupies"
@@ -230,7 +250,8 @@ msgstr ""
 
 #: src/data_translations.js:27
 msgid "Programming ligatures, extension of Fira Mono font, enlarged operators"
-msgstr "Ligaduras de programação, extensão da fonte Fira Mono, operadores ampliados"
+msgstr ""
+"Ligaduras de programação, extensão da fonte Fira Mono, operadores ampliados"
 
 #: src/data_translations.js:28
 msgid "Mozilla typeface, dotted zero"
@@ -354,11 +375,14 @@ msgstr "Zeros com barra, versão personalizada da Menlo da Apple"
 
 #: src/data_translations.js:51
 msgid "Five matching fonts all having 'texture healing' to improve legibility"
-msgstr "Cinco fontes combinadas com \"cura de textura\" para melhorar a legibilidade"
+msgstr ""
+"Cinco fontes combinadas com \"cura de textura\" para melhorar a legibilidade"
 
 #: src/data_translations.js:52
 msgid "Dotted zeros, slightly exaggerated curvy characters, compact characters"
-msgstr "Zeros com ponto, caracteres curvos ligeiramente exagerados, caracteres compactos"
+msgstr ""
+"Zeros com ponto, caracteres curvos ligeiramente exagerados, caracteres "
+"compactos"
 
 #: src/data_translations.js:53
 msgid ""
@@ -374,7 +398,8 @@ msgstr "Considera a diferenciação entre caracteres e tamanhos de resolução"
 
 #: src/data_translations.js:55
 msgid "Multiple styles and weights, many glyph sets (e.g. Kana glyphs)"
-msgstr "Múltiplos estilos e pesos, diversos conjuntos de glifos (ex: glifos Kana)"
+msgstr ""
+"Múltiplos estilos e pesos, diversos conjuntos de glifos (ex: glifos Kana)"
 
 #: src/data_translations.js:56
 msgid ""
@@ -384,7 +409,8 @@ msgstr ""
 
 #: src/data_translations.js:57
 msgid "Designed specifically to alleviate reading errors caused by dyslexia"
-msgstr "Projetada especificamente para reduzir erros de leitura causados por dislexia"
+msgstr ""
+"Projetada especificamente para reduzir erros de leitura causados por dislexia"
 
 #: src/data_translations.js:58
 msgid "An open source font family inspired by Highway Gothic"
@@ -418,7 +444,9 @@ msgstr ""
 
 #: src/data_translations.js:64
 msgid "Monospaced font family for user interface and coding environments"
-msgstr "Família de fontes monoespaçadas para interfaces de usuário e ambientes de código"
+msgstr ""
+"Família de fontes monoespaçadas para interfaces de usuário e ambientes de "
+"código"
 
 #: src/data_translations.js:65
 msgid "Squarish character lines, dotted zero, aggressive parenthesis"
@@ -536,8 +564,8 @@ msgid ""
 "Permissive, allows redistribution and modification with attribution and no "
 "endorsement clause."
 msgstr ""
-"Permissiva, permite redistribuição e modificação com atribuição e sem cláusula "
-"de endosso."
+"Permissiva, permite redistribuição e modificação com atribuição e sem "
+"cláusula de endosso."
 
 #: src/data_translations.js:86
 msgid ""
@@ -602,42 +630,42 @@ msgstr "Falha ao configurar a versão da fonte."
 msgid "Failed to load fonts."
 msgstr "Falha ao carregar as fontes."
 
-#: src/window.js:272
+#: src/window.js:273
 msgid "Install"
 msgstr "Instalar"
 
-#: src/window.js:280
+#: src/window.js:281
 msgid "Font Installed"
 msgstr "Fonte instalada"
 
-#: src/window.js:283
+#: src/window.js:284
 #, javascript-format
 msgid "Installation failed: %s"
 msgstr "Falha na instalação: %s"
 
-#: src/window.js:292
+#: src/window.js:293
 msgid "Update"
 msgstr "Atualizar"
 
-#: src/window.js:300
+#: src/window.js:301
 msgid "Font updated"
 msgstr "Fonte atualizada"
 
-#: src/window.js:303
+#: src/window.js:304
 #, javascript-format
 msgid "Updating failed: %s"
 msgstr "Falha na atualização: %s"
 
-#: src/window.js:312
+#: src/window.js:313
 msgid "Remove"
 msgstr "Remover"
 
-#: src/window.js:318
+#: src/window.js:319
 #, javascript-format
 msgid "Removing failed: %s"
 msgstr "Falha na remoção: %s"
 
-#: src/window.js:410
+#: src/window.js:411
 msgid "Font removed"
 msgstr "Fonte removida"
 
@@ -680,7 +708,9 @@ msgstr "Explorar fontes"
 
 #: data/ui/Window.blp:104
 msgid "Please install a font and restart the app to render the icons correctly"
-msgstr "Por favor, instale uma fonte e reinicie o aplicativo para renderizar os ícones corretamente"
+msgstr ""
+"Por favor, instale uma fonte e reinicie o aplicativo para renderizar os "
+"ícones corretamente"
 
 #: data/ui/Window.blp:121
 msgid "Fonts"

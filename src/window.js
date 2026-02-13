@@ -192,13 +192,14 @@ export const EmbWindow = GObject.registerClass(
             const filter = (row) => {
                 const query = this._searchEntry.text.trim().toLowerCase();
                 const title = row.title.toLowerCase();
+                const description = (row.subtitle || "").toLowerCase();
 
                 if (query === "") {
                     results_count++;
                     return true;
                 }
 
-                const match = title.includes(query);
+                const match = title.includes(query) || description.includes(query);
                 if (match) results_count++;
                 return match;
             };

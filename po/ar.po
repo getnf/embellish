@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: embellish\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-01-15 22:30+0300\n"
-"PO-Revision-Date: 2026-01-15 22:25+0300\n"
+"POT-Creation-Date: 2026-02-13 22:02+0300\n"
+"PO-Revision-Date: 2026-02-13 22:06+0300\n"
 "Last-Translator: Ronnie Nissan <ronnie.nissan@proton.me>\n"
 "Language-Team: Arabic\n"
 "Language: ar\n"
@@ -34,6 +34,10 @@ msgstr "تثبيت خطوط نيرد (Nerd Fonts)"
 #: data/io.github.getnf.embellish.desktop:9
 msgid "Fonts;NerdFonts;nerd;"
 msgstr "Fonts;NerdFonts;nerd;خطوط;نيرد;"
+
+#: data/io.github.getnf.embellish.metainfo.xml:8
+msgid "Ronnie Nissan"
+msgstr "روني نيسان"
 
 #: data/io.github.getnf.embellish.metainfo.xml:32
 msgid ""
@@ -107,6 +111,14 @@ msgstr "Concessio"
 #: src/application.js:71
 msgid "Understand file permissions"
 msgstr "فهم أذونات الملفات"
+
+#: src/application.js:72
+msgid "Sitra"
+msgstr "سطرا"
+
+#: src/application.js:72
+msgid "Get fonts from online sources"
+msgstr "احصل على الخطوط من المصادر عبر الإنترنت"
 
 #: src/data_translations.js:4
 msgid "An opinionated font for software engineers"
@@ -574,42 +586,42 @@ msgstr "فشل إعداد إصدار الخط."
 msgid "Failed to load fonts."
 msgstr "فشل تحميل الخطوط."
 
-#: src/window.js:272
+#: src/window.js:273
 msgid "Install"
 msgstr "تثبيت"
 
-#: src/window.js:280
+#: src/window.js:281
 msgid "Font Installed"
 msgstr "تم تثبيت الخط"
 
-#: src/window.js:283
+#: src/window.js:284
 #, javascript-format
 msgid "Installation failed: %s"
 msgstr "فشل التثبيت: %s"
 
-#: src/window.js:292
+#: src/window.js:293
 msgid "Update"
 msgstr "تحديث"
 
-#: src/window.js:300
+#: src/window.js:301
 msgid "Font updated"
 msgstr "تم تحديث الخط"
 
-#: src/window.js:303
+#: src/window.js:304
 #, javascript-format
 msgid "Updating failed: %s"
 msgstr "فشل التحديث: %s"
 
-#: src/window.js:312
+#: src/window.js:313
 msgid "Remove"
 msgstr "إزالة"
 
-#: src/window.js:318
+#: src/window.js:319
 #, javascript-format
 msgid "Removing failed: %s"
 msgstr "فشل الإزالة: %s"
 
-#: src/window.js:410
+#: src/window.js:411
 msgid "Font removed"
 msgstr "تمت إزالة الخط"
 
