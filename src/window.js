@@ -658,6 +658,14 @@ export const EmbWindow = GObject.registerClass(
                 title: _("Zip file URL"),
             });
 
+            const errorImage = new Gtk.Image({
+                icon_name: "embellish-error-symbolic",
+                tooltip_text: _("Invalid URL or unsupported file extension. Only .zip and .tar.xz are supported."),
+            });
+            errorImage.add_css_class("error");
+            urlRow.add_suffix(errorImage);
+            errorImage.hide();
+
             listBox.append(nameRow);
             listBox.append(descriptionRow);
             listBox.append(urlRow);
@@ -672,8 +680,18 @@ export const EmbWindow = GObject.registerClass(
 
             const updateButtonSensitivity = () => {
                 const hasName = nameRow.text.trim() !== "";
-                const hasUrl = urlRow.text.trim() !== "";
-                addButton.set_sensitive(hasName && hasUrl);
+                const url = urlRow.text.trim();
+                // Simple regex to check for http/https/ftp and .zip or .tar.xz extension
+                const urlRegex = /^https?:\/\/.+\.(zip|tar\.xz)$|^ftp:\/\/.+\.(zip|tar\.xz)$/i;
+                const hasValidUrl = urlRegex.test(url);
+
+                addButton.set_sensitive(hasName && hasValidUrl);
+
+                if (url !== "" && !hasValidUrl) {
+                    errorImage.show();
+                } else {
+                    errorImage.hide();
+                }
             };
 
             nameRow.connect("changed", updateButtonSensitivity);
