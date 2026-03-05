@@ -129,6 +129,29 @@ export class FontsManager {
         }
     }
 
+    async downloadAndInstallFromUrl(url, dirName) {
+        try {
+            const downloadDir = GLib.build_filenamev([
+                GLib.get_user_cache_dir(),
+                "embellish",
+            ]);
+            GLib.mkdir_with_parents(downloadDir, 0o755);
+            const downloadPath = GLib.build_filenamev([downloadDir, dirName]);
+            await this._downloadFile(url, downloadPath);
+
+            const extractDir = GLib.build_filenamev([
+                GLib.get_home_dir(),
+                ".local",
+                "share",
+                "fonts",
+                dirName,
+            ]);
+            await this._extractArchive(downloadPath, extractDir);
+        } catch (error) {
+            throw error;
+        }
+    }
+
     async remove(tarName) {
         const fontDir = GLib.build_filenamev([
             GLib.get_home_dir(),
@@ -155,7 +178,7 @@ export class FontsManager {
             ]);
             GLib.mkdir_with_parents(downloadDir, 0o755);
             const fontDir = GLib.build_filenamev([downloadDir, tarName]);
-            await this._downloadTarXzFile(url, fontDir);
+            await this._downloadFile(url, fontDir);
         } catch (error) {
             throw error;
         }
@@ -175,13 +198,13 @@ export class FontsManager {
                 "fonts",
                 tarName,
             ]);
-            await this._extractTarXz(downloadDir, extractDir);
+            await this._extractArchive(downloadDir, extractDir);
         } catch (error) {
             throw error;
         }
     }
 
-    async _downloadTarXzFile(url, destinationPath) {
+    async _downloadFile(url, destinationPath) {
         const session = new Soup.Session();
 
         try {
@@ -203,7 +226,7 @@ export class FontsManager {
         }
     }
 
-    async _extractTarXz(filePath, fontsDir) {
+    async _extractArchive(filePath, fontsDir) {
         const file = Gio.File.new_for_path(filePath);
         const destination = Gio.File.new_for_path(fontsDir);
 

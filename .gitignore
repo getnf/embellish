@@ -20,6 +20,7 @@
 .flatpak-builder
 build-dir
 repo
+.vscode
 
 # Go workspace file
 go.work

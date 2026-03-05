@@ -6,6 +6,7 @@ import GLib from "gi://GLib";
 
 import { FontsManager } from "./fontsManager.js";
 import { InstalledFontsManager } from "./installedFontsManager.js";
+import { CustomFontsManager } from "./customFontsManager.js";
 import { LicencesManager } from "./licencesManager.js";
 import { PreviewManager } from "./previewManager.js";
 import { Utils } from "./utils.js";
@@ -27,6 +28,8 @@ export const EmbWindow = GObject.registerClass(
             "toastOverlay",
             "scroller",
             "installedFontsList",
+            "customFontsBox",
+            "customFontsList",
             "availableFontsList",
         ],
     },
@@ -45,6 +48,7 @@ export const EmbWindow = GObject.registerClass(
                 this.installedFontsManager,
                 this.versionManager,
             );
+            this.customFontsManager = new CustomFontsManager();
 
             const installedListDefaultWidget = new Adw.ActionRow({
                 title: _("No Installed Fonts yet"),
@@ -80,6 +84,7 @@ export const EmbWindow = GObject.registerClass(
                 this.fonts = this.fontsManager.loadFonts();
                 this.#setupSearch();
                 this.#populateFontLists();
+                this.#populateCustomFontsList();
                 this.#setupNoFontsBanner();
             } catch (error) {
                 console.error("Error during font initialization: ", error);
@@ -131,6 +136,12 @@ export const EmbWindow = GObject.registerClass(
                     !this._searchBar.search_mode_enabled;
             });
             this.add_action(searchAction);
+
+            const addCustomFontAction = new Gio.SimpleAction({ name: "addCustomFont" });
+            addCustomFontAction.connect("activate", () => {
+                this.#showAddCustomFontDialog();
+            });
+            this.add_action(addCustomFontAction);
         }
 
         #setupWelcomeScreen() {
@@ -170,6 +181,86 @@ export const EmbWindow = GObject.registerClass(
                 } else {
                     this._availableFontsList.append(row);
                 }
+            });
+        }
+
+        #populateCustomFontsList() {
+            this._customFontsList.remove_all();
+
+            const customFonts = this.customFontsManager.getAll();
+
+            this._customFontsBox.set_visible(customFonts.length > 0);
+
+            customFonts.forEach((font) => {
+                const row = new Adw.ActionRow({
+                    title: font.name,
+                    subtitle: this.utils.escapeMarkup(font.description),
+                });
+
+                const box = this.utils.createBox(Gtk.Orientation.HORIZONTAL, 12);
+                const isInstalled = this.fontsManager._isInstalled(font.dirName);
+
+                if (isInstalled) {
+                    const { button, spinner, stack } = this.utils.createSpinnerButton(
+                        "embellish-remove-symbolic",
+                        _("Remove"),
+                    );
+
+                    button.connect("clicked", async () => {
+                        try {
+                            stack.set_visible_child_name("spinner");
+                            spinner.spinning = true;
+                            await this.fontsManager.remove(font.dirName);
+                            this.customFontsManager.remove(font.name);
+                            this.fontsManager.loadFontDirectories();
+                            this.fonts = this.fontsManager.loadFonts();
+                            this._searchList.remove_all();
+                            this.#setupSearch();
+                            this.#populateFontLists();
+                            this.#populateCustomFontsList();
+                            const toast = new Adw.Toast({
+                                title: _("Custom font removed"),
+                            });
+                            this._toastOverlay.add_toast(toast);
+                        } catch (error) {
+                            spinner.spinning = false;
+                            stack.set_visible_child_name("icon");
+                            this._handleError(error, _("Removing failed: %s"));
+                        }
+                    });
+                    box.append(button);
+                } else {
+                    const { button, spinner, stack } = this.utils.createSpinnerButton(
+                        "embellish-download-symbolic",
+                        _("Install"),
+                    );
+
+                    button.connect("clicked", async () => {
+                        try {
+                            stack.set_visible_child_name("spinner");
+                            spinner.spinning = true;
+                            await this.fontsManager.downloadAndInstallFromUrl(font.url, font.dirName);
+                            this.fontsManager.loadFontDirectories();
+                            this.fonts = this.fontsManager.loadFonts();
+                            this._searchList.remove_all();
+                            this.#setupSearch();
+                            this.#populateFontLists();
+                            this.#populateCustomFontsList();
+                            const toast = new Adw.Toast({
+                                title: _("Custom font installed"),
+                            });
+                            this._toastOverlay.add_toast(toast);
+                        } catch (error) {
+                            spinner.spinning = false;
+                            stack.set_visible_child_name("icon");
+                            this._handleError(error, _("Installation failed: %s"));
+                        }
+                    });
+                    box.append(button);
+                }
+
+                row.add_suffix(box);
+                this._customFontsList.append(row);
             });
         }
 
@@ -357,6 +448,7 @@ export const EmbWindow = GObject.registerClass(
                 this._searchList.remove_all();
                 this.#setupSearch();
                 this.#populateFontLists();
+                this.#populateCustomFontsList();
                 this._handleScrollPosition(this.scrollValue);
                 this._updateNoFontsBanner();
             } catch (error) {
@@ -418,6 +510,102 @@ export const EmbWindow = GObject.registerClass(
         vfunc_close_request() {
             super.vfunc_close_request();
             this.run_dispose();
+        }
+
+        #showAddCustomFontDialog() {
+            const dialog = new Adw.Dialog({
+                title: _("Add Custom Font"),
+                content_width: 400,
+            });
+
+            const toolbarView = new Adw.ToolbarView();
+
+            const headerBar = new Adw.HeaderBar();
+            toolbarView.add_top_bar(headerBar);
+
+            const clamp = new Adw.Clamp({
+                maximum_size: 400,
+                margin_top: 24,
+                margin_bottom: 24,
+                margin_start: 12,
+                margin_end: 12,
+            });
+
+            const box = new Gtk.Box({
+                orientation: Gtk.Orientation.VERTICAL,
+                spacing: 24,
+            });
+
+            const listBox = new Gtk.ListBox({
+                selection_mode: Gtk.SelectionMode.NONE,
+            });
+            listBox.add_css_class("boxed-list");
+
+            const nameRow = new Adw.EntryRow({
+                title: _("Font name"),
+            });
+
+            const descriptionRow = new Adw.EntryRow({
+                title: _("Description"),
+            });
+
+            const urlRow = new Adw.EntryRow({
+                title: _("Zip file URL"),
+            });
+
+            listBox.append(nameRow);
+            listBox.append(descriptionRow);
+            listBox.append(urlRow);
+
+            const addButton = new Gtk.Button({
+                label: _("Add"),
+                halign: Gtk.Align.CENTER,
+            });
+            addButton.add_css_class("suggested-action");
+            addButton.add_css_class("pill");
+            addButton.set_sensitive(false);
+
+            const updateButtonSensitivity = () => {
+                const hasName = nameRow.text.trim() !== "";
+                const hasUrl = urlRow.text.trim() !== "";
+                addButton.set_sensitive(hasName && hasUrl);
+            };
+
+            nameRow.connect("changed", updateButtonSensitivity);
+            urlRow.connect("changed", updateButtonSensitivity);
+
+            addButton.connect("clicked", async () => {
+                const name = nameRow.text.trim();
+                const description = descriptionRow.text.trim();
+                const url = urlRow.text.trim();
+
+                dialog.close();
+
+                try {
+                    this.customFontsManager.add(name, description, url);
+
+                    this.fontsManager.loadFontDirectories();
+                    this.fonts = this.fontsManager.loadFonts();
+                    this._searchList.remove_all();
+                    this.#setupSearch();
+                    this.#populateFontLists();
+                    this.#populateCustomFontsList();
+
+                    const toast = new Adw.Toast({
+                        title: _("Custom font added to list"),
+                    });
+                    this._toastOverlay.add_toast(toast);
+                } catch (error) {
+                    this._handleError(error, _("Failed to add custom font: %s"));
+                }
+            });
+
+            box.append(listBox);
+            box.append(addButton);
+            clamp.set_child(box);
+            toolbarView.set_content(clamp);
+            dialog.set_child(toolbarView);
+            dialog.present(this);
         }
     },
 );

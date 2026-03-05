@@ -158,6 +158,30 @@ template $EmbWindow {
                                             }
                                         }
 
+                                        Box customFontsBox {
+                                            valign: center;
+                                            orientation: vertical;
+                                            spacing: 12;
+                                            visible: false;
+
+                                            Label {
+                                                label: _("Custom fonts");
+                                                halign: start;
+
+                                                styles [
+                                                    "heading",
+                                                ]
+                                            }
+
+                                            ListBox customFontsList {
+                                                selection-mode: none;
+
+                                                styles [
+                                                    "boxed-list",
+                                                ]
+                                            }
+                                        }
+
                                         Box {
                                             valign: center;
                                             orientation: vertical;
@@ -242,6 +266,13 @@ template $EmbWindow {
 menu main_menu {
     section {
         item {
+            label: _("Add custom font");
+            action: "win.addCustomFont";
+        }
+    }
+
+    section {
+        item {
             label: _("Keyboard Shortcuts");
             action: "app.shortcuts";
         }
@@ -252,4 +283,3 @@ menu main_menu {
         }
     }
 }
-
