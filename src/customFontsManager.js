@@ -68,6 +68,27 @@ export class CustomFontsManager {
         return dirName;
     }
 
+    export() {
+        return JSON.stringify(this.getAll(), null, 2);
+    }
+
+    import(jsonData) {
+        try {
+            const fonts = JSON.parse(jsonData);
+            if (!Array.isArray(fonts)) {
+                throw new Error("Invalid import data: expected an array");
+            }
+
+            fonts.forEach((font) => {
+                if (font.name && font.url) {
+                    this.add(font.name, font.description || "", font.url);
+                }
+            });
+        } catch (error) {
+            throw error;
+        }
+    }
+
     remove(name) {
         this._keyFile.remove_group(name);
 

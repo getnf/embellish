@@ -50,6 +50,19 @@ export const EmbWindow = GObject.registerClass(
             );
             this.customFontsManager = new CustomFontsManager();
 
+            Gio._promisify(
+                Gio.File.prototype,
+                "load_contents_async",
+                "load_contents_finish",
+            );
+            Gio._promisify(
+                Gio.File.prototype,
+                "replace_contents_async",
+                "replace_contents_finish",
+            );
+            Gio._promisify(Gtk.FileDialog.prototype, "open", "open_finish");
+            Gio._promisify(Gtk.FileDialog.prototype, "save", "save_finish");
+
             const installedListDefaultWidget = new Adw.ActionRow({
                 title: _("No Installed Fonts yet"),
             });
@@ -142,6 +155,18 @@ export const EmbWindow = GObject.registerClass(
                 this.#showAddCustomFontDialog();
             });
             this.add_action(addCustomFontAction);
+
+            const importAction = new Gio.SimpleAction({ name: "importCustomFonts" });
+            importAction.connect("activate", () => {
+                this.#importCustomFonts();
+            });
+            this.add_action(importAction);
+
+            const exportAction = new Gio.SimpleAction({ name: "exportCustomFonts" });
+            exportAction.connect("activate", () => {
+                this.#exportCustomFonts();
+            });
+            this.add_action(exportAction);
         }
 
         #setupWelcomeScreen() {
@@ -606,6 +631,82 @@ export const EmbWindow = GObject.registerClass(
             toolbarView.set_content(clamp);
             dialog.set_child(toolbarView);
             dialog.present(this);
+        }
+
+        async #importCustomFonts() {
+            const dialog = new Gtk.FileDialog({
+                title: _("Import Custom Fonts"),
+                accept_label: _("Import"),
+            });
+
+            const filter = new Gtk.FileFilter();
+            filter.set_name(_("JSON Files"));
+            filter.add_suffix("json");
+            const filters = new Gio.ListStore({ item_type: Gtk.FileFilter });
+            filters.append(filter);
+            dialog.set_filters(filters);
+
+            try {
+                const file = await dialog.open(this, null);
+                if (file) {
+                    let [contents] = await file.load_contents_async(null);
+                    if (contents) {
+                        // Ensure contents is a Uint8Array (it might be a GLib.Bytes)
+                        if (contents.toArray) {
+                            contents = contents.toArray();
+                        }
+                        const decoder = new TextDecoder();
+                        const json = decoder.decode(contents);
+                        this.customFontsManager.import(json);
+                        this.fontsManager.loadFontDirectories();
+                        this.fonts = this.fontsManager.loadFonts();
+                        this._searchList.remove_all();
+                        this.#setupSearch();
+                        this.#populateFontLists();
+                        this.#populateCustomFontsList();
+                        const toast = new Adw.Toast({
+                            title: _("Custom fonts imported"),
+                        });
+                        this._toastOverlay.add_toast(toast);
+                    }
+                }
+            } catch (error) {
+                if (!error.matches(Gtk.DialogError, Gtk.DialogError.CANCELLED)) {
+                    this._handleError(error, _("Failed to import custom fonts: %s"));
+                }
+            }
+        }
+
+        async #exportCustomFonts() {
+            const dialog = new Gtk.FileDialog({
+                title: _("Export Custom Fonts"),
+                accept_label: _("Export"),
+                initial_name: "custom_fonts.json",
+            });
+
+            try {
+                const file = await dialog.save(this, null);
+                if (file) {
+                    const json = this.customFontsManager.export();
+                    const encoder = new TextEncoder();
+                    const bytes = encoder.encode(json);
+                    await file.replace_contents_async(
+                        bytes,
+                        null,
+                        false,
+                        Gio.FileCreateFlags.REPLACE_DESTINATION,
+                        null,
+                    );
+                    const toast = new Adw.Toast({
+                        title: _("Custom fonts exported"),
+                    });
+                    this._toastOverlay.add_toast(toast);
+                }
+            } catch (error) {
+                if (!error.matches(Gtk.DialogError, Gtk.DialogError.CANCELLED)) {
+                    this._handleError(error, _("Failed to export custom fonts: %s"));
+                }
+            }
         }
     },
 );
