@@ -139,15 +139,25 @@ template $EmbWindow {
                                             valign: center;
                                             orientation: vertical;
                                             spacing: 12;
-                                            visible: false;
 
-                                            Label {
-                                                label: _("Custom fonts");
-                                                halign: start;
+                                            Box {
+                                                orientation: horizontal;
+                                                spacing: 12;
 
-                                                styles [
-                                                    "heading",
-                                                ]
+                                                Label {
+                                                    label: _("Custom fonts");
+                                                    halign: start;
+                                                    hexpand: true;
+
+                                                    styles [
+                                                        "heading",
+                                                    ]
+                                                }
+
+                                                Button {
+                                                    label: "Add a custom font";
+                                                    action-name: "win.addCustomFont";
+                                                }
                                             }
 
                                             ListBox customFontsList {
@@ -265,11 +275,6 @@ template $EmbWindow {
 
 menu main_menu {
     section {
-        item {
-            label: _("Add custom font");
-            action: "win.addCustomFont";
-        }
-
         item {
             label: _("Import custom fonts");
             action: "win.importCustomFonts";

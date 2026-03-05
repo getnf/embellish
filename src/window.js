@@ -63,13 +63,19 @@ export const EmbWindow = GObject.registerClass(
             Gio._promisify(Gtk.FileDialog.prototype, "open", "open_finish");
             Gio._promisify(Gtk.FileDialog.prototype, "save", "save_finish");
 
-            const installedListDefaultWidget = new Adw.ActionRow({
-                title: _("No Installed Fonts yet"),
+            const installedListDefaultWidget = new Gtk.Label({
+                label: _("No installed fonts yet"),
+                margin_top: 24,
+                margin_bottom: 24,
             });
+            installedListDefaultWidget.add_css_class("dim-label");
 
-            const availableListDefaultWidget = new Adw.ActionRow({
-                title: _("No available Fonts yet"),
+            const availableListDefaultWidget = new Gtk.Label({
+                label: _("No available fonts yet"),
+                margin_top: 24,
+                margin_bottom: 24,
             });
+            availableListDefaultWidget.add_css_class("dim-label");
 
             this._installedFontsList.set_placeholder(
                 installedListDefaultWidget,
@@ -77,6 +83,36 @@ export const EmbWindow = GObject.registerClass(
             this._availableFontsList.set_placeholder(
                 availableListDefaultWidget,
             );
+
+            const customListPlaceholderWidget = new Gtk.Box({
+                orientation: Gtk.Orientation.VERTICAL,
+                margin_top: 24,
+                margin_bottom: 24,
+                spacing: 12,
+            });
+
+            const customPlaceholderLabel = new Gtk.Label({
+                label: _("No custom fonts available"),
+                margin_top: 24,
+                margin_bottom: 24,
+            });
+            customPlaceholderLabel.add_css_class("dim-label");
+
+            const customPlaceholderSubtitle = new Gtk.Label({
+                label: _("Either add some or import from a previous export"),
+            });
+            customPlaceholderSubtitle.add_css_class("dim-label");
+
+            const importButton = new Gtk.Button({
+                label: _("Import Custom Fonts"),
+            });
+            importButton.add_css_class("import-button");
+
+            importButton.connect("clicked", () => {
+                this.#importCustomFonts();
+            });
+
+            this._customFontsList.set_placeholder(customListPlaceholderWidget);
 
             this.#initialize();
         }
@@ -212,9 +248,30 @@ export const EmbWindow = GObject.registerClass(
         #populateCustomFontsList() {
             this._customFontsList.remove_all();
 
-            const customFonts = this.customFontsManager.getAll();
+            const customListPlaceholderWidget = new Adw.ActionRow({
+                title: _("No custom fonts available"),
+                subtitle: _("Either add some or import from a previous export"),
+            });
+            const importButtonContainer = new Gtk.Box({
+                halign: Gtk.Align.CENTER,
+                valign: Gtk.Align.CENTER,
+            });
+            const importButton = new Gtk.Button({
+                icon_name: "embellish-import-symbolic",
+                tooltip_text: _("Import"),
+            });
+            importButton.add_css_class("flat");
+            importButton.add_css_class("icon-button")
+            importButton.connect("clicked", () => {
+                this.#importCustomFonts();
+            });
+            importButtonContainer.append(importButton);
 
-            this._customFontsBox.set_visible(customFonts.length > 0);
+            customListPlaceholderWidget.add_suffix(importButtonContainer);
+
+            this._customFontsList.set_placeholder(customListPlaceholderWidget);
+
+            const customFonts = this.customFontsManager.getAll();
 
             customFonts.forEach((font) => {
                 const row = new Adw.ActionRow({
