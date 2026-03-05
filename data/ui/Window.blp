@@ -135,6 +135,40 @@ template $EmbWindow {
                                         margin-end: 12;
                                         margin-bottom: 24;
 
+                                        Box customFontsBox {
+                                            valign: center;
+                                            orientation: vertical;
+                                            spacing: 12;
+
+                                            Box {
+                                                orientation: horizontal;
+                                                spacing: 12;
+
+                                                Label {
+                                                    label: _("Custom fonts");
+                                                    halign: start;
+                                                    hexpand: true;
+
+                                                    styles [
+                                                        "heading",
+                                                    ]
+                                                }
+
+                                                Button {
+                                                    label: "Add a custom font";
+                                                    action-name: "win.addCustomFont";
+                                                }
+                                            }
+
+                                            ListBox customFontsList {
+                                                selection-mode: none;
+
+                                                styles [
+                                                    "boxed-list",
+                                                ]
+                                            }
+                                        }
+
                                         Box {
                                             valign: center;
                                             orientation: vertical;
@@ -242,6 +276,18 @@ template $EmbWindow {
 menu main_menu {
     section {
         item {
+            label: _("Import custom fonts");
+            action: "win.importCustomFonts";
+        }
+
+        item {
+            label: _("Export custom fonts");
+            action: "win.exportCustomFonts";
+        }
+    }
+
+    section {
+        item {
             label: _("Keyboard Shortcuts");
             action: "app.shortcuts";
         }
@@ -252,4 +298,3 @@ menu main_menu {
         }
     }
 }
-

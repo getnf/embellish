@@ -1,7 +1,7 @@
 import Gtk from "gi://Gtk";
 
 export class Utils {
-    constructor() {}
+    constructor() { }
 
     createBox(orientation, spacing) {
         const box = new Gtk.Box({
@@ -16,7 +16,7 @@ export class Utils {
     createSpinnerButton(icon, tooltip) {
         const button = new Gtk.Button();
         button.add_css_class("flat");
-        button.add_css_class("image-button");
+        button.add_css_class("icon-button");
         button.set_tooltip_text(tooltip);
         const stack = new Gtk.Stack();
         stack.set_transition_type(Gtk.StackTransitionType.CROSSFADE);

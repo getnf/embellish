@@ -9,6 +9,7 @@
         <file>licencesManager.js</file>
         <file>previewManager.js</file>
         <file>fontsManager.js</file>
+        <file>customFontsManager.js</file>
         <file>utils.js</file>
         <file>iconsPage.js</file>
     </gresource>

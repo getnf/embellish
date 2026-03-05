@@ -19,3 +19,6 @@
     font-size: 30px;
 }
 
+.error {
+    color: @error_color;
+}
