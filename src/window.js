@@ -223,12 +223,36 @@ export const EmbWindow = GObject.registerClass(
                 });
 
                 const box = this.utils.createBox(Gtk.Orientation.HORIZONTAL, 12);
+
+                const removeFromListButton = new Gtk.Button({
+                    icon_name: "window-close-symbolic",
+                    tooltip_text: _("Remove from list"),
+                    has_frame: false,
+                });
+                removeFromListButton.add_css_class("flat");
+
+                removeFromListButton.connect("clicked", () => {
+                    this.customFontsManager.remove(font.name);
+                    this.fontsManager.loadFontDirectories();
+                    this.fonts = this.fontsManager.loadFonts();
+                    this._searchList.remove_all();
+                    this.#setupSearch();
+                    this.#populateFontLists();
+                    this.#populateCustomFontsList();
+                    const toast = new Adw.Toast({
+                        title: _("Font removed from list"),
+                    });
+                    this._toastOverlay.add_toast(toast);
+                });
+
+                box.append(removeFromListButton);
+
                 const isInstalled = this.fontsManager._isInstalled(font.dirName);
 
                 if (isInstalled) {
                     const { button, spinner, stack } = this.utils.createSpinnerButton(
                         "embellish-remove-symbolic",
-                        _("Remove"),
+                        _("Uninstall"),
                     );
 
                     button.connect("clicked", async () => {
@@ -236,7 +260,6 @@ export const EmbWindow = GObject.registerClass(
                             stack.set_visible_child_name("spinner");
                             spinner.spinning = true;
                             await this.fontsManager.remove(font.dirName);
-                            this.customFontsManager.remove(font.name);
                             this.fontsManager.loadFontDirectories();
                             this.fonts = this.fontsManager.loadFonts();
                             this._searchList.remove_all();
@@ -244,13 +267,13 @@ export const EmbWindow = GObject.registerClass(
                             this.#populateFontLists();
                             this.#populateCustomFontsList();
                             const toast = new Adw.Toast({
-                                title: _("Custom font removed"),
+                                title: _("Font uninstalled"),
                             });
                             this._toastOverlay.add_toast(toast);
                         } catch (error) {
                             spinner.spinning = false;
                             stack.set_visible_child_name("icon");
-                            this._handleError(error, _("Removing failed: %s"));
+                            this._handleError(error, _("Uninstallation failed: %s"));
                         }
                     });
                     box.append(button);

@@ -135,29 +135,6 @@ template $EmbWindow {
                                         margin-end: 12;
                                         margin-bottom: 24;
 
-                                        Box {
-                                            valign: center;
-                                            orientation: vertical;
-                                            spacing: 12;
-
-                                            Label {
-                                                label: _("Installed fonts");
-                                                halign: start;
-
-                                                styles [
-                                                    "heading",
-                                                ]
-                                            }
-
-                                            ListBox installedFontsList {
-                                                selection-mode: none;
-
-                                                styles [
-                                                    "boxed-list",
-                                                ]
-                                            }
-                                        }
-
                                         Box customFontsBox {
                                             valign: center;
                                             orientation: vertical;
@@ -174,6 +151,29 @@ template $EmbWindow {
                                             }
 
                                             ListBox customFontsList {
+                                                selection-mode: none;
+
+                                                styles [
+                                                    "boxed-list",
+                                                ]
+                                            }
+                                        }
+
+                                        Box {
+                                            valign: center;
+                                            orientation: vertical;
+                                            spacing: 12;
+
+                                            Label {
+                                                label: _("Installed fonts");
+                                                halign: start;
+
+                                                styles [
+                                                    "heading",
+                                                ]
+                                            }
+
+                                            ListBox installedFontsList {
                                                 selection-mode: none;
 
                                                 styles [
