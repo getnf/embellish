@@ -1,3 +1,4 @@
+import GLib from "gi://GLib";
 import GtkSource from 'gi://GtkSource?version=5';
 import "gi://Gdk?version=4.0";
 import "gi://Gtk?version=4.0";
