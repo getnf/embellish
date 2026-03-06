@@ -52,8 +52,10 @@ export class CustomFontsManager {
         return fonts;
     }
 
-    add(name, description, url) {
-        const dirName = name.replace(/[^a-zA-Z0-9]/g, "");
+    add(name, description, url, dirName = null) {
+        if (!dirName) {
+            dirName = name.replace(/[^a-zA-Z0-9]/g, "");
+        }
 
         this._keyFile.set_string(name, "description", description);
         this._keyFile.set_string(name, "url", url);
@@ -81,7 +83,7 @@ export class CustomFontsManager {
 
             fonts.forEach((font) => {
                 if (font.name && font.url) {
-                    this.add(font.name, font.description || "", font.url);
+                    this.add(font.name, font.description || "", font.url, font.dirName);
                 }
             });
         } catch (error) {

@@ -12,5 +12,6 @@
         <file>customFontsManager.js</file>
         <file>utils.js</file>
         <file>iconsPage.js</file>
+        <file>importDialog.js</file>
     </gresource>
 </gresources>

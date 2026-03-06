@@ -3,6 +3,7 @@
   <gresource prefix="/io/github/getnf/embellish">
     <file>ui/Window.ui</file>
     <file>ui/IconsPage.ui</file>
+    <file>ui/ImportDialog.ui</file>
     <file>welcome.svg</file>
     <file>licence.svg</file>
     <file>style.css</file>

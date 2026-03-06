@@ -11,6 +11,7 @@ import { LicencesManager } from "./licencesManager.js";
 import { PreviewManager } from "./previewManager.js";
 import { Utils } from "./utils.js";
 import { VersionManager } from "./versionManager.js";
+import { EmbImportDialog } from "./importDialog.js";
 export const EmbWindow = GObject.registerClass(
     {
         GTypeName: "EmbWindow",
@@ -732,46 +733,28 @@ export const EmbWindow = GObject.registerClass(
         }
 
         async #importCustomFonts() {
-            const dialog = new Gtk.FileDialog({
-                title: _("Import Custom Fonts"),
-                accept_label: _("Import"),
-            });
-
-            const filter = new Gtk.FileFilter();
-            filter.set_name(_("JSON Files"));
-            filter.add_suffix("json");
-            const filters = new Gio.ListStore({ item_type: Gtk.FileFilter });
-            filters.append(filter);
-            dialog.set_filters(filters);
-
             try {
-                const file = await dialog.open(this, null);
-                if (file) {
-                    let [contents] = await file.load_contents_async(null);
-                    if (contents) {
-                        // Ensure contents is a Uint8Array (it might be a GLib.Bytes)
-                        if (contents.toArray) {
-                            contents = contents.toArray();
-                        }
-                        const decoder = new TextDecoder();
-                        const json = decoder.decode(contents);
-                        this.customFontsManager.import(json);
-                        this.fontsManager.loadFontDirectories();
-                        this.fonts = this.fontsManager.loadFonts();
-                        this._searchList.remove_all();
-                        this.#setupSearch();
-                        this.#populateFontLists();
-                        this.#populateCustomFontsList();
-                        const toast = new Adw.Toast({
-                            title: _("Custom fonts imported"),
-                        });
-                        this._toastOverlay.add_toast(toast);
-                    }
-                }
+                const dialog = new EmbImportDialog({
+                    parent: this,
+                    customFontsManager: this.customFontsManager,
+                });
+
+                dialog.connect("imported", () => {
+                    this.fontsManager.loadFontDirectories();
+                    this.fonts = this.fontsManager.loadFonts();
+                    this._searchList.remove_all();
+                    this.#setupSearch();
+                    this.#populateFontLists();
+                    this.#populateCustomFontsList();
+                    const toast = new Adw.Toast({
+                        title: _("Custom fonts imported"),
+                    });
+                    this._toastOverlay.add_toast(toast);
+                });
+
+                dialog.present(this);
             } catch (error) {
-                if (!error.matches(Gtk.DialogError, Gtk.DialogError.CANCELLED)) {
-                    this._handleError(error, _("Failed to import custom fonts: %s"));
-                }
+                this._handleError(error, _("Failed to open import dialog: %s"));
             }
         }
 
@@ -801,7 +784,8 @@ export const EmbWindow = GObject.registerClass(
                     this._toastOverlay.add_toast(toast);
                 }
             } catch (error) {
-                if (!error.matches(Gtk.DialogError, Gtk.DialogError.CANCELLED)) {
+                if (!error.matches(Gtk.DialogError, Gtk.DialogError.CANCELLED) &&
+                    !error.matches(Gtk.DialogError, Gtk.DialogError.DISMISSED)) {
                     this._handleError(error, _("Failed to export custom fonts: %s"));
                 }
             }

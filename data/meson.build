@@ -3,6 +3,7 @@ blueprints = custom_target('blueprints',
     'shortcuts-dialog.blp',
     'ui/IconsPage.blp',
     'ui/Window.blp',
+    'ui/ImportDialog.blp'
   ),
   output: '.',
   command: [find_program('blueprint-compiler'), 'batch-compile', '@OUTPUT@', '@CURRENT_SOURCE_DIR@', '@INPUT@'],

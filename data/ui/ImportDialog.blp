@@ -1,0 +1,80 @@
+using Gtk 4.0;
+using Adw 1;
+using GtkSource 5;
+
+template $EmbImportDialog: Adw.Dialog {
+    title: _("Import Custom Fonts");
+    content-width: 600;
+    content-height: 600;
+
+    Adw.ToastOverlay toast_overlay {
+        Adw.ToolbarView {
+            [top]
+            Adw.HeaderBar {}
+
+            content: Adw.Clamp {
+                maximum-size: 580;
+                tightening-threshold: 400;
+
+                Gtk.Box {
+                    orientation: vertical;
+                    spacing: 12;
+                    margin-top: 12;
+                    margin-bottom: 12;
+                    margin-start: 12;
+                    margin-end: 12;
+
+                    Gtk.Label {
+                        label: _("Paste your JSON here:");
+                        halign: start;
+
+                        styles [
+                            "dim-label",
+                        ]
+                    }
+
+                    Gtk.ScrolledWindow {
+                        vexpand: true;
+                        hexpand: true;
+                        has-frame: true;
+
+                        GtkSource.View source_view {
+                            monospace: true;
+                            show-line-numbers: true;
+                            auto-indent: true;
+                            indent-on-tab: true;
+                            smart-backspace: true;
+                            wrap-mode: word;
+                        }
+                    }
+
+                    Gtk.Box {
+                        halign: center;
+                        spacing: 12;
+
+                        Gtk.Button import_file_button {
+                            label: _("Import from file");
+
+                            styles [
+                                "pill",
+                            ]
+
+                            clicked => $onImportFromFile();
+                        }
+
+                        Gtk.Button import_button {
+                            label: _("Import");
+
+                            styles [
+                                "suggested-action",
+                                "pill",
+                            ]
+
+                            clicked => $onImportClicked();
+                        }
+                    }
+                }
+            };
+        }
+    }
+}
