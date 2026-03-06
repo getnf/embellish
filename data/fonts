@@ -2,374 +2,444 @@
 tarName=0xProto
 licenceId=OFL-1.1;
 description=An opinionated font for software engineers
+family=0xProto Nerd Font Mono
 
 [IBM 3270]
 patchedName=3270
 tarName=3270
 licenceId=BSD-3-Clause;
 description=Derived from the x3270 font, a modern format of a font with high nostalgic value
+family=3270 Nerd Font Mono
 
 [Adwaita Mono]
 tarName=AdwaitaMono
 licenceId=OFL-1.1;
 description=The monospace typeface for GNOME
+family=AdwaitaMono Nerd Font Mono
 
 [Agave]
 tarName=Agave
 licenceId=MIT;
 description=A small, monospace, outline font that is geometrically regular and simple
+family=Agave Nerd Font Mono
 
 [Anonymous Pro]
 patchedName=AnonymicePro
 tarName=AnonymousPro
 licenceId=OFL-1.1-RFN;
 description=Inspired by Anonymous 9 on Macintosh, since 2009, distinct `O`, `0`, `I`, `l`, `1`
+family=AnonymicePro Nerd Font Mono
 
 [Arimo]
 tarName=Arimo
 licenceId=Apache-2.0;
 description=Metrically similar to Arial, pan-European WGL character set, sans serif
+family=Arimo Nerd Font
 
 [Atkinson Hyperlegible Mono]
 patchedName=AtkynsonMono
 tarName=AtkinsonHyperlegibleMono
 licenceId=OFL-1.1-RFN;
 description=A monospaced font designed to improve legibility and readability for individuals with low vision
+family=AtkynsonMono Nerd Font Mono
 
 [Aurulent Sans Mono]
 patchedName=AurulentSansM
 tarName=AurulentSansMono
 licenceId=OFL-1.1;
 description=Sans serif, designed by Stephen G. Hartke who also created Verily Serif
+family=AurulentSansM Nerd Font Mono
 
 [BigBlue Terminal]
 patchedName=BigBlueTerm
 tarName=BigBlueTerminal
 licenceId=CC-BY-SA-4.0;
 description=Nostalgic, closely based on IBM's 8x14 EGA/VGA charset
+family=BigBlueTerm437 Nerd Font Mono
 
 [Bitstrom Vera Sans Mono]
 patchedName=BitstromWera
 tarName=BitstreamVeraSansMono
 licenceId=Bitstream-Vera;
 description=Dotted zero, compact lowercase characters
+family=BitstromWera Nerd Font Mono
 
 [Cascadia Code]
 patchedName=CaskaydiaCove
 tarName=CascadiaCode
 licenceId=OFL-1.1-RFN;
 description=A fun, new monospaced font that includes programming ligatures and is designed to enhance the modern look and feel of the Windows Terminal
+family=CaskaydiaCove Nerd Font Mono
 
 [Cascadia Mono]
 patchedName=CaskaydiaMono
 tarName=CascadiaMono
 licenceId=OFL-1.1-RFN;
 description=Like Cascadia Code but without any ligatures
+family=CaskaydiaMono Nerd Font Mono
 
 [Code New Roman]
 tarName=CodeNewRoman
 licenceId=OFL-1.1;
 description=Tunable, slashed zeros, compact smaller characters
+family=CodeNewRoman Nerd Font Mono
 
 [Comic Shanns Mono]
 tarName=ComicShannsMono
 licenceId=MIT;
 description=The very typeface you’ve been trained to recognize since childhood
+family=ComicShannsMono Nerd Font Mono
 
 [Commit Mono]
 tarName=CommitMono
 licenceId=OFL-1.1;
 description=An anonymous and neutral programming typeface
+family=CommitMono Nerd Font Mono
 
 [Cousine]
 tarName=Cousine
 licenceId=Apache-2.0;
 description=Similar to Courier New with better readability, dotted zeros
+family=Cousine Nerd Font Mono
 
 [D2Coding]
 patchedName=D2CodingLigature
 tarName=D2Coding
 licenceId=OFL-1.1;
 description=A coding font for Koreans. This is the variant with ligatures.
+family=D2CodingLigature Nerd Font Mono
 
 [DaddyTimeMono]
 tarName=DaddyTimeMono
 licenceId=OFL-1.1;
 description=A monospaced font for programmers and other terminal groupies
+family=DaddyTimeMono Nerd Font Mono
 
 [Departure Mono]
 tarName=DepartureMono
 licenceId=OFL-1.1
 description=A monospaced pixel font with a lo-fi, techy vibe
+family=DepartureMono Nerd Font Mono
 
 [DejaVu Sans Mono]
 patchedName=DejaVuSansM
 tarName=DejaVuSansMono
 licenceId=Bitstream-Vera;
 description=Dotted zero, based on the Bitstream Vera Fonts with a wider range of characters
+family=DejaVuSansM Nerd Font Mono
 
 [Droid Sans Mono]
 patchedName=DroidSansM
 tarName=DroidSansMono
 licenceId=Apache-2.0;
 description=Good for small screens or font sizes
+family=DroidSansM Nerd Font Mono
 
 [Envy Code R]
 tarName=EnvyCodeR
 licenceId=OFL-1.1-RFN;
 description=Fully-scalable monospaced font designed for programming and command prompts
+family=EnvyCodeR Nerd Font Mono
 
 [Fantasque Sans Mono]
 patchedName=FantasqueSansM
 tarName=FantasqueSansMono
 licenceId=OFL-1.1;
 description="Wibbly-wobbly handwriting-like fuzziness", takes some inspiration from Inconsolata and Monaco
+family=FantasqueSansM Nerd Font Mono
 
 [Fira Code]
 tarName=FiraCode
 licenceId=OFL-1.1;
 description=Programming ligatures, extension of Fira Mono font, enlarged operators
+family=FiraCode Nerd Font Mono
 
 [Fira]
 patchedName=FiraMono
 tarName=FiraMono
 licenceId=OFL-1.1;
 description=Mozilla typeface, dotted zero
+family=FiraMono Nerd Font Mono
 
 [Geist Mono]
 tarName=GeistMono
 licenceId=OFL-1.1;
 description=Monospaced typeface designed to be used in code editors, diagrams, terminals, and other text-based interfaces where code is represented
+family=GeistMono Nerd Font Mono
 
 [Go Mono]
 tarName=Go-Mono
 licenceId=BSD-3-Clause-Clear;
 description=Created specifically for the Go project, looks particularly clear for use with the Go language
+family=GoMono Nerd Font Mono
 
 [Gohu]
 tarName=Gohu
 licenceId=WTFPL;
 description=Bitmap font, tall capitals and ascenders, small serifs
+family=GohuFont 11 Nerd Font Mono
 
 [Hack]
 tarName=Hack
 licenceId=Bitstream-Vera;MIT;
 description=Dotted zero, short descenders, expands upon work done for Bitstream Vera & DejaVu, legible at common sizes
+family=Hack Nerd Font Mono
 
 [Hasklig]
 patchedName=Hasklug
 tarName=Hasklig
 licenceId=OFL-1.1-RFN;
 description=Monospaced ligatures, makes composite glyphs (e.g. ->) more readable, especially in Haskell
+family=Hasklug Nerd Font Mono
 
 [Heavy Data]
 tarName=HeavyData
 licenceId=VicFieger;
 description=Novel and unique design, dotted zero
+family=HeavyData Nerd Font
 
 [Hermit]
 patchedName=Hurmit
 tarName=Hermit
 licenceId=OFL-1.1-RFN;
 description=Symbols stand out from common text
+family=Hurmit Nerd Font Mono
 
 [iA Writer]
 patchedName=iMWriting
 tarName=iA-Writer
 licenceId=OFL-1.1-RFN;
 description=A heavy modification of IBM's Plex font
+family=iMWritingMono Nerd Font Mono
 
 [IBM Plex Mono]
 patchedName=BlexMono
 tarName=IBMPlexMono
 licenceId=OFL-1.1-RFN;
 description=It's global, it's versatile and it's distinctly IBM
+family=BlexMono Nerd Font Mono
 
 [Inconsolata]
 tarName=Inconsolata
 licenceId=OFL-1.1;
 description=Slashed zero, takes inspiration from many different fonts and glyphs, subtle curves in lowercase
+family=Inconsolata Nerd Font Mono
 
 [InconsolataGo]
 tarName=InconsolataGo
 licenceId=OFL-1.1;
 description=Inconsolata with straight quotes
+family=InconsolataGo Nerd Font Mono
 
 [Inconsolata LGC]
 tarName=InconsolataLGC
 licenceId=OFL-1.1;
 description=Inconsolata with added the Cyrillic alphabet
+family=Inconsolata LGC Nerd Font Mono
 
 [Intel One Mono]
 patchedName=IntoneMono
 tarName=IntelOneMono
 licenceId=OFL-1.1-RFN;
 description=Expressive monospaced font family that’s built with clarity, legibility, and the needs of developers in mind
+family=IntoneMono Nerd Font Mono
 
 [Iosevka]
 tarName=Iosevka
 licenceId=OFL-1.1;
 description=Narrow and horizontally tight characters, slashed zero
+family=Iosevka Nerd Font Mono
 
 [Iosevka Term]
 tarName=IosevkaTerm
 licenceId=OFL-1.1;
 description=A narrower variant focusing terminal uses: Arrows and geometric symbols will be narrow to follow typical terminal usages
+family=IosevkaTerm Nerd Font Mono
 
 [Iosevka Term Slab]
 tarName=IosevkaTermSlab
 licenceId=OFL-1.1;
 description=Nice as Iosevka but with slab serifs
+family=IosevkaTermSlab Nerd Font Mono
 
 [JetBrains Mono]
 tarName=JetBrainsMono
 licenceId=OFL-1.1;
 description=JetBrains officially created font for developers
+family=JetBrainsMono Nerd Font Mono
 
 [Lekton]
 tarName=Lekton
 licenceId=OFL-1.1;
 description=Very light and thin characters, sharp m's, `0` and `O` very similar
+family=Lekton Nerd Font Mono
 
 [Liberation Mono]
 patchedName=LiterationMono
 tarName=LiberationMono
 licenceId=OFL-1.1-RFN;
 description=`0` and `O` very similar, very short tight descenders
+family=LiterationMono Nerd Font Mono
 
 [Lilex]
 tarName=Lilex
 licenceId=OFL-1.1;
 description=Modern with ligatures
+family=Lilex Nerd Font Mono
 
 [MartianMono]
 tarName=MartianMono
 licenceId=OFL-1.1;
 description=Free and open-source monospaced font from Evil Martians
+family=MartianMono Nerd Font Mono
 
 [Meslo LG]
 tarName=Meslo
 licenceId=Apache-2.0;
 description=Slashed zeros, customized version of Apple's Menlo
+family=MesloLGLDZ Nerd Font Mono
 
 [Monaspace]
 patchedName=Monaspice
 tarName=Monaspace
 licenceId=OFL-1.1-RFN;
 description=Five matching fonts all having 'texture healing' to improve legibility
+family=MonaspiceAr Nerd Font Mono
 
 [Monofur]
 tarName=Monofur
 licenceId=Monofur;
 description=Dotted zeros, slightly exaggerated curvy characters, compact characters
+family=Monofur Nerd Font Mono
 
 [Monoid]
 tarName=Monoid
 licenceId=MIT;OFL-1.1;
 description=Ligatures, distinguishable glyphs with short ascenders & descenders, large operators & punctuation
+family=Monoid Nerd Font Mono
 
 [Mononoki]
 tarName=Mononoki
 licenceId=OFL-1.1-RFN;
 description=Keeps in mind differentiation of characters and resolution sizes
+family=Mononoki Nerd Font Mono
 
 [MPlus]
 patchedName=M+
 tarName=MPlus
 licenceId=OFL-1.1;
 description=Multiple styles and weights, many glyph sets (e.g. Kana glyphs)
+family=M+1Code Nerd Font Mono
 
 [Noto]
 tarName=Noto
 licenceId=OFL-1.1;
 description=`0` and `O` very similar, characters are either very curvy or straight lined
+family=NotoMono Nerd Font Mono
 
 [OpenDyslexic]
 tarName=OpenDyslexic
 licenceId=Bitstream-Vera;
 description=Designed specifically to alleviate reading errors caused by dyslexia
+family=OpenDyslexicM Nerd Font Mono
 
 [Overpass]
 tarName=Overpass
 licenceId=OFL-1.1;LGPL-2.1-only;
 description=An open source font family inspired by Highway Gothic
+family=OverpassM Nerd Font Mono
 
 [ProFont]
 tarName=ProFont
 licenceId=MIT;
 description=Looks best with anti-aliasing turned off, squared off character corners, vertically tight small `s`
+family=ProFont IIx Nerd Font Mono
 
 [ProggyCleanTT]
 patchedName=ProggyClean
 tarName=ProggyClean
 licenceId=MIT;
 description=Designed particularly for use at small point sizes
+family=ProggyClean CE Nerd Font Mono
 
 [Recursive Mono]
 patchedName=RecMono
 tarName=Recursive
 licenceId=OFL-1.1;
 description=inspired by casual script signpainting, 4 variants
+family=RecMonoCasual Nerd Font Mono
 
 [Roboto Mono]
 tarName=RobotoMono
 licenceId=Apache-2.0;
 description=Dashed zero, curved and straight character lines
+family=RobotoMono Nerd Font Mono
 
 [Share Tech Mono]
 patchedName=ShureTechMono
 tarName=ShareTechMono
 licenceId=OFL-1.1-RFN;
 description=Dotted zeros, distinguishable 1 and l, curved and straight character lines
+family=ShureTechMono Nerd Font Mono
 
 [Source Code Pro]
 patchedName=SauceCodePro
 tarName=SourceCodePro
 licenceId=OFL-1.1-RFN;
 description=Monospaced font family for user interface and coding environments
+family=SauceCodePro Nerd Font Mono
 
 [SpaceMono]
 tarName=SpaceMono
 licenceId=OFL-1.1;
 description=Squarish character lines, dotted zero, aggressive parenthesis
+family=SpaceMono Nerd Font Mono
 
 [Symbols Only]
 tarName=NerdFontsSymbolsOnly
 licenceId=MIT;
 description=Just the Nerd Font Icons. I.e. Symbol font only
+family=Symbols Nerd Font Mono
 
 [Terminus]
 patchedName=Terminess
 tarName=Terminus
 licenceId=OFL-1.1-RFN;
 description=Squarish characters that are slightly askew
+family=Terminess Nerd Font Mono
 
 [Tinos]
 tarName=Tinos
 licenceId=Apache-2.0;
 description=Some similarities to Times New Roman, designed by Steve Matteson, includes pan-European WGL character set
+family=Tinos Nerd Font
 
 [Ubuntu]
 tarName=Ubuntu
 licenceId=UFL;
 description=Specially created for Ubuntu
+family=Ubuntu Nerd Font
 
 [Ubuntu Mono]
 tarName=UbuntuMono
 licenceId=UFL;
 description=Dotted zeros, used the `n`, `o`, `H` & `O` Latin characters as a base for design
+family=UbuntuMono Nerd Font Mono
 
 [Ubuntu Sans]
 tarName=UbuntuSans
 licenceId=UFL;
 description=Refreshed version of Ubuntu and Ubuntu Mono fonts
+family=UbuntuSansMono Nerd Font Mono
 
 [Victor Mono]
 tarName=VictorMono
 licenceId=OFL-1.1;
 description=Clean, crisp and narrow, with a large x-height and clear punctuation
+family=VictorMono Nerd Font Mono
 
 [Zed Mono]
 tarName=ZedMono
 licenceId=OFL-1.1;
 description=Zed Mono is a more rounded version of Iosevka
+family=ZedMono Nerd Font Mono
