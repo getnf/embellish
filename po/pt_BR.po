@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: io.github.getnf.embellish\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-02-13 22:02+0300\n"
+"POT-Creation-Date: 2026-03-06 11:23+0300\n"
 "PO-Revision-Date: 2026-01-23 12:37-0300\n"
 "Last-Translator: john peter sa <johnppetersa@gmail.com>\n"
 "Language-Team: \n"
@@ -83,16 +83,31 @@ msgstr "Pesquisar fontes"
 msgid "Read font's licence(s)"
 msgstr "Ler licença(s) da fonte"
 
-#: data/io.github.getnf.embellish.metainfo.xml:58
-msgid "Main page showing a list of installed and available nerd fonts"
+#: data/io.github.getnf.embellish.metainfo.xml:46
+msgid "Add custom fonts"
+msgstr ""
+
+#: data/io.github.getnf.embellish.metainfo.xml:47
+msgid "Import and export custom fonts"
+msgstr ""
+
+#: data/io.github.getnf.embellish.metainfo.xml:60
+#, fuzzy
+msgid ""
+"Main page showing a list of custon fonts and installed and available nerd "
+"fonts"
 msgstr ""
 "Página principal mostrando uma lista de Nerd Fonts instaladas e disponíveis"
 
-#: data/io.github.getnf.embellish.metainfo.xml:62
+#: data/io.github.getnf.embellish.metainfo.xml:64
 msgid "Icons page showing all the avilable nerd fonts icons"
 msgstr "Página de ícones mostrando todos os ícones disponíveis das Nerd Fonts"
 
-#: data/io.github.getnf.embellish.metainfo.xml:67
+#: data/io.github.getnf.embellish.metainfo.xml:68
+msgid "Showcasing the import dialog with Maple Mono fonts data"
+msgstr ""
+
+#: data/io.github.getnf.embellish.metainfo.xml:73
 msgid "Search page, showcasing search functionality"
 msgstr "Página de pesquisa, demonstrando a funcionalidade de busca"
 
@@ -614,60 +629,179 @@ msgstr "Nenhuma descrição disponível"
 msgid "Preview"
 msgstr "Visualização"
 
-#: src/window.js:50 src/window.js:150
-msgid "No Installed Fonts yet"
+#: src/window.js:68
+#, fuzzy
+msgid "No installed fonts yet"
 msgstr "Nenhuma fonte instalada ainda"
 
-#: src/window.js:54 src/window.js:154
-msgid "No available Fonts yet"
+#: src/window.js:75
+#, fuzzy
+msgid "No available fonts yet"
 msgstr "Nenhuma fonte disponível ainda"
 
-#: src/window.js:73
+#: src/window.js:96 src/window.js:253
+#, fuzzy
+msgid "No custom fonts available"
+msgstr "Nenhuma descrição disponível"
+
+#: src/window.js:103 src/window.js:254
+msgid "Either add some or import from a previous export"
+msgstr ""
+
+#: src/window.js:108
+msgid "Import Custom Fonts"
+msgstr ""
+
+#: src/window.js:127
 msgid "Failed to set up font version."
 msgstr "Falha ao configurar a versão da fonte."
 
-#: src/window.js:87
+#: src/window.js:142
 msgid "Failed to load fonts."
 msgstr "Falha ao carregar as fontes."
 
-#: src/window.js:273
+#: src/window.js:223
+msgid "No Installed Fonts yet"
+msgstr "Nenhuma fonte instalada ainda"
+
+#: src/window.js:227
+msgid "No available Fonts yet"
+msgstr "Nenhuma fonte disponível ainda"
+
+#: src/window.js:262
+msgid "Import"
+msgstr ""
+
+#: src/window.js:287
+msgid "Remove from list"
+msgstr ""
+
+#: src/window.js:301
+#, fuzzy
+msgid "Font removed from list"
+msgstr "Fonte removida"
+
+#: src/window.js:313
+#, fuzzy
+msgid "Uninstall"
+msgstr "Instalar"
+
+#: src/window.js:328
+#, fuzzy
+msgid "Font uninstalled"
+msgstr "Fonte instalada"
+
+#: src/window.js:334
+#, fuzzy, javascript-format
+msgid "Uninstallation failed: %s"
+msgstr "Falha na instalação: %s"
+
+#: src/window.js:341 src/window.js:470
 msgid "Install"
 msgstr "Instalar"
 
-#: src/window.js:281
-msgid "Font Installed"
+#: src/window.js:356
+#, fuzzy
+msgid "Custom font installed"
 msgstr "Fonte instalada"
 
-#: src/window.js:284
+#: src/window.js:362 src/window.js:481
 #, javascript-format
 msgid "Installation failed: %s"
 msgstr "Falha na instalação: %s"
 
-#: src/window.js:293
+#: src/window.js:478
+msgid "Font Installed"
+msgstr "Fonte instalada"
+
+#: src/window.js:490
 msgid "Update"
 msgstr "Atualizar"
 
-#: src/window.js:301
+#: src/window.js:498
 msgid "Font updated"
 msgstr "Fonte atualizada"
 
-#: src/window.js:304
+#: src/window.js:501
 #, javascript-format
 msgid "Updating failed: %s"
 msgstr "Falha na atualização: %s"
 
-#: src/window.js:313
+#: src/window.js:510
 msgid "Remove"
 msgstr "Remover"
 
-#: src/window.js:319
+#: src/window.js:516
 #, javascript-format
 msgid "Removing failed: %s"
 msgstr "Falha na remoção: %s"
 
-#: src/window.js:411
+#: src/window.js:609
 msgid "Font removed"
 msgstr "Fonte removida"
+
+#: src/window.js:623
+msgid "Add Custom Font"
+msgstr ""
+
+#: src/window.js:651
+#, fuzzy
+msgid "Font name"
+msgstr "Fonte instalada"
+
+#: src/window.js:655
+msgid "Description"
+msgstr ""
+
+#: src/window.js:659
+msgid "Zip file URL"
+msgstr ""
+
+#: src/window.js:664
+msgid ""
+"Invalid URL or unsupported file extension. Only .zip and .tar.xz are "
+"supported."
+msgstr ""
+
+#: src/window.js:675
+msgid "Add"
+msgstr ""
+
+#: src/window.js:719
+msgid "Custom font added to list"
+msgstr ""
+
+#: src/window.js:723
+#, fuzzy, javascript-format
+msgid "Failed to add custom font: %s"
+msgstr "Falha ao carregar as fontes."
+
+#: src/window.js:750
+msgid "Custom fonts imported"
+msgstr ""
+
+#: src/window.js:757
+#, javascript-format
+msgid "Failed to open import dialog: %s"
+msgstr ""
+
+#: src/window.js:763
+#, fuzzy
+msgid "Export Custom Fonts"
+msgstr "Explorar fontes"
+
+#: src/window.js:764
+msgid "Export"
+msgstr ""
+
+#: src/window.js:782
+msgid "Custom fonts exported"
+msgstr ""
+
+#: src/window.js:789
+#, fuzzy, javascript-format
+msgid "Failed to export custom fonts: %s"
+msgstr "Falha ao configurar a versão da fonte."
 
 #. Translators: Please note that icon search only works in English language. So add a note between () for the users
 #: data/ui/IconsPage.blp:13
@@ -716,31 +850,44 @@ msgstr ""
 msgid "Fonts"
 msgstr "Fontes"
 
-#: data/ui/Window.blp:144
+#: data/ui/Window.blp:148
+msgid "Custom fonts"
+msgstr ""
+
+#: data/ui/Window.blp:178
 msgid "Installed fonts"
 msgstr "Fontes instaladas"
 
-#: data/ui/Window.blp:167
+#: data/ui/Window.blp:201
 msgid "Available fonts"
 msgstr "Fontes disponíveis"
 
-#: data/ui/Window.blp:190
+#: data/ui/Window.blp:224
 msgid "Icons"
 msgstr "Ícones"
 
-#: data/ui/Window.blp:229
+#: data/ui/Window.blp:263
 msgid "No Results Founds"
 msgstr "Nenhum resultado encontrado"
 
-#: data/ui/Window.blp:230
+#: data/ui/Window.blp:264
 msgid "Try a different search"
 msgstr "Tente outra pesquisa"
 
-#: data/ui/Window.blp:245 data/shortcuts-dialog.blp:22
+#: data/ui/Window.blp:279
+msgid "Import custom fonts"
+msgstr ""
+
+#: data/ui/Window.blp:284
+#, fuzzy
+msgid "Export custom fonts"
+msgstr "Explorar fontes"
+
+#: data/ui/Window.blp:291 data/shortcuts-dialog.blp:22
 msgid "Keyboard Shortcuts"
 msgstr "Atalhos de teclado"
 
-#: data/ui/Window.blp:250
+#: data/ui/Window.blp:296
 msgid "About"
 msgstr "Sobre"
 
