@@ -7,10 +7,8 @@ export class PreviewManager {
     constructor(parent) {
         this._parent = parent;
         // Default sample code for Nerd Fonts
-        this._sampleCode = `//  Git
-//  Branch
-//  Folder
-//  Terminal
+        this._sampleCode = `// NOTE: only a small subset of the font
+// and the icons are available for preview
 
 let text = "This is text";
 var symbols = "{}[]()<>;:,.";
