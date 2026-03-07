@@ -62,6 +62,20 @@ export const EmbImportDialog = GObject.registerClass(
             if (this._import_button) {
                 this._import_button.set_sensitive(false);
             }
+
+            this._styleManager = Adw.StyleManager.get_default();
+            this._styleManager.connect("notify::dark", () => {
+                this._updateStyleScheme();
+            });
+            this._updateStyleScheme();
+        }
+
+        _updateStyleScheme() {
+            const schemeId = this._styleManager.dark ? "Adwaita-dark" : "Adwaita";
+            const scheme = GtkSource.StyleSchemeManager.get_default().get_scheme(schemeId);
+            if (scheme) {
+                this._source_view.get_buffer().set_style_scheme(scheme);
+            }
         }
 
         onImportClicked() {
