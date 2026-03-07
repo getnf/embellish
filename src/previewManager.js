@@ -58,7 +58,7 @@ helloNerdFont();
 
         const sourceView = new GtkSource.View();
         const provider = new Gtk.CssProvider();
-        provider.load_from_string(`textview { font-family: ${font.family}; font-size: 13pt; }`);
+        provider.load_from_string(`textview { font-family: "${font.family}"; font-size: 13pt; }`);
         const style_context = sourceView.get_style_context();
         style_context.add_provider(provider, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
 
