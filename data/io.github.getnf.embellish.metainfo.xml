@@ -64,6 +64,11 @@
             <caption>Icons page showing all the avilable nerd fonts icons</caption>
         </screenshot>
         <screenshot>
+            <image>
+                https://raw.githubusercontent.com/getnf/embellish/main/data/screenshots/preview-page.png</image>
+                <caption>Previewing JetBrains Mono font using JavaScript code</caption>
+        </screenshot>
+        <screenshot>
             <image>https://raw.githubusercontent.com/getnf/embellish/main/data/screenshots/import-dialog.png</image>
             <caption>Showcasing the import dialog with Maple Mono fonts data</caption>
         </screenshot>
@@ -75,6 +80,11 @@
     </screenshots>
 
     <releases>
+      <release version="v0.8.0" date="2026-03-07">
+        <description translate="no">
+          <p>Use editable JavaScript code to preview the font</p>
+        </description>
+      </release>
       <release version="v0.7.0" date="2026-03-06">
         <description translate="no">
           <ul>
