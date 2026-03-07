@@ -15,37 +15,51 @@ export class PreviewManager {
         button.add_css_class("flat");
         button.set_tooltip_text(_("Preview"));
         button.connect("clicked", () => {
-            this._showDialog(font.tarName);
+            this._showDialog(font);
         });
         return button;
     }
 
-    _showDialog(fileName) {
+    _showDialog(font) {
         const dialog = new Adw.Dialog({
-            title: fileName,
-            content_width: 500,
-            content_height: 400,
+            title: font.name,
+            content_width: 600,
+            content_height: 600,
         });
         const page = new Adw.ToolbarView();
         
         const headerBar = new Adw.HeaderBar();
-        headerBar.set_show_title(false);
+        headerBar.set_show_title(true);
         page.add_top_bar(headerBar);
 
+
         const sourceView = new GtkSource.View();
-        
+        const provider = new Gtk.CssProvider();
+        provider.load_from_string(`textview { font-family: ${font.family}; font-size: 13pt; }`);
+        const style_context = sourceView.get_style_context();
+        style_context.add_provider(provider, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
         // Add some good sample code for Nerd Fonts
-        const sampleCode = `#!/bin/bash
-#  Git
-#  Branch
-#  Folder
-#  Terminal
+        const sampleCode = `//  Git
+//  Branch
+//  Folder
+//  Terminal
 
-function hello_nerdfont() {
-    echo "This is    "
-}
+let text = "This is text";
+var symbols = "{}[]()<>;:,.";
+const more = "-_+=*/%!&|^~?@#$'";
 
-hello_nerdfont
+const helloNerdFont = () => {
+  const icons = {
+    git: "",
+    branch: "",
+    folder: "",
+    terminal: ""
+  };
+
+ console.log(\`\${icons.terminal}\`);
+};
+
+helloNerdFont();
 `;
 
         sourceView.get_buffer().set_text(sampleCode, -1);
@@ -57,13 +71,13 @@ hello_nerdfont
         sourceView.set_margin_bottom(12);
         
         // Settings
-        sourceView.set_editable(false);
+        sourceView.set_editable(true);
         sourceView.set_monospace(true);
         sourceView.set_show_line_numbers(true);
         
         // Highlight
         const langManager = GtkSource.LanguageManager.get_default();
-        const bashLang = langManager.get_language("sh");
+        const bashLang = langManager.get_language("js");
         if (bashLang) {
             sourceView.get_buffer().set_language(bashLang);
         }

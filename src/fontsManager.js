@@ -80,6 +80,7 @@ export class FontsManager {
             const description = keyFile.get_string(group, "description");
             const licenceIds = keyFile.get_string_list(group, "licenceId");
             const tarName = keyFile.get_string(group, "tarName");
+            const family = keyFile.get_string(group, "family");
             const isInstalled = this._isInstalled(tarName);
             let patchedName = "";
             try {
@@ -93,6 +94,7 @@ export class FontsManager {
                 patchedName,
                 tarName,
                 description: _(description),
+                family,
                 licences: licenceIds,
                 installed: isInstalled,
                 hasUpdate: isInstalled ? this._HasUpdate(tarName) : false,
