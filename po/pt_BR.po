@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: io.github.getnf.embellish\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-03-06 11:23+0300\n"
+"POT-Creation-Date: 2026-03-07 19:25+0300\n"
 "PO-Revision-Date: 2026-01-23 12:37-0300\n"
 "Last-Translator: john peter sa <johnppetersa@gmail.com>\n"
 "Language-Team: \n"
@@ -103,11 +103,15 @@ msgstr ""
 msgid "Icons page showing all the avilable nerd fonts icons"
 msgstr "Página de ícones mostrando todos os ícones disponíveis das Nerd Fonts"
 
-#: data/io.github.getnf.embellish.metainfo.xml:68
-msgid "Showcasing the import dialog with Maple Mono fonts data"
+#: data/io.github.getnf.embellish.metainfo.xml:69
+msgid "Previewing JetBrains Mono font using JavaScript code"
 msgstr ""
 
 #: data/io.github.getnf.embellish.metainfo.xml:73
+msgid "Showcasing the import dialog with Maple Mono fonts data"
+msgstr ""
+
+#: data/io.github.getnf.embellish.metainfo.xml:78
 msgid "Search page, showcasing search functionality"
 msgstr "Página de pesquisa, demonstrando a funcionalidade de busca"
 
@@ -596,18 +600,18 @@ msgstr ""
 "Permite vinculação a software proprietário, mas modificações devem estar sob "
 "a LGPL. A licença original e o código-fonte devem ser incluídos."
 
-#: src/iconsPage.js:310
+#: src/iconsPage.js:312
 #, javascript-format
 msgid "Load %d more icons"
 msgstr "Carregar mais %d ícones"
 
-#: src/iconsPage.js:340
+#: src/iconsPage.js:342
 #, javascript-format
 msgid "Load %d more icons..."
 msgstr "Carregar mais %d ícones..."
 
 #. Try to show a toast notification
-#: src/iconsPage.js:451
+#: src/iconsPage.js:453
 #, javascript-format
 msgid "Copied \"%s\" to clipboard"
 msgstr "Copiado \"%s\" para a área de transferência"
@@ -625,7 +629,7 @@ msgstr "Dupla"
 msgid "No description available"
 msgstr "Nenhuma descrição disponível"
 
-#: src/previewManager.js:14
+#: src/previewManager.js:37
 msgid "Preview"
 msgstr "Visualização"
 
