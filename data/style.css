@@ -17,8 +17,13 @@
 
 .icon-button {
     font-size: 30px;
+    font-family: "Symbols Nerd Font Mono";
 }
 
 .error {
     color: @error_color;
+}
+
+.icons-flowbox > flowboxchild {
+background-color: transparent;
 }

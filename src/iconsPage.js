@@ -289,6 +289,8 @@ export const EmbIconsPage = GObject.registerClass(
                 max_children_per_line: 6,
             });
 
+            flowBox.add_css_class("icons-flowbox");
+
             // For better performance, load different amounts based on section size
             let initialCount = Math.min(30, icons.length);
             if (icons.length > 100) {
