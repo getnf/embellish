@@ -6,6 +6,29 @@ import Pango from "gi://Pango";
 export class PreviewManager {
     constructor(parent) {
         this._parent = parent;
+        // Default sample code for Nerd Fonts
+        this._sampleCode = `//  Git
+//  Branch
+//  Folder
+//  Terminal
+
+let text = "This is text";
+var symbols = "{}[]()<>;:,.";
+const more = "-_+=*/%!&|^~?@#$'";
+
+const helloNerdFont = () => {
+  const icons = {
+    git: "",
+    branch: "",
+    folder: "",
+    terminal: ""
+  };
+
+ console.log(\`\${icons.terminal}\`);
+};
+
+helloNerdFont();
+`;
     }
 
     new(font) {
@@ -38,31 +61,11 @@ export class PreviewManager {
         provider.load_from_string(`textview { font-family: ${font.family}; font-size: 13pt; }`);
         const style_context = sourceView.get_style_context();
         style_context.add_provider(provider, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
-        // Add some good sample code for Nerd Fonts
-        const sampleCode = `//  Git
-//  Branch
-//  Folder
-//  Terminal
 
-let text = "This is text";
-var symbols = "{}[]()<>;:,.";
-const more = "-_+=*/%!&|^~?@#$'";
-
-const helloNerdFont = () => {
-  const icons = {
-    git: "",
-    branch: "",
-    folder: "",
-    terminal: ""
-  };
-
- console.log(\`\${icons.terminal}\`);
-};
-
-helloNerdFont();
-`;
-
-        sourceView.get_buffer().set_text(sampleCode, -1);
+        sourceView.get_buffer().set_text(this._sampleCode, -1);
+        sourceView.get_buffer().connect("changed", () => {
+            this._sampleCode = sourceView.get_buffer().text;
+        });
 
         // Add padding
         sourceView.set_margin_start(12);
