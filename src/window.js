@@ -428,9 +428,11 @@ export const EmbWindow = GObject.registerClass(
             }
 
             const row = new Adw.ActionRow({
-                title: title,
+                title: `<span font_family="${font.family}">${title}</span>`,
                 subtitle: this.utils.escapeMarkup(font.description),
             });
+
+            row.set_use_markup(true);
 
             const suffix = this._createFontRowSuffix(font);
             row.add_suffix(suffix);

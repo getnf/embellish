@@ -80,6 +80,16 @@
     </screenshots>
 
     <releases>
+      <release version="v0.8.2" date="2026-03-08">
+        <description translate="no">
+          <p>Render font titles with the same font</p>
+        </description>
+      </release>
+      <release version="v0.8.1" date="2026-03-07">
+        <description translate="no">
+          <p>Minor UI fixes and enhancement</p>
+        </description>
+      </release>
       <release version="v0.8.0" date="2026-03-07">
         <description translate="no">
           <p>Use editable JavaScript code to preview the font</p>
