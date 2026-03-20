@@ -2,7 +2,7 @@ using Gtk 4.0;
 using Adw 1;
 using GtkSource 5;
 
-template $EmbImportDialog: Adw.Dialog {
+template $EmbellishImportDialog: Adw.Dialog {
     title: _("Import Custom Fonts");
     content-width: 600;
     content-height: 600;
@@ -58,8 +58,6 @@ template $EmbImportDialog: Adw.Dialog {
                             styles [
                                 "pill",
                             ]
-
-                            clicked => $onImportFromFile();
                         }
 
                         Gtk.Button import_button {
@@ -69,8 +67,6 @@ template $EmbImportDialog: Adw.Dialog {
                                 "suggested-action",
                                 "pill",
                             ]
-
-                            clicked => $onImportClicked();
                         }
                     }
                 }

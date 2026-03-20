@@ -1,83 +1,48 @@
-blueprints = custom_target('blueprints',
-  input: files(
-    'shortcuts-dialog.blp',
-    'ui/IconsPage.blp',
-    'ui/Window.blp',
-    'ui/ImportDialog.blp'
-  ),
-  output: '.',
-  command: [find_program('blueprint-compiler'), 'batch-compile', '@OUTPUT@', '@CURRENT_SOURCE_DIR@', '@INPUT@'],
+# Translate and install the desktop file
+desktop_file = i18n.merge_file(
+        input: 'io.github.getnf.embellish.desktop.in',
+       output: 'io.github.getnf.embellish.desktop',
+         type: 'desktop',
+       po_dir: '../po',
+      install: true,
+  install_dir: get_option('datadir') / 'applications'
 )
 
-# Compile the resources
-gnome.compile_resources(
-	APP_ID + '.data',
-	APP_ID + '.data.gresource.xml',
-	gresource_bundle: true,
-	install: true,
-	install_dir: get_option('datadir') / APP_ID,
-	dependencies: blueprints,
+desktop_utils = find_program('desktop-file-validate', required: false)
+if desktop_utils.found()
+  test('Validate desktop file', desktop_utils, args: [desktop_file])
+endif
+
+appstream_file = i18n.merge_file(
+        input: 'io.github.getnf.embellish.metainfo.xml.in',
+       output: 'io.github.getnf.embellish.metainfo.xml',
+       po_dir: '../po',
+      install: true,
+  install_dir: get_option('datadir') / 'metainfo'
 )
+
+appstreamcli = find_program('appstreamcli', required: false, disabler: true)
+test('Validate appstream file', appstreamcli,
+     args: ['validate', '--no-net', '--explain', appstream_file])
 
 # Install the settings schema
 install_data(
-	APP_ID + '.gschema.xml',
+	'io.github.getnf.embellish.gschema.xml',
 	install_dir: get_option('datadir') / 'glib-2.0' / 'schemas'
 )
 
-# Install the application icons
-install_data(
-	'icons' / APP_ID + '.svg',
-	install_dir: get_option('datadir') / 'icons' / 'hicolor' / 'scalable' / 'apps'
-)
-install_data(
-	'icons' / APP_ID + '-symbolic.svg',
-	install_dir: get_option('datadir') / 'icons' / 'hicolor' / 'symbolic' / 'apps'
-)
+compile_schemas = find_program('glib-compile-schemas', required: false, disabler: true)
+test('Validate schema file',
+     compile_schemas,
+     args: ['--strict', '--dry-run', meson.current_source_dir()])
 
-# Install the D-Bus service file
+service_conf = configuration_data()
+service_conf.set('bindir', get_option('prefix') / get_option('bindir'))
 configure_file(
-	input: APP_ID + '.service',
-	output: APP_ID + '.service',
-	configuration: {
-		'APP_ID': APP_ID,
-		'BINDIR': get_option('prefix') / get_option('bindir')
-	},
-	install: true,
+	input: 'io.github.getnf.embellish.service.in',
+	output: 'io.github.getnf.embellish.service',
+	configuration: service_conf,
 	install_dir: get_option('datadir') / 'dbus-1' / 'services'
-)
-
-# Translate and install the desktop file
-i18n.merge_file(
-	type: 'desktop',
-	input: configure_file(
-		input: APP_ID + '.desktop',
-		output: APP_ID + '.desktop.in',
-		configuration: {
-			'APP_ID': APP_ID,
-			'BINDIR': get_option('prefix') / get_option('bindir')
-		}
-	),
-	output: APP_ID + '.desktop',
-	po_dir: meson.project_source_root() / 'po',
-	install: true,
-	install_dir: get_option('datadir') / 'applications'
-)
-
-# Translate and install the AppStream metadata
-i18n.merge_file(
-	input: configure_file(
-		input: APP_ID + '.metainfo.xml',
-		output: APP_ID + '.metainfo.xml.in',
-		configuration: {
-			'APP_ID': APP_ID,
-		}
-	),
-	output: APP_ID + '.metainfo.xml',
-	type: 'xml',
-	po_dir: meson.project_source_root() / 'po',
-	install: true,
-	install_dir: get_option('datadir') / 'metainfo'
 )
 
 # Install the font files
@@ -163,3 +128,5 @@ install_data(
     'io.github.getnf.embellish'
   )
 )
+
+subdir('icons')

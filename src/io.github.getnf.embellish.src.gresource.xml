@@ -1,17 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <gresources>
-    <gresource prefix="/io/github/getnf/embellish/js">
-        <file>main.js</file>
-        <file>application.js</file>
-        <file>window.js</file>
-        <file>installedFontsManager.js</file>
-        <file>versionManager.js</file>
-        <file>licencesManager.js</file>
-        <file>previewManager.js</file>
-        <file>fontsManager.js</file>
-        <file>customFontsManager.js</file>
-        <file>utils.js</file>
-        <file>iconsPage.js</file>
-        <file>importDialog.js</file>
+    <gresource prefix="/io/github/getnf/embellish/">
+        <file preprocess="xml-stripblanks">shortcuts-dialog.ui</file>
+        <file preprocess="xml-stripblanks">window.ui</file>
+        <file preprocess="xml-stripblanks">import-dialog.ui</file>
+        <file preprocess="xml-stripblanks">icons-page.ui</file>
+        <file alias="style.css">assets/style.css</file>
+        <file alias="welcome.svg">assets/welcome.svg</file>
+        <file alias="licence.svg">assets/licence.svg</file>
+        <file alias="fonts.json">assets/fonts.json</file>
+        <file alias="cheatsheet">assets/cheatsheet.csv</file>
+        <file alias="licences">assets/licences</file>
+    </gresource>
+    <gresource prefix="/io/github/getnf/embellish/icons/scalable/actions">
+        <file preprocess="xml-stripblanks" alias="embellish-download-symbolic.svg">assets/icons/folder-download-symbolic.svg</file>
+        <file preprocess="xml-stripblanks" alias="embellish-preview-symbolic.svg">assets/icons/eye-open-negative-filled-symbolic.svg</file>
+        <file preprocess="xml-stripblanks" alias="embellish-remove-symbolic.svg">assets/icons/user-trash-symbolic.svg</file>
+        <file preprocess="xml-stripblanks" alias="embellish-search-symbolic.svg">assets/icons/edit-find-symbolic.svg</file>
+        <file preprocess="xml-stripblanks" alias="embellish-update-symbolic.svg">assets/icons/software-update-available-symbolic.svg</file>
+        <file preprocess="xml-stripblanks" alias="embellish-fonts-symbolic.svg">assets/icons/font-x-generic-symbolic.svg</file>
+        <file preprocess="xml-stripblanks" alias="embellish-icons-symbolic.svg">assets/icons/shapes-symbolic.svg</file>
+        <file preprocess="xml-stripblanks" alias="embellish-import-symbolic.svg">assets/icons/arrow-into-box-symbolic.svg</file>
+        <file preprocess="xml-stripblanks" alias="embellish-error-symbolic.svg">assets/icons/error-outline-symbolic.svg</file>
+        <file preprocess="xml-stripblanks" alias="io.github.ronniedroid.concessio.svg">assets/icons/io.github.ronniedroid.concessio.svg</file>
+        <file preprocess="xml-stripblanks" alias="io.github.sitraorg.sitra.svg">assets/icons/io.github.sitraorg.sitra.svg</file>
     </gresource>
 </gresources>

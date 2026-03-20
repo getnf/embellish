@@ -1,0 +1,231 @@
+using Gtk 4.0;
+using Adw 1;
+
+template $EmbellishWindow: Adw.ApplicationWindow {
+    title: _("Embellish");
+    default-width: 600;
+    default-height: 700;
+    width-request: 360;
+    height-request: 296;
+
+    Adw.ToastOverlay toast_overlay {
+        Stack stack {
+            transition-type: slide_left;
+
+            StackPage {
+                name: "welcomePage";
+
+                child: Adw.ToolbarView {
+                    extend-content-to-top-edge: true;
+
+                    [top]
+                    Adw.HeaderBar {
+                        show-title: false;
+                    }
+
+                    content: Adw.Clamp {
+                        maximum-size: 530;
+
+                        Box {
+                            orientation: vertical;
+                            halign: center;
+                            valign: center;
+                            spacing: 12;
+                            margin-start: 12;
+                            margin-end: 12;
+
+                            Picture {
+                                file: "resource:///io/github/getnf/embellish/welcome.svg";
+                                can-shrink: false;
+                            }
+
+                            Label {
+                                label: _("Embellish");
+
+                                styles [
+                                    "title-1",
+                                ]
+                            }
+
+                            Label {
+                                label: _("Install nerd fonts");
+                            }
+
+                            Button {
+                                label: _("Get started");
+                                action-name: "win.change_view";
+                                action-target: "'main_page'";
+                                halign: center;
+
+                                styles [
+                                    "suggested-action",
+                                    "pill",
+                                ]
+                            }
+                        }
+                    };
+                };
+            }
+
+            StackPage main_page {
+                name: "main_page";
+
+                child: Adw.ToolbarView container {
+                    extend-content-to-top-edge: false;
+                    top-bar-style: raised;
+
+                    [top]
+                    Adw.HeaderBar {
+                        title-widget: Adw.ViewSwitcher switcher_title {
+                            stack: main_stack;
+                            policy: wide;
+                        };
+
+                        [start]
+                        Button {
+                            action-name: "win.search";
+                            tooltip-text: _("Search fonts");
+                            icon-name: "embellish-search-symbolic";
+                        }
+
+                        [end]
+                        MenuButton {
+                            tooltip-text: _("Main Menu");
+                            primary: true;
+                            direction: none;
+                            menu-model: main_menu;
+                        }
+                    }
+
+                    [top]
+                    SearchBar search_bar {
+                        key-capture-widget: container;
+
+                        SearchEntry search_entry {
+                            search-delay: 100;
+                            placeholder-text: _("Search fonts");
+                            width-request: 400;
+                        }
+                    }
+
+                    content: Adw.ViewStack main_stack {
+                        Adw.ViewStackPage fonts_page {
+                            name: "fonts_page";
+                            title: _("Fonts");
+                            icon-name: "embellish-fonts-symbolic";
+                            use-underline: true;
+
+                            child: ScrolledWindow scroller {
+                                Adw.Clamp {
+                                    maximum-size: 600;
+
+                                    Box {
+                                        spacing: 12;
+                                        orientation: vertical;
+                                        margin-top: 24;
+                                        margin-bottom: 24;
+                                        margin-start: 12;
+                                        margin-end: 12;
+
+                                        Label {
+                                            label: _("Installed fonts");
+                                            halign: start;
+
+                                            styles [
+                                                "heading",
+                                            ]
+                                        }
+
+                                        ListBox installed_fonts {
+                                            selection-mode: none;
+
+                                            styles [
+                                                "boxed-list",
+                                            ]
+                                        }
+
+                                        Box {
+                                            orientation: horizontal;
+                                            spacing: 12;
+                                            margin-top: 12;
+
+                                            Label {
+                                                label: _("Available fonts");
+                                                halign: start;
+                                                hexpand: true;
+
+                                                styles [
+                                                    "heading",
+                                                ]
+                                            }
+
+                                            Button {
+                                                label: "Add a custom font";
+                                                action-name: "win.add_custom_font";
+                                            }
+                                        }
+
+                                        ListBox available_fonts {
+                                            selection-mode: none;
+
+                                            styles [
+                                                "boxed-list",
+                                            ]
+                                        }
+                                    }
+                                }
+                            };
+                        }
+
+                        Adw.ViewStackPage icons_page {
+                            name: "icons_page";
+                            title: _("Icons");
+                            icon-name: "embellish-icons-symbolic";
+                            use-underline: true;
+
+                            child: Adw.Clamp {
+                                maximum-size: 530;
+                                // $EmbIconsPage {
+                                //     margin-top: "24";
+                                //     margin-start: "12";
+                                //     margin-end: "12";
+                                //     margin-bottom: "24";
+                                // }
+                                Label {
+                                    label: "icons here";
+                                }
+                            };
+                        }
+                    };
+                };
+            }
+        }
+    }
+}
+
+menu main_menu {
+    section {
+        item {
+            label: _("Import custom fonts");
+            action: "win.import_custom_fonts";
+        }
+
+        item {
+            label: _("Export custom fonts");
+            action: "win.export_custom_fonts";
+        }
+    }
+
+    section {
+        item {
+            label: _("Keyboard Shortcuts");
+            action: "app.shortcuts";
+        }
+
+        item {
+            label: _("About");
+            action: "app.about";
+        }
+    }
+}
+

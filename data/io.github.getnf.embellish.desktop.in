@@ -1,9 +1,11 @@
 [Desktop Entry]
 Name=Embellish
 Comment=Install nerd fonts
-Icon=@APP_ID@
-Exec=@BINDIR@/@APP_ID@
+Icon=io.github.getnf.embellish
+Exec=io.github.getnf.embellish
 Type=Application
+Terminal=false
 DBusActivatable=true
 Categories=GNOME;GTK;TextTools;Utility
 Keywords=Fonts;NerdFonts;nerd;
+StartupNotify=true
