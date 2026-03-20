@@ -32,7 +32,6 @@ public class Embellish.Window : Adw.ApplicationWindow {
 	private Embellish.Fonts fonts_manager;
     private Embellish.Library library;
 	private Embellish.CustomFonts custom_fonts;
-    private Embellish.Managers.PreviewManager preview_manager;
 	private ListStore store;
 	private Gtk.FilterListModel filtered_model;
     private Gtk.CustomFilter filter;
@@ -43,7 +42,6 @@ public class Embellish.Window : Adw.ApplicationWindow {
 		fonts_manager = new Embellish.Fonts ();
         library = new Embellish.Library ();
         custom_fonts = new Embellish.CustomFonts ();
-        preview_manager = new Embellish.Managers.PreviewManager (this);
 
         setup_actions();
 
@@ -168,8 +166,18 @@ var sorter = new Gtk.CustomSorter ((a, b) => {
             box.set_halign(Gtk.Align.CENTER);
             box.set_valign(Gtk.Align.CENTER);
 
-            	var licence_button = Embellish.Managers.LicencesManager.create (font);
-            var preview_button = preview_manager.create (font);
+            var licence_button = Embellish.Managers.LicencesManager.create (font);
+
+            var preview_button = new Gtk.Button ();
+            preview_button.set_icon_name ("embellish-preview-symbolic");
+            preview_button.add_css_class ("flat");
+            preview_button.set_tooltip_text (_("Preview"));
+            preview_button.clicked.connect (() => {
+                var dialog = new Embellish.PreviewDialog (font);
+                dialog.present (this);
+            });
+            preview_button.set_sensitive(!font.is_custom);
+
             box.append(licence_button);
             box.append(preview_button);
 

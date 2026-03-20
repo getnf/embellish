@@ -9,7 +9,7 @@ embellish_sources += files(
   'import_dialog.vala',
   'add_font_dialog.vala',
   'managers/licences.vala',
-  'managers/preview.vala'
+  'preview_dialog.vala'
 )
 
 embellish_deps = [
@@ -31,8 +31,8 @@ blueprints = custom_target('blueprints',
     'window.blp',
     'import-dialog.blp',
     'add-font-dialog.blp',
+    'preview-dialog.blp',
     'icons-page.blp'
-
   ),
   output: '.',
   command: [find_program('blueprint-compiler'), 'batch-compile', '@OUTPUT@', '@CURRENT_SOURCE_DIR@', '@INPUT@'],
