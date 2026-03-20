@@ -7,6 +7,7 @@ embellish_sources += files(
   'managers/custom_fonts.vala',
   'window.vala',
   'import_dialog.vala',
+  'add_font_dialog.vala',
   'managers/licences.vala',
   'managers/preview.vala'
 )
@@ -29,6 +30,7 @@ blueprints = custom_target('blueprints',
     'shortcuts-dialog.blp',
     'window.blp',
     'import-dialog.blp',
+    'add-font-dialog.blp',
     'icons-page.blp'
 
   ),

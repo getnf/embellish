@@ -173,7 +173,33 @@ var sorter = new Gtk.CustomSorter ((a, b) => {
             box.append(licence_button);
             box.append(preview_button);
 
+            if (font.is_custom) {
+                var remove_button = new Gtk.Button.from_icon_name ("embellish-remove-custom-symbolic");
+                remove_button.add_css_class ("flat");
+                remove_button.set_tooltip_text (_("Remove from list"));
+                remove_button.clicked.connect (() => {
+                    this.remove_custom_font (font);
+                });
+                box.append (remove_button);
+            }
+
             return box;
+    }
+
+    private void remove_custom_font (Font font) {
+        try {
+            custom_fonts.remove (font);
+            for (uint i = 0; i < store.get_n_items (); i++) {
+                var f = (Font) store.get_item (i);
+                if (f.id == font.id) {
+                    store.remove (i);
+                    break;
+                }
+            }
+            toast_overlay.add_toast (new Adw.Toast (_("Custom font removed")));
+        } catch (Error e) {
+            toast_overlay.add_toast (new Adw.Toast (_("Failed to remove custom font: %s").printf (e.message)));
+        }
     }
 
     private void import_custom_fonts () {
@@ -201,6 +227,35 @@ var sorter = new Gtk.CustomSorter ((a, b) => {
                 (ulong) added).printf (added)));
         } else {
             toast_overlay.add_toast (new Adw.Toast (_("All fonts already exist")));
+        }
+    });
+    dialog.present (this);
+}
+
+private void add_custom_font () {
+    var dialog = new Embellish.AddFontDialog ();
+    dialog.added.connect ((font) => {
+        bool exists = false;
+        for (uint i = 0; i < store.get_n_items (); i++) {
+            var existing = (Embellish.Font) store.get_item (i);
+            if (existing.id == font.id) {
+                exists = true;
+                break;
+            }
+        }
+
+        if (exists) {
+            toast_overlay.add_toast (new Adw.Toast (_("Font already exists")));
+            return;
+        }
+
+        try {
+            custom_fonts.add (font);
+            font.is_installed = library.is_installed (font);
+            store.append (font);
+            toast_overlay.add_toast (new Adw.Toast (_("Custom font added")));
+        } catch (Error e) {
+            toast_overlay.add_toast (new Adw.Toast (_("Failed to add custom font: %s").printf (e.message)));
         }
     });
     dialog.present (this);
@@ -282,9 +337,15 @@ private void export_custom_fonts () {
                 this.export_custom_fonts();
             });
 
+        var add_font_action = new SimpleAction("add_custom_font", null);
+            add_font_action.activate.connect(() => {
+                this.add_custom_font();
+            });
+
     this.add_action (change_view_action);
     this.add_action (search_action);
     this.add_action (import_action);
     this.add_action (export_action);
+    this.add_action (add_font_action);
     }
 }

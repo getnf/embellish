@@ -4,6 +4,7 @@
         <file preprocess="xml-stripblanks">shortcuts-dialog.ui</file>
         <file preprocess="xml-stripblanks">window.ui</file>
         <file preprocess="xml-stripblanks">import-dialog.ui</file>
+        <file preprocess="xml-stripblanks">add-font-dialog.ui</file>
         <file preprocess="xml-stripblanks">icons-page.ui</file>
         <file alias="style.css">assets/style.css</file>
         <file alias="welcome.svg">assets/welcome.svg</file>
@@ -22,6 +23,7 @@
         <file preprocess="xml-stripblanks" alias="embellish-icons-symbolic.svg">assets/icons/shapes-symbolic.svg</file>
         <file preprocess="xml-stripblanks" alias="embellish-import-symbolic.svg">assets/icons/arrow-into-box-symbolic.svg</file>
         <file preprocess="xml-stripblanks" alias="embellish-error-symbolic.svg">assets/icons/error-outline-symbolic.svg</file>
+        <file preprocess="xml-stripblanks" alias="embellish-remove-custom-symbolic.svg">assets/icons/cross-small-symbolic.svg</file>
         <file preprocess="xml-stripblanks" alias="io.github.ronniedroid.concessio.svg">assets/icons/io.github.ronniedroid.concessio.svg</file>
         <file preprocess="xml-stripblanks" alias="io.github.sitraorg.sitra.svg">assets/icons/io.github.sitraorg.sitra.svg</file>
     </gresource>

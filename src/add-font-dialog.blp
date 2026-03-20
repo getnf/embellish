@@ -1,0 +1,51 @@
+using Gtk 4.0;
+using Adw 1;
+
+template $EmbellishAddFontDialog: Adw.Dialog {
+    title: _("Add a custom font");
+    content-width: 400;
+
+    Adw.ToolbarView {
+        [top]
+        Adw.HeaderBar {}
+
+        [bottom]
+        ActionBar {
+            [end]
+            Button add_button {
+                label: _("Add");
+
+                styles [
+                    "suggested-action",
+                    "pill",
+                ]
+            }
+        }
+
+        content: Adw.Clamp {
+            maximum-size: 380;
+            margin-top: 12;
+            margin-bottom: 12;
+            margin-start: 12;
+            margin-end: 12;
+
+            Box {
+                orientation: vertical;
+                spacing: 12;
+
+                Adw.EntryRow name_entry {
+                    title: _("Name");
+                }
+
+                Adw.EntryRow description_entry {
+                    title: _("Description");
+                }
+
+                Adw.EntryRow url_entry {
+                    title: _("URL");
+                }
+            }
+        };
+    }
+}
+
