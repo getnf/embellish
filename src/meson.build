@@ -2,6 +2,7 @@ embellish_sources += files(
   'main.vala',
   'application.vala',
   'modals/font.vala',
+  'modals/icon.vala',
   'managers/fonts.vala',
   'managers/library.vala',
   'managers/custom_fonts.vala',
@@ -9,6 +10,7 @@ embellish_sources += files(
   'import_dialog.vala',
   'add_font_dialog.vala',
   'managers/licences.vala',
+  'managers/icons.vala',
   'preview_dialog.vala'
 )
 
@@ -32,7 +34,6 @@ blueprints = custom_target('blueprints',
     'import-dialog.blp',
     'add-font-dialog.blp',
     'preview-dialog.blp',
-    'icons-page.blp'
   ),
   output: '.',
   command: [find_program('blueprint-compiler'), 'batch-compile', '@OUTPUT@', '@CURRENT_SOURCE_DIR@', '@INPUT@'],

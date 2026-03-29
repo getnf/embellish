@@ -11,7 +11,7 @@
         <file alias="welcome.svg">assets/welcome.svg</file>
         <file alias="licence.svg">assets/licence.svg</file>
         <file alias="fonts.json">assets/fonts.json</file>
-        <file alias="cheatsheet">assets/cheatsheet.csv</file>
+        <file alias="icons.csv">assets/icons.csv</file>
         <file alias="licences">assets/licences</file>
     </gresource>
     <gresource prefix="/io/github/getnf/embellish/icons/scalable/actions">

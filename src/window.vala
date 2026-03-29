@@ -23,100 +23,219 @@ using Gee;
 [GtkTemplate (ui = "/io/github/getnf/embellish/window.ui")]
 public class Embellish.Window : Adw.ApplicationWindow {
     [GtkChild] private unowned Gtk.Stack stack;
+	[GtkChild] private unowned Adw.ViewStack main_stack;
 	[GtkChild] private unowned Gtk.ListBox installed_fonts;
 	[GtkChild] private unowned Gtk.ListBox available_fonts;
 	[GtkChild] private unowned Adw.ToastOverlay toast_overlay;
 	[GtkChild] private unowned Gtk.SearchBar search_bar;
 	[GtkChild] private unowned Gtk.SearchEntry search_entry;
+	[GtkChild] private unowned Gtk.GridView icons_grid;
+	[GtkChild] private unowned Adw.WrapBox categories;
 
 	private Embellish.Fonts fonts_manager;
     private Embellish.Library library;
 	private Embellish.CustomFonts custom_fonts;
+	private Embellish.Icons icons_manager;
 	private ListStore store;
+	private ListStore icons_store;
 	private Gtk.FilterListModel filtered_model;
     private Gtk.CustomFilter filter;
+	private Gtk.CustomFilter icons_filter;
+	private Gee.HashMap<string, Gtk.ToggleButton> category_toggles;
 
-	public Window (Adw.Application app) {
-		Object (application: app);
-
-		fonts_manager = new Embellish.Fonts ();
+    public Window (Adw.Application app) {
+        Object (application: app);
+        fonts_manager = new Embellish.Fonts ();
         library = new Embellish.Library ();
         custom_fonts = new Embellish.CustomFonts ();
+        icons_manager = new Embellish.Icons ();
+        setup_actions ();
+        setup_fonts ();
+        setup_icons ();
+		setup_categories ();
 
-        setup_actions();
-
-        search_entry.search_changed.connect (() => {
+		search_entry.search_changed.connect (() => {
             this.filter.changed (Gtk.FilterChange.DIFFERENT);
+			this.icons_filter.changed (Gtk.FilterChange.DIFFERENT);
         });
 
-		store = new ListStore (typeof (Embellish.Font));
-		foreach (var font in fonts_manager.collection()) {
+		main_stack.notify["visible-child"].connect (() => {
+			var page = main_stack.visible_child_name;
+			if (page == "icons_page") {
+				search_entry.placeholder_text = _("Search icons");
+			} else {
+				search_entry.placeholder_text = _("Search fonts");
+			}
+		});
+    }
+
+    private void setup_fonts () {
+        store = new ListStore (typeof (Embellish.Font));
+		
+        foreach (var font in fonts_manager.collection ()) {
             font.is_installed = library.is_installed (font);
-			store.append(font);
-		}
-
-var sorter = new Gtk.CustomSorter ((a, b) => {
-    var fa = (Embellish.Font) a;
-    var fb = (Embellish.Font) b;
-
-    /* custom ordering optional */
-    if (fa.is_custom != fb.is_custom)
-        return fa.is_custom ? -1 : 1;
-
-    return fa.family.collate (fb.family);
-});
-
-		var sorted_model = new Gtk.SortListModel (store, sorter);
-
-		this.filter = new Gtk.CustomFilter ((obj) => {
-				var font = obj as Embellish.Font;
-
-				if (font == null)
-					return false;
-
-				string q = this.search_entry.text.strip().down();
-
-				// no search → show everything
-				if (q.length == 0)
-					return true;
-
-				// match display name name
-				if (font.display_name.down ().contains (q))
-					return true;
-
-				// match description
-				if (font.description != null &&
-					font.description.down ().contains (q))
-					return true;
-
-				return false;
-			});
-		filtered_model = new Gtk.FilterListModel (sorted_model, this.filter);
-
+            store.append (font);
+        }
+		
+        var sorter = new Gtk.CustomSorter ((a, b) => {
+            var fa = (Embellish.Font) a;
+            var fb = (Embellish.Font) b;
+            if (fa.is_custom != fb.is_custom)
+                return fa.is_custom ? -1 : 1;
+            return fa.family.collate (fb.family);
+        });
+		
+        var sorted_model = new Gtk.SortListModel (store, sorter);
+		
+        this.filter = new Gtk.CustomFilter ((obj) => {
+            var font = obj as Embellish.Font;
+            if (font == null)
+                return false;
+            string q = this.search_entry.text.strip ().down ();
+            if (q.length == 0)
+                return true;
+            if (font.display_name.down ().contains (q))
+                return true;
+            if (font.description != null && font.description.down ().contains (q))
+                return true;
+            return false;
+        });
+		
+        filtered_model = new Gtk.FilterListModel (sorted_model, this.filter);
+		
         var installed_filter = new Gtk.CustomFilter ((obj) => {
             var font = obj as Embellish.Font;
             return font.is_installed;
         });
-
+		
         var available_filter = new Gtk.CustomFilter ((obj) => {
             var font = obj as Embellish.Font;
             return !font.is_installed;
         });
-
+		
         var installed_model = new Gtk.FilterListModel (filtered_model, installed_filter);
         var available_model = new Gtk.FilterListModel (filtered_model, available_filter);
-
-		installed_fonts.bind_model (installed_model, (obj) => {
+		
+        installed_fonts.bind_model (installed_model, (obj) => {
             return create_row (obj as Embellish.Font);
         });
-
+		
         available_fonts.bind_model (available_model, (obj) => {
             return create_row (obj as Embellish.Font);
         });
+		
+        installed_fonts.set_placeholder (create_placeholder (_("No installed fonts match your search")));
+        available_fonts.set_placeholder (create_placeholder (_("No available fonts match your search")));
+    }
 
-        installed_fonts.set_placeholder(create_placeholder(_("No installed fonts match your search")));
-        available_fonts.set_placeholder(create_placeholder(_("No available fonts match your search")));
-	}
+private void setup_icons () {
+    icons_store = new ListStore (typeof (Embellish.Icon));
+    foreach (var icon in icons_manager.collection ()) {
+        icons_store.append (icon);
+    }
+
+    var sorter = new Gtk.CustomSorter ((a, b) => {
+        var ia = (Embellish.Icon) a;
+        var ib = (Embellish.Icon) b;
+        int cat = ia.category.collate (ib.category);
+        if (cat != 0) return cat;
+        return ia.name.collate (ib.name);
+    });
+    var sorted_model = new Gtk.SortListModel (icons_store, sorter);
+
+    this.icons_filter = new Gtk.CustomFilter ((obj) => {
+        var icon = obj as Embellish.Icon;
+        if (icon == null) return false;
+
+        bool category_match = true;
+        if (this.category_toggles != null) {
+            bool has_active = false;
+            bool is_in_active = false;
+            foreach (var entry in this.category_toggles.entries) {
+                if (entry.value.active) {
+                    has_active = true;
+                    if (icon.category == entry.key) {
+                        is_in_active = true;
+                    }
+                }
+            }
+            if (has_active && !is_in_active) {
+                category_match = false;
+            }
+        }
+
+        if (!category_match) return false;
+
+        string q = this.search_entry.text.strip ().down ();
+        if (q.length == 0) return true;
+        if (icon.name.down ().contains (q)) return true;
+        if (icon.category.down ().contains (q)) return true;
+        if (icon.unicode.down ().contains (q)) return true;
+        return false;
+    });
+    var filtered_model = new Gtk.FilterListModel (sorted_model, this.icons_filter);
+
+    var factory = new Gtk.SignalListItemFactory ();
+    factory.setup.connect ((obj) => {
+        var item = obj as Gtk.ListItem;
+        var button = new Gtk.Button ();
+        button.add_css_class ("flat");
+        button.add_css_class ("icon-button");
+        button.set_size_request (56, 56);
+        item.child = button;
+    });
+    factory.bind.connect ((obj) => {
+        var item = obj as Gtk.ListItem;
+        var icon = item.item as Embellish.Icon;
+        var button = item.child as Gtk.Button;
+        button.label = icon.glyph;
+        button.tooltip_text = "%s\nU+%s\n%s".printf (icon.name, icon.unicode.up (), icon.category);
+        button.clicked.connect (() => {
+            on_icon_clicked (icon);
+        });
+    });
+    factory.unbind.connect ((obj) => {
+        var item = obj as Gtk.ListItem;
+        var button = item.child as Gtk.Button;
+        SignalHandler.disconnect_matched (
+            button,
+            SignalMatchType.ID,
+            Signal.lookup ("clicked", button.get_type ()),
+            0, null, null, null
+        );
+    });
+
+    icons_grid.model = new Gtk.NoSelection (filtered_model);
+    icons_grid.factory = factory;
+}
+
+ private void setup_categories () {
+	 category_toggles = new Gee.HashMap<string, Gtk.ToggleButton> ();
+	     string[] categories_list = {
+        "Font Awesome", "Font Awesome Extension", "Material Design",
+        "Codicons", "Devicons", "Octicons", "Linux", "Weather",
+        "Seti UI", "Custom", "Powerline", "Powerline Extra",
+        "Pomicons", "IEC Power", "Extra", "Indentation"
+    };
+
+	 foreach (string category in categories_list) {
+		 var toggle = new Gtk.ToggleButton.with_label (category);
+		 toggle.set_css_classes ({ "category", category });
+		 categories.append (toggle);
+		 category_toggles[category] = toggle;
+		 
+		 toggle.toggled.connect (() => {
+				 this.icons_filter.changed (Gtk.FilterChange.DIFFERENT);
+			 });
+	 }
+ }
+
+private void on_icon_clicked (Embellish.Icon icon) {
+    // copy glyph to clipboard, show a toast, etc.
+    var clipboard = get_clipboard ();
+    clipboard.set_text (icon.glyph);
+    toast_overlay.add_toast (new Adw.Toast (_("Copied %s").printf (icon.name)));
+}
 
     private Gtk.Widget create_placeholder (string message) {
         var box = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 12);

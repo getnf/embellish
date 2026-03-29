@@ -5,8 +5,21 @@
     padding: 4px 12px;
 }
 
+.category {
+    margin: 0px;
+    padding-top: 1px;
+    padding-bottom: 1px;
+    padding-right: 12px;
+    padding-left: 12px;
+    border-radius: 9999px;
+}
+
+gridview > * {
+    background-color: transparent;
+}
+
 .icon-button {
-    font-size: 30px;
+    font-size: 26px;
     font-family: "Symbols Nerd Font Mono";
 }
 
