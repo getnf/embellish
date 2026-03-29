@@ -212,10 +212,9 @@ private void setup_icons () {
  private void setup_categories () {
 	 category_toggles = new Gee.HashMap<string, Gtk.ToggleButton> ();
 	     string[] categories_list = {
-        "Font Awesome", "Font Awesome Extension", "Material Design",
+        "Font Awesome", "Material Design",
         "Codicons", "Devicons", "Octicons", "Linux", "Weather",
-        "Seti UI", "Custom", "Powerline", "Powerline Extra",
-        "Pomicons", "IEC Power", "Extra", "Indentation"
+        "Seti UI", "Powerline", "Powerline Extra"
     };
 
 	 foreach (string category in categories_list) {
@@ -476,3 +475,4 @@ private void export_custom_fonts () {
     this.add_action (add_font_action);
     }
 }
+
