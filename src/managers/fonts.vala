@@ -21,46 +21,46 @@
 using Gee;
 
 public class Embellish.Fonts : Object {
-    private Gee.Map<string, Font> fonts;
+	private Gee.Map<string, Font> fonts;
 	private CustomFonts custom_fonts;
 
-    public Fonts () {
-        fonts = new Gee.HashMap<string, Font> ();
-		custom_fonts = new CustomFonts();
+	public Fonts () {
+		fonts = new Gee.HashMap<string, Font> ();
+		custom_fonts = new CustomFonts ();
 
-        try {
-            load_fonts_from_files ();
-        } catch (Error e) {
-            warning (@"Failed to load fonts: $(e.message)");
-        }
+		try {
+			load_fonts_from_files ();
+		} catch (Error e) {
+			warning (@"Failed to load fonts: $(e.message)");
+		}
 
-        merge_custom_fonts ();
-    }
+		merge_custom_fonts ();
+	}
 
-    private void load_fonts_from_files () throws Error {
-        try {
-            var fonts_file = File.new_for_uri ("resource:///io/github/getnf/embellish/fonts.json");
+	private void load_fonts_from_files () throws Error {
+		try {
+			var fonts_file = File.new_for_uri ("resource:///io/github/getnf/embellish/fonts.json");
 
-            uint8[] fonts_data;
+			uint8[] fonts_data;
 
-            fonts_file.load_contents (null, out fonts_data, null);
+			fonts_file.load_contents (null, out fonts_data, null);
 
 			load_fonts ((string) fonts_data, fonts_data.length);
-        } catch (Error e) {
-            throw new FileError.NOENT ("Failed to load embedded resources: " + e.message);
-        }
-    }
+		} catch (Error e) {
+			throw new FileError.NOENT ("Failed to load embedded resources: " + e.message);
+		}
+	}
 
-    private void load_fonts (string json, int len) throws Error {
-        var parser = new Json.Parser ();
-        parser.load_from_data (json, len);
+	private void load_fonts (string json, int len) throws Error {
+		var parser = new Json.Parser ();
+		parser.load_from_data (json, len);
 
-        foreach (var node in parser.get_root ().get_array ().get_elements ()) {
-            var font_info = Font.from_json (node.get_object ());
+		foreach (var node in parser.get_root ().get_array ().get_elements ()) {
+			var font_info = Font.from_json (node.get_object ());
 
 			fonts.set (font_info.id, font_info);
-        }
-    }
+		}
+	}
 
 	private void merge_custom_fonts () {
 		foreach (var font in custom_fonts.list ()) {
@@ -68,11 +68,11 @@ public class Embellish.Fonts : Object {
 		}
 	}
 
-    public Font? font (string id) {
-        return fonts.get (id);
-    }
+	public Font ? font (string id) {
+		return fonts.get (id);
+	}
 
-    public Gee.Collection<Font> collection () {
-        return fonts.values;
-    }
+	public Gee.Collection<Font> collection () {
+		return fonts.values;
+	}
 }

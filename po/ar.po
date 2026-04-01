@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: embellish\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-03-07 19:25+0300\n"
-"PO-Revision-Date: 2026-03-07 19:29+0300\n"
+"POT-Creation-Date: 2026-04-01 10:44+0300\n"
+"PO-Revision-Date: 2026-04-01 10:35+0300\n"
 "Last-Translator: Ronnie Nissan <ronnie.nissan@proton.me>\n"
 "Language-Team: Arabic\n"
 "Language: ar\n"
@@ -18,28 +18,28 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=6; plural= n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 "
 "&& n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
-"X-Generator: Gtranslator 49.0\n"
+"X-Generator: Gtranslator 50.0\n"
 
-#: data/io.github.getnf.embellish.desktop:2
-#: data/io.github.getnf.embellish.metainfo.xml:5 src/application.js:51
-#: data/ui/Window.blp:5 data/ui/Window.blp:43
+#: data/io.github.getnf.embellish.desktop.in:2
+#: data/io.github.getnf.embellish.metainfo.xml.in:5 src/application.vala:53
+#: src/window.blp:5 src/window.blp:43
 msgid "Embellish"
 msgstr "أيمبيليش"
 
-#: data/io.github.getnf.embellish.desktop:3
-#: data/io.github.getnf.embellish.metainfo.xml:6 data/ui/Window.blp:51
+#: data/io.github.getnf.embellish.desktop.in:3
+#: data/io.github.getnf.embellish.metainfo.xml.in:6 src/window.blp:51
 msgid "Install nerd fonts"
 msgstr "تثبيت خطوط نيرد (Nerd Fonts)"
 
-#: data/io.github.getnf.embellish.desktop:9
+#: data/io.github.getnf.embellish.desktop.in:10
 msgid "Fonts;NerdFonts;nerd;"
 msgstr "Fonts;NerdFonts;nerd;خطوط;نيرد;"
 
-#: data/io.github.getnf.embellish.metainfo.xml:8
+#: data/io.github.getnf.embellish.metainfo.xml.in:8
 msgid "Ronnie Nissan"
 msgstr "روني نيسان"
 
-#: data/io.github.getnf.embellish.metainfo.xml:32
+#: data/io.github.getnf.embellish.metainfo.xml.in:32
 msgid ""
 "User-friendly application designed for managing Nerd Fonts on your system. "
 "With a sleek GTK4 user interface enhanced by libadwaita, Embellish provides "
@@ -50,145 +50,165 @@ msgstr ""
 "مستخدم GTK4 الأنيقة والمدعومة بـ libadwaita، يوفر أيمبيليش تجربة سلسة لتثبيت "
 "وإلغاء تثبيت وتحديث خطوط نيرد."
 
-#: data/io.github.getnf.embellish.metainfo.xml:38
+#: data/io.github.getnf.embellish.metainfo.xml.in:38
 msgid "List all available Nerd Fonts"
 msgstr "عرض كافة الخطوط المتاحة"
 
-#: data/io.github.getnf.embellish.metainfo.xml:39
+#: data/io.github.getnf.embellish.metainfo.xml.in:39
 msgid "Download and install a Font"
 msgstr "تنزيل وتثبيت خط"
 
-#: data/io.github.getnf.embellish.metainfo.xml:40
+#: data/io.github.getnf.embellish.metainfo.xml.in:40
 msgid "Uninstall an installed Font"
 msgstr "إلغاء تثبيت خط مثبت"
 
-#: data/io.github.getnf.embellish.metainfo.xml:41
+#: data/io.github.getnf.embellish.metainfo.xml.in:41
 msgid "Update an installed font"
 msgstr "تحديث خط مثبت"
 
-#: data/io.github.getnf.embellish.metainfo.xml:42
+#: data/io.github.getnf.embellish.metainfo.xml.in:42
 msgid "preview fonts"
 msgstr "معاينة الخطوط"
 
-#: data/io.github.getnf.embellish.metainfo.xml:43
+#: data/io.github.getnf.embellish.metainfo.xml.in:43
 msgid "Browse icons (icon's cheat sheet)"
 msgstr "تصفح الأيقونات (ورقة الغش للأيقونات)"
 
-#: data/io.github.getnf.embellish.metainfo.xml:44 data/ui/Window.blp:87
-#: data/ui/Window.blp:113 data/shortcuts-dialog.blp:7
+#: data/io.github.getnf.embellish.metainfo.xml.in:44 src/shortcuts-dialog.blp:7
+#: src/window.blp:87 src/window.blp:106 src/window.vala:69
 msgid "Search fonts"
 msgstr "البحث عن الخطوط"
 
-#: data/io.github.getnf.embellish.metainfo.xml:45
+#: data/io.github.getnf.embellish.metainfo.xml.in:45
 msgid "Read font's licence(s)"
 msgstr "قراءة تراخيص الخط"
 
-#: data/io.github.getnf.embellish.metainfo.xml:46
+#: data/io.github.getnf.embellish.metainfo.xml.in:46
 msgid "Add custom fonts"
 msgstr "إضافة خطوط مخصصة"
 
-#: data/io.github.getnf.embellish.metainfo.xml:47
+#: data/io.github.getnf.embellish.metainfo.xml.in:47
 msgid "Import and export custom fonts"
 msgstr "استيراد وتصدير خطوط مخصصة"
 
-#: data/io.github.getnf.embellish.metainfo.xml:60
+#: data/io.github.getnf.embellish.metainfo.xml.in:56
 msgid ""
 "Main page showing a list of custon fonts and installed and available nerd "
 "fonts"
 msgstr "الصفحة الرئيسية تعرض قائمة بالخطوط المخصصة وخطوط نيرد المثبتة والمتاحة"
 
-#: data/io.github.getnf.embellish.metainfo.xml:64
+#: data/io.github.getnf.embellish.metainfo.xml.in:60
 msgid "Icons page showing all the avilable nerd fonts icons"
 msgstr "صفحة الأيقونات التي تعرض جميع أيقونات خطوط نيرد المتاحة"
 
-#: data/io.github.getnf.embellish.metainfo.xml:69
+#: data/io.github.getnf.embellish.metainfo.xml.in:65
 msgid "Previewing JetBrains Mono font using JavaScript code"
 msgstr "عرض خط JetBrains Mono باستخدام كود جافاسكريبت"
 
-#: data/io.github.getnf.embellish.metainfo.xml:73
+#: data/io.github.getnf.embellish.metainfo.xml.in:69
 msgid "Showcasing the import dialog with Maple Mono fonts data"
 msgstr "عرض مربع حوار الاستيراد مع بيانات خطوط Maple Mono"
 
-#: data/io.github.getnf.embellish.metainfo.xml:78
+#: data/io.github.getnf.embellish.metainfo.xml.in:74
 msgid "Search page, showcasing search functionality"
 msgstr "صفحة البحث، لاستعراض وظيفة البحث"
 
-#: src/application.js:55
+#: src/add-font-dialog.blp:5 src/window.blp:162
+msgid "Add a custom font"
+msgstr "إضافة خطوط مخصصة"
+
+#: src/add-font-dialog.blp:16
+msgid "Add"
+msgstr "إضافة"
+
+#: src/add-font-dialog.blp:37
+msgid "Name"
+msgstr "أسم الخط"
+
+#: src/add-font-dialog.blp:41
+msgid "Description"
+msgstr "الوصف"
+
+#: src/add-font-dialog.blp:45
+msgid "URL"
+msgstr "الرابط"
+
+#: src/application.vala:55
 msgid "Embellish helps you manage Nerd Fonts on your system"
 msgstr "يساعدك Embellish على إدارة خطوط نيرد على نظامك"
 
-#. Translators: Replace "translator-credits" with your names, one name per line
-#: src/application.js:68
+#: src/application.vala:61
 msgid "translator-credits"
 msgstr "روني نيسان https://github.com/ronniedroid/"
 
-#: src/application.js:71
+#: src/application.vala:69
 msgid "Concessio"
-msgstr "Concessio"
+msgstr "كونسيسيو"
 
-#: src/application.js:71
+#: src/application.vala:69
 msgid "Understand file permissions"
 msgstr "فهم أذونات الملفات"
 
-#: src/application.js:72
+#: src/application.vala:70
 msgid "Sitra"
 msgstr "سطرا"
 
-#: src/application.js:72
+#: src/application.vala:70
 msgid "Get fonts from online sources"
 msgstr "احصل على الخطوط من المصادر عبر الإنترنت"
 
-#: src/data_translations.js:4
+#. This file is automatically generated. Do not edit.
+#. These strings are extracted for translation
+#: src/data_translations.vala:5
 msgid "An opinionated font for software engineers"
 msgstr "خط مُصمم خصيصاً لمهندسي البرمجيات"
 
-#: src/data_translations.js:5
+#: src/data_translations.vala:6
 msgid ""
 "Derived from the x3270 font, a modern format of a font with high nostalgic "
 "value"
 msgstr "مشتق من خط x3270، وهو تنسيق حديث لخط ذو قيمة كلاسيكية عالية"
 
-#: src/data_translations.js:6
+#: src/data_translations.vala:7
 msgid "The monospace typeface for GNOME"
 msgstr "الخط أحادي المسافة لواجهة جنوم (GNOME)"
 
-#: src/data_translations.js:7
+#: src/data_translations.vala:8
 msgid ""
 "A small, monospace, outline font that is geometrically regular and simple"
 msgstr "خط تحديد صغير، أحادي المسافة، منتظم هندسياً وبسيط"
 
-#: src/data_translations.js:8
+#: src/data_translations.vala:9
 msgid ""
-"Inspired by Anonymous 9 on Macintosh, since 2009, distinct `O`, `0`, `I`, "
-"`l`, `1`"
+"Inspired by Anonymous 9 on Macintosh, since 2009, distinct O, 0, I, l, 1"
 msgstr ""
-"مستوحى من Anonymous 9 على الماكنتوش، منذ عام 2009، يتميز بوضوح الحروف `O` و "
-"`0` و `I` و `l` و ال`1`"
+"مستوحى من Anonymous 9 على الماكنتوش، منذ عام 2009، يتميز بوضوح الحروف O و 0 "
+"و I و l و ال1"
 
-#: src/data_translations.js:9
+#: src/data_translations.vala:10
 msgid "Metrically similar to Arial, pan-European WGL character set, sans serif"
 msgstr ""
 "مشابه لخط Arial في القياسات، يدعم مجموعة أحرف WGL الأوروبية، وبدون زوائد"
 
-#: src/data_translations.js:10
+#: src/data_translations.vala:11
 msgid ""
 "A monospaced font designed to improve legibility and readability for "
 "individuals with low vision"
 msgstr "خط أحادي المسافة مصمم لتحسين وضوح القراءة لضعاف البصر"
 
-#: src/data_translations.js:11
+#: src/data_translations.vala:12
 msgid "Sans serif, designed by Stephen G. Hartke who also created Verily Serif"
 msgstr "بدون زوائد، من تصميم ستيفن هارتكي الذي صمم أيضاً Verily Serif"
 
-#: src/data_translations.js:12
+#: src/data_translations.vala:13
 msgid "Nostalgic, closely based on IBM's 8x14 EGA/VGA charset"
 msgstr "كلاسيكي، يعتمد بشكل وثيق على مجموعة أحرف EGA/VGA من IBM قياس 8x14"
 
-#: src/data_translations.js:13
+#: src/data_translations.vala:14
 msgid "Dotted zero, compact lowercase characters"
 msgstr "صفر منقوط، وأحرف صغيرة متراصة"
 
-#: src/data_translations.js:14
+#: src/data_translations.vala:15
 msgid ""
 "A fun, new monospaced font that includes programming ligatures and is "
 "designed to enhance the modern look and feel of the Windows Terminal"
@@ -196,69 +216,68 @@ msgstr ""
 "خط جديد وممتع أحادي المسافة يتضمن روابط برمجية ومصمم لتحسين المظهر العصري "
 "لألويندوز تيرمينال"
 
-#: src/data_translations.js:15
+#: src/data_translations.vala:16
 msgid "Like Cascadia Code but without any ligatures"
 msgstr "مثل Cascadia Code ولكن بدون أي روابط برمجية"
 
-#: src/data_translations.js:16
+#: src/data_translations.vala:17
 msgid "Tunable, slashed zeros, compact smaller characters"
 msgstr "قابل للضبط، أصفار مشطوبة، وأحرف صغيرة مدمجة"
 
-#: src/data_translations.js:17
-msgid "The very typeface you’ve been trained to recognize since childhood"
+#: src/data_translations.vala:18
+msgid "The very typeface you've been trained to recognize since childhood"
 msgstr "الخط الذي اعتدت على تمييزه منذ الطفولة"
 
-#: src/data_translations.js:18
+#: src/data_translations.vala:19
 msgid "An anonymous and neutral programming typeface"
 msgstr "خط برمجي محايد وغير محدد الهوية"
 
-#: src/data_translations.js:19
+#: src/data_translations.vala:20
 msgid "Similar to Courier New with better readability, dotted zeros"
 msgstr "مشابه لـ Courier New مع وضوح أفضل، وأصفار منقوطة"
 
-#: src/data_translations.js:20
+#: src/data_translations.vala:21
 msgid "A coding font for Koreans. This is the variant with ligatures."
 msgstr "خط برمجي للكوريين. هذا هو النوع الذي يحتوي على روابط برمجية."
 
-#: src/data_translations.js:21
+#: src/data_translations.vala:22
 msgid "A monospaced font for programmers and other terminal groupies"
 msgstr "خط أحادي المسافة للمبرمجين ومحبي واجهات الأوامر"
 
-#: src/data_translations.js:22
+#: src/data_translations.vala:23
 msgid "A monospaced pixel font with a lo-fi, techy vibe"
 msgstr "خط بكسل أحادي المسافة بطابع تقني بسيط (lo-fi)"
 
-#: src/data_translations.js:23
+#: src/data_translations.vala:24
 msgid ""
 "Dotted zero, based on the Bitstream Vera Fonts with a wider range of "
 "characters"
 msgstr "صفر منقوط، يعتمد على خطوط Bitstream Vera مع نطاق أوسع من الأحرف"
 
-#: src/data_translations.js:24
+#: src/data_translations.vala:25
 msgid "Good for small screens or font sizes"
 msgstr "جيد للشاشات الصغيرة أو أحجام الخطوط الصغيرة"
 
-#: src/data_translations.js:25
+#: src/data_translations.vala:26
 msgid ""
 "Fully-scalable monospaced font designed for programming and command prompts"
 msgstr "خط أحادي المسافة قابل للتوسيع بالكامل مصمم للبرمجة وواجهات الأوامر"
 
-#: src/data_translations.js:26
+#: src/data_translations.vala:27
 msgid ""
-"\"Wibbly-wobbly handwriting-like fuzziness\", takes some inspiration from "
+"Wibbly-wobbly handwriting-like fuzziness, takes some inspiration from "
 "Inconsolata and Monaco"
-msgstr ""
-"يتميز بـ \"تذبذب يشبه خط اليد\"، مستوحى جزئياً من خطي Inconsolata و Monaco"
+msgstr "يتميز بـ تذبذب يشبه خط اليد، مستوحى جزئياً من خطي Inconsolata و Monaco"
 
-#: src/data_translations.js:27
+#: src/data_translations.vala:28
 msgid "Programming ligatures, extension of Fira Mono font, enlarged operators"
 msgstr "روابط برمجية، امتداد لخط Fira Mono، مع رموز عمليات مكبرة"
 
-#: src/data_translations.js:28
+#: src/data_translations.vala:29
 msgid "Mozilla typeface, dotted zero"
 msgstr "خط موزيلا، صفر منقوط"
 
-#: src/data_translations.js:29
+#: src/data_translations.vala:30
 msgid ""
 "Monospaced typeface designed to be used in code editors, diagrams, "
 "terminals, and other text-based interfaces where code is represented"
@@ -266,17 +285,17 @@ msgstr ""
 "خط أحادي المسافة مصمم للاستخدام في محررات الأكواد، المخططات، واجهات الأوامر، "
 "والواجهات النصية الأخرى"
 
-#: src/data_translations.js:30
+#: src/data_translations.vala:31
 msgid ""
 "Created specifically for the Go project, looks particularly clear for use "
 "with the Go language"
 msgstr "صُمم خصيصاً لمشروع Go، ويظهر بوضوح خاص عند استخدامه مع لغة Go"
 
-#: src/data_translations.js:31
+#: src/data_translations.vala:32
 msgid "Bitmap font, tall capitals and ascenders, small serifs"
 msgstr "خط نقطي (Bitmap)، حروف كبيرة وصاعدة طويلة، مع زوائد صغيرة"
 
-#: src/data_translations.js:32
+#: src/data_translations.vala:33
 msgid ""
 "Dotted zero, short descenders, expands upon work done for Bitstream Vera & "
 "DejaVu, legible at common sizes"
@@ -284,7 +303,7 @@ msgstr ""
 "صفر منقوط، حروف هابطة قصيرة، يوسع أعمال Bitstream Vera و DejaVu، واضح في "
 "الأحجام الشائعة"
 
-#: src/data_translations.js:33
+#: src/data_translations.vala:34
 msgid ""
 "Monospaced ligatures, makes composite glyphs (e.g. ->) more readable, "
 "especially in Haskell"
@@ -292,49 +311,49 @@ msgstr ""
 "روابط أحادية المسافة، تجعل الرموز المركبة (مثل ->) أكثر وضوحاً، خاصة في اللغة "
 "البرمجية هاسكل "
 
-#: src/data_translations.js:34
+#: src/data_translations.vala:35
 msgid "Novel and unique design, dotted zero"
 msgstr "تصميم مبتكر وفريد، صفر منقوط"
 
-#: src/data_translations.js:35
+#: src/data_translations.vala:36
 msgid "Symbols stand out from common text"
 msgstr "الرموز تبرز بوضوح عن النص العادي"
 
-#: src/data_translations.js:36
+#: src/data_translations.vala:37
 msgid "A heavy modification of IBM's Plex font"
 msgstr "تعديل مكثف على خط Plex من IBM"
 
-#: src/data_translations.js:37
+#: src/data_translations.vala:38
 msgid "It's global, it's versatile and it's distinctly IBM"
 msgstr "إنه عالمي، ومتعدد الاستخدامات، ويحمل بصمة IBM المميزة"
 
-#: src/data_translations.js:38
+#: src/data_translations.vala:39
 msgid ""
 "Slashed zero, takes inspiration from many different fonts and glyphs, subtle "
 "curves in lowercase"
 msgstr ""
 "صفر مشطوب، مستوحى من خطوط ورموز متنوعة، منحنيات خفيفة في الأحرف الصغيرة"
 
-#: src/data_translations.js:39
+#: src/data_translations.vala:40
 msgid "Inconsolata with straight quotes"
 msgstr "خط Inconsolata مع علامات اقتباس مستقيمة"
 
-#: src/data_translations.js:40
+#: src/data_translations.vala:41
 msgid "Inconsolata with added the Cyrillic alphabet"
 msgstr "خط Inconsolata مع إضافة الأبجدية السيريلية"
 
-#: src/data_translations.js:41
+#: src/data_translations.vala:42
 msgid ""
-"Expressive monospaced font family that’s built with clarity, legibility, and "
+"Expressive monospaced font family that's built with clarity, legibility, and "
 "the needs of developers in mind"
 msgstr ""
 "عائلة خطوط أحادية المسافة تعبيرية صُممت مع مراعاة الوضوح واحتياجات المطورين"
 
-#: src/data_translations.js:42
+#: src/data_translations.vala:43
 msgid "Narrow and horizontally tight characters, slashed zero"
 msgstr "أحرف ضيقة ومضغوطة أفقياً، صفر مشطوب"
 
-#: src/data_translations.js:43
+#: src/data_translations.vala:44
 msgid ""
 "A narrower variant focusing terminal uses: Arrows and geometric symbols will "
 "be narrow to follow typical terminal usages"
@@ -342,111 +361,111 @@ msgstr ""
 "نسخة أضيق تركز على استخدامات واجهة الأوامر: الأسهم والرموز الهندسية ستكون "
 "ضيقة"
 
-#: src/data_translations.js:44
+#: src/data_translations.vala:45
 msgid "Nice as Iosevka but with slab serifs"
 msgstr "جميل مثل Iosevka ولكن مع زوائد عريضة (Slab Serifs)"
 
-#: src/data_translations.js:45
+#: src/data_translations.vala:46
 msgid "JetBrains officially created font for developers"
 msgstr "الخط الرسمي الذي صممته JetBrains للمطورين"
 
-#: src/data_translations.js:46
-msgid "Very light and thin characters, sharp m's, `0` and `O` very similar"
-msgstr "أحرف خفيفة ورقيقة جداً، حرف m حاد، والـ `0` والـ `O` متشابهان جداً"
+#: src/data_translations.vala:47
+msgid "Very light and thin characters, sharp m's, 0 and O very similar"
+msgstr "أحرف خفيفة ورقيقة جداً، حرف m حاد، والـ 0 والـ O متشابهان جداً"
 
-#: src/data_translations.js:47
-msgid "`0` and `O` very similar, very short tight descenders"
-msgstr "الـ `0` والـ `O` متشابهان جداً، مع حروف هابطة قصيرة جداً ومضغوطة"
+#: src/data_translations.vala:48
+msgid "0 and O very similar, very short tight descenders"
+msgstr "الـ 0 والـ O متشابهان جداً، مع حروف هابطة قصيرة جداً ومضغوطة"
 
-#: src/data_translations.js:48
+#: src/data_translations.vala:49
 msgid "Modern with ligatures"
 msgstr "عصري مع روابط برمجية"
 
-#: src/data_translations.js:49
+#: src/data_translations.vala:50
 msgid "Free and open-source monospaced font from Evil Martians"
 msgstr "خط أحادي المسافة مجاني ومفتوح المصدر من Evil Martians"
 
-#: src/data_translations.js:50
+#: src/data_translations.vala:51
 msgid "Slashed zeros, customized version of Apple's Menlo"
 msgstr "أصفار مشطوبة، نسخة مخصصة من خط Menlo التابع لشركة آبل"
 
-#: src/data_translations.js:51
+#: src/data_translations.vala:52
 msgid "Five matching fonts all having 'texture healing' to improve legibility"
 msgstr ""
 "خمسة خطوط متطابقة تحتوي جميعها على تقنية 'texture healing' لتحسين الوضوح"
 
-#: src/data_translations.js:52
+#: src/data_translations.vala:53
 msgid "Dotted zeros, slightly exaggerated curvy characters, compact characters"
 msgstr "أصفار منقوطة، أحرف منحنية بشكل مبالغ فيه قليلاً، وأحرف مدمجة"
 
-#: src/data_translations.js:53
+#: src/data_translations.vala:54
 msgid ""
 "Ligatures, distinguishable glyphs with short ascenders & descenders, large "
 "operators & punctuation"
 msgstr "روابط برمجية، رموز مميزة، رموز عمليات وعلامات ترقيم كبيرة"
 
-#: src/data_translations.js:54
+#: src/data_translations.vala:55
 msgid "Keeps in mind differentiation of characters and resolution sizes"
 msgstr "يراعي التمييز بين الأحرف وأحجام دقة الشاشة المختلفة"
 
-#: src/data_translations.js:55
+#: src/data_translations.vala:56
 msgid "Multiple styles and weights, many glyph sets (e.g. Kana glyphs)"
 msgstr "أنماط وأوزان متعددة، ومجموعات رموز عديدة (مثل رموز الكانا اليابانية)"
 
-#: src/data_translations.js:56
+#: src/data_translations.vala:57
 msgid ""
-"`0` and `O` very similar, characters are either very curvy or straight lined"
-msgstr "الـ `0` والـ `O` متشابهان جداً، الأحرف إما منحنية جداً أو مستقيمة تماماً"
+"0 and O very similar, characters are either very curvy or straight lined"
+msgstr "الـ 0 والـ O متشابهان جداً، الأحرف إما منحنية جداً أو مستقيمة تماماً"
 
-#: src/data_translations.js:57
+#: src/data_translations.vala:58
 msgid "Designed specifically to alleviate reading errors caused by dyslexia"
 msgstr "مصمم خصيصاً لتخفيف أخطاء القراءة الناتجة عن عسر القراءة"
 
-#: src/data_translations.js:58
+#: src/data_translations.vala:59
 msgid "An open source font family inspired by Highway Gothic"
 msgstr "عائلة خطوط مفتوحة المصدر مستوحاة من Highway Gothic"
 
-#: src/data_translations.js:59
+#: src/data_translations.vala:60
 msgid ""
 "Looks best with anti-aliasing turned off, squared off character corners, "
-"vertically tight small `s`"
+"vertically tight small s"
 msgstr ""
-"يظهر بشكل أفضل مع إيقاف تنعيم الحواف، زوايا الأحرف مربعة، وحرف `s` صغير مضغوط"
+"يظهر بشكل أفضل مع إيقاف تنعيم الحواف، زوايا الأحرف مربعة، وحرف s صغير مضغوط"
 
-#: src/data_translations.js:60
+#: src/data_translations.vala:61
 msgid "Designed particularly for use at small point sizes"
 msgstr "مصمم خصيصاً للاستخدام في أحجام النقاط الصغيرة"
 
-#: src/data_translations.js:61
-msgid "inspired by casual script signpainting, 4 variants"
+#: src/data_translations.vala:62
+msgid "Inspired by casual script signpainting, 4 variants"
 msgstr "مستوحى من فن رسم اللافتات اليدوي، يتوفر بـ 4 أنواع"
 
-#: src/data_translations.js:62
+#: src/data_translations.vala:63
 msgid "Dashed zero, curved and straight character lines"
 msgstr "صفر بشرطة، خطوط أحرف منحنية ومستقيمة"
 
-#: src/data_translations.js:63
+#: src/data_translations.vala:64
 msgid ""
 "Dotted zeros, distinguishable 1 and l, curved and straight character lines"
 msgstr "أصفار منقوطة، تمييز واضح بين 1 و l، خطوط منحنية ومستقيمة"
 
-#: src/data_translations.js:64
+#: src/data_translations.vala:65
 msgid "Monospaced font family for user interface and coding environments"
 msgstr "عائلة خطوط أحادية المسافة لواجهات المستخدم وبيئات البرمجة"
 
-#: src/data_translations.js:65
+#: src/data_translations.vala:66
 msgid "Squarish character lines, dotted zero, aggressive parenthesis"
 msgstr "خطوط أحرف مربعة، صفر منقوط، وأقواس بارزة جداً"
 
-#: src/data_translations.js:66
+#: src/data_translations.vala:67
 msgid "Just the Nerd Font Icons. I.e. Symbol font only"
 msgstr "أيقونات خط نيرد فقط. أي خط رموز فقط"
 
-#: src/data_translations.js:67
+#: src/data_translations.vala:68
 msgid "Squarish characters that are slightly askew"
 msgstr "أحرف مربعة الشكل مائلة قليلاً"
 
-#: src/data_translations.js:68
+#: src/data_translations.vala:69
 msgid ""
 "Some similarities to Times New Roman, designed by Steve Matteson, includes "
 "pan-European WGL character set"
@@ -454,48 +473,46 @@ msgstr ""
 "به بعض التشابه مع Times New Roman، من تصميم ستيف ماتيسون، يتضمن مجموعة أحرف "
 "WGL"
 
-#: src/data_translations.js:69
+#: src/data_translations.vala:70
 msgid "Specially created for Ubuntu"
 msgstr "صُمم خصيصاً لتوزيعة أوبونتو (Ubuntu)"
 
-#: src/data_translations.js:70
+#: src/data_translations.vala:71
 msgid ""
-"Dotted zeros, used the `n`, `o`, `H` & `O` Latin characters as a base for "
-"design"
-msgstr ""
-"أصفار منقوطة، استخدم الأحرف اللاتينية `n` و `o` و `H` و `O` كقاعدة للتصميم"
+"Dotted zeros, used the n, o, H & O Latin characters as a base for design"
+msgstr "أصفار منقوطة، استخدم الأحرف اللاتينية n و o و H و O كقاعدة للتصميم"
 
-#: src/data_translations.js:71
+#: src/data_translations.vala:72
 msgid "Refreshed version of Ubuntu and Ubuntu Mono fonts"
 msgstr "نسخة محدثة من خطوط Ubuntu و Ubuntu Mono"
 
-#: src/data_translations.js:72
+#: src/data_translations.vala:73
 msgid "Clean, crisp and narrow, with a large x-height and clear punctuation"
 msgstr "نظيف وواضح وضيف، مع ارتفاع كبير للحروف الصغيرة وعلامات ترقيم واضحة"
 
-#: src/data_translations.js:73
+#: src/data_translations.vala:74
 msgid "Zed Mono is a more rounded version of Iosevka"
 msgstr "Zed Mono هو نسخة أكثر استدارة من خط Iosevka"
 
-#: src/data_translations.js:74
+#: src/data_translations.vala:75
 msgid ""
 "Permissive licence allowing almost unrestricted use, modification, and "
 "distribution."
 msgstr "ترخيص مرن يسمح بالاستخدام والتعديل والتوزيع دون قيود تقريباً."
 
-#: src/data_translations.js:75
+#: src/data_translations.vala:76
 msgid ""
 "Free to use, modify, and distribute, with conditions: no selling and "
 "original licence must be included."
 msgstr ""
 "حر في الاستخدام والتعديل والتوزيع، بشرط: عدم البيع وإدراج الترخيص الأصلي."
 
-#: src/data_translations.js:76
+#: src/data_translations.vala:77
 msgid ""
 "Same as OFL-1.1, but must comply with Reserved Font Name (RFN) restrictions."
 msgstr "نفس ترخيص OFL-1.1، ولكن يجب الامتثال لقيود اسم الخط المحجوز (RFN)."
 
-#: src/data_translations.js:77
+#: src/data_translations.vala:78
 msgid ""
 "Permissive, requires attribution, notice of changes, and inclusion of NOTICE "
 "file. Modified code can use a different licence."
@@ -503,51 +520,51 @@ msgstr ""
 "مرن، يتطلب الإسناد، والتنبيه بالتغييرات، وإدراج ملف NOTICE. يمكن للكود "
 "المعدل استخدام ترخيص مختلف."
 
-#: src/data_translations.js:78
+#: src/data_translations.vala:79
 msgid ""
 "Allows sharing and modification with attribution. Must distribute under the "
 "same licence."
 msgstr "يسمح بالمشاركة والتعديل مع الإسناد. يجب التوزيع تحت نفس الترخيص."
 
-#: src/data_translations.js:79
+#: src/data_translations.vala:80
 msgid "Permissive, prohibits selling, requires renaming the font."
 msgstr "مرن، يمنع البيع، ويتطلب تغيير اسم الخط."
 
-#: src/data_translations.js:80
+#: src/data_translations.vala:81
 msgid "Unrestricted use, as summarized by its name."
 msgstr "استخدام غير مقيد، كما هو موضح في اسمه."
 
-#: src/data_translations.js:81
+#: src/data_translations.vala:82
 msgid ""
 "Permissive, requires licence file, prohibits using Google Inc. to endorse "
 "work."
 msgstr ""
 "مرن، يتطلب ملف الترخيص، ويمنع استخدام اسم شركة .Google Inc للترويج للعمل."
 
-#: src/data_translations.js:82
+#: src/data_translations.vala:83
 msgid "Unrestricted use."
 msgstr "استخدام غير مقيد."
 
-#: src/data_translations.js:83
+#: src/data_translations.vala:84
 msgid "Permissive, requires inclusion of the licence file."
 msgstr "مرن، يتطلب إدراج ملف الترخيص."
 
-#: src/data_translations.js:84
+#: src/data_translations.vala:85
 msgid "Permissive, requires attribution and licence file."
 msgstr "مرن، يتطلب الإسناد وملف الترخيص."
 
-#: src/data_translations.js:85
+#: src/data_translations.vala:86
 msgid ""
 "Permissive, allows redistribution and modification with attribution and no "
 "endorsement clause."
 msgstr "مرن، يسمح بإعادة التوزيع والتعديل مع الإسناد وبدون بند الترويج."
 
-#: src/data_translations.js:86
+#: src/data_translations.vala:87
 msgid ""
 "Similar to BSD-3-Clause, but with a more explicit no-endorsement clause."
 msgstr "مشابه لـ BSD-3-Clause، ولكن مع بند أوضح يمنع الترويج."
 
-#: src/data_translations.js:87
+#: src/data_translations.vala:88
 msgid ""
 "Allows linking to proprietary software, but modifications must be under "
 "LGPL. Original license and source code must be included."
@@ -555,301 +572,334 @@ msgstr ""
 "يسمح بالربط مع برمجيات مملوكة، ولكن التعديلات يجب أن تكون تحت رخصة LGPL. يجب "
 "إدراج الترخيص الأصلي وكود المصدر."
 
-#: src/iconsPage.js:312
-#, javascript-format
-msgid "Load %d more icons"
-msgstr "تحميل %d أيقونات إضافية"
-
-#: src/iconsPage.js:342
-#, javascript-format
-msgid "Load %d more icons..."
-msgstr "جاري تحميل %d أيقونات إضافية..."
-
-#. Try to show a toast notification
-#: src/iconsPage.js:453
-#, javascript-format
-msgid "Copied \"%s\" to clipboard"
-msgstr "تم نسخ \"%s\" إلى الحافظة"
-
-#: src/licencesManager.js:18
-msgid "licence details"
-msgstr "تفاصيل الترخيص"
-
-#. Translators: This means that the font has two licences
-#: src/licencesManager.js:22
-msgid "Dual"
-msgstr "مزدوج"
-
-#: src/licencesManager.js:97 src/licencesManager.js:101
-msgid "No description available"
-msgstr "لا يوجد وصف متاح"
-
-#: src/previewManager.js:37
-msgid "Preview"
-msgstr "معاينة"
-
-#: src/window.js:68
-msgid "No installed fonts yet"
-msgstr "لا توجد خطوط مثبتة بعد"
-
-#: src/window.js:75
-msgid "No available fonts yet"
-msgstr "لا توجد خطوط متاحة بعد"
-
-#: src/window.js:96 src/window.js:253
-msgid "No custom fonts available"
-msgstr "لا توحد خطوط مخصصة بعد"
-
-#: src/window.js:103 src/window.js:254
-msgid "Either add some or import from a previous export"
-msgstr "إما بإضافة بعضها أو استيرادها من عملية تصدير سابقة"
-
-#: src/window.js:108
+#: src/import-dialog.blp:6 src/import_dialog.vala:67
 msgid "Import Custom Fonts"
 msgstr "استيراد خطوط مخصصة"
 
-#: src/window.js:127
-msgid "Failed to set up font version."
-msgstr "فشل إعداد إصدار الخط."
+#: src/import-dialog.blp:28
+msgid "Paste your JSON here:"
+msgstr "الصق نص ال JSON هنا"
 
-#: src/window.js:142
-msgid "Failed to load fonts."
-msgstr "فشل تحميل الخطوط."
+#: src/import-dialog.blp:56
+msgid "Import from file"
+msgstr "استيراد من ملف"
 
-#: src/window.js:223
-msgid "No Installed Fonts yet"
-msgstr "لا توجد خطوط مثبتة بعد"
-
-#: src/window.js:227
-msgid "No available Fonts yet"
-msgstr "لا توجد خطوط متاحة بعد"
-
-#: src/window.js:262
+#: src/import-dialog.blp:64 src/import_dialog.vala:68
 msgid "Import"
 msgstr "استيراد"
 
-#: src/window.js:287
-msgid "Remove from list"
-msgstr "إزالة من القائمة"
-
-#: src/window.js:301
-msgid "Font removed from list"
-msgstr "تمت إزالة الخط من القائمة"
-
-#: src/window.js:313
-msgid "Uninstall"
-msgstr "إلغاء التثبيت"
-
-#: src/window.js:328
-msgid "Font uninstalled"
-msgstr "تم إلغاء تثبيت الخط"
-
-#: src/window.js:334
-#, javascript-format
-msgid "Uninstallation failed: %s"
-msgstr "فشل إلغاء التثبيت: %s"
-
-#: src/window.js:341 src/window.js:470
-msgid "Install"
-msgstr "تثبيت"
-
-#: src/window.js:356
-msgid "Custom font installed"
-msgstr "تم تثبيت الخط المخصص"
-
-#: src/window.js:362 src/window.js:481
-#, javascript-format
-msgid "Installation failed: %s"
-msgstr "فشل التثبيت: %s"
-
-#: src/window.js:478
-msgid "Font Installed"
-msgstr "تم تثبيت الخط"
-
-#: src/window.js:490
-msgid "Update"
-msgstr "تحديث"
-
-#: src/window.js:498
-msgid "Font updated"
-msgstr "تم تحديث الخط"
-
-#: src/window.js:501
-#, javascript-format
-msgid "Updating failed: %s"
-msgstr "فشل التحديث: %s"
-
-#: src/window.js:510
-msgid "Remove"
-msgstr "إزالة"
-
-#: src/window.js:516
-#, javascript-format
-msgid "Removing failed: %s"
-msgstr "فشل الإزالة: %s"
-
-#: src/window.js:609
-msgid "Font removed"
-msgstr "تمت إزالة الخط"
-
-#: src/window.js:623
-msgid "Add Custom Font"
-msgstr "إضافة خط مخصص"
-
-#: src/window.js:651
-msgid "Font name"
-msgstr "اسم الخط"
-
-#: src/window.js:655
-msgid "Description"
-msgstr "الوصف"
-
-#: src/window.js:659
-msgid "Zip file URL"
-msgstr "رابط ملف Zip"
-
-#: src/window.js:664
-msgid ""
-"Invalid URL or unsupported file extension. Only .zip and .tar.xz are "
-"supported."
-msgstr ""
-"رابط غير صالح أو امتداد ملف غير مدعوم. يتم دعم ملفات .zip و .tar.xz فقط."
-
-#: src/window.js:675
-msgid "Add"
-msgstr "إضافة"
-
-#: src/window.js:719
-msgid "Custom font added to list"
-msgstr "تمت إضافة الخط المخصص إلى القائمة"
-
-#: src/window.js:723
-#, javascript-format
-msgid "Failed to add custom font: %s"
-msgstr "فشل إضافة الخط المخصص: %s"
-
-#: src/window.js:750
-msgid "Custom fonts imported"
-msgstr "تم استيراد الخطوط المخصصة"
-
-#: src/window.js:757
-#, javascript-format
-msgid "Failed to open import dialog: %s"
-msgstr "فشل فتح مربع حوار الاستيراد: %s"
-
-#: src/window.js:763
-msgid "Export Custom Fonts"
-msgstr "تصدير الخطوط المخصصة"
-
-#: src/window.js:764
-msgid "Export"
-msgstr "تصدير"
-
-#: src/window.js:782
-msgid "Custom fonts exported"
-msgstr "تم تصدير الخطوط المخصصة"
-
-#: src/window.js:789
-#, javascript-format
-msgid "Failed to export custom fonts: %s"
+#: src/import_dialog.vala:61
+#, c-format
+msgid "Failed to import custom fonts: %s"
 msgstr "فشل تصدير الخطوط المخصصة: %s"
 
-#. Translators: Please note that icon search only works in English language. So add a note between () for the users
-#: data/ui/IconsPage.blp:13
-msgid "Search icons by name or category..."
-msgstr "البحث عن الأيقونات بالاسم أو الفئة (باللغة الانجليزية فقط)..."
+#: src/import_dialog.vala:71 src/window.vala:468
+msgid "JSON Files"
+msgstr "ملفات JSON"
 
-#: data/ui/IconsPage.blp:17
-msgid "Search for icons"
-msgstr "البحث عن الأيقونات"
+#: src/import_dialog.vala:89
+#, c-format
+msgid "Failed to read file: %s"
+msgstr "فشل قرائة الملف: %s"
 
-#: data/ui/IconsPage.blp:34
-msgid "Icons list"
-msgstr "قائمة الأيقونات"
+#: src/import_dialog.vala:95
+#, c-format
+msgid "Failed to open file: %s"
+msgstr "فشل فتح الملف: %s"
 
-#: data/ui/IconsPage.blp:46
-msgid "Icon sections"
-msgstr "أقسام الأيقونات"
+#: src/managers/licences.vala:28
+msgid "licence details"
+msgstr "تفاصيل الترخيص"
 
-#: data/ui/IconsPage.blp:56
-msgid "No Icons Found"
-msgstr "لم يتم العثور على أيقونات"
+#: src/managers/licences.vala:32
+msgid "Dual"
+msgstr "مزدوج"
 
-#: data/ui/IconsPage.blp:57
-msgid "Try a different search term"
-msgstr "جرب مصطلح بحث آخر"
+#: src/managers/licences.vala:36
+msgid "Unknown"
+msgstr "غير معرف"
 
-#: data/ui/Window.blp:55
-msgid "Get started"
-msgstr "ابدأ الآن"
+#: src/managers/licences.vala:101 src/managers/licences.vala:106
+#: src/managers/licences.vala:108
+msgid "No description available"
+msgstr "لا يوجد وصف متاح"
 
-#: data/ui/Window.blp:93
-msgid "Main Menu"
-msgstr "القائمة الرئيسية"
-
-#: data/ui/Window.blp:102
-msgid "Explore fonts"
-msgstr "استكشف الخطوط"
-
-#: data/ui/Window.blp:104
-msgid "Please install a font and restart the app to render the icons correctly"
-msgstr "يرجى تثبيت خط وإعادة تشغيل التطبيق لعرض الأيقونات بشكل صحيح"
-
-#: data/ui/Window.blp:121
-msgid "Fonts"
-msgstr "الخطوط"
-
-#: data/ui/Window.blp:148
-msgid "Custom fonts"
-msgstr "الخطوط مخصصة"
-
-#: data/ui/Window.blp:178
-msgid "Installed fonts"
-msgstr "الخطوط المثبتة"
-
-#: data/ui/Window.blp:201
-msgid "Available fonts"
-msgstr "الخطوط المتاحة"
-
-#: data/ui/Window.blp:224
-msgid "Icons"
-msgstr "الأيقونات"
-
-#: data/ui/Window.blp:263
-msgid "No Results Founds"
-msgstr "لم يتم العثور على نتائج"
-
-#: data/ui/Window.blp:264
-msgid "Try a different search"
-msgstr "جرب بحثاً مختلفاً"
-
-#: data/ui/Window.blp:279
-msgid "Import custom fonts"
-msgstr "استيراد خطوط مخصصة"
-
-#: data/ui/Window.blp:284
-msgid "Export custom fonts"
-msgstr "تصدير الخطوط مخصصة"
-
-#: data/ui/Window.blp:291 data/shortcuts-dialog.blp:22
-msgid "Keyboard Shortcuts"
-msgstr "اختصارات لوحة المفاتيح"
-
-#: data/ui/Window.blp:296
-msgid "About"
-msgstr "حول"
-
-#: data/shortcuts-dialog.blp:12
+#: src/shortcuts-dialog.blp:12
 msgid "Quit App"
 msgstr "إنهاء التطبيق"
 
-#: data/shortcuts-dialog.blp:17
+#: src/shortcuts-dialog.blp:17
 msgid "Close Window"
 msgstr "إغلاق النافذة"
 
-#: data/shortcuts-dialog.blp:23
+#: src/shortcuts-dialog.blp:22 src/window.blp:240
+msgid "Keyboard Shortcuts"
+msgstr "اختصارات لوحة المفاتيح"
+
+#: src/shortcuts-dialog.blp:23
 msgid "Display this keyboard shortcuts window"
 msgstr "عرض نافذة اختصارات لوحة المفاتيح"
+
+#: src/window.blp:55
+msgid "Get started"
+msgstr "ابدأ الآن"
+
+#: src/window.blp:93
+msgid "Main Menu"
+msgstr "القائمة الرئيسية"
+
+#: src/window.blp:113
+msgid "Fonts"
+msgstr "الخطوط"
+
+#: src/window.blp:130
+msgid "Installed fonts"
+msgstr "الخطوط المثبتة"
+
+#: src/window.blp:152
+msgid "Available fonts"
+msgstr "الخطوط المتاحة"
+
+#: src/window.blp:181
+msgid "Icons"
+msgstr "الأيقونات"
+
+#: src/window.blp:211
+msgid "Icons grid"
+msgstr "قائمة الأيقونات"
+
+#: src/window.blp:228
+msgid "Import custom fonts"
+msgstr "استيراد خطوط مخصصة"
+
+#: src/window.blp:233
+msgid "Export custom fonts"
+msgstr "تصدير الخطوط مخصصة"
+
+#: src/window.blp:245
+msgid "About"
+msgstr "حول"
+
+#: src/window.vala:67
+msgid "Search icons"
+msgstr "البحث عن الأيقونات"
+
+#: src/window.vala:129
+msgid "No installed fonts match your search"
+msgstr "لا توجد خطوط مثبتة تتطابق مع البحث"
+
+#: src/window.vala:130
+msgid "No available fonts match your search"
+msgstr "لا توجد خطوط متاحة تتطابق مع البحث"
+
+#: src/window.vala:238
+#, c-format
+msgid "Copied %s"
+msgstr "تم نسخ %s"
+
+#: src/window.vala:296
+msgid "Preview"
+msgstr "معاينة"
+
+#: src/window.vala:309
+msgid "Remove from list"
+msgstr "إزالة من القائمة"
+
+#: src/window.vala:329 src/window.vala:353 src/window.vala:369
+msgid "Uninstall"
+msgstr "إلغاء التثبيت"
+
+#: src/window.vala:332 src/window.vala:349 src/window.vala:373
+msgid "Install"
+msgstr "تثبيت"
+
+#: src/window.vala:350
+#, c-format
+msgid "%s uninstalled"
+msgstr "تم إلغاء تثبيت: %s"
+
+#: src/window.vala:354
+#, c-format
+msgid "Failed to uninstall %s: %s"
+msgstr "فشل أزالة: %s"
+
+#: src/window.vala:370
+#, c-format
+msgid "%s installed"
+msgstr "تم تثبيت: %s"
+
+#: src/window.vala:374
+#, c-format
+msgid "Failed to install %s: %s"
+msgstr "فشل تثبيت: %s"
+
+#: src/window.vala:397
+msgid "Custom font removed"
+msgstr "تم إزالة الخط المخصص"
+
+#: src/window.vala:399
+#, c-format
+msgid "Failed to remove custom font: %s"
+msgstr "فشل إزالة الخط المخصص: %s"
+
+#: src/window.vala:423
+#, c-format
+msgid "%d custom font imported"
+msgid_plural "%d custom fonts imported"
+msgstr[0] "تم استيراد %d خطوط مخصصة"
+msgstr[1] "تم استيراد الخطوط المخصصة"
+msgstr[2] "تم استيراد الخطوط المخصصة"
+msgstr[3] "تم استيراد الخطوط المخصصة"
+msgstr[4] "تم استيراد الخطوط المخصصة"
+msgstr[5] "تم استيراد الخطوط المخصصة"
+
+#: src/window.vala:427
+msgid "All fonts already exist"
+msgstr "كل الخطوط موجودة بالفعل"
+
+#: src/window.vala:446
+msgid "Font already exists"
+msgstr "الخط موجود بالفعل"
+
+#: src/window.vala:454
+msgid "Custom font added"
+msgstr "تمت إضافة الخط المخصص"
+
+#: src/window.vala:456
+#, c-format
+msgid "Failed to add custom font: %s"
+msgstr "فشل إضافة الخط المخصص: %s"
+
+#: src/window.vala:464
+msgid "Export Custom Fonts"
+msgstr "تصدير الخطوط المخصصة"
+
+#: src/window.vala:491
+msgid "Custom fonts exported"
+msgstr "تم تصدير الخطوط المخصصة"
+
+#: src/window.vala:493
+#, c-format
+msgid "Failed to save file: %s"
+msgstr "فشل حفض الملف: %s"
+
+#: src/window.vala:500
+#, c-format
+msgid "Failed to export: %s"
+msgstr "فشل التصدير: %s"
+
+#, javascript-format
+#~ msgid "Load %d more icons"
+#~ msgstr "تحميل %d أيقونات إضافية"
+
+#, javascript-format
+#~ msgid "Load %d more icons..."
+#~ msgstr "جاري تحميل %d أيقونات إضافية..."
+
+#, javascript-format
+#~ msgid "Copied \"%s\" to clipboard"
+#~ msgstr "تم نسخ \"%s\" إلى الحافظة"
+
+#~ msgid "No custom fonts available"
+#~ msgstr "لا توحد خطوط مخصصة بعد"
+
+#~ msgid "Either add some or import from a previous export"
+#~ msgstr "إما بإضافة بعضها أو استيرادها من عملية تصدير سابقة"
+
+#~ msgid "Failed to set up font version."
+#~ msgstr "فشل إعداد إصدار الخط."
+
+#~ msgid "Failed to load fonts."
+#~ msgstr "فشل تحميل الخطوط."
+
+#~ msgid "No Installed Fonts yet"
+#~ msgstr "لا توجد خطوط مثبتة بعد"
+
+#~ msgid "No available Fonts yet"
+#~ msgstr "لا توجد خطوط متاحة بعد"
+
+#~ msgid "Font removed from list"
+#~ msgstr "تمت إزالة الخط من القائمة"
+
+#, javascript-format
+#~ msgid "Uninstallation failed: %s"
+#~ msgstr "فشل إلغاء التثبيت: %s"
+
+#~ msgid "Custom font installed"
+#~ msgstr "تم تثبيت الخط المخصص"
+
+#, javascript-format
+#~ msgid "Installation failed: %s"
+#~ msgstr "فشل التثبيت: %s"
+
+#~ msgid "Font Installed"
+#~ msgstr "تم تثبيت الخط"
+
+#~ msgid "Update"
+#~ msgstr "تحديث"
+
+#~ msgid "Font updated"
+#~ msgstr "تم تحديث الخط"
+
+#, javascript-format
+#~ msgid "Updating failed: %s"
+#~ msgstr "فشل التحديث: %s"
+
+#~ msgid "Remove"
+#~ msgstr "إزالة"
+
+#, javascript-format
+#~ msgid "Removing failed: %s"
+#~ msgstr "فشل الإزالة: %s"
+
+#~ msgid "Font removed"
+#~ msgstr "تمت إزالة الخط"
+
+#~ msgid "Add Custom Font"
+#~ msgstr "إضافة خط مخصص"
+
+#~ msgid "Font name"
+#~ msgstr "اسم الخط"
+
+#~ msgid "Zip file URL"
+#~ msgstr "رابط ملف Zip"
+
+#~ msgid ""
+#~ "Invalid URL or unsupported file extension. Only .zip and .tar.xz are "
+#~ "supported."
+#~ msgstr ""
+#~ "رابط غير صالح أو امتداد ملف غير مدعوم. يتم دعم ملفات .zip و .tar.xz فقط."
+
+#~ msgid "Export"
+#~ msgstr "تصدير"
+
+#~ msgid "Search icons by name or category..."
+#~ msgstr "البحث عن الأيقونات بالاسم أو الفئة (باللغة الانجليزية فقط)..."
+
+#~ msgid "Icon sections"
+#~ msgstr "أقسام الأيقونات"
+
+#~ msgid "No Icons Found"
+#~ msgstr "لم يتم العثور على أيقونات"
+
+#~ msgid "Try a different search term"
+#~ msgstr "جرب مصطلح بحث آخر"
+
+#~ msgid "Explore fonts"
+#~ msgstr "استكشف الخطوط"
+
+#~ msgid ""
+#~ "Please install a font and restart the app to render the icons correctly"
+#~ msgstr "يرجى تثبيت خط وإعادة تشغيل التطبيق لعرض الأيقونات بشكل صحيح"
+
+#~ msgid "Custom fonts"
+#~ msgstr "الخطوط مخصصة"
+
+#~ msgid "No Results Founds"
+#~ msgstr "لم يتم العثور على نتائج"
+
+#~ msgid "Try a different search"
+#~ msgstr "جرب بحثاً مختلفاً"
 
 #, javascript-format
 #~ msgid ""

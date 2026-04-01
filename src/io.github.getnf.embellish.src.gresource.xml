@@ -6,7 +6,6 @@
         <file preprocess="xml-stripblanks">import-dialog.ui</file>
         <file preprocess="xml-stripblanks">add-font-dialog.ui</file>
         <file preprocess="xml-stripblanks">preview-dialog.ui</file>
-        <file preprocess="xml-stripblanks">icons-page.ui</file>
         <file alias="style.css">assets/style.css</file>
         <file alias="welcome.svg">assets/welcome.svg</file>
         <file alias="licence.svg">assets/licence.svg</file>

@@ -24,7 +24,8 @@ embellish_deps = [
   dependency('gee-0.8'),
   dependency('libsoup-3.0'),
   dependency('json-glib-1.0'),
-  dependency('gtksourceview-5')
+  dependency('gtksourceview-5'),
+  dependency('libarchive')
 ]
 
 blueprints = custom_target('blueprints',

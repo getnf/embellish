@@ -33,24 +33,24 @@ public class Embellish.Icons : Object {
 	}
 
 	private void load_icons_from_file () throws Error {
-    try {
-        var icons_file = File.new_for_uri ("resource:///io/github/getnf/embellish/icons.csv");
-        uint8[] icons_data;
-        icons_file.load_contents (null, out icons_data, null);
+		try {
+			var icons_file = File.new_for_uri ("resource:///io/github/getnf/embellish/icons.csv");
+			uint8[] icons_data;
+			icons_file.load_contents (null, out icons_data, null);
 
-        var lines = ((string) icons_data).split ("\n");
-        foreach (var line in lines) {
-            var icon = Icon.from_csv_line (line);
-            if (icon != null) {
-                icons.set (icon.name, icon);
-            }
-        }
-	} catch (Error e) {
-        throw new FileError.NOENT ("Failed to load embedded resources: " + e.message);
+			var lines = ((string) icons_data).split ("\n");
+			foreach (var line in lines) {
+				var icon = Icon.from_csv_line (line);
+				if (icon != null) {
+					icons.set (icon.name, icon);
+				}
+			}
+		} catch (Error e) {
+			throw new FileError.NOENT ("Failed to load embedded resources: " + e.message);
+		}
 	}
-}
 
-    public Icon? icon (string name) {
+	public Icon ? icon (string name) {
 		return icons.get (name);
 	}
 

@@ -13,7 +13,7 @@ template $EmbellishWindow: Adw.ApplicationWindow {
             transition-type: slide_left;
 
             StackPage {
-                name: "welcomePage";
+                name: "welcome_page";
 
                 child: Adw.ToolbarView {
                     extend-content-to-top-edge: true;
@@ -115,8 +115,9 @@ template $EmbellishWindow: Adw.ApplicationWindow {
                             use-underline: true;
 
                             child: ScrolledWindow scroller {
-                            Adw.Clamp {
-                                maximum-size: 800;
+                                Adw.Clamp {
+                                    maximum-size: 800;
+
                                     Box {
                                         spacing: 12;
                                         orientation: vertical;
@@ -158,7 +159,7 @@ template $EmbellishWindow: Adw.ApplicationWindow {
                                             }
 
                                             Button {
-                                                label: "Add a custom font";
+                                                label: _("Add a custom font");
                                                 action-name: "win.add_custom_font";
                                             }
                                         }
@@ -192,25 +193,15 @@ template $EmbellishWindow: Adw.ApplicationWindow {
                                     margin-start: 12;
                                     margin-end: 12;
 
-
                                     Adw.WrapBox categories {
                                         child-spacing: 5;
                                         line-spacing: 10;
                                         margin-top: 12;
                                         margin-bottom: 12;
-                                        margin-start: 12;
-                                        margin-end: 12;
                                     }
 
                                     ScrolledWindow {
-                                        hscrollbar-policy: never;
-                                        vscrollbar-policy: automatic;
-                                        kinetic-scrolling: true;
                                         propagate-natural-height: true;
-
-                                        accessibility {
-                                            label: _("Icons list");
-                                        }
 
                                         GridView icons_grid {
                                             max-columns: 16;
