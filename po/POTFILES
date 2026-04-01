@@ -5,7 +5,7 @@ src/application.vala
 src/data_translations.vala
 src/import-dialog.blp
 src/import_dialog.vala
-src/managers/licences.vala
+src/managers/licenses.vala
 src/shortcuts-dialog.blp
 src/window.blp
 src/window.vala

@@ -3,7 +3,7 @@
       "id": "0xproto",
       "display_name": "0xProto",
       "archive_name": "0xProto",
-      "licences": ["OFL-1.1"],
+      "licenses": ["OFL-1.1"],
       "description": "An opinionated font for software engineers",
       "family": "0xProto Nerd Font Mono"
     },
@@ -12,7 +12,7 @@
       "display_name": "IBM 3270",
       "patched_name": "3270",
       "archive_name": "3270",
-      "licences": ["BSD-3-Clause"],
+      "licenses": ["BSD-3-Clause"],
       "description": "Derived from the x3270 font, a modern format of a font with high nostalgic value",
       "family": "3270 Nerd Font Mono"
     },
@@ -20,7 +20,7 @@
       "id": "adwaita-mono",
       "display_name": "Adwaita Mono",
       "archive_name": "AdwaitaMono",
-      "licences": ["OFL-1.1"],
+      "licenses": ["OFL-1.1"],
       "description": "The monospace typeface for GNOME",
       "family": "AdwaitaMono Nerd Font Mono"
     },
@@ -28,7 +28,7 @@
       "id": "agave",
       "display_name": "Agave",
       "archive_name": "Agave",
-      "licences": ["MIT"],
+      "licenses": ["MIT"],
       "description": "A small, monospace, outline font that is geometrically regular and simple",
       "family": "Agave Nerd Font Mono"
     },
@@ -37,7 +37,7 @@
       "display_name": "Anonymous Pro",
       "patched_name": "AnonymicePro",
       "archive_name": "AnonymousPro",
-      "licences": ["OFL-1.1-RFN"],
+      "licenses": ["OFL-1.1-RFN"],
       "description": "Inspired by Anonymous 9 on Macintosh, since 2009, distinct O, 0, I, l, 1",
       "family": "AnonymicePro Nerd Font Mono"
     },
@@ -45,7 +45,7 @@
       "id": "arimo",
       "display_name": "Arimo",
       "archive_name": "Arimo",
-      "licences": ["Apache-2.0"],
+      "licenses": ["Apache-2.0"],
       "description": "Metrically similar to Arial, pan-European WGL character set, sans serif",
       "family": "Arimo Nerd Font"
     },
@@ -54,7 +54,7 @@
       "display_name": "Atkinson Hyperlegible Mono",
       "patched_name": "AtkynsonMono",
       "archive_name": "AtkinsonHyperlegibleMono",
-      "licences": ["OFL-1.1-RFN"],
+      "licenses": ["OFL-1.1-RFN"],
       "description": "A monospaced font designed to improve legibility and readability for individuals with low vision",
       "family": "AtkynsonMono Nerd Font Mono"
     },
@@ -63,7 +63,7 @@
       "display_name": "Aurulent Sans Mono",
       "patched_name": "AurulentSansM",
       "archive_name": "AurulentSansMono",
-      "licences": ["OFL-1.1"],
+      "licenses": ["OFL-1.1"],
       "description": "Sans serif, designed by Stephen G. Hartke who also created Verily Serif",
       "family": "AurulentSansM Nerd Font Mono"
     },
@@ -72,7 +72,7 @@
       "display_name": "BigBlue Terminal",
       "patched_name": "BigBlueTerm",
       "archive_name": "BigBlueTerminal",
-      "licences": ["CC-BY-SA-4.0"],
+      "licenses": ["CC-BY-SA-4.0"],
       "description": "Nostalgic, closely based on IBM's 8x14 EGA/VGA charset",
       "family": "BigBlueTerm437 Nerd Font Mono"
     },
@@ -81,7 +81,7 @@
       "display_name": "Bitstrom Vera Sans Mono",
       "patched_name": "BitstromWera",
       "archive_name": "BitstreamVeraSansMono",
-      "licences": ["Bitstream-Vera"],
+      "licenses": ["Bitstream-Vera"],
       "description": "Dotted zero, compact lowercase characters",
       "family": "BitstromWera Nerd Font Mono"
     },
@@ -90,7 +90,7 @@
       "display_name": "Cascadia Code",
       "patched_name": "CaskaydiaCove",
       "archive_name": "CascadiaCode",
-      "licences": ["OFL-1.1-RFN"],
+      "licenses": ["OFL-1.1-RFN"],
       "description": "A fun, new monospaced font that includes programming ligatures and is designed to enhance the modern look and feel of the Windows Terminal",
       "family": "CaskaydiaCove Nerd Font Mono"
     },
@@ -99,7 +99,7 @@
       "display_name": "Cascadia Mono",
       "patched_name": "CaskaydiaMono",
       "archive_name": "CascadiaMono",
-      "licences": ["OFL-1.1-RFN"],
+      "licenses": ["OFL-1.1-RFN"],
       "description": "Like Cascadia Code but without any ligatures",
       "family": "CaskaydiaMono Nerd Font Mono"
     },
@@ -107,7 +107,7 @@
       "id": "code-new-roman",
       "display_name": "Code New Roman",
       "archive_name": "CodeNewRoman",
-      "licences": ["OFL-1.1"],
+      "licenses": ["OFL-1.1"],
       "description": "Tunable, slashed zeros, compact smaller characters",
       "family": "CodeNewRoman Nerd Font Mono"
     },
@@ -115,7 +115,7 @@
       "id": "comic-shanns-mono",
       "display_name": "Comic Shanns Mono",
       "archive_name": "ComicShannsMono",
-      "licences": ["MIT"],
+      "licenses": ["MIT"],
       "description": "The very typeface you've been trained to recognize since childhood",
       "family": "ComicShannsMono Nerd Font Mono"
     },
@@ -123,7 +123,7 @@
       "id": "commit-mono",
       "display_name": "Commit Mono",
       "archive_name": "CommitMono",
-      "licences": ["OFL-1.1"],
+      "licenses": ["OFL-1.1"],
       "description": "An anonymous and neutral programming typeface",
       "family": "CommitMono Nerd Font Mono"
     },
@@ -131,7 +131,7 @@
       "id": "cousine",
       "display_name": "Cousine",
       "archive_name": "Cousine",
-      "licences": ["Apache-2.0"],
+      "licenses": ["Apache-2.0"],
       "description": "Similar to Courier New with better readability, dotted zeros",
       "family": "Cousine Nerd Font Mono"
     },
@@ -140,7 +140,7 @@
       "display_name": "D2Coding",
       "patched_name": "D2CodingLigature",
       "archive_name": "D2Coding",
-      "licences": ["OFL-1.1"],
+      "licenses": ["OFL-1.1"],
       "description": "A coding font for Koreans. This is the variant with ligatures.",
       "family": "D2CodingLigature Nerd Font Mono"
     },
@@ -148,7 +148,7 @@
       "id": "daddytime-mono",
       "display_name": "Daddy Time Mono",
       "archive_name": "DaddyTimeMono",
-      "licences": ["OFL-1.1"],
+      "licenses": ["OFL-1.1"],
       "description": "A monospaced font for programmers and other terminal groupies",
       "family": "DaddyTimeMono Nerd Font Mono"
     },
@@ -156,7 +156,7 @@
       "id": "departure-mono",
       "display_name": "Departure Mono",
       "archive_name": "DepartureMono",
-      "licences": ["OFL-1.1"],
+      "licenses": ["OFL-1.1"],
       "description": "A monospaced pixel font with a lo-fi, techy vibe",
       "family": "DepartureMono Nerd Font Mono"
     },
@@ -165,7 +165,7 @@
       "display_name": "DejaVu Sans Mono",
       "patched_name": "DejaVuSansM",
       "archive_name": "DejaVuSansMono",
-      "licences": ["Bitstream-Vera"],
+      "licenses": ["Bitstream-Vera"],
       "description": "Dotted zero, based on the Bitstream Vera Fonts with a wider range of characters",
       "family": "DejaVuSansM Nerd Font Mono"
     },
@@ -174,7 +174,7 @@
       "display_name": "Droid Sans Mono",
       "patched_name": "DroidSansM",
       "archive_name": "DroidSansMono",
-      "licences": ["Apache-2.0"],
+      "licenses": ["Apache-2.0"],
       "description": "Good for small screens or font sizes",
       "family": "DroidSansM Nerd Font Mono"
     },
@@ -182,7 +182,7 @@
       "id": "envy-code-r",
       "display_name": "Envy Code R",
       "archive_name": "EnvyCodeR",
-      "licences": ["OFL-1.1-RFN"],
+      "licenses": ["OFL-1.1-RFN"],
       "description": "Fully-scalable monospaced font designed for programming and command prompts",
       "family": "EnvyCodeR Nerd Font Mono"
     },
@@ -191,7 +191,7 @@
       "display_name": "Fantasque Sans Mono",
       "patched_name": "FantasqueSansM",
       "archive_name": "FantasqueSansMono",
-      "licences": ["OFL-1.1"],
+      "licenses": ["OFL-1.1"],
       "description": "Wibbly-wobbly handwriting-like fuzziness, takes some inspiration from Inconsolata and Monaco",
       "family": "FantasqueSansM Nerd Font Mono"
     },
@@ -199,7 +199,7 @@
       "id": "fira-code",
       "display_name": "Fira Code",
       "archive_name": "FiraCode",
-      "licences": ["OFL-1.1"],
+      "licenses": ["OFL-1.1"],
       "description": "Programming ligatures, extension of Fira Mono font, enlarged operators",
       "family": "FiraCode Nerd Font Mono"
     },
@@ -208,7 +208,7 @@
       "display_name": "Fira mono",
       "patched_name": "FiraMono",
       "archive_name": "FiraMono",
-      "licences": ["OFL-1.1"],
+      "licenses": ["OFL-1.1"],
       "description": "Mozilla typeface, dotted zero",
       "family": "FiraMono Nerd Font Mono"
     },
@@ -216,7 +216,7 @@
       "id": "geist-mono",
       "display_name": "Geist Mono",
       "archive_name": "GeistMono",
-      "licences": ["OFL-1.1"],
+      "licenses": ["OFL-1.1"],
       "description": "Monospaced typeface designed to be used in code editors, diagrams, terminals, and other text-based interfaces where code is represented",
       "family": "GeistMono Nerd Font Mono"
     },
@@ -224,7 +224,7 @@
       "id": "go-mono",
       "display_name": "Go Mono",
       "archive_name": "Go-Mono",
-      "licences": ["BSD-3-Clause-Clear"],
+      "licenses": ["BSD-3-Clause-Clear"],
       "description": "Created specifically for the Go project, looks particularly clear for use with the Go language",
       "family": "GoMono Nerd Font Mono"
     },
@@ -232,7 +232,7 @@
       "id": "gohu",
       "display_name": "Gohu",
       "archive_name": "Gohu",
-      "licences": ["WTFPL"],
+      "licenses": ["WTFPL"],
       "description": "Bitmap font, tall capitals and ascenders, small serifs",
       "family": "GohuFont 11 Nerd Font Mono"
     },
@@ -240,7 +240,7 @@
       "id": "hack",
       "display_name": "Hack",
       "archive_name": "Hack",
-      "licences": ["Bitstream-Vera", "MIT"],
+      "licenses": ["Bitstream-Vera", "MIT"],
       "description": "Dotted zero, short descenders, expands upon work done for Bitstream Vera & DejaVu, legible at common sizes",
       "family": "Hack Nerd Font Mono"
     },
@@ -249,7 +249,7 @@
       "display_name": "Hasklig",
       "patched_name": "Hasklug",
       "archive_name": "Hasklig",
-      "licences": ["OFL-1.1-RFN"],
+      "licenses": ["OFL-1.1-RFN"],
       "description": "Monospaced ligatures, makes composite glyphs (e.g. ->) more readable, especially in Haskell",
       "family": "Hasklug Nerd Font Mono"
     },
@@ -257,7 +257,7 @@
       "id": "heavy-data",
       "display_name": "Heavy Data",
       "archive_name": "HeavyData",
-      "licences": ["VicFieger"],
+      "licenses": ["VicFieger"],
       "description": "Novel and unique design, dotted zero",
       "family": "HeavyData Nerd Font"
     },
@@ -266,7 +266,7 @@
       "display_name": "Hermit",
       "patched_name": "Hurmit",
       "archive_name": "Hermit",
-      "licences": ["OFL-1.1-RFN"],
+      "licenses": ["OFL-1.1-RFN"],
       "description": "Symbols stand out from common text",
       "family": "Hurmit Nerd Font Mono"
     },
@@ -275,7 +275,7 @@
       "display_name": "iA Writer",
       "patched_name": "iMWriting",
       "archive_name": "iA-Writer",
-      "licences": ["OFL-1.1-RFN"],
+      "licenses": ["OFL-1.1-RFN"],
       "description": "A heavy modification of IBM's Plex font",
       "family": "iMWritingMono Nerd Font Mono"
     },
@@ -284,7 +284,7 @@
       "display_name": "IBM Plex Mono",
       "patched_name": "BlexMono",
       "archive_name": "IBMPlexMono",
-      "licences": ["OFL-1.1-RFN"],
+      "licenses": ["OFL-1.1-RFN"],
       "description": "It's global, it's versatile and it's distinctly IBM",
       "family": "BlexMono Nerd Font Mono"
     },
@@ -292,7 +292,7 @@
       "id": "inconsolata",
       "display_name": "Inconsolata",
       "archive_name": "Inconsolata",
-      "licences": ["OFL-1.1"],
+      "licenses": ["OFL-1.1"],
       "description": "Slashed zero, takes inspiration from many different fonts and glyphs, subtle curves in lowercase",
       "family": "Inconsolata Nerd Font Mono"
     },
@@ -300,7 +300,7 @@
       "id": "inconsolata-go",
       "display_name": "InconsolataGo",
       "archive_name": "InconsolataGo",
-      "licences": ["OFL-1.1"],
+      "licenses": ["OFL-1.1"],
       "description": "Inconsolata with straight quotes",
       "family": "InconsolataGo Nerd Font Mono"
     },
@@ -308,7 +308,7 @@
       "id": "inconsolata-lgc",
       "display_name": "Inconsolata LGC",
       "archive_name": "InconsolataLGC",
-      "licences": ["OFL-1.1"],
+      "licenses": ["OFL-1.1"],
       "description": "Inconsolata with added the Cyrillic alphabet",
       "family": "Inconsolata LGC Nerd Font Mono"
     },
@@ -317,7 +317,7 @@
       "display_name": "Intel One Mono",
       "patched_name": "IntoneMono",
       "archive_name": "IntelOneMono",
-      "licences": ["OFL-1.1-RFN"],
+      "licenses": ["OFL-1.1-RFN"],
       "description": "Expressive monospaced font family that's built with clarity, legibility, and the needs of developers in mind",
       "family": "IntoneMono Nerd Font Mono"
     },
@@ -325,7 +325,7 @@
       "id": "iosevka",
       "display_name": "Iosevka",
       "archive_name": "Iosevka",
-      "licences": ["OFL-1.1"],
+      "licenses": ["OFL-1.1"],
       "description": "Narrow and horizontally tight characters, slashed zero",
       "family": "Iosevka Nerd Font Mono"
     },
@@ -333,7 +333,7 @@
       "id": "iosevka-term",
       "display_name": "Iosevka Term",
       "archive_name": "IosevkaTerm",
-      "licences": ["OFL-1.1"],
+      "licenses": ["OFL-1.1"],
       "description": "A narrower variant focusing terminal uses: Arrows and geometric symbols will be narrow to follow typical terminal usages",
       "family": "IosevkaTerm Nerd Font Mono"
     },
@@ -341,7 +341,7 @@
       "id": "iosevka-term-slab",
       "display_name": "Iosevka Term Slab",
       "archive_name": "IosevkaTermSlab",
-      "licences": ["OFL-1.1"],
+      "licenses": ["OFL-1.1"],
       "description": "Nice as Iosevka but with slab serifs",
       "family": "IosevkaTermSlab Nerd Font Mono"
     },
@@ -349,7 +349,7 @@
       "id": "jetbrains-mono",
       "display_name": "JetBrains Mono",
       "archive_name": "JetBrainsMono",
-      "licences": ["OFL-1.1"],
+      "licenses": ["OFL-1.1"],
       "description": "JetBrains officially created font for developers",
       "family": "JetBrainsMono Nerd Font Mono"
     },
@@ -357,7 +357,7 @@
       "id": "lekton",
       "display_name": "Lekton",
       "archive_name": "Lekton",
-      "licences": ["OFL-1.1"],
+      "licenses": ["OFL-1.1"],
       "description": "Very light and thin characters, sharp m's, 0 and O very similar",
       "family": "Lekton Nerd Font Mono"
     },
@@ -366,7 +366,7 @@
       "display_name": "Liberation Mono",
       "patched_name": "LiterationMono",
       "archive_name": "LiberationMono",
-      "licences": ["OFL-1.1-RFN"],
+      "licenses": ["OFL-1.1-RFN"],
       "description": "0 and O very similar, very short tight descenders",
       "family": "LiterationMono Nerd Font Mono"
     },
@@ -374,7 +374,7 @@
       "id": "lilex",
       "display_name": "Lilex",
       "archive_name": "Lilex",
-      "licences": ["OFL-1.1"],
+      "licenses": ["OFL-1.1"],
       "description": "Modern with ligatures",
       "family": "Lilex Nerd Font Mono"
     },
@@ -382,7 +382,7 @@
       "id": "martian-mono",
       "display_name": "Martian Mono",
       "archive_name": "MartianMono",
-      "licences": ["OFL-1.1"],
+      "licenses": ["OFL-1.1"],
       "description": "Free and open-source monospaced font from Evil Martians",
       "family": "MartianMono Nerd Font Mono"
     },
@@ -390,7 +390,7 @@
       "id": "meslo-lg",
       "display_name": "Meslo LG",
       "archive_name": "Meslo",
-      "licences": ["Apache-2.0"],
+      "licenses": ["Apache-2.0"],
       "description": "Slashed zeros, customized version of Apple's Menlo",
       "family": "MesloLGLDZ Nerd Font Mono"
     },
@@ -399,7 +399,7 @@
       "display_name": "Mona Space",
       "patched_name": "Monaspice",
       "archive_name": "Monaspace",
-      "licences": ["OFL-1.1-RFN"],
+      "licenses": ["OFL-1.1-RFN"],
       "description": "Five matching fonts all having 'texture healing' to improve legibility",
       "family": "MonaspiceAr Nerd Font Mono"
     },
@@ -407,7 +407,7 @@
       "id": "monofur",
       "display_name": "Monofur",
       "archive_name": "Monofur",
-      "licences": ["Monofur"],
+      "licenses": ["Monofur"],
       "description": "Dotted zeros, slightly exaggerated curvy characters, compact characters",
       "family": "Monofur Nerd Font Mono"
     },
@@ -415,7 +415,7 @@
       "id": "monoid",
       "display_name": "Monoid",
       "archive_name": "Monoid",
-      "licences": ["MIT", "OFL-1.1"],
+      "licenses": ["MIT", "OFL-1.1"],
       "description": "Ligatures, distinguishable glyphs with short ascenders & descenders, large operators & punctuation",
       "family": "Monoid Nerd Font Mono"
     },
@@ -423,7 +423,7 @@
       "id": "mononoki",
       "display_name": "Mononoki",
       "archive_name": "Mononoki",
-      "licences": ["OFL-1.1-RFN"],
+      "licenses": ["OFL-1.1-RFN"],
       "description": "Keeps in mind differentiation of characters and resolution sizes",
       "family": "Mononoki Nerd Font Mono"
     },
@@ -432,7 +432,7 @@
       "display_name": "MPlus",
       "patched_name": "M+",
       "archive_name": "MPlus",
-      "licences": ["OFL-1.1"],
+      "licenses": ["OFL-1.1"],
       "description": "Multiple styles and weights, many glyph sets (e.g. Kana glyphs)",
       "family": "M+1Code Nerd Font Mono"
     },
@@ -440,7 +440,7 @@
       "id": "noto",
       "display_name": "Noto",
       "archive_name": "Noto",
-      "licences": ["OFL-1.1"],
+      "licenses": ["OFL-1.1"],
       "description": "0 and O very similar, characters are either very curvy or straight lined",
       "family": "NotoMono Nerd Font Mono"
     },
@@ -448,7 +448,7 @@
       "id": "open-dyslexic",
       "display_name": "OpenDyslexic",
       "archive_name": "OpenDyslexic",
-      "licences": ["Bitstream-Vera"],
+      "licenses": ["Bitstream-Vera"],
       "description": "Designed specifically to alleviate reading errors caused by dyslexia",
       "family": "OpenDyslexicM Nerd Font Mono"
     },
@@ -456,7 +456,7 @@
       "id": "overpass",
       "display_name": "Overpass",
       "archive_name": "Overpass",
-      "licences": ["OFL-1.1", "LGPL-2.1-only"],
+      "licenses": ["OFL-1.1", "LGPL-2.1-only"],
       "description": "An open source font family inspired by Highway Gothic",
       "family": "OverpassM Nerd Font Mono"
     },
@@ -464,7 +464,7 @@
       "id": "profont",
       "display_name": "ProFont",
       "archive_name": "ProFont",
-      "licences": ["MIT"],
+      "licenses": ["MIT"],
       "description": "Looks best with anti-aliasing turned off, squared off character corners, vertically tight small s",
       "family": "ProFont IIx Nerd Font Mono"
     },
@@ -473,7 +473,7 @@
       "display_name": "Proggy Clean TT",
       "patched_name": "ProggyClean",
       "archive_name": "ProggyClean",
-      "licences": ["MIT"],
+      "licenses": ["MIT"],
       "description": "Designed particularly for use at small point sizes",
       "family": "ProggyClean CE Nerd Font Mono"
     },
@@ -482,7 +482,7 @@
       "display_name": "Recursive Mono",
       "patched_name": "RecMono",
       "archive_name": "Recursive",
-      "licences": ["OFL-1.1"],
+      "licenses": ["OFL-1.1"],
       "description": "Inspired by casual script signpainting, 4 variants",
       "family": "RecMonoCasual Nerd Font Mono"
     },
@@ -490,7 +490,7 @@
       "id": "roboto-mono",
       "display_name": "Roboto Mono",
       "archive_name": "RobotoMono",
-      "licences": ["Apache-2.0"],
+      "licenses": ["Apache-2.0"],
       "description": "Dashed zero, curved and straight character lines",
       "family": "RobotoMono Nerd Font Mono"
     },
@@ -499,7 +499,7 @@
       "display_name": "Share Tech Mono",
       "patched_name": "ShureTechMono",
       "archive_name": "ShareTechMono",
-      "licences": ["OFL-1.1-RFN"],
+      "licenses": ["OFL-1.1-RFN"],
       "description": "Dotted zeros, distinguishable 1 and l, curved and straight character lines",
       "family": "ShureTechMono Nerd Font Mono"
     },
@@ -508,7 +508,7 @@
       "display_name": "Source Code Pro",
       "patched_name": "SauceCodePro",
       "archive_name": "SourceCodePro",
-      "licences": ["OFL-1.1-RFN"],
+      "licenses": ["OFL-1.1-RFN"],
       "description": "Monospaced font family for user interface and coding environments",
       "family": "SauceCodePro Nerd Font Mono"
     },
@@ -516,7 +516,7 @@
       "id": "space-mono",
       "display_name": "SpaceMono",
       "archive_name": "SpaceMono",
-      "licences": ["OFL-1.1"],
+      "licenses": ["OFL-1.1"],
       "description": "Squarish character lines, dotted zero, aggressive parenthesis",
       "family": "SpaceMono Nerd Font Mono"
     },
@@ -524,7 +524,7 @@
       "id": "symbols-only",
       "display_name": "Symbols Only",
       "archive_name": "NerdFontsSymbolsOnly",
-      "licences": ["MIT"],
+      "licenses": ["MIT"],
       "description": "Just the Nerd Font Icons. I.e. Symbol font only",
       "family": "Symbols Nerd Font Mono"
     },
@@ -533,7 +533,7 @@
       "display_name": "Terminus",
       "patched_name": "Terminess",
       "archive_name": "Terminus",
-      "licences": ["OFL-1.1-RFN"],
+      "licenses": ["OFL-1.1-RFN"],
       "description": "Squarish characters that are slightly askew",
       "family": "Terminess Nerd Font Mono"
     },
@@ -541,7 +541,7 @@
       "id": "tinos",
       "display_name": "Tinos",
       "archive_name": "Tinos",
-      "licences": ["Apache-2.0"],
+      "licenses": ["Apache-2.0"],
       "description": "Some similarities to Times New Roman, designed by Steve Matteson, includes pan-European WGL character set",
       "family": "Tinos Nerd Font"
     },
@@ -549,7 +549,7 @@
       "id": "ubuntu",
       "display_name": "Ubuntu",
       "archive_name": "Ubuntu",
-      "licences": ["UFL"],
+      "licenses": ["UFL"],
       "description": "Specially created for Ubuntu",
       "family": "Ubuntu Nerd Font"
     },
@@ -557,7 +557,7 @@
       "id": "ubuntu-mono",
       "display_name": "Ubuntu Mono",
       "archive_name": "UbuntuMono",
-      "licences": ["UFL"],
+      "licenses": ["UFL"],
       "description": "Dotted zeros, used the n, o, H & O Latin characters as a base for design",
       "family": "UbuntuMono Nerd Font Mono"
     },
@@ -565,7 +565,7 @@
       "id": "ubuntu-sans",
       "display_name": "Ubuntu Sans",
       "archive_name": "UbuntuSans",
-      "licences": ["UFL"],
+      "licenses": ["UFL"],
       "description": "Refreshed version of Ubuntu and Ubuntu Mono fonts",
       "family": "UbuntuSansMono Nerd Font Mono"
     },
@@ -573,7 +573,7 @@
       "id": "victor-mono",
       "display_name": "Victor Mono",
       "archive_name": "VictorMono",
-      "licences": ["OFL-1.1"],
+      "licenses": ["OFL-1.1"],
       "description": "Clean, crisp and narrow, with a large x-height and clear punctuation",
       "family": "VictorMono Nerd Font Mono"
     },
@@ -581,7 +581,7 @@
       "id": "zed-mono",
       "display_name": "Zed Mono",
       "archive_name": "ZedMono",
-      "licences": ["OFL-1.1"],
+      "licenses": ["OFL-1.1"],
       "description": "Zed Mono is a more rounded version of Iosevka",
       "family": "ZedMono Nerd Font Mono"
     }

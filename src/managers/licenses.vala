@@ -1,4 +1,4 @@
-/* licences.vala
+/* licenses.vala
  *
  * Copyright 2025 Ronnie Nissan Yousif
  *
@@ -18,29 +18,29 @@
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
 
-public class Embellish.Managers.LicencesManager : Object {
+public class Embellish.Managers.LicensesManager : Object {
 
 	public static Gtk.Widget create (Font font) {
 		var license_box = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 12);
 
-		var licence_button = new Gtk.MenuButton ();
-		licence_button.add_css_class ("licence-button");
-		licence_button.set_tooltip_text (_("licence details"));
+		var license_button = new Gtk.MenuButton ();
+		license_button.add_css_class ("license-button");
+		license_button.set_tooltip_text (_("license details"));
 
-		var licence_button_label = new Gtk.Label (null);
-		if (font.licences.size > 1) {
-			licence_button_label.set_label (_("Dual"));
-		} else if (font.licences.size == 1) {
-			licence_button_label.set_label (font.licences[0]);
+		var license_button_label = new Gtk.Label (null);
+		if (font.licenses.size > 1) {
+			license_button_label.set_label (_("Dual"));
+		} else if (font.licenses.size == 1) {
+			license_button_label.set_label (font.licenses[0]);
 		} else {
-			licence_button_label.set_label (_("Unknown"));
-			licence_button.set_sensitive (false);
+			license_button_label.set_label (_("Unknown"));
+			license_button.set_sensitive (false);
 		}
 
-		licence_button.set_always_show_arrow (false);
-		licence_button.set_child (licence_button_label);
-		licence_button.set_popover (create_popover (font));
-		license_box.append (licence_button);
+		license_button.set_always_show_arrow (false);
+		license_button.set_child (license_button_label);
+		license_button.set_popover (create_popover (font));
+		license_box.append (license_button);
 
 		return license_box;
 	}
@@ -56,13 +56,13 @@ public class Embellish.Managers.LicencesManager : Object {
 		box.set_margin_end (24);
 		box.set_margin_bottom (12);
 
-		var licence_logo = new Gtk.Image.from_resource ("/io/github/getnf/embellish/licence.svg");
-		licence_logo.set_pixel_size (64);
-		box.append (licence_logo);
+		var license_logo = new Gtk.Image.from_resource ("/io/github/getnf/embellish/license.svg");
+		license_logo.set_pixel_size (64);
+		box.append (license_logo);
 
-		foreach (var licence in font.licences) {
-			var licence_box = create_licence_box (licence, get_description (licence));
-			box.append (licence_box);
+		foreach (var license in font.licenses) {
+			var license_box = create_license_box (license, get_description (license));
+			box.append (license_box);
 		}
 
 		var clamp = new Adw.Clamp ();
@@ -73,7 +73,7 @@ public class Embellish.Managers.LicencesManager : Object {
 		return popover;
 	}
 
-	private static Gtk.Widget create_licence_box (string id, string description) {
+	private static Gtk.Widget create_license_box (string id, string description) {
 		var box = new Gtk.Box (Gtk.Orientation.VERTICAL, 4);
 
 		var id_label = new Gtk.Label (id);
@@ -89,8 +89,8 @@ public class Embellish.Managers.LicencesManager : Object {
 		return box;
 	}
 
-	private static string get_description (string licence_key) {
-		var resource_path = "/io/github/getnf/embellish/licences";
+	private static string get_description (string license_key) {
+		var resource_path = "/io/github/getnf/embellish/licenses";
 		var key_file = new GLib.KeyFile ();
 
 		try {
@@ -102,7 +102,7 @@ public class Embellish.Managers.LicencesManager : Object {
 		}
 
 		try {
-			var description = key_file.get_string ("licences", licence_key);
+			var description = key_file.get_string ("licenses", license_key);
 			return description != null ? _ (description) : _("No description available");
 		} catch (Error e) {
 			return _("No description available");

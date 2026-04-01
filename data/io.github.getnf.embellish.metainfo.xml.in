@@ -42,7 +42,7 @@
           <li>preview fonts</li>
           <li>Browse icons (icon's cheat sheet)</li>
           <li>Search fonts</li>
-          <li>Read font's licence(s)</li>
+          <li>Read font's license(s)</li>
           <li>Add custom fonts</li>
           <li>Import and export custom fonts</li>
         </ul>
@@ -171,7 +171,7 @@
               <li>Added a welcome screen</li>
               <li>Redesign of the main page</li>
               <li>Added font previews</li>
-              <li>Added font licence information</li>
+              <li>Added font license information</li>
               <li>Added font descriptions</li>
             </ul>
           </description>

@@ -8,10 +8,10 @@
         <file preprocess="xml-stripblanks">preview-dialog.ui</file>
         <file alias="style.css">assets/style.css</file>
         <file alias="welcome.svg">assets/welcome.svg</file>
-        <file alias="licence.svg">assets/licence.svg</file>
+        <file alias="license.svg">assets/license.svg</file>
         <file alias="fonts.json">assets/fonts.json</file>
         <file alias="icons.csv">assets/icons.csv</file>
-        <file alias="licences">assets/licences</file>
+        <file alias="licenses">assets/licenses</file>
     </gresource>
     <gresource prefix="/io/github/getnf/embellish/icons/scalable/actions">
         <file preprocess="xml-stripblanks" alias="embellish-download-symbolic.svg">assets/icons/folder-download-symbolic.svg</file>

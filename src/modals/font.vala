@@ -26,7 +26,7 @@ public class Embellish.Font : GLib.Object {
 	public string display_name { get; set; }
 	public string patched_name { get; set; default = ""; }
 	public string archive_name { get; set; }
-	public Gee.List<string> licences { get; set; default = new Gee.ArrayList<string> (); }
+	public Gee.List<string> licenses { get; set; default = new Gee.ArrayList<string> (); }
 	public string description { get; set; }
 	public string family { get; set; default = ""; }
 	public string url { get; set; }
@@ -38,7 +38,7 @@ public class Embellish.Font : GLib.Object {
 		string archive_name,
 		string description,
 		string? family = null,
-		Gee.List<string>? licences = null,
+		Gee.List<string>? licenses = null,
 		string? patched_name = null,
 		string? url = null,
 		bool is_custom = false,
@@ -53,8 +53,8 @@ public class Embellish.Font : GLib.Object {
 		if (patched_name != null) {
 			this.patched_name = patched_name;
 		}
-		if (licences != null) {
-			this.licences = licences;
+		if (licenses != null) {
+			this.licenses = licenses;
 		}
 		this.url = url ?? "https://github.com/ryanoasis/nerd-fonts/releases/download/%s/%s.tar.xz".printf (Config.NF_RELEASE, archive_name);
 		this.is_custom = is_custom;
@@ -79,14 +79,14 @@ public class Embellish.Font : GLib.Object {
 		            ? obj.get_string_member ("patched_name")
 		            : null;
 
-		var licences = new Gee.ArrayList<string> ();
-		if (obj.has_member ("licences")) {
-			foreach (var node in obj.get_array_member ("licences").get_elements ()) {
-				licences.add (node.get_string ());
+		var licenses = new Gee.ArrayList<string> ();
+		if (obj.has_member ("licenses")) {
+			foreach (var node in obj.get_array_member ("licenses").get_elements ()) {
+				licenses.add (node.get_string ());
 			}
 		}
 
-		return new Font (id, display_name, archive_name, description, family, licences, patched_name);
+		return new Font (id, display_name, archive_name, description, family, licenses, patched_name);
 	}
 
 	public static Font ? from_custom_json (Json.Object obj) {

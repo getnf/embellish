@@ -342,7 +342,7 @@ public class Embellish.Window : Adw.ApplicationWindow {
 		box.set_halign (Gtk.Align.CENTER);
 		box.set_valign (Gtk.Align.CENTER);
 
-		var licence_button = Embellish.Managers.LicencesManager.create (font);
+		var license_button = Embellish.Managers.LicensesManager.create (font);
 
 		var preview_button = new Gtk.Button ();
 		preview_button.set_icon_name ("embellish-preview-symbolic");
@@ -354,7 +354,7 @@ public class Embellish.Window : Adw.ApplicationWindow {
 		});
 		preview_button.set_sensitive (!font.is_custom);
 
-		box.append (licence_button);
+		box.append (license_button);
 		box.append (preview_button);
 
 		if (font.is_custom) {

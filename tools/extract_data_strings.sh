@@ -14,8 +14,8 @@ OUTPUT_FILE="src/data_translations.vala"
     echo "        _(\"$ESCAPED\");"
   done
 
-  # Extract values from licences (skip section headers)
-  grep "=" src/assets/licences | grep -v "^\[" | cut -d= -f2- | while read -r line; do
+  # Extract values from licenses (skip section headers)
+  grep "=" src/assets/licenses | grep -v "^\[" | cut -d= -f2- | while read -r line; do
     ESCAPED=$(echo "$line" | sed 's/"/\\"/g')
     echo "        _(\"$ESCAPED\");"
   done

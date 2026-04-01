@@ -9,7 +9,7 @@ embellish_sources += files(
   'window.vala',
   'import_dialog.vala',
   'add_font_dialog.vala',
-  'managers/licences.vala',
+  'managers/licenses.vala',
   'managers/icons.vala',
   'preview_dialog.vala'
 )

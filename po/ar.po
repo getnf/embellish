@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: embellish\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-04-01 10:44+0300\n"
-"PO-Revision-Date: 2026-04-01 10:35+0300\n"
+"POT-Creation-Date: 2026-04-01 21:27+0300\n"
+"PO-Revision-Date: 2026-04-01 21:32+0300\n"
 "Last-Translator: Ronnie Nissan <ronnie.nissan@proton.me>\n"
 "Language-Team: Arabic\n"
 "Language: ar\n"
@@ -75,12 +75,12 @@ msgid "Browse icons (icon's cheat sheet)"
 msgstr "تصفح الأيقونات (ورقة الغش للأيقونات)"
 
 #: data/io.github.getnf.embellish.metainfo.xml.in:44 src/shortcuts-dialog.blp:7
-#: src/window.blp:87 src/window.blp:106 src/window.vala:69
+#: src/window.blp:87 src/window.blp:106 src/window.vala:72
 msgid "Search fonts"
 msgstr "البحث عن الخطوط"
 
 #: data/io.github.getnf.embellish.metainfo.xml.in:45
-msgid "Read font's licence(s)"
+msgid "Read font's license(s)"
 msgstr "قراءة تراخيص الخط"
 
 #: data/io.github.getnf.embellish.metainfo.xml.in:46
@@ -496,14 +496,14 @@ msgstr "Zed Mono هو نسخة أكثر استدارة من خط Iosevka"
 
 #: src/data_translations.vala:75
 msgid ""
-"Permissive licence allowing almost unrestricted use, modification, and "
+"Permissive license allowing almost unrestricted use, modification, and "
 "distribution."
 msgstr "ترخيص مرن يسمح بالاستخدام والتعديل والتوزيع دون قيود تقريباً."
 
 #: src/data_translations.vala:76
 msgid ""
 "Free to use, modify, and distribute, with conditions: no selling and "
-"original licence must be included."
+"original license must be included."
 msgstr ""
 "حر في الاستخدام والتعديل والتوزيع، بشرط: عدم البيع وإدراج الترخيص الأصلي."
 
@@ -515,7 +515,7 @@ msgstr "نفس ترخيص OFL-1.1، ولكن يجب الامتثال لقيود 
 #: src/data_translations.vala:78
 msgid ""
 "Permissive, requires attribution, notice of changes, and inclusion of NOTICE "
-"file. Modified code can use a different licence."
+"file. Modified code can use a different license."
 msgstr ""
 "مرن، يتطلب الإسناد، والتنبيه بالتغييرات، وإدراج ملف NOTICE. يمكن للكود "
 "المعدل استخدام ترخيص مختلف."
@@ -523,7 +523,7 @@ msgstr ""
 #: src/data_translations.vala:79
 msgid ""
 "Allows sharing and modification with attribution. Must distribute under the "
-"same licence."
+"same license."
 msgstr "يسمح بالمشاركة والتعديل مع الإسناد. يجب التوزيع تحت نفس الترخيص."
 
 #: src/data_translations.vala:80
@@ -536,7 +536,7 @@ msgstr "استخدام غير مقيد، كما هو موضح في اسمه."
 
 #: src/data_translations.vala:82
 msgid ""
-"Permissive, requires licence file, prohibits using Google Inc. to endorse "
+"Permissive, requires license file, prohibits using Google Inc. to endorse "
 "work."
 msgstr ""
 "مرن، يتطلب ملف الترخيص، ويمنع استخدام اسم شركة .Google Inc للترويج للعمل."
@@ -546,11 +546,11 @@ msgid "Unrestricted use."
 msgstr "استخدام غير مقيد."
 
 #: src/data_translations.vala:84
-msgid "Permissive, requires inclusion of the licence file."
+msgid "Permissive, requires inclusion of the license file."
 msgstr "مرن، يتطلب إدراج ملف الترخيص."
 
 #: src/data_translations.vala:85
-msgid "Permissive, requires attribution and licence file."
+msgid "Permissive, requires attribution and license file."
 msgstr "مرن، يتطلب الإسناد وملف الترخيص."
 
 #: src/data_translations.vala:86
@@ -572,7 +572,7 @@ msgstr ""
 "يسمح بالربط مع برمجيات مملوكة، ولكن التعديلات يجب أن تكون تحت رخصة LGPL. يجب "
 "إدراج الترخيص الأصلي وكود المصدر."
 
-#: src/import-dialog.blp:6 src/import_dialog.vala:67
+#: src/import-dialog.blp:6 src/import_dialog.vala:87
 msgid "Import Custom Fonts"
 msgstr "استيراد خطوط مخصصة"
 
@@ -584,43 +584,43 @@ msgstr "الصق نص ال JSON هنا"
 msgid "Import from file"
 msgstr "استيراد من ملف"
 
-#: src/import-dialog.blp:64 src/import_dialog.vala:68
+#: src/import-dialog.blp:64 src/import_dialog.vala:88
 msgid "Import"
 msgstr "استيراد"
 
-#: src/import_dialog.vala:61
+#: src/import_dialog.vala:81
 #, c-format
 msgid "Failed to import custom fonts: %s"
 msgstr "فشل تصدير الخطوط المخصصة: %s"
 
-#: src/import_dialog.vala:71 src/window.vala:468
+#: src/import_dialog.vala:91 src/window.vala:522
 msgid "JSON Files"
 msgstr "ملفات JSON"
 
-#: src/import_dialog.vala:89
+#: src/import_dialog.vala:109
 #, c-format
 msgid "Failed to read file: %s"
 msgstr "فشل قرائة الملف: %s"
 
-#: src/import_dialog.vala:95
+#: src/import_dialog.vala:115
 #, c-format
 msgid "Failed to open file: %s"
 msgstr "فشل فتح الملف: %s"
 
-#: src/managers/licences.vala:28
-msgid "licence details"
+#: src/managers/licenses.vala:28
+msgid "license details"
 msgstr "تفاصيل الترخيص"
 
-#: src/managers/licences.vala:32
+#: src/managers/licenses.vala:32
 msgid "Dual"
 msgstr "مزدوج"
 
-#: src/managers/licences.vala:36
+#: src/managers/licenses.vala:36
 msgid "Unknown"
 msgstr "غير معرف"
 
-#: src/managers/licences.vala:101 src/managers/licences.vala:106
-#: src/managers/licences.vala:108
+#: src/managers/licenses.vala:101 src/managers/licenses.vala:106
+#: src/managers/licenses.vala:108
 msgid "No description available"
 msgstr "لا يوجد وصف متاح"
 
@@ -632,7 +632,7 @@ msgstr "إنهاء التطبيق"
 msgid "Close Window"
 msgstr "إغلاق النافذة"
 
-#: src/shortcuts-dialog.blp:22 src/window.blp:240
+#: src/shortcuts-dialog.blp:22 src/window.blp:241
 msgid "Keyboard Shortcuts"
 msgstr "اختصارات لوحة المفاتيح"
 
@@ -664,85 +664,85 @@ msgstr "الخطوط المتاحة"
 msgid "Icons"
 msgstr "الأيقونات"
 
-#: src/window.blp:211
+#: src/window.blp:212
 msgid "Icons grid"
 msgstr "قائمة الأيقونات"
 
-#: src/window.blp:228
+#: src/window.blp:229
 msgid "Import custom fonts"
 msgstr "استيراد خطوط مخصصة"
 
-#: src/window.blp:233
+#: src/window.blp:234
 msgid "Export custom fonts"
 msgstr "تصدير الخطوط مخصصة"
 
-#: src/window.blp:245
+#: src/window.blp:246
 msgid "About"
 msgstr "حول"
 
-#: src/window.vala:67
+#: src/window.vala:70
 msgid "Search icons"
 msgstr "البحث عن الأيقونات"
 
-#: src/window.vala:129
+#: src/window.vala:184
 msgid "No installed fonts match your search"
 msgstr "لا توجد خطوط مثبتة تتطابق مع البحث"
 
-#: src/window.vala:130
+#: src/window.vala:185
 msgid "No available fonts match your search"
 msgstr "لا توجد خطوط متاحة تتطابق مع البحث"
 
-#: src/window.vala:238
+#: src/window.vala:292
 #, c-format
 msgid "Copied %s"
 msgstr "تم نسخ %s"
 
-#: src/window.vala:296
+#: src/window.vala:350
 msgid "Preview"
 msgstr "معاينة"
 
-#: src/window.vala:309
+#: src/window.vala:363
 msgid "Remove from list"
 msgstr "إزالة من القائمة"
 
-#: src/window.vala:329 src/window.vala:353 src/window.vala:369
+#: src/window.vala:383 src/window.vala:407 src/window.vala:423
 msgid "Uninstall"
 msgstr "إلغاء التثبيت"
 
-#: src/window.vala:332 src/window.vala:349 src/window.vala:373
+#: src/window.vala:386 src/window.vala:403 src/window.vala:427
 msgid "Install"
 msgstr "تثبيت"
 
-#: src/window.vala:350
+#: src/window.vala:404
 #, c-format
 msgid "%s uninstalled"
 msgstr "تم إلغاء تثبيت: %s"
 
-#: src/window.vala:354
+#: src/window.vala:408
 #, c-format
 msgid "Failed to uninstall %s: %s"
 msgstr "فشل أزالة: %s"
 
-#: src/window.vala:370
+#: src/window.vala:424
 #, c-format
 msgid "%s installed"
 msgstr "تم تثبيت: %s"
 
-#: src/window.vala:374
+#: src/window.vala:428
 #, c-format
 msgid "Failed to install %s: %s"
 msgstr "فشل تثبيت: %s"
 
-#: src/window.vala:397
+#: src/window.vala:451
 msgid "Custom font removed"
 msgstr "تم إزالة الخط المخصص"
 
-#: src/window.vala:399
+#: src/window.vala:453
 #, c-format
 msgid "Failed to remove custom font: %s"
 msgstr "فشل إزالة الخط المخصص: %s"
 
-#: src/window.vala:423
+#: src/window.vala:477
 #, c-format
 msgid "%d custom font imported"
 msgid_plural "%d custom fonts imported"
@@ -753,37 +753,37 @@ msgstr[3] "تم استيراد الخطوط المخصصة"
 msgstr[4] "تم استيراد الخطوط المخصصة"
 msgstr[5] "تم استيراد الخطوط المخصصة"
 
-#: src/window.vala:427
+#: src/window.vala:481
 msgid "All fonts already exist"
 msgstr "كل الخطوط موجودة بالفعل"
 
-#: src/window.vala:446
+#: src/window.vala:500
 msgid "Font already exists"
 msgstr "الخط موجود بالفعل"
 
-#: src/window.vala:454
+#: src/window.vala:508
 msgid "Custom font added"
 msgstr "تمت إضافة الخط المخصص"
 
-#: src/window.vala:456
+#: src/window.vala:510
 #, c-format
 msgid "Failed to add custom font: %s"
 msgstr "فشل إضافة الخط المخصص: %s"
 
-#: src/window.vala:464
+#: src/window.vala:518
 msgid "Export Custom Fonts"
 msgstr "تصدير الخطوط المخصصة"
 
-#: src/window.vala:491
+#: src/window.vala:545
 msgid "Custom fonts exported"
 msgstr "تم تصدير الخطوط المخصصة"
 
-#: src/window.vala:493
+#: src/window.vala:547
 #, c-format
 msgid "Failed to save file: %s"
 msgstr "فشل حفض الملف: %s"
 
-#: src/window.vala:500
+#: src/window.vala:553
 #, c-format
 msgid "Failed to export: %s"
 msgstr "فشل التصدير: %s"
