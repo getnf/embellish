@@ -1,7 +1,7 @@
 # Define our project
 project(
        'embellish', ['c', 'vala'],
-	version: '0.8.2',
+	version: '1.0.0',
 	license: ['GPL-3.0-or-later'],
 	default_options: [ 'warning_level=2', 'werror=false', ],
 	meson_version: '>= 1.0.0'

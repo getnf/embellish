@@ -8,6 +8,15 @@ template $EmbellishWindow: Adw.ApplicationWindow {
     width-request: 360;
     height-request: 296;
 
+    Adw.Breakpoint {
+        condition ("max-width: 550sp")
+
+        setters {
+            header_bar.title-widget: null;
+            switcher_bar.reveal: true;
+        }
+    }
+
     Adw.ToastOverlay toast_overlay {
         Stack stack {
             transition-type: slide_left;
@@ -75,7 +84,7 @@ template $EmbellishWindow: Adw.ApplicationWindow {
                     top-bar-style: raised;
 
                     [top]
-                    Adw.HeaderBar {
+                    Adw.HeaderBar header_bar {
                         title-widget: Adw.ViewSwitcher switcher_title {
                             stack: main_stack;
                             policy: wide;
@@ -105,6 +114,11 @@ template $EmbellishWindow: Adw.ApplicationWindow {
                             search-delay: 100;
                             placeholder-text: _("Search fonts");
                         }
+                    }
+
+                    [bottom]
+                    Adw.ViewSwitcherBar switcher_bar {
+                        stack: main_stack;
                     }
 
                     content: Adw.ViewStack main_stack {
