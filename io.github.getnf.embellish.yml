@@ -3,8 +3,6 @@ runtime: org.gnome.Platform
 runtime-version: "50"
 sdk: org.gnome.Sdk
 command: embellish
-sdk-extensions:
-  - org.freedesktop.Sdk.Extension.vala
 
 finish-args:
     - --socket=wayland
