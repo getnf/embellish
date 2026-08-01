@@ -2,7 +2,7 @@
 Name=Embellish
 Comment=Install nerd fonts
 Icon=io.github.getnf.embellish
-Exec=io.github.getnf.embellish
+Exec=embellish
 Type=Application
 Terminal=false
 DBusActivatable=true
