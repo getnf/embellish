@@ -1,7 +1,7 @@
 # Define our project
 project(
        'embellish', ['c', 'vala'],
-	version: '1.0.0',
+	version: '1.1.0',
 	license: ['GPL-3.0-or-later'],
 	default_options: [ 'warning_level=2', 'werror=false', ],
 	meson_version: '>= 1.0.0'
@@ -20,7 +20,7 @@ config_h = configuration_data()
 config_h.set_quoted('PACKAGE_VERSION', meson.project_version ())
 config_h.set_quoted('GETTEXT_PACKAGE', 'io.github.getnf.embellish')
 config_h.set_quoted('LOCALEDIR', get_option('prefix') / get_option('localedir'))
-config_h.set_quoted('NF_RELEASE', 'v3.4.0')
+config_h.set_quoted('NF_RELEASE', 'v3.5.0')
 configure_file(output: 'config.h', configuration: config_h)
 
 config_dep = valac.find_library ('config', dirs: srcdir)

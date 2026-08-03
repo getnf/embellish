@@ -33,6 +33,14 @@
       "family": "Agave Nerd Font Mono"
     },
     {
+      "id": "annotation-mono",
+      "display_name": "Annotation Mono",
+      "archive_name": "AnnotationMono",
+      "licenses": ["OFL-1.1"],
+      "description": "Idealized handwriting; legibility maximized while retaining hand-written character",
+      "family": "AnnotationM Nerd Font Mono"
+    },
+    {
       "id": "anonymous-pro",
       "display_name": "Anonymous Pro",
       "patched_name": "AnonymicePro",
@@ -131,18 +139,18 @@
       "id": "cousine",
       "display_name": "Cousine",
       "archive_name": "Cousine",
-      "licenses": ["Apache-2.0"],
+      "licenses": ["OFL-1.1"],
       "description": "Similar to Courier New with better readability, dotted zeros",
       "family": "Cousine Nerd Font Mono"
     },
     {
       "id": "d2coding",
       "display_name": "D2Coding",
-      "patched_name": "D2CodingLigature",
+      "patched_name": "D2KodingLigature",
       "archive_name": "D2Coding",
-      "licenses": ["OFL-1.1"],
+      "licenses": ["OFL-1.1-RFN"],
       "description": "A coding font for Koreans. This is the variant with ligatures.",
-      "family": "D2CodingLigature Nerd Font Mono"
+      "family": "D2KodingLigature Nerd Font Mono"
     },
     {
       "id": "daddytime-mono",
@@ -235,6 +243,14 @@
       "licenses": ["WTFPL"],
       "description": "Bitmap font, tall capitals and ascenders, small serifs",
       "family": "GohuFont 11 Nerd Font Mono"
+    },
+    {
+      "id": "google-sans-code",
+      "display_name": "Google Sans Code",
+      "archive_name": "GoogleSansCode",
+      "licenses": ["OFL-1.0"],
+      "description": "Designed to bring clarity, readability, and a bit of Google's distinctive brand character to code",
+      "family": "GoogleSansCode Nerd Font Mono"
     },
     {
       "id": "hack",
