@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: embellish\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-04-01 21:27+0300\n"
-"PO-Revision-Date: 2026-04-01 21:32+0300\n"
+"POT-Creation-Date: 2026-08-03 23:58+0300\n"
+"PO-Revision-Date: 2026-08-04 00:01+0300\n"
 "Last-Translator: Ronnie Nissan <ronnie.nissan@proton.me>\n"
 "Language-Team: Arabic\n"
 "Language: ar\n"
@@ -22,12 +22,12 @@ msgstr ""
 
 #: data/io.github.getnf.embellish.desktop.in:2
 #: data/io.github.getnf.embellish.metainfo.xml.in:5 src/application.vala:53
-#: src/window.blp:5 src/window.blp:43
+#: src/window.blp:5 src/window.blp:52
 msgid "Embellish"
 msgstr "أيمبيليش"
 
 #: data/io.github.getnf.embellish.desktop.in:3
-#: data/io.github.getnf.embellish.metainfo.xml.in:6 src/window.blp:51
+#: data/io.github.getnf.embellish.metainfo.xml.in:6 src/window.blp:60
 msgid "Install nerd fonts"
 msgstr "تثبيت خطوط نيرد (Nerd Fonts)"
 
@@ -39,7 +39,7 @@ msgstr "Fonts;NerdFonts;nerd;خطوط;نيرد;"
 msgid "Ronnie Nissan"
 msgstr "روني نيسان"
 
-#: data/io.github.getnf.embellish.metainfo.xml.in:32
+#: data/io.github.getnf.embellish.metainfo.xml.in:36
 msgid ""
 "User-friendly application designed for managing Nerd Fonts on your system. "
 "With a sleek GTK4 user interface enhanced by libadwaita, Embellish provides "
@@ -50,70 +50,66 @@ msgstr ""
 "مستخدم GTK4 الأنيقة والمدعومة بـ libadwaita، يوفر أيمبيليش تجربة سلسة لتثبيت "
 "وإلغاء تثبيت وتحديث خطوط نيرد."
 
-#: data/io.github.getnf.embellish.metainfo.xml.in:38
+#: data/io.github.getnf.embellish.metainfo.xml.in:42
 msgid "List all available Nerd Fonts"
 msgstr "عرض كافة الخطوط المتاحة"
 
-#: data/io.github.getnf.embellish.metainfo.xml.in:39
+#: data/io.github.getnf.embellish.metainfo.xml.in:43
 msgid "Download and install a Font"
 msgstr "تنزيل وتثبيت خط"
 
-#: data/io.github.getnf.embellish.metainfo.xml.in:40
+#: data/io.github.getnf.embellish.metainfo.xml.in:44
 msgid "Uninstall an installed Font"
 msgstr "إلغاء تثبيت خط مثبت"
 
-#: data/io.github.getnf.embellish.metainfo.xml.in:41
-msgid "Update an installed font"
-msgstr "تحديث خط مثبت"
-
-#: data/io.github.getnf.embellish.metainfo.xml.in:42
+#: data/io.github.getnf.embellish.metainfo.xml.in:45
 msgid "preview fonts"
 msgstr "معاينة الخطوط"
 
-#: data/io.github.getnf.embellish.metainfo.xml.in:43
+#: data/io.github.getnf.embellish.metainfo.xml.in:46
 msgid "Browse icons (icon's cheat sheet)"
 msgstr "تصفح الأيقونات (ورقة الغش للأيقونات)"
 
-#: data/io.github.getnf.embellish.metainfo.xml.in:44 src/shortcuts-dialog.blp:7
-#: src/window.blp:87 src/window.blp:106 src/window.vala:72
+#: data/io.github.getnf.embellish.metainfo.xml.in:47 src/shortcuts-dialog.blp:7
+#: src/window.blp:96 src/window.blp:115 src/window.vala:72
 msgid "Search fonts"
 msgstr "البحث عن الخطوط"
 
-#: data/io.github.getnf.embellish.metainfo.xml.in:45
+#: data/io.github.getnf.embellish.metainfo.xml.in:48
 msgid "Read font's license(s)"
 msgstr "قراءة تراخيص الخط"
 
-#: data/io.github.getnf.embellish.metainfo.xml.in:46
+#: data/io.github.getnf.embellish.metainfo.xml.in:49
 msgid "Add custom fonts"
 msgstr "إضافة خطوط مخصصة"
 
-#: data/io.github.getnf.embellish.metainfo.xml.in:47
+#: data/io.github.getnf.embellish.metainfo.xml.in:50
 msgid "Import and export custom fonts"
 msgstr "استيراد وتصدير خطوط مخصصة"
 
-#: data/io.github.getnf.embellish.metainfo.xml.in:56
+#: data/io.github.getnf.embellish.metainfo.xml.in:59
 msgid ""
 "Main page showing a list of custon fonts and installed and available nerd "
 "fonts"
 msgstr "الصفحة الرئيسية تعرض قائمة بالخطوط المخصصة وخطوط نيرد المثبتة والمتاحة"
 
-#: data/io.github.getnf.embellish.metainfo.xml.in:60
-msgid "Icons page showing all the avilable nerd fonts icons"
+#: data/io.github.getnf.embellish.metainfo.xml.in:63
+msgid "Icons page showing all the available nerd fonts icons"
 msgstr "صفحة الأيقونات التي تعرض جميع أيقونات خطوط نيرد المتاحة"
 
-#: data/io.github.getnf.embellish.metainfo.xml.in:65
+#: data/io.github.getnf.embellish.metainfo.xml.in:68
 msgid "Previewing JetBrains Mono font using JavaScript code"
 msgstr "عرض خط JetBrains Mono باستخدام كود جافاسكريبت"
 
-#: data/io.github.getnf.embellish.metainfo.xml.in:69
+#: data/io.github.getnf.embellish.metainfo.xml.in:72
 msgid "Showcasing the import dialog with Maple Mono fonts data"
 msgstr "عرض مربع حوار الاستيراد مع بيانات خطوط Maple Mono"
 
-#: data/io.github.getnf.embellish.metainfo.xml.in:74
+#: data/io.github.getnf.embellish.metainfo.xml.in:77
 msgid "Search page, showcasing search functionality"
 msgstr "صفحة البحث، لاستعراض وظيفة البحث"
 
-#: src/add-font-dialog.blp:5 src/window.blp:162
+#: src/add-font-dialog.blp:5 src/window.blp:176
 msgid "Add a custom font"
 msgstr "إضافة خطوط مخصصة"
 
@@ -180,35 +176,41 @@ msgstr "خط تحديد صغير، أحادي المسافة، منتظم هند
 
 #: src/data_translations.vala:9
 msgid ""
+"Idealized handwriting; legibility maximized while retaining hand-written "
+"character"
+msgstr "خط يدوي مثالي؛ أقصى درجات الوضوح مع الحفاظ على طابع الكتابة اليدوية"
+
+#: src/data_translations.vala:10
+msgid ""
 "Inspired by Anonymous 9 on Macintosh, since 2009, distinct O, 0, I, l, 1"
 msgstr ""
 "مستوحى من Anonymous 9 على الماكنتوش، منذ عام 2009، يتميز بوضوح الحروف O و 0 "
 "و I و l و ال1"
 
-#: src/data_translations.vala:10
+#: src/data_translations.vala:11
 msgid "Metrically similar to Arial, pan-European WGL character set, sans serif"
 msgstr ""
 "مشابه لخط Arial في القياسات، يدعم مجموعة أحرف WGL الأوروبية، وبدون زوائد"
 
-#: src/data_translations.vala:11
+#: src/data_translations.vala:12
 msgid ""
 "A monospaced font designed to improve legibility and readability for "
 "individuals with low vision"
 msgstr "خط أحادي المسافة مصمم لتحسين وضوح القراءة لضعاف البصر"
 
-#: src/data_translations.vala:12
+#: src/data_translations.vala:13
 msgid "Sans serif, designed by Stephen G. Hartke who also created Verily Serif"
 msgstr "بدون زوائد، من تصميم ستيفن هارتكي الذي صمم أيضاً Verily Serif"
 
-#: src/data_translations.vala:13
+#: src/data_translations.vala:14
 msgid "Nostalgic, closely based on IBM's 8x14 EGA/VGA charset"
 msgstr "كلاسيكي، يعتمد بشكل وثيق على مجموعة أحرف EGA/VGA من IBM قياس 8x14"
 
-#: src/data_translations.vala:14
+#: src/data_translations.vala:15
 msgid "Dotted zero, compact lowercase characters"
 msgstr "صفر منقوط، وأحرف صغيرة متراصة"
 
-#: src/data_translations.vala:15
+#: src/data_translations.vala:16
 msgid ""
 "A fun, new monospaced font that includes programming ligatures and is "
 "designed to enhance the modern look and feel of the Windows Terminal"
@@ -216,68 +218,68 @@ msgstr ""
 "خط جديد وممتع أحادي المسافة يتضمن روابط برمجية ومصمم لتحسين المظهر العصري "
 "لألويندوز تيرمينال"
 
-#: src/data_translations.vala:16
+#: src/data_translations.vala:17
 msgid "Like Cascadia Code but without any ligatures"
 msgstr "مثل Cascadia Code ولكن بدون أي روابط برمجية"
 
-#: src/data_translations.vala:17
+#: src/data_translations.vala:18
 msgid "Tunable, slashed zeros, compact smaller characters"
 msgstr "قابل للضبط، أصفار مشطوبة، وأحرف صغيرة مدمجة"
 
-#: src/data_translations.vala:18
+#: src/data_translations.vala:19
 msgid "The very typeface you've been trained to recognize since childhood"
 msgstr "الخط الذي اعتدت على تمييزه منذ الطفولة"
 
-#: src/data_translations.vala:19
+#: src/data_translations.vala:20
 msgid "An anonymous and neutral programming typeface"
 msgstr "خط برمجي محايد وغير محدد الهوية"
 
-#: src/data_translations.vala:20
+#: src/data_translations.vala:21
 msgid "Similar to Courier New with better readability, dotted zeros"
 msgstr "مشابه لـ Courier New مع وضوح أفضل، وأصفار منقوطة"
 
-#: src/data_translations.vala:21
+#: src/data_translations.vala:22
 msgid "A coding font for Koreans. This is the variant with ligatures."
 msgstr "خط برمجي للكوريين. هذا هو النوع الذي يحتوي على روابط برمجية."
 
-#: src/data_translations.vala:22
+#: src/data_translations.vala:23
 msgid "A monospaced font for programmers and other terminal groupies"
 msgstr "خط أحادي المسافة للمبرمجين ومحبي واجهات الأوامر"
 
-#: src/data_translations.vala:23
+#: src/data_translations.vala:24
 msgid "A monospaced pixel font with a lo-fi, techy vibe"
 msgstr "خط بكسل أحادي المسافة بطابع تقني بسيط (lo-fi)"
 
-#: src/data_translations.vala:24
+#: src/data_translations.vala:25
 msgid ""
 "Dotted zero, based on the Bitstream Vera Fonts with a wider range of "
 "characters"
 msgstr "صفر منقوط، يعتمد على خطوط Bitstream Vera مع نطاق أوسع من الأحرف"
 
-#: src/data_translations.vala:25
+#: src/data_translations.vala:26
 msgid "Good for small screens or font sizes"
 msgstr "جيد للشاشات الصغيرة أو أحجام الخطوط الصغيرة"
 
-#: src/data_translations.vala:26
+#: src/data_translations.vala:27
 msgid ""
 "Fully-scalable monospaced font designed for programming and command prompts"
 msgstr "خط أحادي المسافة قابل للتوسيع بالكامل مصمم للبرمجة وواجهات الأوامر"
 
-#: src/data_translations.vala:27
+#: src/data_translations.vala:28
 msgid ""
 "Wibbly-wobbly handwriting-like fuzziness, takes some inspiration from "
 "Inconsolata and Monaco"
 msgstr "يتميز بـ تذبذب يشبه خط اليد، مستوحى جزئياً من خطي Inconsolata و Monaco"
 
-#: src/data_translations.vala:28
+#: src/data_translations.vala:29
 msgid "Programming ligatures, extension of Fira Mono font, enlarged operators"
 msgstr "روابط برمجية، امتداد لخط Fira Mono، مع رموز عمليات مكبرة"
 
-#: src/data_translations.vala:29
+#: src/data_translations.vala:30
 msgid "Mozilla typeface, dotted zero"
 msgstr "خط موزيلا، صفر منقوط"
 
-#: src/data_translations.vala:30
+#: src/data_translations.vala:31
 msgid ""
 "Monospaced typeface designed to be used in code editors, diagrams, "
 "terminals, and other text-based interfaces where code is represented"
@@ -285,17 +287,25 @@ msgstr ""
 "خط أحادي المسافة مصمم للاستخدام في محررات الأكواد، المخططات، واجهات الأوامر، "
 "والواجهات النصية الأخرى"
 
-#: src/data_translations.vala:31
+#: src/data_translations.vala:32
 msgid ""
 "Created specifically for the Go project, looks particularly clear for use "
 "with the Go language"
 msgstr "صُمم خصيصاً لمشروع Go، ويظهر بوضوح خاص عند استخدامه مع لغة Go"
 
-#: src/data_translations.vala:32
+#: src/data_translations.vala:33
 msgid "Bitmap font, tall capitals and ascenders, small serifs"
 msgstr "خط نقطي (Bitmap)، حروف كبيرة وصاعدة طويلة، مع زوائد صغيرة"
 
-#: src/data_translations.vala:33
+#: src/data_translations.vala:34
+msgid ""
+"Designed to bring clarity, readability, and a bit of Google's distinctive "
+"brand character to code"
+msgstr ""
+"صُمم لإضفاء الوضوح، وسهولة القراءة، واللمسة المميزة لعلامة جوجل التجارية على "
+"الرموز البرمجية"
+
+#: src/data_translations.vala:35
 msgid ""
 "Dotted zero, short descenders, expands upon work done for Bitstream Vera & "
 "DejaVu, legible at common sizes"
@@ -303,7 +313,7 @@ msgstr ""
 "صفر منقوط، حروف هابطة قصيرة، يوسع أعمال Bitstream Vera و DejaVu، واضح في "
 "الأحجام الشائعة"
 
-#: src/data_translations.vala:34
+#: src/data_translations.vala:36
 msgid ""
 "Monospaced ligatures, makes composite glyphs (e.g. ->) more readable, "
 "especially in Haskell"
@@ -311,49 +321,49 @@ msgstr ""
 "روابط أحادية المسافة، تجعل الرموز المركبة (مثل ->) أكثر وضوحاً، خاصة في اللغة "
 "البرمجية هاسكل "
 
-#: src/data_translations.vala:35
+#: src/data_translations.vala:37
 msgid "Novel and unique design, dotted zero"
 msgstr "تصميم مبتكر وفريد، صفر منقوط"
 
-#: src/data_translations.vala:36
+#: src/data_translations.vala:38
 msgid "Symbols stand out from common text"
 msgstr "الرموز تبرز بوضوح عن النص العادي"
 
-#: src/data_translations.vala:37
+#: src/data_translations.vala:39
 msgid "A heavy modification of IBM's Plex font"
 msgstr "تعديل مكثف على خط Plex من IBM"
 
-#: src/data_translations.vala:38
+#: src/data_translations.vala:40
 msgid "It's global, it's versatile and it's distinctly IBM"
 msgstr "إنه عالمي، ومتعدد الاستخدامات، ويحمل بصمة IBM المميزة"
 
-#: src/data_translations.vala:39
+#: src/data_translations.vala:41
 msgid ""
 "Slashed zero, takes inspiration from many different fonts and glyphs, subtle "
 "curves in lowercase"
 msgstr ""
 "صفر مشطوب، مستوحى من خطوط ورموز متنوعة، منحنيات خفيفة في الأحرف الصغيرة"
 
-#: src/data_translations.vala:40
+#: src/data_translations.vala:42
 msgid "Inconsolata with straight quotes"
 msgstr "خط Inconsolata مع علامات اقتباس مستقيمة"
 
-#: src/data_translations.vala:41
+#: src/data_translations.vala:43
 msgid "Inconsolata with added the Cyrillic alphabet"
 msgstr "خط Inconsolata مع إضافة الأبجدية السيريلية"
 
-#: src/data_translations.vala:42
+#: src/data_translations.vala:44
 msgid ""
 "Expressive monospaced font family that's built with clarity, legibility, and "
 "the needs of developers in mind"
 msgstr ""
 "عائلة خطوط أحادية المسافة تعبيرية صُممت مع مراعاة الوضوح واحتياجات المطورين"
 
-#: src/data_translations.vala:43
+#: src/data_translations.vala:45
 msgid "Narrow and horizontally tight characters, slashed zero"
 msgstr "أحرف ضيقة ومضغوطة أفقياً، صفر مشطوب"
 
-#: src/data_translations.vala:44
+#: src/data_translations.vala:46
 msgid ""
 "A narrower variant focusing terminal uses: Arrows and geometric symbols will "
 "be narrow to follow typical terminal usages"
@@ -361,111 +371,111 @@ msgstr ""
 "نسخة أضيق تركز على استخدامات واجهة الأوامر: الأسهم والرموز الهندسية ستكون "
 "ضيقة"
 
-#: src/data_translations.vala:45
+#: src/data_translations.vala:47
 msgid "Nice as Iosevka but with slab serifs"
 msgstr "جميل مثل Iosevka ولكن مع زوائد عريضة (Slab Serifs)"
 
-#: src/data_translations.vala:46
+#: src/data_translations.vala:48
 msgid "JetBrains officially created font for developers"
 msgstr "الخط الرسمي الذي صممته JetBrains للمطورين"
 
-#: src/data_translations.vala:47
+#: src/data_translations.vala:49
 msgid "Very light and thin characters, sharp m's, 0 and O very similar"
 msgstr "أحرف خفيفة ورقيقة جداً، حرف m حاد، والـ 0 والـ O متشابهان جداً"
 
-#: src/data_translations.vala:48
+#: src/data_translations.vala:50
 msgid "0 and O very similar, very short tight descenders"
 msgstr "الـ 0 والـ O متشابهان جداً، مع حروف هابطة قصيرة جداً ومضغوطة"
 
-#: src/data_translations.vala:49
+#: src/data_translations.vala:51
 msgid "Modern with ligatures"
 msgstr "عصري مع روابط برمجية"
 
-#: src/data_translations.vala:50
+#: src/data_translations.vala:52
 msgid "Free and open-source monospaced font from Evil Martians"
 msgstr "خط أحادي المسافة مجاني ومفتوح المصدر من Evil Martians"
 
-#: src/data_translations.vala:51
+#: src/data_translations.vala:53
 msgid "Slashed zeros, customized version of Apple's Menlo"
 msgstr "أصفار مشطوبة، نسخة مخصصة من خط Menlo التابع لشركة آبل"
 
-#: src/data_translations.vala:52
+#: src/data_translations.vala:54
 msgid "Five matching fonts all having 'texture healing' to improve legibility"
 msgstr ""
 "خمسة خطوط متطابقة تحتوي جميعها على تقنية 'texture healing' لتحسين الوضوح"
 
-#: src/data_translations.vala:53
+#: src/data_translations.vala:55
 msgid "Dotted zeros, slightly exaggerated curvy characters, compact characters"
 msgstr "أصفار منقوطة، أحرف منحنية بشكل مبالغ فيه قليلاً، وأحرف مدمجة"
 
-#: src/data_translations.vala:54
+#: src/data_translations.vala:56
 msgid ""
 "Ligatures, distinguishable glyphs with short ascenders & descenders, large "
 "operators & punctuation"
 msgstr "روابط برمجية، رموز مميزة، رموز عمليات وعلامات ترقيم كبيرة"
 
-#: src/data_translations.vala:55
+#: src/data_translations.vala:57
 msgid "Keeps in mind differentiation of characters and resolution sizes"
 msgstr "يراعي التمييز بين الأحرف وأحجام دقة الشاشة المختلفة"
 
-#: src/data_translations.vala:56
+#: src/data_translations.vala:58
 msgid "Multiple styles and weights, many glyph sets (e.g. Kana glyphs)"
 msgstr "أنماط وأوزان متعددة، ومجموعات رموز عديدة (مثل رموز الكانا اليابانية)"
 
-#: src/data_translations.vala:57
+#: src/data_translations.vala:59
 msgid ""
 "0 and O very similar, characters are either very curvy or straight lined"
 msgstr "الـ 0 والـ O متشابهان جداً، الأحرف إما منحنية جداً أو مستقيمة تماماً"
 
-#: src/data_translations.vala:58
+#: src/data_translations.vala:60
 msgid "Designed specifically to alleviate reading errors caused by dyslexia"
 msgstr "مصمم خصيصاً لتخفيف أخطاء القراءة الناتجة عن عسر القراءة"
 
-#: src/data_translations.vala:59
+#: src/data_translations.vala:61
 msgid "An open source font family inspired by Highway Gothic"
 msgstr "عائلة خطوط مفتوحة المصدر مستوحاة من Highway Gothic"
 
-#: src/data_translations.vala:60
+#: src/data_translations.vala:62
 msgid ""
 "Looks best with anti-aliasing turned off, squared off character corners, "
 "vertically tight small s"
 msgstr ""
 "يظهر بشكل أفضل مع إيقاف تنعيم الحواف، زوايا الأحرف مربعة، وحرف s صغير مضغوط"
 
-#: src/data_translations.vala:61
+#: src/data_translations.vala:63
 msgid "Designed particularly for use at small point sizes"
 msgstr "مصمم خصيصاً للاستخدام في أحجام النقاط الصغيرة"
 
-#: src/data_translations.vala:62
+#: src/data_translations.vala:64
 msgid "Inspired by casual script signpainting, 4 variants"
 msgstr "مستوحى من فن رسم اللافتات اليدوي، يتوفر بـ 4 أنواع"
 
-#: src/data_translations.vala:63
+#: src/data_translations.vala:65
 msgid "Dashed zero, curved and straight character lines"
 msgstr "صفر بشرطة، خطوط أحرف منحنية ومستقيمة"
 
-#: src/data_translations.vala:64
+#: src/data_translations.vala:66
 msgid ""
 "Dotted zeros, distinguishable 1 and l, curved and straight character lines"
 msgstr "أصفار منقوطة، تمييز واضح بين 1 و l، خطوط منحنية ومستقيمة"
 
-#: src/data_translations.vala:65
+#: src/data_translations.vala:67
 msgid "Monospaced font family for user interface and coding environments"
 msgstr "عائلة خطوط أحادية المسافة لواجهات المستخدم وبيئات البرمجة"
 
-#: src/data_translations.vala:66
+#: src/data_translations.vala:68
 msgid "Squarish character lines, dotted zero, aggressive parenthesis"
 msgstr "خطوط أحرف مربعة، صفر منقوط، وأقواس بارزة جداً"
 
-#: src/data_translations.vala:67
+#: src/data_translations.vala:69
 msgid "Just the Nerd Font Icons. I.e. Symbol font only"
 msgstr "أيقونات خط نيرد فقط. أي خط رموز فقط"
 
-#: src/data_translations.vala:68
+#: src/data_translations.vala:70
 msgid "Squarish characters that are slightly askew"
 msgstr "أحرف مربعة الشكل مائلة قليلاً"
 
-#: src/data_translations.vala:69
+#: src/data_translations.vala:71
 msgid ""
 "Some similarities to Times New Roman, designed by Steve Matteson, includes "
 "pan-European WGL character set"
@@ -473,46 +483,46 @@ msgstr ""
 "به بعض التشابه مع Times New Roman، من تصميم ستيف ماتيسون، يتضمن مجموعة أحرف "
 "WGL"
 
-#: src/data_translations.vala:70
+#: src/data_translations.vala:72
 msgid "Specially created for Ubuntu"
 msgstr "صُمم خصيصاً لتوزيعة أوبونتو (Ubuntu)"
 
-#: src/data_translations.vala:71
+#: src/data_translations.vala:73
 msgid ""
 "Dotted zeros, used the n, o, H & O Latin characters as a base for design"
 msgstr "أصفار منقوطة، استخدم الأحرف اللاتينية n و o و H و O كقاعدة للتصميم"
 
-#: src/data_translations.vala:72
+#: src/data_translations.vala:74
 msgid "Refreshed version of Ubuntu and Ubuntu Mono fonts"
 msgstr "نسخة محدثة من خطوط Ubuntu و Ubuntu Mono"
 
-#: src/data_translations.vala:73
+#: src/data_translations.vala:75
 msgid "Clean, crisp and narrow, with a large x-height and clear punctuation"
 msgstr "نظيف وواضح وضيف، مع ارتفاع كبير للحروف الصغيرة وعلامات ترقيم واضحة"
 
-#: src/data_translations.vala:74
+#: src/data_translations.vala:76
 msgid "Zed Mono is a more rounded version of Iosevka"
 msgstr "Zed Mono هو نسخة أكثر استدارة من خط Iosevka"
 
-#: src/data_translations.vala:75
+#: src/data_translations.vala:77
 msgid ""
 "Permissive license allowing almost unrestricted use, modification, and "
 "distribution."
 msgstr "ترخيص مرن يسمح بالاستخدام والتعديل والتوزيع دون قيود تقريباً."
 
-#: src/data_translations.vala:76
+#: src/data_translations.vala:78
 msgid ""
 "Free to use, modify, and distribute, with conditions: no selling and "
 "original license must be included."
 msgstr ""
 "حر في الاستخدام والتعديل والتوزيع، بشرط: عدم البيع وإدراج الترخيص الأصلي."
 
-#: src/data_translations.vala:77
+#: src/data_translations.vala:79
 msgid ""
 "Same as OFL-1.1, but must comply with Reserved Font Name (RFN) restrictions."
 msgstr "نفس ترخيص OFL-1.1، ولكن يجب الامتثال لقيود اسم الخط المحجوز (RFN)."
 
-#: src/data_translations.vala:78
+#: src/data_translations.vala:80
 msgid ""
 "Permissive, requires attribution, notice of changes, and inclusion of NOTICE "
 "file. Modified code can use a different license."
@@ -520,51 +530,51 @@ msgstr ""
 "مرن، يتطلب الإسناد، والتنبيه بالتغييرات، وإدراج ملف NOTICE. يمكن للكود "
 "المعدل استخدام ترخيص مختلف."
 
-#: src/data_translations.vala:79
+#: src/data_translations.vala:81
 msgid ""
 "Allows sharing and modification with attribution. Must distribute under the "
 "same license."
 msgstr "يسمح بالمشاركة والتعديل مع الإسناد. يجب التوزيع تحت نفس الترخيص."
 
-#: src/data_translations.vala:80
+#: src/data_translations.vala:82
 msgid "Permissive, prohibits selling, requires renaming the font."
 msgstr "مرن، يمنع البيع، ويتطلب تغيير اسم الخط."
 
-#: src/data_translations.vala:81
+#: src/data_translations.vala:83
 msgid "Unrestricted use, as summarized by its name."
 msgstr "استخدام غير مقيد، كما هو موضح في اسمه."
 
-#: src/data_translations.vala:82
+#: src/data_translations.vala:84
 msgid ""
 "Permissive, requires license file, prohibits using Google Inc. to endorse "
 "work."
 msgstr ""
 "مرن، يتطلب ملف الترخيص، ويمنع استخدام اسم شركة .Google Inc للترويج للعمل."
 
-#: src/data_translations.vala:83
+#: src/data_translations.vala:85
 msgid "Unrestricted use."
 msgstr "استخدام غير مقيد."
 
-#: src/data_translations.vala:84
+#: src/data_translations.vala:86
 msgid "Permissive, requires inclusion of the license file."
 msgstr "مرن، يتطلب إدراج ملف الترخيص."
 
-#: src/data_translations.vala:85
+#: src/data_translations.vala:87
 msgid "Permissive, requires attribution and license file."
 msgstr "مرن، يتطلب الإسناد وملف الترخيص."
 
-#: src/data_translations.vala:86
+#: src/data_translations.vala:88
 msgid ""
 "Permissive, allows redistribution and modification with attribution and no "
 "endorsement clause."
 msgstr "مرن، يسمح بإعادة التوزيع والتعديل مع الإسناد وبدون بند الترويج."
 
-#: src/data_translations.vala:87
+#: src/data_translations.vala:89
 msgid ""
 "Similar to BSD-3-Clause, but with a more explicit no-endorsement clause."
 msgstr "مشابه لـ BSD-3-Clause، ولكن مع بند أوضح يمنع الترويج."
 
-#: src/data_translations.vala:88
+#: src/data_translations.vala:90
 msgid ""
 "Allows linking to proprietary software, but modifications must be under "
 "LGPL. Original license and source code must be included."
@@ -632,7 +642,7 @@ msgstr "إنهاء التطبيق"
 msgid "Close Window"
 msgstr "إغلاق النافذة"
 
-#: src/shortcuts-dialog.blp:22 src/window.blp:241
+#: src/shortcuts-dialog.blp:22 src/window.blp:255
 msgid "Keyboard Shortcuts"
 msgstr "اختصارات لوحة المفاتيح"
 
@@ -640,43 +650,43 @@ msgstr "اختصارات لوحة المفاتيح"
 msgid "Display this keyboard shortcuts window"
 msgstr "عرض نافذة اختصارات لوحة المفاتيح"
 
-#: src/window.blp:55
+#: src/window.blp:64
 msgid "Get started"
 msgstr "ابدأ الآن"
 
-#: src/window.blp:93
+#: src/window.blp:102
 msgid "Main Menu"
 msgstr "القائمة الرئيسية"
 
-#: src/window.blp:113
+#: src/window.blp:127
 msgid "Fonts"
 msgstr "الخطوط"
 
-#: src/window.blp:130
+#: src/window.blp:144
 msgid "Installed fonts"
 msgstr "الخطوط المثبتة"
 
-#: src/window.blp:152
+#: src/window.blp:166
 msgid "Available fonts"
 msgstr "الخطوط المتاحة"
 
-#: src/window.blp:181
+#: src/window.blp:195
 msgid "Icons"
 msgstr "الأيقونات"
 
-#: src/window.blp:212
+#: src/window.blp:226
 msgid "Icons grid"
 msgstr "قائمة الأيقونات"
 
-#: src/window.blp:229
+#: src/window.blp:243
 msgid "Import custom fonts"
 msgstr "استيراد خطوط مخصصة"
 
-#: src/window.blp:234
+#: src/window.blp:248
 msgid "Export custom fonts"
 msgstr "تصدير الخطوط مخصصة"
 
-#: src/window.blp:246
+#: src/window.blp:260
 msgid "About"
 msgstr "حول"
 
@@ -787,6 +797,9 @@ msgstr "فشل حفض الملف: %s"
 #, c-format
 msgid "Failed to export: %s"
 msgstr "فشل التصدير: %s"
+
+#~ msgid "Update an installed font"
+#~ msgstr "تحديث خط مثبت"
 
 #, javascript-format
 #~ msgid "Load %d more icons"
