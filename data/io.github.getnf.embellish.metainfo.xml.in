@@ -79,6 +79,18 @@
     </screenshots>
 
     <releases>
+      <release version="v1.1.0" date="2026-08-03">
+        <description translate="no">
+          <p>Updated to NerdFonts V3.5.0</p>
+          <ul>
+            <li>Added Google Sans Code nerd font</li>
+            <li>Added Annotation Mono nerd font</li>
+            <li>New icons added</li>
+            <li>Renamed D2Coding to D2Koding in accordance with appstream</li>
+          </ul>
+          <p>Fonts need to be reinstalled to be updated</p>
+        </description>
+      </release>
       <release version="v1.0.0" date="2026-04-02">
         <description translate="no">
           <ul>
