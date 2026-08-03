@@ -22,6 +22,11 @@ for font in "$@"; do
     fi
 
     filename=$(basename -- "$font")
+    if [[ "$filename" == SymbolsNerdFont* ]]; then
+        echo "Skipping '$font' (Symbols font must not be subsetted)"
+        continue
+    fi
+
     name="${filename%.*}"
     ext="${filename##*.}"
 
