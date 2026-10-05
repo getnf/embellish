@@ -79,6 +79,17 @@
     </screenshots>
 
     <releases>
+      <release version="v1.2.0" date="2026-10-05">
+        <description translate="no">
+          <p>Updated to GNOME runtime 51</p>
+          <p>Updated to NerdFonts V3.5.1</p>
+          <ul>
+            <li>Added the missing Devicons</li>
+            <li>Other minor upstream fixes</li>
+          </ul>
+          <p>Fonts need to be reinstalled to be updated</p>
+        </description>
+      </release>
       <release version="v1.1.0" date="2026-08-03">
         <description translate="no">
           <p>Updated to NerdFonts V3.5.0</p>
