@@ -1,0 +1,782 @@
+# Turkish translation for io.github.getnf.embellish.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the io.github.getnf.embellish package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: io.github.getnf.embellish\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-08-03 23:58+0300\n"
+"PO-Revision-Date: 2026-10-24 20:50+0300\n"
+"Last-Translator: Turkish Translation <tr@example.com>\n"
+"Language-Team: Turkish <usncb@yandex.com>\n"
+"Language: tr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Generator: Poedit 3.9\n"
+
+#: data/io.github.getnf.embellish.desktop.in:2
+#: data/io.github.getnf.embellish.metainfo.xml.in:5 src/application.vala:53 src/window.blp:5
+#: src/window.blp:52
+msgid "Embellish"
+msgstr "Embellish"
+
+#: data/io.github.getnf.embellish.desktop.in:3
+#: data/io.github.getnf.embellish.metainfo.xml.in:6 src/window.blp:60
+msgid "Install nerd fonts"
+msgstr "Nerd Font'ları yükle"
+
+#: data/io.github.getnf.embellish.desktop.in:10
+msgid "Fonts;NerdFonts;nerd;"
+msgstr "Yazı Tipleri;NerdFonts;nerd;"
+
+#: data/io.github.getnf.embellish.metainfo.xml.in:8
+msgid "Ronnie Nissan"
+msgstr "Ronnie Nissan"
+
+#: data/io.github.getnf.embellish.metainfo.xml.in:36
+msgid ""
+"User-friendly application designed for managing Nerd Fonts on your system. With a sleek "
+"GTK4 user interface enhanced by libadwaita, Embellish provides a seamless experience for "
+"installing, uninstalling and updating of Nerd Fonts."
+msgstr ""
+"Sisteminizdeki Nerd Font'ları yönetmek için tasarlanmış kullanıcı dostu bir uygulama. "
+"libadwaita ile geliştirilmiş şık bir GTK4 kullanıcı arayüzüyle Embellish, Nerd Font'ları "
+"yükleme, kaldırma ve güncelleme için kusursuz bir deneyim sunar."
+
+#: data/io.github.getnf.embellish.metainfo.xml.in:42
+msgid "List all available Nerd Fonts"
+msgstr "Kullanılabilir tüm Nerd Font'ları listele"
+
+#: data/io.github.getnf.embellish.metainfo.xml.in:43
+msgid "Download and install a Font"
+msgstr "Bir yazı tipini indir ve yükle"
+
+#: data/io.github.getnf.embellish.metainfo.xml.in:44
+msgid "Uninstall an installed Font"
+msgstr "Yüklü bir yazı tipini kaldır"
+
+#: data/io.github.getnf.embellish.metainfo.xml.in:45
+msgid "preview fonts"
+msgstr "yazı tiplerini önizle"
+
+#: data/io.github.getnf.embellish.metainfo.xml.in:46
+msgid "Browse icons (icon's cheat sheet)"
+msgstr "Simgelere göz at (simge kopya kağıdı)"
+
+#: data/io.github.getnf.embellish.metainfo.xml.in:47 src/shortcuts-dialog.blp:7
+#: src/window.blp:96 src/window.blp:115 src/window.vala:72
+msgid "Search fonts"
+msgstr "Yazı tiplerinde ara"
+
+#: data/io.github.getnf.embellish.metainfo.xml.in:48
+msgid "Read font's license(s)"
+msgstr "Yazı tipi lisans(lar)ını oku"
+
+#: data/io.github.getnf.embellish.metainfo.xml.in:49
+msgid "Add custom fonts"
+msgstr "Özel yazı tipleri ekle"
+
+#: data/io.github.getnf.embellish.metainfo.xml.in:50
+msgid "Import and export custom fonts"
+msgstr "Özel yazı tiplerini içe ve dışa aktar"
+
+#: data/io.github.getnf.embellish.metainfo.xml.in:59
+msgid "Main page showing a list of custon fonts and installed and available nerd fonts"
+msgstr ""
+"Özel yazı tipleri ile yüklü ve kullanılabilir Nerd Font'ların listesini gösteren ana sayfa"
+
+#: data/io.github.getnf.embellish.metainfo.xml.in:63
+msgid "Icons page showing all the available nerd fonts icons"
+msgstr "Kullanılabilir tüm Nerd Font simgelerini gösteren simgeler sayfası"
+
+#: data/io.github.getnf.embellish.metainfo.xml.in:68
+msgid "Previewing JetBrains Mono font using JavaScript code"
+msgstr "JavaScript kodu kullanarak JetBrains Mono yazı tipini önizleme"
+
+#: data/io.github.getnf.embellish.metainfo.xml.in:72
+msgid "Showcasing the import dialog with Maple Mono fonts data"
+msgstr "Maple Mono yazı tipi verileriyle içe aktarma iletişim kutusunu sergileme"
+
+#: data/io.github.getnf.embellish.metainfo.xml.in:77
+msgid "Search page, showcasing search functionality"
+msgstr "Arama sayfası, arama işlevini gösteriyor"
+
+#: src/add-font-dialog.blp:5 src/window.blp:176
+msgid "Add a custom font"
+msgstr "Özel yazı tipi ekle"
+
+#: src/add-font-dialog.blp:16
+msgid "Add"
+msgstr "Ekle"
+
+#: src/add-font-dialog.blp:37
+msgid "Name"
+msgstr "Ad"
+
+#: src/add-font-dialog.blp:41
+msgid "Description"
+msgstr "Açıklama"
+
+#: src/add-font-dialog.blp:45
+msgid "URL"
+msgstr "URL"
+
+#: src/application.vala:55
+msgid "Embellish helps you manage Nerd Fonts on your system"
+msgstr "Embellish, sisteminizdeki Nerd Font'ları yönetmenize yardımcı olur"
+
+#: src/application.vala:61
+msgid "translator-credits"
+msgstr "Türkçe çeviri: su<umablognot@github.com>"
+
+#: src/application.vala:69
+msgid "Concessio"
+msgstr "Concessio"
+
+#: src/application.vala:69
+msgid "Understand file permissions"
+msgstr "Dosya izinlerini anlayın"
+
+#: src/application.vala:70
+msgid "Sitra"
+msgstr "Sitra"
+
+#: src/application.vala:70
+msgid "Get fonts from online sources"
+msgstr "Çevrimiçi kaynaklardan yazı tipleri alın"
+
+#. This file is automatically generated. Do not edit.
+#. These strings are extracted for translation
+#: src/data_translations.vala:5
+msgid "An opinionated font for software engineers"
+msgstr "Yazılım mühendisleri için özel tercihleri olan bir yazı tipi"
+
+#: src/data_translations.vala:6
+msgid "Derived from the x3270 font, a modern format of a font with high nostalgic value"
+msgstr ""
+"Yazı tipinden x3270 türetilmiş, yüksek nostaljik değere sahip bir yazı tipinin modern biçimi"
+
+#: src/data_translations.vala:7
+msgid "The monospace typeface for GNOME"
+msgstr "GNOME için eş aralıklı yazı tipi"
+
+#: src/data_translations.vala:8
+msgid "A small, monospace, outline font that is geometrically regular and simple"
+msgstr "Geometrik olarak düzenli ve basit, küçük, eş aralıklı bir kontur yazı tipi"
+
+#: src/data_translations.vala:9
+msgid "Idealized handwriting; legibility maximized while retaining hand-written character"
+msgstr ""
+"İdealize edilmiş el yazısı; el yazısı karakterini korurken okunabilirlik en üst düzeye "
+"çıkarılmış"
+
+#: src/data_translations.vala:10
+msgid "Inspired by Anonymous 9 on Macintosh, since 2009, distinct O, 0, I, l, 1"
+msgstr "Macintosh'taki Anonymous 9'dan esinlenilmiş; 2009'dan beri, belirgin O, 0, I, l, 1"
+
+#: src/data_translations.vala:11
+msgid "Metrically similar to Arial, pan-European WGL character set, sans serif"
+msgstr "Arial'e metrik olarak benzer, pan-Avrupa WGL karakter kümesi, sans serif"
+
+#: src/data_translations.vala:12
+msgid ""
+"A monospaced font designed to improve legibility and readability for individuals with low "
+"vision"
+msgstr ""
+"Az gören kişiler için okunabilirliği ve okunaklılığı artırmak üzere tasarlanmış eş aralıklı "
+"yazı tipi"
+
+#: src/data_translations.vala:13
+msgid "Sans serif, designed by Stephen G. Hartke who also created Verily Serif"
+msgstr "Sans serif; Verily Serif'i de oluşturan Stephen G. Hartke tarafından tasarlandı"
+
+#: src/data_translations.vala:14
+msgid "Nostalgic, closely based on IBM's 8x14 EGA/VGA charset"
+msgstr "Nostaljik, büyük ölçüde IBM'in 8x14 EGA/VGA karakter kümesine dayanır"
+
+#: src/data_translations.vala:15
+msgid "Dotted zero, compact lowercase characters"
+msgstr "Noktalı sıfır, kompakt küçük harfler"
+
+#: src/data_translations.vala:16
+msgid ""
+"A fun, new monospaced font that includes programming ligatures and is designed to enhance "
+"the modern look and feel of the Windows Terminal"
+msgstr ""
+"Programlama bitişik harflerini içeren ve Windows Terminal'in modern görünümünü ve hissini "
+"geliştirmek üzere tasarlanmış eğlenceli, yeni eş aralıklı yazı tipi"
+
+#: src/data_translations.vala:17
+msgid "Like Cascadia Code but without any ligatures"
+msgstr "Cascadia Code gibi ama bitişik harf içermez"
+
+#: src/data_translations.vala:18
+msgid "Tunable, slashed zeros, compact smaller characters"
+msgstr "Ayarlanabilir, eğik çizgili sıfırlar, kompakt daha küçük karakterler"
+
+#: src/data_translations.vala:19
+msgid "The very typeface you've been trained to recognize since childhood"
+msgstr "Çocukluğunuzdan beri tanımaya alıştırıldığınız yazı tipinin ta kendisi"
+
+#: src/data_translations.vala:20
+msgid "An anonymous and neutral programming typeface"
+msgstr "Anonim ve nötr bir programlama yazı tipi"
+
+#: src/data_translations.vala:21
+msgid "Similar to Courier New with better readability, dotted zeros"
+msgstr "Courier New'e benzer, daha iyi okunabilirlik, noktalı sıfırlar"
+
+#: src/data_translations.vala:22
+msgid "A coding font for Koreans. This is the variant with ligatures."
+msgstr "Koreliler için bir kodlama yazı tipi. Bu, bitişik harfli varyanttır."
+
+#: src/data_translations.vala:23
+msgid "A monospaced font for programmers and other terminal groupies"
+msgstr "Programcılar ve diğer terminal tutkunları için eş aralıklı yazı tipi"
+
+#: src/data_translations.vala:24
+msgid "A monospaced pixel font with a lo-fi, techy vibe"
+msgstr "Lo-fi, teknolojik havası olan eş aralıklı piksel yazı tipi"
+
+#: src/data_translations.vala:25
+msgid "Dotted zero, based on the Bitstream Vera Fonts with a wider range of characters"
+msgstr "Noktalı sıfır, daha geniş karakter yelpazesine sahip Bitstream Vera Fonts'a dayanır"
+
+#: src/data_translations.vala:26
+msgid "Good for small screens or font sizes"
+msgstr "Küçük ekranlar veya yazı tipi boyutları için iyi"
+
+#: src/data_translations.vala:27
+msgid "Fully-scalable monospaced font designed for programming and command prompts"
+msgstr ""
+"Programlama ve komut istemleri için tasarlanmış tamamen ölçeklenebilir eş aralıklı yazı tipi"
+
+#: src/data_translations.vala:28
+msgid ""
+"Wibbly-wobbly handwriting-like fuzziness, takes some inspiration from Inconsolata and Monaco"
+msgstr "Dalgalı, el yazısına benzer bulanıklık; Inconsolata ve Monaco'dan biraz esinlenir"
+
+#: src/data_translations.vala:29
+msgid "Programming ligatures, extension of Fira Mono font, enlarged operators"
+msgstr "Programlama bitişik harfleri, Fira Mono yazı tipinin uzantısı, büyütülmüş operatörler"
+
+#: src/data_translations.vala:30
+msgid "Mozilla typeface, dotted zero"
+msgstr "Mozilla yazı tipi, noktalı sıfır"
+
+#: src/data_translations.vala:31
+msgid ""
+"Monospaced typeface designed to be used in code editors, diagrams, terminals, and other "
+"text-based interfaces where code is represented"
+msgstr ""
+"Kod editörlerinde, diyagramlarda, terminallerde ve kodun temsil edildiği diğer metin "
+"tabanlı arayüzlerde kullanılmak üzere tasarlanmış eş aralıklı yazı tipi"
+
+#: src/data_translations.vala:32
+msgid ""
+"Created specifically for the Go project, looks particularly clear for use with the Go "
+"language"
+msgstr "Özellikle Go projesi için oluşturuldu; Go diliyle kullanımda özellikle net görünür"
+
+#: src/data_translations.vala:33
+msgid "Bitmap font, tall capitals and ascenders, small serifs"
+msgstr "Bit eşlem yazı tipi, uzun büyük harfler ve üst uzantılar, küçük serifler"
+
+#: src/data_translations.vala:34
+msgid ""
+"Designed to bring clarity, readability, and a bit of Google's distinctive brand character "
+"to code"
+msgstr ""
+"Koda netlik, okunabilirlik ve Google'ın kendine özgü marka karakterinden bir parça getirmek "
+"için tasarlandı"
+
+#: src/data_translations.vala:35
+msgid ""
+"Dotted zero, short descenders, expands upon work done for Bitstream Vera & DejaVu, legible "
+"at common sizes"
+msgstr ""
+"Noktalı sıfır, kısa alt uzantılar; Bitstream Vera ve DejaVu için yapılan çalışmayı "
+"genişletir, yaygın boyutlarda okunaklıdır"
+
+#: src/data_translations.vala:36
+msgid ""
+"Monospaced ligatures, makes composite glyphs (e.g. ->) more readable, especially in Haskell"
+msgstr ""
+"Eş aralıklı bitişik harfler, bileşik glifleri (ör. ->) özellikle Haskell'de daha okunabilir "
+"kılar"
+
+#: src/data_translations.vala:37
+msgid "Novel and unique design, dotted zero"
+msgstr "Yeni ve benzersiz tasarım, noktalı sıfır"
+
+#: src/data_translations.vala:38
+msgid "Symbols stand out from common text"
+msgstr "Simgeler yaygın metinden öne çıkar"
+
+#: src/data_translations.vala:39
+msgid "A heavy modification of IBM's Plex font"
+msgstr "IBM'in Plex yazı tipinin yoğun biçimde değiştirilmiş hali"
+
+#: src/data_translations.vala:40
+msgid "It's global, it's versatile and it's distinctly IBM"
+msgstr "Küresel, çok yönlü ve belirgin biçimde IBM"
+
+#: src/data_translations.vala:41
+msgid ""
+"Slashed zero, takes inspiration from many different fonts and glyphs, subtle curves in "
+"lowercase"
+msgstr ""
+"Eğik çizgili sıfır; birçok farklı yazı tipi ve gliften esinlenir, küçük harflerde ince "
+"kıvrımlar"
+
+#: src/data_translations.vala:42
+msgid "Inconsolata with straight quotes"
+msgstr "Düz tırnaklı Inconsolata"
+
+#: src/data_translations.vala:43
+msgid "Inconsolata with added the Cyrillic alphabet"
+msgstr "Kiril alfabesi eklenmiş Inconsolata"
+
+#: src/data_translations.vala:44
+msgid ""
+"Expressive monospaced font family that's built with clarity, legibility, and the needs of "
+"developers in mind"
+msgstr ""
+"Netlik, okunabilirlik ve geliştiricilerin ihtiyaçları düşünülerek oluşturulmuş etkileyici "
+"eş aralıklı yazı tipi ailesi"
+
+#: src/data_translations.vala:45
+msgid "Narrow and horizontally tight characters, slashed zero"
+msgstr "Dar ve yatay olarak sıkı karakterler, eğik çizgili sıfır"
+
+#: src/data_translations.vala:46
+msgid ""
+"A narrower variant focusing terminal uses: Arrows and geometric symbols will be narrow to "
+"follow typical terminal usages"
+msgstr ""
+"Terminal kullanımlarına odaklanan daha dar bir varyant: Oklar ve geometrik simgeler, tipik "
+"terminal kullanımlarına uyacak şekilde dar olacaktır"
+
+#: src/data_translations.vala:47
+msgid "Nice as Iosevka but with slab serifs"
+msgstr "Iosevka kadar güzel ama slab serifli"
+
+#: src/data_translations.vala:48
+msgid "JetBrains officially created font for developers"
+msgstr "JetBrains tarafından geliştiriciler için resmî olarak oluşturulmuş yazı tipi"
+
+#: src/data_translations.vala:49
+msgid "Very light and thin characters, sharp m's, 0 and O very similar"
+msgstr "Çok hafif ve ince karakterler, keskin m'ler, 0 ve O çok benzer"
+
+#: src/data_translations.vala:50
+msgid "0 and O very similar, very short tight descenders"
+msgstr "0 ve O çok benzer, çok kısa ve sıkı alt uzantılar"
+
+#: src/data_translations.vala:51
+msgid "Modern with ligatures"
+msgstr "Bitişik harfli modern"
+
+#: src/data_translations.vala:52
+msgid "Free and open-source monospaced font from Evil Martians"
+msgstr "Evil Martians'tan ücretsiz ve açık kaynaklı eş aralıklı yazı tipi"
+
+#: src/data_translations.vala:53
+msgid "Slashed zeros, customized version of Apple's Menlo"
+msgstr "Eğik çizgili sıfırlar, Apple'ın Menlo'sunun özelleştirilmiş sürümü"
+
+#: src/data_translations.vala:54
+msgid "Five matching fonts all having 'texture healing' to improve legibility"
+msgstr "Okunabilirliği artırmak için 'doku iyileştirme' özelliğine sahip beş uyumlu yazı tipi"
+
+#: src/data_translations.vala:55
+msgid "Dotted zeros, slightly exaggerated curvy characters, compact characters"
+msgstr "Noktalı sıfırlar, hafifçe abartılı kıvrımlı karakterler, kompakt karakterler"
+
+#: src/data_translations.vala:56
+msgid ""
+"Ligatures, distinguishable glyphs with short ascenders & descenders, large operators & "
+"punctuation"
+msgstr ""
+"Bitişik harfler, kısa üst ve alt uzantılara sahip ayırt edilebilir glifler, büyük "
+"operatörler ve noktalama işaretleri"
+
+#: src/data_translations.vala:57
+msgid "Keeps in mind differentiation of characters and resolution sizes"
+msgstr "Karakterlerin ve çözünürlük boyutlarının ayrımını göz önünde bulundurur"
+
+#: src/data_translations.vala:58
+msgid "Multiple styles and weights, many glyph sets (e.g. Kana glyphs)"
+msgstr "Birden çok stil ve ağırlık, birçok glif kümesi (ör. Kana glifleri)"
+
+#: src/data_translations.vala:59
+msgid "0 and O very similar, characters are either very curvy or straight lined"
+msgstr "0 ve O çok benzer, karakterler ya çok kıvrımlı ya da düz çizgili"
+
+#: src/data_translations.vala:60
+msgid "Designed specifically to alleviate reading errors caused by dyslexia"
+msgstr "Disleksinin neden olduğu okuma hatalarını hafifletmek için özel olarak tasarlandı"
+
+#: src/data_translations.vala:61
+msgid "An open source font family inspired by Highway Gothic"
+msgstr "Highway Gothic'ten esinlenen açık kaynaklı bir yazı tipi ailesi"
+
+#: src/data_translations.vala:62
+msgid ""
+"Looks best with anti-aliasing turned off, squared off character corners, vertically tight "
+"small s"
+msgstr ""
+"Kenar yumuşatma kapalıyken en iyi görünür; köşeli karakter köşeleri, dikey olarak sıkı "
+"küçük s"
+
+#: src/data_translations.vala:63
+msgid "Designed particularly for use at small point sizes"
+msgstr "Özellikle küçük punto boyutlarında kullanım için tasarlandı"
+
+#: src/data_translations.vala:64
+msgid "Inspired by casual script signpainting, 4 variants"
+msgstr "Gündelik el yazısı tabela boyamacılığından esinlenilmiş, 4 varyant"
+
+#: src/data_translations.vala:65
+msgid "Dashed zero, curved and straight character lines"
+msgstr "Kesik çizgili sıfır, kıvrımlı ve düz karakter çizgileri"
+
+#: src/data_translations.vala:66
+msgid "Dotted zeros, distinguishable 1 and l, curved and straight character lines"
+msgstr "Noktalı sıfırlar, ayırt edilebilir 1 ve l, kıvrımlı ve düz karakter çizgileri"
+
+#: src/data_translations.vala:67
+msgid "Monospaced font family for user interface and coding environments"
+msgstr "Kullanıcı arayüzü ve kodlama ortamları için eş aralıklı yazı tipi ailesi"
+
+#: src/data_translations.vala:68
+msgid "Squarish character lines, dotted zero, aggressive parenthesis"
+msgstr "Köşeli karakter çizgileri, noktalı sıfır, agresif parantez"
+
+#: src/data_translations.vala:69
+msgid "Just the Nerd Font Icons. I.e. Symbol font only"
+msgstr "Yalnızca Nerd Font Simgeleri. Yani yalnızca sembol yazı tipi"
+
+#: src/data_translations.vala:70
+msgid "Squarish characters that are slightly askew"
+msgstr "Hafifçe eğik köşeli karakterler"
+
+#: src/data_translations.vala:71
+msgid ""
+"Some similarities to Times New Roman, designed by Steve Matteson, includes pan-European WGL "
+"character set"
+msgstr ""
+"Times New Roman'a bazı benzerlikler taşır; Steve Matteson tarafından tasarlanmıştır, pan-"
+"Avrupa WGL karakter kümesini içerir"
+
+#: src/data_translations.vala:72
+msgid "Specially created for Ubuntu"
+msgstr "Ubuntu için özel olarak oluşturuldu"
+
+#: src/data_translations.vala:73
+msgid "Dotted zeros, used the n, o, H & O Latin characters as a base for design"
+msgstr ""
+"Noktalı sıfırlar; tasarım için temel olarak n, o, H ve O Latin karakterlerini kullandı"
+
+#: src/data_translations.vala:74
+msgid "Refreshed version of Ubuntu and Ubuntu Mono fonts"
+msgstr "Ubuntu ve Ubuntu Mono yazı tiplerinin yenilenmiş sürümü"
+
+#: src/data_translations.vala:75
+msgid "Clean, crisp and narrow, with a large x-height and clear punctuation"
+msgstr "Temiz, net ve dar; büyük x yüksekliği ve net noktalama işaretleriyle"
+
+#: src/data_translations.vala:76
+msgid "Zed Mono is a more rounded version of Iosevka"
+msgstr "Zed Mono, Iosevka'nın daha yuvarlak bir sürümüdür"
+
+#: src/data_translations.vala:77
+msgid "Permissive license allowing almost unrestricted use, modification, and distribution."
+msgstr "Neredeyse sınırsız kullanım, değiştirme ve dağıtıma izin veren izin verici lisans."
+
+#: src/data_translations.vala:78
+msgid ""
+"Free to use, modify, and distribute, with conditions: no selling and original license must "
+"be included."
+msgstr ""
+"Kullanmak, değiştirmek ve dağıtmak ücretsizdir; koşullar: satış yok ve özgün lisans dahil "
+"edilmelidir."
+
+#: src/data_translations.vala:79
+msgid "Same as OFL-1.1, but must comply with Reserved Font Name (RFN) restrictions."
+msgstr "OFL-1.1 ile aynıdır, ancak Saklı Yazı Tipi Adı (RFN) kısıtlamalarına uyulmalıdır."
+
+#: src/data_translations.vala:80
+msgid ""
+"Permissive, requires attribution, notice of changes, and inclusion of NOTICE file. Modified "
+"code can use a different license."
+msgstr ""
+"İzin vericidir; atıf, değişiklik bildirimi ve NOTICE dosyasının dahil edilmesini "
+"gerektirir. Değiştirilmiş kod farklı bir lisans kullanabilir."
+
+#: src/data_translations.vala:81
+msgid ""
+"Allows sharing and modification with attribution. Must distribute under the same license."
+msgstr "Atıfla paylaşım ve değiştirmeye izin verir. Aynı lisans altında dağıtılmalıdır."
+
+#: src/data_translations.vala:82
+msgid "Permissive, prohibits selling, requires renaming the font."
+msgstr "İzin vericidir, satışı yasaklar, yazı tipinin yeniden adlandırılmasını gerektirir."
+
+#: src/data_translations.vala:83
+msgid "Unrestricted use, as summarized by its name."
+msgstr "Adından da anlaşılacağı gibi sınırsız kullanım."
+
+#: src/data_translations.vala:84
+msgid "Permissive, requires license file, prohibits using Google Inc. to endorse work."
+msgstr ""
+"İzin vericidir, lisans dosyası gerektirir, Google Inc.'in çalışmayı onaylamak için "
+"kullanılmasını yasaklar."
+
+#: src/data_translations.vala:85
+msgid "Unrestricted use."
+msgstr "Sınırsız kullanım."
+
+#: src/data_translations.vala:86
+msgid "Permissive, requires inclusion of the license file."
+msgstr "İzin vericidir, lisans dosyasının dahil edilmesini gerektirir."
+
+#: src/data_translations.vala:87
+msgid "Permissive, requires attribution and license file."
+msgstr "İzin vericidir, atıf ve lisans dosyası gerektirir."
+
+#: src/data_translations.vala:88
+msgid ""
+"Permissive, allows redistribution and modification with attribution and no endorsement "
+"clause."
+msgstr ""
+"İzin vericidir; atıf ve onaylama yasağı maddesiyle yeniden dağıtım ve değiştirmeye izin "
+"verir."
+
+#: src/data_translations.vala:89
+msgid "Similar to BSD-3-Clause, but with a more explicit no-endorsement clause."
+msgstr "BSD-3-Clause'a benzer, ancak daha açık bir onaylamama maddesine sahiptir."
+
+#: src/data_translations.vala:90
+msgid ""
+"Allows linking to proprietary software, but modifications must be under LGPL. Original "
+"license and source code must be included."
+msgstr ""
+"Tescilli yazılıma bağlanmaya izin verir, ancak değişiklikler LGPL altında olmalıdır. Özgün "
+"lisans ve kaynak kodu dahil edilmelidir."
+
+#: src/import-dialog.blp:6 src/import_dialog.vala:87
+msgid "Import Custom Fonts"
+msgstr "Özel Yazı Tiplerini İçe Aktar"
+
+#: src/import-dialog.blp:28
+msgid "Paste your JSON here:"
+msgstr "JSON'unuzu buraya yapıştırın:"
+
+#: src/import-dialog.blp:56
+msgid "Import from file"
+msgstr "Dosyadan içe aktar"
+
+#: src/import-dialog.blp:64 src/import_dialog.vala:88
+msgid "Import"
+msgstr "İçe Aktar"
+
+#: src/import_dialog.vala:81
+#, c-format
+msgid "Failed to import custom fonts: %s"
+msgstr "Özel yazı tipleri içe aktarılamadı: %s"
+
+#: src/import_dialog.vala:91 src/window.vala:522
+msgid "JSON Files"
+msgstr "JSON Dosyaları"
+
+#: src/import_dialog.vala:109
+#, c-format
+msgid "Failed to read file: %s"
+msgstr "Dosya okunamadı: %s"
+
+#: src/import_dialog.vala:115
+#, c-format
+msgid "Failed to open file: %s"
+msgstr "Dosya açılamadı: %s"
+
+#: src/managers/licenses.vala:28
+msgid "license details"
+msgstr "lisans ayrıntıları"
+
+#: src/managers/licenses.vala:32
+msgid "Dual"
+msgstr "Çift"
+
+#: src/managers/licenses.vala:36
+msgid "Unknown"
+msgstr "Bilinmiyor"
+
+#: src/managers/licenses.vala:101 src/managers/licenses.vala:106
+#: src/managers/licenses.vala:108
+msgid "No description available"
+msgstr "Açıklama mevcut değil"
+
+#: src/shortcuts-dialog.blp:12
+msgid "Quit App"
+msgstr "Uygulamadan Çık"
+
+#: src/shortcuts-dialog.blp:17
+msgid "Close Window"
+msgstr "Pencereyi Kapat"
+
+#: src/shortcuts-dialog.blp:22 src/window.blp:255
+msgid "Keyboard Shortcuts"
+msgstr "Klavye Kısayolları"
+
+#: src/shortcuts-dialog.blp:23
+msgid "Display this keyboard shortcuts window"
+msgstr "Bu klavye kısayolları penceresini göster"
+
+#: src/window.blp:64
+msgid "Get started"
+msgstr "Başlayın"
+
+#: src/window.blp:102
+msgid "Main Menu"
+msgstr "Ana Menü"
+
+#: src/window.blp:127
+msgid "Fonts"
+msgstr "Yazı Tipleri"
+
+#: src/window.blp:144
+msgid "Installed fonts"
+msgstr "Yüklü yazı tipleri"
+
+#: src/window.blp:166
+msgid "Available fonts"
+msgstr "Kullanılabilir yazı tipleri"
+
+#: src/window.blp:195
+msgid "Icons"
+msgstr "Simgeler"
+
+#: src/window.blp:226
+msgid "Icons grid"
+msgstr "Simge ızgarası"
+
+#: src/window.blp:243
+msgid "Import custom fonts"
+msgstr "Özel yazı tiplerini içe aktar"
+
+#: src/window.blp:248
+msgid "Export custom fonts"
+msgstr "Özel yazı tiplerini dışa aktar"
+
+#: src/window.blp:260
+msgid "About"
+msgstr "Hakkında"
+
+#: src/window.vala:70
+msgid "Search icons"
+msgstr "Simgelerde ara"
+
+#: src/window.vala:184
+msgid "No installed fonts match your search"
+msgstr "Aramanızla eşleşen yüklü yazı tipi yok"
+
+#: src/window.vala:185
+msgid "No available fonts match your search"
+msgstr "Aramanızla eşleşen kullanılabilir yazı tipi yok"
+
+#: src/window.vala:292
+#, c-format
+msgid "Copied %s"
+msgstr "%s Kopyalandı"
+
+#: src/window.vala:350
+msgid "Preview"
+msgstr "Önizleme"
+
+#: src/window.vala:363
+msgid "Remove from list"
+msgstr "Listeden kaldır"
+
+#: src/window.vala:383 src/window.vala:407 src/window.vala:423
+msgid "Uninstall"
+msgstr "Kaldır"
+
+#: src/window.vala:386 src/window.vala:403 src/window.vala:427
+msgid "Install"
+msgstr "Yükle"
+
+#: src/window.vala:404
+#, c-format
+msgid "%s uninstalled"
+msgstr "%s kaldırıldı"
+
+#: src/window.vala:408
+#, c-format
+msgid "Failed to uninstall %s: %s"
+msgstr "%s kaldırılamadı: %s"
+
+#: src/window.vala:424
+#, c-format
+msgid "%s installed"
+msgstr "%s yüklendi"
+
+#: src/window.vala:428
+#, c-format
+msgid "Failed to install %s: %s"
+msgstr "%s yüklenemedi: %s"
+
+#: src/window.vala:451
+msgid "Custom font removed"
+msgstr "Özel yazı tipi kaldırıldı"
+
+#: src/window.vala:453
+#, c-format
+msgid "Failed to remove custom font: %s"
+msgstr "Özel yazı tipi kaldırılamadı: %s"
+
+#: src/window.vala:477
+#, c-format
+msgid "%d custom font imported"
+msgid_plural "%d custom fonts imported"
+msgstr[0] "%d özel yazı tipi içe aktarıldı"
+msgstr[1] "%d özel yazı tipi içe aktarıldı"
+
+#: src/window.vala:481
+msgid "All fonts already exist"
+msgstr "Tüm yazı tipleri zaten mevcut"
+
+#: src/window.vala:500
+msgid "Font already exists"
+msgstr "Yazı tipi zaten mevcut"
+
+#: src/window.vala:508
+msgid "Custom font added"
+msgstr "Özel yazı tipi eklendi"
+
+#: src/window.vala:510
+#, c-format
+msgid "Failed to add custom font: %s"
+msgstr "Özel yazı tipi eklenemedi: %s"
+
+#: src/window.vala:518
+msgid "Export Custom Fonts"
+msgstr "Özel Yazı Tiplerini Dışa Aktar"
+
+#: src/window.vala:545
+msgid "Custom fonts exported"
+msgstr "Özel yazı tipleri dışa aktarıldı"
+
+#: src/window.vala:547
+#, c-format
+msgid "Failed to save file: %s"
+msgstr "Dosya kaydedilemedi: %s"
+
+#: src/window.vala:553
+#, c-format
+msgid "Failed to export: %s"
+msgstr "Dışa aktarılamadı: %s"
